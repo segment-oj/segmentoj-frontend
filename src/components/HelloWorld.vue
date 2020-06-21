@@ -1,7 +1,7 @@
 <template>
   <div>
     HelloWorld loaded.<br/>
-    <span>{{ $route.params.id }} 123</span>
+    <span>{{ $route.params.id }}</span>
   </div>
 </template>
 
