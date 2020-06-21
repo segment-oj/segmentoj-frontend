@@ -1,3 +1,3 @@
 # segmentoj-frontend
 
-这是Semgentoj的前端。
+这是Segmentoj的前端。
