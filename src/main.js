@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import App from './App.vue';
+import router from './router'
 
 Vue.config.productionTip = false
 
-const router = await import('./router');
 import('element-ui').then(() => {
     Vue.use(Element);
 });
