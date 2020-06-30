@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     Hello!
-    <router-link to="/1231">1231</router-link>
+    <router-link to="/1234">1234</router-link>
     <router-view>
     </router-view>
   </div>
