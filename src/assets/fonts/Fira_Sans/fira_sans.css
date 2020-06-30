@@ -1,27 +1,24 @@
 @font-face {
-  font-family: "Fira Sans";
-  font-style: normal;
-  src: url("./FiraSans-Light.ttf") format("ttf");
+  font-family: 'Fira Sans';
   font-weight: 300;
+  src: url('./FiraSans-Light.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "Fira Sans";
-  font-style: normal;
-  src: url("./FiraSans-Regular.ttf") format("ttf");
+  font-family: 'Fira Sans';
   font-weight: 400;
+  src: url('./FiraSans-Regular.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "Fira Sans";
+  font-family: 'Fira Sans';
   font-style: italic;
-  src: url("./FiraSans-Italic.ttf") format("ttf");
   font-weight: 400;
+  src: url('./FiraSans-Italic.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: "Fira Sans";
-  font-style: normal;
-  src: url("./FiraSans-Bold.ttf") format("ttf");
+  font-family: 'Fira Sans';
   font-weight: 500;
+  src: url('./FiraSans-Bold.woff2') format('woff2');
 }
