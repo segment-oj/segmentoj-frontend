@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-katex:auto>
     Hello!
     <router-link to="/1234">1234</router-link>
     <router-view>
