@@ -3,4 +3,4 @@
  */
 
 // font
-import('./load_fonts');
+import('./fonts');
