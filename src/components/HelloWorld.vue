@@ -1,6 +1,6 @@
 <template>
   <div>
-    HelloWorld loaded.<br/>
+    HelloWorld loaded. $$a_b$$<br/>
     <span>{{ $route.params.id }}</span>
   </div>
 </template>
