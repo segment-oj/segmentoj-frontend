@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     Hello!
-    <router-link to="/1234">1234</router-link>
-    <router-link to="/login">login</router-link>
+    <router-link to="/1234">1234</router-link><br>
+    <router-link to="/login">login</router-link><br>
+    <MyUserName />
     <router-view>
     </router-view>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'App'
 }

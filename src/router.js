@@ -10,6 +10,9 @@ let router = new Router({
         path: '/login',
         component: () => import('./components/user/login.vue')
     }, {
+        path: '/username',
+        component: () => import('./components/user/MyUserName.vue')
+    }, {
         path: '/:id',
         component: () => import('./components/HelloWorld.vue')
     }, {
