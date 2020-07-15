@@ -1,18 +1,34 @@
 <template>
   <div id="app">
     Hello!
-    <router-link to="/1234">1234</router-link><br>
-    <router-link to="/login">login</router-link><br>
-    <MyUserName />
+    <div class="userinfo"> <!-- user name -->
+      <div v-if="isAuthenticated()">
+        Hello, <MyUserName />
+        <UserLogout />
+      </div>
+      <router-link v-else to="/login">login</router-link><br>
+    </div>
     <router-view>
     </router-view>
   </div>
 </template>
 
 <script>
+import MyUserName from './components/user/MyUserName.vue';
+import UserLogout from './components/user/logout.vue';
 
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    isAuthenticated() {
+      if (localStorage.getItem('authenticated') === "true") return true;
+      else return false;
+    }
+  }, 
+  components: {
+    MyUserName,
+    UserLogout
+  }
 }
 </script>
 

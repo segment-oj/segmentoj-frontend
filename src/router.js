@@ -13,9 +13,6 @@ let router = new Router({
         path: '/username',
         component: () => import('./components/user/MyUserName.vue')
     }, {
-        path: '/:id',
-        component: () => import('./components/HelloWorld.vue')
-    }, {
         path: '*',
         component: () => import('./components/404.vue')
     }]

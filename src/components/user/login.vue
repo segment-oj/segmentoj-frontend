@@ -7,6 +7,7 @@
       <el-form-item label='密码'>
         <el-input type='password' v-model='ldata.password'></el-input>
       </el-form-item>
+      <p class="error-msg" v-if="err_msg !== null">{{err_msg}}</p>
       <el-form-item>
         <el-button type='primary' v-on:click='onSubmit()'>登录</el-button>
         <el-button>取消</el-button>
@@ -25,7 +26,8 @@ export default {
       ldata: {
         username: '',
         password: ''
-      }
+      },
+      err_msg: null
     };
   },
   methods: {
@@ -34,18 +36,25 @@ export default {
         .post(apiurl('/user'), {
           username: this.ldata.username,
           password: this.ldata.password
-        }, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
         })
         .then(res => {
-          console.log(res.data);
+          localStorage.setItem('authenticated', true);
+          localStorage.setItem('username', this.ldata.username);
+          localStorage.setItem('userid', res.data.res.id);
+          this.$router.push('/');
         })
         .catch(err => {
-          console.log(err);
+          if (err.request.status === 403) {
+            this.err_msg = "用户名或密码错误";
+          }
         });
     }
   }
 };
 </script>
+
+<style scoped>
+.error-msg {
+  color: #F56C6C;
+}
+</style>
