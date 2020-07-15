@@ -5,12 +5,18 @@ Vue.use(Router);
 let router = new Router({
     mode: 'history',
     routes: [{
-        path: "/"
+        path: '/'
     }, {
-        path: "/:id",
+        path: '/login',
+        component: () => import('./components/user/login.vue')
+    }, {
+        path: '/username',
+        component: () => import('./components/user/MyUserName.vue')
+    }, {
+        path: '/:id',
         component: () => import('./components/HelloWorld.vue')
     }, {
-        path: "*",
+        path: '*',
         component: () => import('./components/404.vue')
     }]
 });
