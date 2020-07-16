@@ -7,11 +7,11 @@ let router = new Router({
     routes: [{
         path: '/'
     }, {
-        path: '/login',
+        path: '/user/login',
         component: () => import('./components/user/login.vue')
     }, {
-        path: '/username',
-        component: () => import('./components/user/MyUserName.vue')
+        path: '/user/logout',
+        component: () => import('./components/user/logout.vue')
     }, {
         path: '*',
         component: () => import('./components/404.vue')

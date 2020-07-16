@@ -38,9 +38,10 @@ export default {
           password: this.ldata.password
         })
         .then(res => {
-          localStorage.setItem('authenticated', true);
-          localStorage.setItem('username', this.ldata.username);
-          localStorage.setItem('userid', res.data.res.id);
+          this.$store.commit('userLogin', {
+            username: this.ldata.username,
+            userid: res.data.res.id
+          })
           this.$router.push('/');
         })
         .catch(err => {
