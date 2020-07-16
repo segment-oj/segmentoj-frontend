@@ -10,7 +10,7 @@
       <p class="error-msg" v-if="err_msg !== null">{{err_msg}}</p>
       <el-form-item>
         <el-button type='primary' v-on:click='onSubmit()'>登录</el-button>
-        <el-button>取消</el-button>
+        <el-button v-on:click='onCancel()'>取消</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -49,6 +49,9 @@ export default {
             this.err_msg = "用户名或密码错误";
           }
         });
+    },
+    onCancel() {
+      this.$router.go(-1);
     }
   }
 };
