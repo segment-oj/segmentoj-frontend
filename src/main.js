@@ -10,11 +10,14 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 Vue.prototype.$axios = axios;
 
+import store from './store/store'
+
 import('./loader');
 
 Vue.config.productionTip = false
 
 new Vue({
     router,
+    store,
 	render: h => h(App),
 }).$mount('#app');

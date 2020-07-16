@@ -11,7 +11,7 @@ export default {
   name: 'MyUserName',
   data() {
     return {
-      username: 'Loading'
+      username: null
     }
   },
   mounted() {
