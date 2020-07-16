@@ -18,9 +18,6 @@ import('./loader/load');
 
 Vue.config.productionTip = false
 
-import('element-ui').then(() => {
-    Vue.use(Element);
-});
 
 new Vue({
     router,
