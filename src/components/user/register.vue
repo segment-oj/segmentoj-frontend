@@ -51,12 +51,15 @@ export default {
             this.$router.push('/user/login');
           })
           .catch(err => {
-            if (err.request.status === 400) {
+            if (err.request.status === 400) { // HTTP 400 Bad Request
               this.err_msg = "邮箱格式错误";
-            } else if (err.request.status === 409) {
+            } else if (err.request.status === 409) { // HTTP 409 Conflict
               this.err_msg = "用户名已被注册";
+            } else if (err.request.status === 429) { // HTTP 429 Too Many Requests
+              this.err_msg = "请求过于频繁";
             } else {
               this.err_msg = "Unkown error";
+              console.log(err);
             }
           });
       } else {
