@@ -2,15 +2,15 @@
   <div id="nav">
     <el-menu
       :default-active="activeIndex"
+      :router="true"
       class="el-menu-demo"
       mode="horizontal"
-      router="true"
       background-color="#545c64"
       text-color="#fff"
-      active-text-color="#ffd04b"
+      active-text-color="#C0C4CC"
     >
       <el-menu-item index="/">Home</el-menu-item>
-      <el-submenu>
+      <el-submenu index="2">
         <template slot="title">
           User
         </template>
@@ -42,7 +42,7 @@ export default {
   name: 'NavBar',
   data() {
     return {
-      activeIndex: '1'
+      activeIndex: '/'
     }
   },
   components: {
