@@ -17,6 +17,7 @@
 
 <script>
 import apiurl from './../../apiurl';
+import goback from '../../goback';
 
 export default {
   name: 'UserLogin',
@@ -58,7 +59,7 @@ export default {
         });
     },
     onCancel() {
-      this.$router.go(-1);
+      goback(this);
     }
   }
 };

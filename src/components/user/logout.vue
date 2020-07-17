@@ -6,6 +6,7 @@
 
 <script>
 import apiurl from '../../apiurl';
+import goback from '../../goback';
 
 export default {
     name: "UserLogout",
@@ -15,15 +16,20 @@ export default {
             .then(() => {
                 this.$store.commit('userLogout');
                 this.$message({
-                    message: '登出成功',
+                    message: 'Logged out',
                     type: 'success'
                 });
                 this.$router.push('/');
             })
             .catch(err => {
                 if (err.request.status === 401) {
-                    this.$message.error("未登录");
+                    this.$message.error("Not logged in");
+                } else if (err.request.status === 429) {
+                    this.$message.error("Requests are too frequent");
+                } else {
+                    this.$message.error("Unkown error");
                 }
+                goback(this);
             })
     }
 }
