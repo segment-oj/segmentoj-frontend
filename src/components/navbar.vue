@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import MyUserName from "./user/MyUserName.vue";
+import MyUserName from './user/MyUserName.vue';
 
 export default {
   name: 'NavBar',
