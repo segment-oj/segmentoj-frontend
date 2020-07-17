@@ -1,22 +1,19 @@
 <template>
   <div id="app">
-    This is segmentoj.
-    <UserInfo>
-    </UserInfo>
-    <router-view>
-    </router-view>
+    <NavBar></NavBar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import UserInfo from './components/user/userinfo';
+import NavBar from './components/navbar.vue';
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    UserInfo
+    NavBar
   }
-}
+};
 </script>
 
 <style>
