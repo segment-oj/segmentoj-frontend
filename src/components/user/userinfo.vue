@@ -1,6 +1,6 @@
 <template>
   <div class="userinfo">
-    <div v-if="this.$store.state.user.authenticated">
+    <div id="logout" v-if="this.$store.state.user.authenticated">
       <MyUserName />
       <router-link to="/user/logout">登出</router-link>
     </div>
@@ -21,3 +21,9 @@ export default {
   }
 };
 </script>
+
+<style lang="css" scoped>
+#logout {
+  display: flex;
+}
+</style>
