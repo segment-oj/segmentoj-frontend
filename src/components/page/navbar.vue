@@ -18,15 +18,15 @@
           <el-menu-item>
             <MyUserName />
           </el-menu-item>
-          <el-menu-item index="/user/logout">
+          <el-menu-item index="./../user/logout">
             Logout
           </el-menu-item>
         </div>
         <div v-else>
-          <el-menu-item index="/user/login">
+          <el-menu-item index="./../user/login">
             login
           </el-menu-item>
-          <el-menu-item index="/user/register">
+          <el-menu-item index="./../user/register">
             Register
           </el-menu-item>
         </div>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import MyUserName from './user/MyUserName.vue';
+import MyUserName from './../user/MyUserName.vue';
 
 export default {
   name: 'NavBar',
