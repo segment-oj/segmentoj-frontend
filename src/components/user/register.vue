@@ -1,21 +1,21 @@
 <template>
   <div class='login' ref='ldata'>
     <el-form :model='ldata'>
-      <el-form-item label='用户名'>
+      <el-form-item label='Username'>
         <el-input v-model='ldata.username'></el-input>
       </el-form-item>
-      <el-form-item label='密码'>
+      <el-form-item label='Password'>
         <el-input type='password' v-model='ldata.password'></el-input>
       </el-form-item>
-      <el-form-item label='重复密码'>
+      <el-form-item label='Repeat password'>
         <el-input type='password' v-model='ldata.passwdrepeat'></el-input>
       </el-form-item>
-      <el-form-item label='邮箱'>
+      <el-form-item label='Email'>
         <el-input type="email" v-model='ldata.email'></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type='primary' v-on:click='onSubmit()'>注册</el-button>
-        <el-button v-on:click='onCancel()'>取消</el-button>
+        <el-button type='primary' v-on:click='onSubmit()'>Register</el-button>
+        <el-button v-on:click='onCancel()'>Cancel</el-button>
       </el-form-item>
     </el-form>
   </div>
