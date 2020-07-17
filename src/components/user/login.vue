@@ -50,7 +50,7 @@ export default {
         })
         .catch(err => {
           if (err.request.status === 403) {
-            this.$message.error("Wrong user name or password");
+            this.$message.error("Username or password incorrect");
           } else if (err.request.status === 429) {
             this.$message.error("Requests are too frequent");
           } else {
