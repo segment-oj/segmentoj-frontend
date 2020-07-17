@@ -14,11 +14,15 @@ export default {
             .delete(apiurl('/user'))
             .then(() => {
                 this.$store.commit('userLogout');
+                this.$message({
+                    message: '登出成功',
+                    type: 'success'
+                });
                 this.$router.push('/');
             })
             .catch(err => {
                 if (err.request.status === 401) {
-                    console.log("not logged in!");
+                    this.$message.error("未登录");
                 }
             })
     }
