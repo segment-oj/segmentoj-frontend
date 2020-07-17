@@ -5,7 +5,7 @@
       <router-link to="/user/logout">登出</router-link>
     </div>
   <div v-else>
-    <router-link to="/user/login">登录</router-link><br>
+    <router-link to="/user/login">登录</router-link>
     <router-link to="/user/register">注册</router-link>
   </div>
   </div>
