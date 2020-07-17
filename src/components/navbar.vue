@@ -9,25 +9,25 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <el-menu-item index="/">首页</el-menu-item>
+      <el-menu-item index="/">Home</el-menu-item>
       <el-submenu>
         <template slot="title">
-          用户
+          User
         </template>
         <div v-if="this.$store.state.user.authenticated">
           <el-menu-item>
             <MyUserName />
           </el-menu-item>
           <el-menu-item index="/user/logout">
-            登出
+            Logout
           </el-menu-item>
         </div>
         <div v-else>
           <el-menu-item index="/user/login">
-            登录
+            login
           </el-menu-item>
           <el-menu-item index="/user/register">
-            注册
+            Register
           </el-menu-item>
         </div>
       </el-submenu>
