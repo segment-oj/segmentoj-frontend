@@ -58,9 +58,9 @@ export default {
             if (err.request.status === 400) { // HTTP 400 Bad Request
               this.$message.error(JSON.parse(err.request.response).detail);
             } else if (err.request.status === 409) { // HTTP 409 Conflict
-              this.$message.error("The user name is already registered");
+              this.$message.error("This username is already registered");
             } else if (err.request.status === 429) { // HTTP 429 Too Many Requests
-              this.$message.error("Requests are too frequent");
+              this.$message.error("Requesting too frequently");
             } else {
               this.$message.error("Unkown error");
             }

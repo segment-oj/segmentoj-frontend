@@ -25,7 +25,7 @@ export default {
                 if (err.request.status === 401) {
                     this.$message.error("Not logged in");
                 } else if (err.request.status === 429) {
-                    this.$message.error("Requests are too frequent");
+                    this.$message.error("Requesting too frequently");
                 } else {
                     this.$message.error("Unkown error");
                 }
