@@ -1,7 +1,7 @@
 <template>
   <div class='login' ref='ldata'>
     <el-form :model='ldata'>
-      <el-form-item label='User name'>
+      <el-form-item label='Username'>
         <el-input v-model='ldata.username'></el-input>
       </el-form-item>
       <el-form-item label='Password'>
