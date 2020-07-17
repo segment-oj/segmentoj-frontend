@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <NavBar/>
-    <div id="content">
-      <router-view></router-view>
+    <div id="main">
+      <div id="content">
+        <router-view></router-view>
+      </div>
     </div>
     <Footer/>
   </div>
@@ -25,24 +27,20 @@ export default {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100%;
+}
+
+#main {
+  margin-top: 80px;
+  min-height: calc(100vh - 80px - 41.05px);
 }
 
 #content {
-  margin-top: 80px;
-  min-height: calc(100% - 41.05px);
-}
-
-html {
-  min-height: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body {
-  min-height: calc(100% - 80px);
   margin: 0;
-}
-
-.pagetest {
-  height: 1000px;
 }
 </style>
