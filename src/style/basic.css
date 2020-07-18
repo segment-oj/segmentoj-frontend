@@ -1,0 +1,37 @@
+/*--scrollbar--*/
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #cccccc;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #cccccc;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #b3b3b3;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #808080;
+}
+
+
+/*--selection--*/
+
+*::selection {
+    background-color: #b9d7ff;
+    opacity: 0.2;
+}
+
+*::-moz-selection {
+    background-color: #b9d7ff;
+    opacity: 0.2;
+}
+
+*::-webkit-selection {
+    background-color: #b9d7ff;
+    opacity: 0.2;
+}
