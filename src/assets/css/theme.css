@@ -1,0 +1,57 @@
+.color-danger {
+    color: #F56C6C;
+}
+
+.color-success {
+    color: #67C23A;
+}
+
+.color-warning {
+    color: #E6A23C;
+}
+
+.color-info {
+    color: #909399;
+}
+
+.color-info {
+    color: #409EFF;
+}
+
+.color-primary-text {
+    color: #303133;
+}
+
+.color-regular-text {
+    color: #606266;
+}
+
+.color-secondary-text  {
+    color: #909399;
+}
+
+.color-placeholder {
+    color: #C0C4CC;
+}
+
+
+
+.background-color-danger {
+    background-color: #F56C6C;
+}
+
+.background-color-success {
+    background-color: #67C23A;
+}
+
+.background-color-warning {
+    background-color: #E6A23C;
+}
+
+.background-color-info {
+    background-color: #909399;
+}
+
+.background-color-info {
+    background-color: #409EFF;
+}
