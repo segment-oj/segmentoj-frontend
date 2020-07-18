@@ -1,25 +1,25 @@
 <template>
-  <div id="app">
-    <NavBar />
-    <div id="main">
-      <div id="content">
+  <div id='app'>
+    <NavBar/>
+    <div id='main'>
+      <div id='content'>
         <router-view></router-view>
       </div>
     </div>
-    <Footer />
+    <Footer/>
     <UserLogin></UserLogin>
     <UserRegister></UserRegister>
   </div>
 </template>
 
 <script>
-import NavBar from "./components/page/navbar.vue";
-import Footer from "./components/page/footer.vue";
-import UserLogin from "./components/user/login.vue";
-import UserRegister from "./components/user/register.vue";
+import NavBar from './components/page/navbar.vue';
+import Footer from './components/page/footer.vue';
+import UserLogin from './components/user/login.vue';
+import UserRegister from './components/user/register.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
       LoginShow: false,
