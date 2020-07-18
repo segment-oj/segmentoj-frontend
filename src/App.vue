@@ -7,18 +7,30 @@
       </div>
     </div>
     <Footer/>
+    <UserLogin></UserLogin>
+    <UserRegister></UserRegister>
   </div>
 </template>
 
 <script>
 import NavBar from './components/page/navbar.vue';
 import Footer from './components/page/footer.vue';
+import UserLogin from './components/user/login.vue';
+import UserRegister from './components/user/register.vue';
 
 export default {
   name: "App",
+  data() {
+    return {
+      LoginShow: false,
+      RegisterShow: false
+    }
+  },
   components: {
     NavBar,
-    Footer
+    Footer,
+    UserLogin,
+    UserRegister
   }
 };
 </script>
@@ -43,4 +55,8 @@ export default {
 body {
   margin: 0;
 }
+
+.highzindex {
+  z-index: 10000 !important;
+ }
 </style>

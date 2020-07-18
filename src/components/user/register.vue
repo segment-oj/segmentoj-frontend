@@ -1,23 +1,25 @@
 <template>
-  <div class='login' ref='ldata'>
-    <el-form :model='ldata'>
-      <el-form-item label='Username'>
-        <el-input v-model='ldata.username'></el-input>
-      </el-form-item>
-      <el-form-item label='Password'>
-        <el-input type='password' v-model='ldata.password'></el-input>
-      </el-form-item>
-      <el-form-item label='Repeat password'>
-        <el-input type='password' v-model='ldata.passwdrepeat'></el-input>
-      </el-form-item>
-      <el-form-item label='Email'>
-        <el-input type="email" v-model='ldata.email'></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type='primary' v-on:click='onSubmit()'>Register</el-button>
-        <el-button v-on:click='onCancel()'>Cancel</el-button>
-      </el-form-item>
-    </el-form>
+  <div>
+    <el-dialog title="Register" :visible.sync="$store.state.user.showregister" width="30%" :before-close="handleClose">
+      <el-form :model='ldata'>
+        <el-form-item label='Username'>
+          <el-input v-model='ldata.username'></el-input>
+        </el-form-item>
+        <el-form-item label='Password'>
+          <el-input type='password' v-model='ldata.password'></el-input>
+        </el-form-item>
+        <el-form-item label='Repeat password'>
+          <el-input type='password' v-model='ldata.passwdrepeat'></el-input>
+        </el-form-item>
+        <el-form-item label='Email'>
+          <el-input type="email" v-model='ldata.email'></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type='primary' v-on:click='onSubmit();'>Register</el-button>
+          <el-button v-on:click='$store.state.user.showregister = false;'>Cancel</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
@@ -48,11 +50,13 @@ export default {
             email: this.ldata.email
           })
           .then(() => {
+            this.$store.state.user.showregister = false;
+            this.$store.state.user.showlogin = true;
             this.$message({
               message: 'Your acount has been registered successfully',
-              type: 'success'
+              type: 'success',
+              customClass: 'highzindex'
             });
-            this.$router.push('/user/login');
           })
           .catch(err => {
             if (err.request.status === 400) { // HTTP 400 Bad Request
@@ -76,5 +80,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 </style>
