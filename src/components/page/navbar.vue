@@ -49,6 +49,7 @@ export default {
 
 <style lang='css' scoped>
 #nav {
+  z-index: 1000;
   background-color: #545c64;
   width: 100vw;
   position: fixed;

@@ -3,10 +3,10 @@
     <AjaxTable
       :ajax_url="this.ajax_url"
       :columns="this.columns"
-      :limit=3
-      :total=10
+      :limit=10
+      :total=20
       :process="this.process"
-      ></AjaxTable>
+    ></AjaxTable>
   </div>
 </template>
 
@@ -33,11 +33,21 @@ export default {
   },
   methods: {
     process(x) {
-      x.title = (<router-link to={'/problem/' + String(x.pid)}>{ x.title }</router-link>);
       let color = 'text-extra-bold ';
-      if (x.score === 100) color += 'color-success';
-      else if (x.score < 100 && x.score >= 0) color += 'color-danger';
-      else color += 'color-primary-text';
+      let link_type;
+      if (x.score === 100) {
+        color += 'color-success';
+        link_type = 'success';
+      }
+      else if (x.score < 100 && x.score >= 0) {
+        color += 'color-danger';
+        link_type = 'warning';
+      }
+      else {
+        color += 'color-primary-text';
+        link_type = 'info';
+      }
+      x.title = (<el-link href={'/problem/' + String(x.pid)} type={link_type}>{ x.title }</el-link>);
       x.score = (<div class={color}>{x.score >= 0 ? x.score : '-'}</div>)
       return x;
     }
