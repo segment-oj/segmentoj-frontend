@@ -25,7 +25,6 @@
 
 <script>
 import apiurl from './../../apiurl';
-import goback from '../../goback';
 
 export default {
   name: 'UserRegister',
@@ -72,9 +71,6 @@ export default {
       } else {
         this.$message.error("Password mismatch");
       }
-    },
-    onCancel() {
-      goback(this);
     }
   }
 };
