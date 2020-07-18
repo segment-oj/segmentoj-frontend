@@ -15,7 +15,12 @@
         <el-menu-item index="/problem/list">Problem List</el-menu-item>
         <el-submenu index="2" id="user">
           <template slot="title">
-              <el-avatar> user </el-avatar>
+              <el-avatar v-if="this.$store.state.user.authenticated">
+                <MyUserName/>
+              </el-avatar>
+              <el-avatar v-else>
+                User
+              </el-avatar>
           </template>
           <div v-if="this.$store.state.user.authenticated">
             <el-menu-item>
