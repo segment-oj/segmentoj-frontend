@@ -14,7 +14,9 @@
         <el-menu-item index="/">Home</el-menu-item>
         <el-menu-item index="/problem/list">Problem List</el-menu-item>
         <el-submenu index="2" id="user">
-          <template slot="title">User</template>
+          <template slot="title">
+              <el-avatar> user </el-avatar>
+          </template>
           <div v-if="this.$store.state.user.authenticated">
             <el-menu-item>
               <MyUserName/>
