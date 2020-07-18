@@ -42,7 +42,7 @@ export default {
           })
           .then(res => {
             console.log(res);
-            this.tableData = res.data.res;
+            this.tableData = res.data.res.map(this.process);
             this.loading = false;
           })
           .catch(err => {
@@ -55,10 +55,26 @@ export default {
     this.load_data();
   },
   props: {
-    columns: Array,
-    ajax_url: String,
-    limit: Number,
-    total: Number
+    columns: {
+      type: Array,
+      required: true
+    },
+    ajax_url: {
+      type: String,
+      required: true
+    },
+    limit: {
+      type: Number,
+      default: 20
+    },
+    total: {
+      type: Number,
+      required: true
+    },
+    process: {
+      type: Function,
+      default: x => x
+    }
   }
 };
 </script>

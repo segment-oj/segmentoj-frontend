@@ -5,6 +5,7 @@
       :columns="this.columns"
       :limit=3
       :total=10
+      :process="this.process"
       ></AjaxTable>
   </div>
 </template>
@@ -22,9 +23,21 @@ export default {
         name: 'pid',
         label: 'Problem ID'
       }, {
+        name: 'score',
+        label: 'Status'
+      }, {
         name: 'title',
         label: 'Title'
       }]
+    }
+  },
+  methods: {
+    process(x) {
+      if (x.score == -1) {
+        x.score = '-';
+      }
+      x.title = (<router-link to={'/problem/' + String(x.pid)}>{ x.title }</router-link>);
+      return x;
     }
   },
   components: {
