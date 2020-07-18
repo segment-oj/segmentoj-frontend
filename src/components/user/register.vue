@@ -1,24 +1,25 @@
 <template>
-  <div class='login' ref='ldata'>
-    <el-form :model='ldata'>
-      <el-form-item label='用户名'>
-        <el-input v-model='ldata.username'></el-input>
-      </el-form-item>
-      <el-form-item label='密码'>
-        <el-input type='password' v-model='ldata.password'></el-input>
-      </el-form-item>
-      <el-form-item label='重复密码'>
-        <el-input type='password' v-model='ldata.passwdrepeat'></el-input>
-      </el-form-item>
-      <el-form-item label='邮箱'>
-        <el-input type="email" v-model='ldata.email'></el-input>
-      </el-form-item>
-      <p class="error-msg" v-if="err_msg !== null">{{err_msg}}</p>
-      <el-form-item>
-        <el-button type='primary' v-on:click='onSubmit()'>注册</el-button>
-        <el-button v-on:click='onCancel()'>取消</el-button>
-      </el-form-item>
-    </el-form>
+  <div>
+    <el-dialog title="Register" :visible.sync="$store.state.user.showregister" width="30%" :before-close="handleClose">
+      <el-form :model='ldata'>
+        <el-form-item label='Username'>
+          <el-input v-model='ldata.username'></el-input>
+        </el-form-item>
+        <el-form-item label='Password'>
+          <el-input type='password' v-model='ldata.password'></el-input>
+        </el-form-item>
+        <el-form-item label='Repeat password'>
+          <el-input type='password' v-model='ldata.passwdrepeat'></el-input>
+        </el-form-item>
+        <el-form-item label='Email'>
+          <el-input type="email" v-model='ldata.email'></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type='primary' v-on:click='onSubmit();'>Register</el-button>
+          <el-button v-on:click='$store.state.user.showregister = false;'>Cancel</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
@@ -48,33 +49,32 @@ export default {
             email: this.ldata.email
           })
           .then(() => {
-            this.$router.push('/user/login');
+            this.$store.state.user.showregister = false;
+            this.$store.state.user.showlogin = true;
+            this.$message({
+              message: 'Your acount has been registered successfully',
+              type: 'success',
+              customClass: 'highzindex'
+            });
           })
           .catch(err => {
             if (err.request.status === 400) { // HTTP 400 Bad Request
-              this.err_msg = "邮箱格式错误";
+              this.$message.error(JSON.parse(err.request.response).detail);
             } else if (err.request.status === 409) { // HTTP 409 Conflict
-              this.err_msg = "用户名已被注册";
+              this.$message.error("This username is already registered");
             } else if (err.request.status === 429) { // HTTP 429 Too Many Requests
-              this.err_msg = "请求过于频繁";
+              this.$message.error("Requesting too frequently");
             } else {
-              this.err_msg = "Unkown error";
-              console.log(err);
+              this.$message.error("Unkown error");
             }
           });
       } else {
-        this.err_msg = "密码不匹配";
+        this.$message.error("Password mismatch");
       }
-    },
-    onCancel() {
-      this.$router.go(-1);
     }
   }
 };
 </script>
 
-<style scoped>
-.error-msg {
-  color: #F56C6C;
-}
+<style>
 </style>

@@ -7,12 +7,13 @@ import 'katex/dist/katex.min.css';
 Vue.use(VueKatex, {
     globalOptions: {
         delimiters: [
-            {left: "$$", right: "$$", display: true},
-            {left: "$", right: "$", display: false}
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
         ]
     }
 });
 
+import './style/basic.css';
 import 'element-ui/lib/theme-chalk/index.css';
 import ElementUI from 'element-ui';
 Vue.use(ElementUI);
@@ -33,5 +34,5 @@ Vue.config.productionTip = false;
 new Vue({
     router,
     store,
-	render: h => h(App),
+    render: h => h(App),
 }).$mount('#app');
