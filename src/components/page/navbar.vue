@@ -21,8 +21,8 @@
             <el-menu-item index="/user/logout">Logout</el-menu-item>
           </div>
           <div v-else>
-            <el-menu-item @click="$parent.showLogin();">Login</el-menu-item>
-            <el-menu-item @click="$parent.showRegister();">Register</el-menu-item>
+            <el-menu-item @click="$store.state.user.showlogin = true;">Login</el-menu-item>
+            <el-menu-item @click="$store.state.user.showregister = true;">Register</el-menu-item>
           </div>
         </el-submenu>
       </el-menu>

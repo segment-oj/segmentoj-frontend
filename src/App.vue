@@ -31,14 +31,6 @@ export default {
     Footer,
     UserLogin,
     UserRegister
-  },
-  methods: {
-    showLogin() {
-      this.$store.state.user.showlogin = true;
-    },
-    showRegister() {
-      this.$store.state.user.showregister = true;
-    }
   }
 };
 </script>
