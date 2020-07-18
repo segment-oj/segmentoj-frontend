@@ -23,7 +23,8 @@ Vue.prototype.$axios = axios;
 
 import store from './store/store';
 
-
+import './assets/css/theme.css';
+import './assets/css/fontstyle.css';
 import('./loader/load');
 
 Vue.config.productionTip = false;

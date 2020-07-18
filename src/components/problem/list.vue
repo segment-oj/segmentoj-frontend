@@ -33,10 +33,12 @@ export default {
   },
   methods: {
     process(x) {
-      if (x.score == -1) {
-        x.score = '-';
-      }
       x.title = (<router-link to={'/problem/' + String(x.pid)}>{ x.title }</router-link>);
+      let color = 'text-extra-bold ';
+      if (x.score === 100) color += 'color-success';
+      else if (x.score < 100 && x.score >= 0) color += 'color-danger';
+      else color += 'color-primary-text';
+      x.score = (<div class={color}>{x.score >= 0 ? x.score : '-'}</div>)
       return x;
     }
   },
