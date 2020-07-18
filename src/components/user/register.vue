@@ -52,14 +52,11 @@ export default {
           .then(() => {
             this.$store.state.user.showregister = false;
             this.$store.state.user.showlogin = true;
-            clearTimeout(this.timer);
-            this.timer = setTimeout(()=>{
-              this.$message({
-                dangerouslyUseHTMLString: true,
-                message: 'Your acount has been registered successfully',
-                type: 'success'
-              });
-            },10);
+            this.$message({
+              message: 'Your acount has been registered successfully',
+              type: 'success',
+              customClass: 'highzindex'
+            });
           })
           .catch(err => {
             if (err.request.status === 400) { // HTTP 400 Bad Request
@@ -83,5 +80,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 </style>
