@@ -5,7 +5,8 @@ Vue.use(Router);
 let router = new Router({
     mode: 'history',
     routes: [{
-        path: '/'
+        path: '/',
+        component: () => import('./components/homepage/home.vue')
     }, {
         path: '/user/logout',
         component: () => import('./components/user/logout.vue')

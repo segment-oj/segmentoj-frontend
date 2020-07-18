@@ -1,28 +1,29 @@
 <template>
-  <div id="nav">
-    <div id="nav-content">
+  <div id='nav'>
+    <div id='nav-content'>
       <el-menu
-        id="menu"
-        :default-active="activeIndex"
-        :router="true"
-        class="el-menu-demo"
-        mode="horizontal"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#C0C4CC"
+        id='menu'
+        :default-active='activeIndex'
+        :router='true'
+        class='el-menu-demo'
+        mode='horizontal'
+        background-color='#545c64'
+        text-color='#fff'
+        active-text-color='#C0C4CC'
       >
-        <el-menu-item index="/">Home</el-menu-item>
-        <el-submenu index="2">
-          <template slot="title">User</template>
-          <div v-if="this.$store.state.user.authenticated">
+        <el-menu-item index='/'>Home</el-menu-item>
+        <el-menu-item index='/problem/list'>Problem List</el-menu-item>
+        <el-submenu index='2' id='user'>
+          <template slot='title'>User</template>
+          <div v-if='this.$store.state.user.authenticated'>
             <el-menu-item>
               <MyUserName />
             </el-menu-item>
-            <el-menu-item index="/user/logout">Logout</el-menu-item>
+            <el-menu-item index='/user/logout'>Logout</el-menu-item>
           </div>
           <div v-else>
-            <el-menu-item @click="$store.state.user.showlogin = true;">Login</el-menu-item>
-            <el-menu-item @click="$store.state.user.showregister = true;">Register</el-menu-item>
+            <el-menu-item @click='$store.state.user.showlogin = true;'>Login</el-menu-item>
+            <el-menu-item @click='$store.state.user.showregister = true;'>Register</el-menu-item>
           </div>
         </el-submenu>
       </el-menu>
@@ -31,13 +32,13 @@
 </template>
 
 <script>
-import MyUserName from "./../user/MyUserName.vue";
+import MyUserName from './../user/MyUserName.vue';
 
 export default {
-  name: "NavBar",
+  name: 'NavBar',
   data() {
     return {
-      activeIndex: "/"
+      activeIndex: '/'
     };
   },
   components: {
@@ -46,7 +47,7 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang='css' scoped>
 #nav {
   background-color: #545c64;
   width: 100vw;
@@ -60,6 +61,14 @@ export default {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#menu {
+  border: none;
+}
+
+#user {
+  float: right;
 }
 
 #user_icon {

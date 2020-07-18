@@ -13,10 +13,10 @@ Vue.use(VueKatex, {
     }
 });
 
-import './style/basic.css';
 import 'element-ui/lib/theme-chalk/index.css';
+import locale from 'element-ui/lib/locale/lang/en';
 import ElementUI from 'element-ui';
-Vue.use(ElementUI);
+Vue.use(ElementUI, {locale});
 
 import axios from 'axios';
 axios.defaults.withCredentials = true;
@@ -26,6 +26,7 @@ import store from './store/store';
 
 import './assets/css/theme.css';
 import './assets/css/fontstyle.css';
+import './assets/css/basic.css';
 import('./loader/load');
 
 Vue.config.productionTip = false;
