@@ -19,12 +19,12 @@ import UserLogin from './components/user/login.vue';
 import UserRegister from './components/user/register.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
       LoginShow: false,
       RegisterShow: false
-    }
+    };
   },
   components: {
     NavBar,
@@ -58,5 +58,5 @@ body {
 
 .highzindex {
   z-index: 10000 !important;
- }
+}
 </style>

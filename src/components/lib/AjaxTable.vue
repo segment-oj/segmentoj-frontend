@@ -1,18 +1,21 @@
 <template>
   <div class="ajax-table">
-    <el-table v-loading="loading" :data="tableData" stripe>
-      <el-table-column v-for="item in columns" :key="item" :prop="item.name" :label="item.label">
-      </el-table-column>
+    <el-table v-loading="loading" :data="tableData" stripe class="table">
+      <el-table-column
+        v-for="item in columns"
+        :key="item"
+        :prop="item.name"
+        :label="item.label"
+      ></el-table-column>
     </el-table>
     <el-pagination
       :page-size="this.limit"
       :total="this.total"
       background
-      layout="prev, pager, next"
+      layout="prev, pager, next, jumper"
       @current-change="this.onPageChange"
       class="pagination"
-      >
-    </el-pagination>
+    ></el-pagination>
   </div>
 </template>
 
@@ -23,8 +26,8 @@ export default {
     return {
       loading: true,
       tableData: null,
-      offset: 0,
-    }
+      offset: 0
+    };
   },
   methods: {
     onPageChange(page_id) {
@@ -46,9 +49,9 @@ export default {
             this.loading = false;
           })
           .catch(err => {
-            this.$message.error("[Ajax Table] Request Failed!");
+            this.$message.error("[Ajax Table] Request Failed");
             console.log(err);
-          })
+          });
     }
   },
   mounted() {
@@ -81,7 +84,12 @@ export default {
 
 <style scoped>
 .pagination {
+  height: 36px;
   margin-top: 20px;
   text-align: center;
+}
+
+.table {
+  min-height: calc(100vh - 80px - 60px - 41.05px);
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="box">
     <div class="logo">
       404
     </div>
@@ -23,5 +23,9 @@ export default {
 .message {
   font-size: 2em;
   font-weight: 100;
+}
+
+.box {
+  text-align: center;
 }
 </style>

@@ -12,8 +12,16 @@
         active-text-color="#C0C4CC"
       >
         <el-menu-item index="/">Home</el-menu-item>
-        <el-submenu index="2">
-          <template slot="title">User</template>
+        <el-menu-item index="/problem/list">Problem List</el-menu-item>
+        <el-submenu index="2" id="user">
+          <template slot="title">
+              <el-avatar v-if="this.$store.state.user.authenticated">
+                <MyUserName />
+              </el-avatar>
+              <el-avatar v-else>
+                User
+              </el-avatar>
+          </template>
           <div v-if="this.$store.state.user.authenticated">
             <el-menu-item>
               <MyUserName />
@@ -31,13 +39,13 @@
 </template>
 
 <script>
-import MyUserName from "./../user/MyUserName.vue";
+import MyUserName from './../user/MyUserName.vue';
 
 export default {
-  name: "NavBar",
+  name: 'NavBar',
   data() {
     return {
-      activeIndex: "/"
+      activeIndex: '/'
     };
   },
   components: {
@@ -48,6 +56,7 @@ export default {
 
 <style lang="css" scoped>
 #nav {
+  z-index: 1000;
   background-color: #545c64;
   width: 100vw;
   position: fixed;
@@ -60,6 +69,14 @@ export default {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#menu {
+  border: none;
+}
+
+#user {
+  float: right;
 }
 
 #user_icon {
