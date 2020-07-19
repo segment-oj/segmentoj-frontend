@@ -16,7 +16,7 @@
         <el-submenu index="2" id="user">
           <template slot="title">
               <el-avatar v-if="this.$store.state.user.authenticated">
-                <MyUserName/>
+                <MyUserName />
               </el-avatar>
               <el-avatar v-else>
                 User
@@ -24,7 +24,7 @@
           </template>
           <div v-if="this.$store.state.user.authenticated">
             <el-menu-item>
-              <MyUserName/>
+              <MyUserName />
             </el-menu-item>
             <el-menu-item index="/user/logout">Logout</el-menu-item>
           </div>
