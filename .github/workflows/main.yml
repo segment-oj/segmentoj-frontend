@@ -15,8 +15,6 @@ jobs:
         with:
           fetch-depth: 1
           ref: ${{ github.ref }}
-      
-      - name: Checkout to target branch
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
