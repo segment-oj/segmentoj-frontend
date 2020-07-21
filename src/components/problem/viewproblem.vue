@@ -1,7 +1,7 @@
 <template>
-  <div id="problem-view">
-    <div id="title" class="header text-extra-bold">#{{pid}}. {{ title }}</div>
-    <div v-html="description" v-katex:auto></div>
+  <div id="problem-view" v-highlight:auto>
+    <div id="title" class="header text-bold">#{{pid}}. {{ title }}</div>
+    <div v-katex:auto v-html="description"></div>
   </div>
 </template>
 
@@ -26,7 +26,6 @@ export default {
           }
         })
         .then(res => {
-          console.log(res);
           let data = res.data;
           this.description = data.description;
           this.title = data.title;
@@ -46,6 +45,7 @@ export default {
 
 <style scoped>
 .header {
-  font-size: 35px;
+  text-align: center;
+  font-size: 30px;
 }
 </style>

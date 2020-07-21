@@ -11,6 +11,7 @@
         "axios": "^0.19.2",
         "core-js": "^3.6.5",
         "element-ui": "^2.13.2",
+        "highlight.js": "^10.1.1",
         "vue": "^2.6.11",
         "vue-router": "^3.3.4",
         "vuex": "^3.5.1"
@@ -60,8 +61,16 @@
             "no-invalid-this": 2,
             "no-labels": 2,
             "no-lonely-if": 2,
-            "no-mixed-spaces-and-tabs": [2, true],
-            "no-multiple-empty-lines": [2, {"max": 2}],
+            "no-mixed-spaces-and-tabs": [
+                2,
+                true
+            ],
+            "no-multiple-empty-lines": [
+                2,
+                {
+                    "max": 2
+                }
+            ],
             "no-native-reassign": 2,
             "no-nested-ternary": 2,
             "no-octal": 2,
@@ -84,15 +93,40 @@
             "no-use-before-define": 2,
             "no-void": 2,
             "no-var": 2,
-            "no-warning-comments": [2, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],
+            "no-warning-comments": [
+                2,
+                {
+                    "terms": [
+                        "todo",
+                        "fixme",
+                        "xxx"
+                    ],
+                    "location": "start"
+                }
+            ],
             "no-with": 2,
             "block-scoped-var": 2,
-            "brace-style": [2, "1tbs"],
-            "consistent-this": [2, "that"],
-            "curly": [2, "all"],
+            "brace-style": [
+                2,
+                "1tbs"
+            ],
+            "consistent-this": [
+                2,
+                "that"
+            ],
+            "curly": [
+                2,
+                "all"
+            ],
             "default-case": 2,
-            "indent": [2, 2],
-            "quotes": [2, "single"],
+            "indent": [
+                2,
+                2
+            ],
+            "quotes": [
+                2,
+                "single"
+            ],
             "strict": 2,
             "use-isnan": 2,
             "no-unused-expressions": 0,
