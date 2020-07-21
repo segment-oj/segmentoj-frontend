@@ -1,5 +1,5 @@
 <template>
-  <div id="problem-view" v-highlight:auto>
+  <div id="problem-view" v-highlight>
     <div id="title" class="header text-bold">#{{pid}}. {{ title }}</div>
     <div v-katex:auto v-html="description"></div>
   </div>
