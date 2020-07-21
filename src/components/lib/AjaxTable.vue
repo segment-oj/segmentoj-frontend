@@ -1,12 +1,7 @@
 <template>
   <div class="ajax-table">
     <el-table v-loading="loading" :data="tableData" stripe class="table">
-      <el-table-column
-        v-for="item in columns"
-        :key="item"
-        :prop="item.name"
-        :label="item.label"
-      ></el-table-column>
+      <el-table-column v-for="item in columns" :key="item" :prop="item.name" :label="item.label"></el-table-column>
     </el-table>
     <el-pagination
       :page-size="this.limit"
@@ -49,7 +44,7 @@ export default {
             this.loading = false;
           })
           .catch(err => {
-            this.$message.error("[Ajax Table] Request Failed");
+            this.$message.error('[Ajax Table] Request Failed');
             console.log(err);
           });
     }
