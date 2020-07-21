@@ -23,9 +23,7 @@ export default {
     let content = this.content;
     content = content.replaceAll('\\', '\\\\'); // for KaTeX
     let sanitize = !(this.allowHTML);
-    this.renderedContent = this.$marked(content, {
-      sanitize: sanitize
-    });
+    this.renderedContent = this.$marked(content);
   }
 }
 </script>
