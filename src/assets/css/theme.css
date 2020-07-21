@@ -26,15 +26,13 @@
     color: #606266;
 }
 
-.color-secondary-text  {
+.color-secondary-text {
     color: #909399;
 }
 
 .color-placeholder {
     color: #C0C4CC;
 }
-
-
 
 .background-color-danger {
     background-color: #F56C6C;
@@ -54,4 +52,28 @@
 
 .background-color-info {
     background-color: #409EFF;
+}
+
+h1 {
+    color: #303133;
+}
+
+body {
+    color: #606266;
+}
+
+.markdown-container code {
+    background-color: #F8F8F8;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.markdown-container pre {
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #F8F8F8;
+}
+
+.markdown-container pre>code {
+    padding: 0;
 }
