@@ -27,7 +27,6 @@ export default {
           }
         })
         .then(res => {
-          console.log(res);
           let data = res.data;
           this.description = data.description;
           this.title = data.title;
