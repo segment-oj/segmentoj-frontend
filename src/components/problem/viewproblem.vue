@@ -20,22 +20,22 @@ export default {
   methods: {
     loadproblem() {
       this.$axios
-        .get(apiurl('/problem/content'), {
-          params: {
-            pid: this.$route.params.id
-          }
-        })
-        .then(res => {
-          console.log(res);
-          let data = res.data;
-          this.description = data.description;
-          this.title = data.title;
-          this.pid = data.pid;
-        })
-        .catch(err => {
-          this.$message.error('Problem loading error');
-          console.log(err);
-        });
+          .get(apiurl('/problem/content'), {
+            params: {
+              pid: this.$route.params.id
+            }
+          })
+          .then(res => {
+            console.log(res);
+            let data = res.data;
+            this.description = data.description;
+            this.title = data.title;
+            this.pid = data.pid;
+          })
+          .catch(err => {
+            this.$message.error('Problem loading error');
+            console.log(err);
+          });
     }
   },
   mounted() {
