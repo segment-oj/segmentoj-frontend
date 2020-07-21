@@ -11,9 +11,12 @@ jobs:
         node-version: [10.1]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 1
+          ref: ${{ github.ref }}
+      
+      - name: Checkout to target branch
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
