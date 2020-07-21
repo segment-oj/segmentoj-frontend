@@ -4,6 +4,6 @@
  */
 
 Promise.all([import('../assets/fonts/Fira_Code/fira_code.css')])
-    .then(() => {
+  .then(() => {
     import('../assets/fonts/fonts.css');
-});
+  });
