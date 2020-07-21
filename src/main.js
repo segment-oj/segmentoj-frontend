@@ -39,6 +39,9 @@ marked.setOptions({
 });
 Vue.prototype.$marked = marked;
 
+import DOMPurify from 'dompurify';
+Vue.prototype.$DOMPurify = DOMPurify;
+
 import './assets/css/theme.css';
 import './assets/css/fontstyle.css';
 import './assets/css/basic.css';
