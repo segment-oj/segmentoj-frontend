@@ -1,7 +1,7 @@
 <template>
   <div id="problem-view">
     <div id="title" class="header text-extra-bold">#{{pid}}. {{ title }}</div>
-    <MarkdownContainer v-if="description" :content="description" />
+    <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
   </div>
 </template>
 
@@ -15,7 +15,8 @@ export default {
     return {
       description: null,
       title: null,
-      pid: this.$route.params.id
+      pid: this.$route.params.id,
+      allowHTML: false,
     };
   },
   methods: {
@@ -28,9 +29,10 @@ export default {
         })
         .then(res => {
           let data = res.data;
-          this.description = data.description;
           this.title = data.title;
           this.pid = data.pid;
+          this.allowHTML = data.allow_html;
+          this.description = data.description;
         })
         .catch(err => {
           this.$message.error('Problem loading error');

@@ -13,12 +13,19 @@ export default {
     };
   },
   props: {
-    content: String
+    content: String,
+    allowHTML: {
+      type: Boolean,
+      default: false
+    }
   },
   mounted() {
     let content = this.content;
     content = content.replaceAll('\\', '\\\\'); // for KaTeX
-    this.renderedContent = this.$marked(content);
+    let sanitize = !(this.allowHTML);
+    this.renderedContent = this.$marked(content, {
+      sanitize: sanitize
+    });
   }
 }
 </script>
