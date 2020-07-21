@@ -1,7 +1,7 @@
 <template>
   <div id="problem-view">
     <div id="title" class="header text-extra-bold">#{{pid}}. {{ title }}</div>
-    <div v-html="description"></div>
+    <div v-html="description" v-katex:auto></div>
   </div>
 </template>
 
