@@ -17,7 +17,7 @@ export default {
   },
   mounted() {
     let content = this.content;
-    content = content.replaceAll('\\', '\\\\');
+    content = content.replaceAll('\\', '\\\\'); // for KaTeX
     this.renderedContent = this.$marked(content);
   }
 }
