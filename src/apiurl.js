@@ -5,7 +5,6 @@ let apiurl = (url) => {
     url = '/' + url;
   }
   let res = sfconfig.api.server + url;
-  console.log(res);
   return res;
 };
 

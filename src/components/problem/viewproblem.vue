@@ -1,12 +1,13 @@
 <template>
   <div id="problem-view">
     <div id="title" class="header text-extra-bold">#{{pid}}. {{ title }}</div>
-    <div v-html="description" v-katex:auto></div>
+    <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
   </div>
 </template>
 
 <script>
 import apiurl from './../../apiurl';
+import MarkdownContainer from './../lib/MarkdownContainer.vue';
 
 export default {
   name: 'ProblemView',
@@ -14,7 +15,8 @@ export default {
     return {
       description: null,
       title: null,
-      pid: this.$route.params.id
+      pid: this.$route.params.id,
+      allowHTML: false,
     };
   },
   methods: {
@@ -26,11 +28,11 @@ export default {
           }
         })
         .then(res => {
-          console.log(res);
           let data = res.data;
-          this.description = data.description;
           this.title = data.title;
           this.pid = data.pid;
+          this.allowHTML = data.allow_html;
+          this.description = data.description;
         })
         .catch(err => {
           this.$message.error('Problem loading error');
@@ -40,6 +42,9 @@ export default {
   },
   mounted() {
     this.loadproblem();
+  },
+  components: {
+    MarkdownContainer
   }
 };
 </script>
