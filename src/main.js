@@ -24,6 +24,16 @@ Vue.prototype.$axios = axios;
 
 import store from './store/store';
 
+import hljs from 'highlight.js';
+import 'highlight.js/styles/monokai-sublime.css';
+
+Vue.directive('highlight',function (el) {
+  let highlight = el.querySelectorAll('pre code');
+  highlight.forEach((block)=>{
+    hljs.highlightBlock(block)
+  })
+});
+
 import './assets/css/theme.css';
 import './assets/css/fontstyle.css';
 import './assets/css/basic.css';

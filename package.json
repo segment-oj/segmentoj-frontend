@@ -1,107 +1,141 @@
 {
-    "name": "segmentoj-frontend",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+  "name": "segmentoj-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "core-js": "^3.6.5",
+    "element-ui": "^2.13.2",
+    "highlight.js": "^10.1.1",
+    "vue": "^2.6.11",
+    "vue-router": "^3.3.4",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "katex": "^0.11.1",
+    "vue-katex": "^0.4.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
     },
-    "dependencies": {
-        "axios": "^0.19.2",
-        "core-js": "^3.6.5",
-        "element-ui": "^2.13.2",
-        "vue": "^2.6.11",
-        "vue-router": "^3.3.4",
-        "vuex": "^3.5.1"
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
     },
-    "devDependencies": {
-        "@vue/cli-plugin-babel": "~4.4.0",
-        "@vue/cli-plugin-eslint": "~4.4.0",
-        "@vue/cli-service": "~4.4.0",
-        "babel-eslint": "^10.1.0",
-        "eslint": "^6.7.2",
-        "eslint-plugin-vue": "^6.2.2",
-        "katex": "^0.11.1",
-        "vue-katex": "^0.4.0",
-        "vue-template-compiler": "^2.6.11"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "eslint:recommended"
-        ],
-        "parserOptions": {
-            "parser": "babel-eslint"
-        },
-        "rules": {
-            "no-alert": 2,
-            "no-bitwise": 2,
-            "no-catch-shadow": 2,
-            "no-control-regex": 2,
-            "no-delete-var": 2,
-            "no-div-regex": 2,
-            "no-dupe-keys": 2,
-            "no-duplicate-case": 2,
-            "no-else-return": 2,
-            "no-empty": 2,
-            "no-empty-character-class": 2,
-            "no-eval": 2,
-            "no-ex-assign": 2,
-            "no-fallthrough": 2,
-            "no-func-assign": 2,
-            "no-implicit-coercion": 2,
-            "no-implied-eval": 2,
-            "no-invalid-regexp": 2,
-            "no-invalid-this": 2,
-            "no-labels": 2,
-            "no-lonely-if": 2,
-            "no-mixed-spaces-and-tabs": [2, true],
-            "no-multiple-empty-lines": [2, {"max": 2}],
-            "no-native-reassign": 2,
-            "no-nested-ternary": 2,
-            "no-octal": 2,
-            "no-octal-escape": 2,
-            "no-plusplus": 2,
-            "no-proto": 2,
-            "no-regex-spaces": 2,
-            "no-return-assign": 2,
-            "no-script-url": 2,
-            "no-sequences": 2,
-            "no-shadow": 2,
-            "no-shadow-restricted-names": 2,
-            "no-spaced-func": 2,
-            "no-sparse-arrays": 2,
-            "no-throw-literal": 2,
-            "no-undef": 2,
-            "no-undef-init": 2,
-            "no-unneeded-ternary": 2,
-            "no-unreachable": 2,
-            "no-use-before-define": 2,
-            "no-void": 2,
-            "no-var": 2,
-            "no-warning-comments": [2, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],
-            "no-with": 2,
-            "block-scoped-var": 2,
-            "brace-style": [2, "1tbs"],
-            "consistent-this": [2, "that"],
-            "curly": [2, "all"],
-            "default-case": 2,
-            "indent": [2, 2],
-            "quotes": [2, "single"],
-            "strict": 2,
-            "use-isnan": 2,
-            "no-unused-expressions": 0,
-            "no-ternary": 0
+    "rules": {
+      "no-alert": 2,
+      "no-bitwise": 2,
+      "no-catch-shadow": 2,
+      "no-control-regex": 2,
+      "no-delete-var": 2,
+      "no-div-regex": 2,
+      "no-dupe-keys": 2,
+      "no-duplicate-case": 2,
+      "no-else-return": 2,
+      "no-empty": 2,
+      "no-empty-character-class": 2,
+      "no-eval": 2,
+      "no-ex-assign": 2,
+      "no-fallthrough": 2,
+      "no-func-assign": 2,
+      "no-implicit-coercion": 2,
+      "no-implied-eval": 2,
+      "no-invalid-regexp": 2,
+      "no-invalid-this": 2,
+      "no-labels": 2,
+      "no-lonely-if": 2,
+      "no-mixed-spaces-and-tabs": [
+        2,
+        true
+      ],
+      "no-multiple-empty-lines": [
+        2,
+        {
+          "max": 2
         }
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not dead"
-    ]
+      ],
+      "no-native-reassign": 2,
+      "no-nested-ternary": 2,
+      "no-octal": 2,
+      "no-octal-escape": 2,
+      "no-plusplus": 2,
+      "no-proto": 2,
+      "no-regex-spaces": 2,
+      "no-return-assign": 2,
+      "no-script-url": 2,
+      "no-sequences": 2,
+      "no-shadow": 2,
+      "no-shadow-restricted-names": 2,
+      "no-spaced-func": 2,
+      "no-sparse-arrays": 2,
+      "no-throw-literal": 2,
+      "no-undef": 2,
+      "no-undef-init": 2,
+      "no-unneeded-ternary": 2,
+      "no-unreachable": 2,
+      "no-use-before-define": 2,
+      "no-void": 2,
+      "no-var": 2,
+      "no-warning-comments": [
+        2,
+        {
+          "terms": [
+            "todo",
+            "fixme",
+            "xxx"
+          ],
+          "location": "start"
+        }
+      ],
+      "no-with": 2,
+      "block-scoped-var": 2,
+      "brace-style": [
+        2,
+        "1tbs"
+      ],
+      "consistent-this": [
+        2,
+        "that"
+      ],
+      "curly": [
+        2,
+        "all"
+      ],
+      "default-case": 2,
+      "indent": [
+        2,
+        2
+      ],
+      "quotes": [
+        2,
+        "single"
+      ],
+      "strict": 2,
+      "use-isnan": 2,
+      "no-unused-expressions": 0,
+      "no-ternary": 0
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

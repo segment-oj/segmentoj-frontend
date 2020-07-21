@@ -1,12 +1,13 @@
 <template>
   <div id="problem-view">
     <div id="title" class="header text-extra-bold">#{{pid}}. {{ title }}</div>
-    <div v-html="description" v-katex:auto></div>
+    <MarkdownContainer v-if="description" :content="description" />
   </div>
 </template>
 
 <script>
 import apiurl from './../../apiurl';
+import MarkdownContainer from './../lib/MarkdownContainer.vue';
 
 export default {
   name: 'ProblemView',
@@ -40,6 +41,9 @@ export default {
   },
   mounted() {
     this.loadproblem();
+  },
+  components: {
+    MarkdownContainer
   }
 };
 </script>
