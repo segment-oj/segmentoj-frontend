@@ -12,7 +12,7 @@ export default {
   name: 'ProblemView',
   data() {
     return {
-      description: null,
+        description: null,
       title: null,
       pid: this.$route.params.id
     };
