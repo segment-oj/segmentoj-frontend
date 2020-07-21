@@ -1,12 +1,7 @@
 <template>
   <div class="ajax-table">
     <el-table v-loading="loading" :data="tableData" stripe class="table">
-      <el-table-column
-        v-for="item in columns"
-        :key="item"
-        :prop="item.name"
-        :label="item.label"
-      ></el-table-column>
+      <el-table-column v-for="item in columns" :key="item" :prop="item.name" :label="item.label"></el-table-column>
     </el-table>
     <el-pagination
       :page-size="this.limit"
@@ -37,21 +32,21 @@ export default {
     load_data() {
       this.loading = true;
       this.$axios
-          .get(this.ajax_url, {
-            params: {
-              offset: this.offset,
-              limit: this.limit
-            }
-          })
-          .then(res => {
-            console.log(res);
-            this.tableData = res.data.res.map(this.process);
-            this.loading = false;
-          })
-          .catch(err => {
-            this.$message.error("[Ajax Table] Request Failed");
-            console.log(err);
-          });
+        .get(this.ajax_url, {
+          params: {
+            offset: this.offset,
+            limit: this.limit
+          }
+        })
+        .then(res => {
+          console.log(res);
+          this.tableData = res.data.res.map(this.process);
+          this.loading = false;
+        })
+        .catch(err => {
+          this.$message.error('[Ajax Table] Request Failed');
+          console.log(err);
+        });
     }
   },
   mounted() {

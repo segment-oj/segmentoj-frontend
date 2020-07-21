@@ -24,17 +24,17 @@
 </template>
 
 <script>
-import apiurl from "./../../apiurl";
+import apiurl from './../../apiurl';
 
 export default {
-  name: "UserRegister",
+  name: 'UserRegister',
   data() {
     return {
       ldata: {
-        username: "",
-        password: "",
-        passwdrepeat: "",
-        email: ""
+        username: '',
+        password: '',
+        passwdrepeat: '',
+        email: ''
       },
       err_msg: null
     };
@@ -43,7 +43,7 @@ export default {
     onSubmit() {
       if (this.ldata.password === this.ldata.passwdrepeat) {
         this.$axios
-          .put(apiurl("/user"), {
+          .put(apiurl('/user'), {
             username: this.ldata.username,
             password: this.ldata.password,
             email: this.ldata.email
@@ -52,9 +52,9 @@ export default {
             this.$store.state.user.showregister = false;
             this.$store.state.user.showlogin = true;
             this.$message({
-              message: "Your acount has been registered successfully",
-              type: "success",
-              customClass: "highzindex"
+              message: 'Your acount has been registered successfully',
+              type: 'success',
+              customClass: 'highzindex'
             });
           })
           .catch(err => {
@@ -63,16 +63,16 @@ export default {
               this.$message.error(JSON.parse(err.request.response).detail);
             } else if (err.request.status === 409) {
               // HTTP 409 Conflict
-              this.$message.error("This username is already registered");
+              this.$message.error('This username is already registered');
             } else if (err.request.status === 429) {
               // HTTP 429 Too Many Requests
-              this.$message.error("Requesting too frequently");
+              this.$message.error('Requesting too frequently');
             } else {
-              this.$message.error("Unkown error");
+              this.$message.error('Unkown error');
             }
           });
       } else {
-        this.$message.error("Password mismatch");
+        this.$message.error('Password mismatch');
       }
     }
   }

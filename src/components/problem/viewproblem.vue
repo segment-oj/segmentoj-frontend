@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import apiurl from "./../../apiurl";
+import apiurl from './../../apiurl';
 
 export default {
-  name: "ProblemView",
+  name: 'ProblemView',
   data() {
     return {
       description: null,
@@ -20,7 +20,7 @@ export default {
   methods: {
     loadproblem() {
       this.$axios
-        .get(apiurl("/problem/content"), {
+        .get(apiurl('/problem/content'), {
           params: {
             pid: this.$route.params.id
           }
@@ -33,7 +33,7 @@ export default {
           this.pid = data.pid;
         })
         .catch(err => {
-          this.$message.error("Problem loading error");
+          this.$message.error('Problem loading error');
           console.log(err);
         });
     }

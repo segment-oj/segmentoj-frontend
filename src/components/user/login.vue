@@ -18,44 +18,44 @@
 </template>
 
 <script>
-import apiurl from "./../../apiurl";
+import apiurl from './../../apiurl';
 
 export default {
-  name: "UserLogin",
+  name: 'UserLogin',
   data() {
     return {
       ldata: {
-        username: "",
-        password: ""
+        username: '',
+        password: ''
       }
     };
   },
   methods: {
     onSubmit() {
       this.$axios
-        .post(apiurl("/user"), {
+        .post(apiurl('/user'), {
           username: this.ldata.username,
           password: this.ldata.password
         })
         .then(res => {
-          this.$store.commit("userLogin", {
+          this.$store.commit('userLogin', {
             username: this.ldata.username,
             userid: res.data.res.id
           });
           this.$message({
-            message: "Logged in",
-            type: "success"
+            message: 'Logged in',
+            type: 'success'
           });
           this.$store.state.user.showlogin = false;
-          this.$router.push("/");
+          this.$router.push('/');
         })
         .catch(err => {
           if (err.request.status === 403) {
-            this.$message.error("Username or password incorrect");
+            this.$message.error('Username or password incorrect');
           } else if (err.request.status === 429) {
-            this.$message.error("Requests are too frequent");
+            this.$message.error('Requests are too frequent');
           } else {
-            this.$message.error("Unkown error");
+            this.$message.error('Unkown error');
           }
         });
     }
