@@ -43,34 +43,34 @@ export default {
     onSubmit() {
       if (this.ldata.password === this.ldata.passwdrepeat) {
         this.$axios
-            .put(apiurl('/user'), {
-              username: this.ldata.username,
-              password: this.ldata.password,
-              email: this.ldata.email
-            })
-            .then(() => {
-              this.$store.state.user.showregister = false;
-              this.$store.state.user.showlogin = true;
-              this.$message({
-                message: 'Your acount has been registered successfully',
-                type: 'success',
-                customClass: 'highzindex'
-              });
-            })
-            .catch(err => {
-              if (err.request.status === 400) {
-                // HTTP 400 Bad Request
-                this.$message.error(JSON.parse(err.request.response).detail);
-              } else if (err.request.status === 409) {
-                // HTTP 409 Conflict
-                this.$message.error('This username is already registered');
-              } else if (err.request.status === 429) {
-                // HTTP 429 Too Many Requests
-                this.$message.error('Requesting too frequently');
-              } else {
-                this.$message.error('Unkown error');
-              }
+          .put(apiurl('/user'), {
+            username: this.ldata.username,
+            password: this.ldata.password,
+            email: this.ldata.email
+          })
+          .then(() => {
+            this.$store.state.user.showregister = false;
+            this.$store.state.user.showlogin = true;
+            this.$message({
+              message: 'Your acount has been registered successfully',
+              type: 'success',
+              customClass: 'highzindex'
             });
+          })
+          .catch(err => {
+            if (err.request.status === 400) {
+              // HTTP 400 Bad Request
+              this.$message.error(JSON.parse(err.request.response).detail);
+            } else if (err.request.status === 409) {
+              // HTTP 409 Conflict
+              this.$message.error('This username is already registered');
+            } else if (err.request.status === 429) {
+              // HTTP 429 Too Many Requests
+              this.$message.error('Requesting too frequently');
+            } else {
+              this.$message.error('Unkown error');
+            }
+          });
       } else {
         this.$message.error('Password mismatch');
       }

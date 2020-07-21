@@ -38,12 +38,10 @@ export default {
       if (x.score === 100) {
         color += 'color-success';
         link_type = 'success';
-      }
-      else if (x.score < 100 && x.score >= 0) {
+      } else if (x.score < 100 && x.score >= 0) {
         color += 'color-danger';
         link_type = 'warning';
-      }
-      else {
+      } else {
         color += 'color-primary-text';
         link_type = 'info';
       }
