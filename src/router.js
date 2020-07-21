@@ -3,23 +3,23 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 let router = new Router({
-    mode: 'history',
-    routes: [{
-        path: '/',
-        component: () => import('./components/homepage/home.vue')
-    }, {
-        path: '/user/logout',
-        component: () => import('./components/user/logout.vue')
-    }, {
-        path: '/problem/list',
-        component: () => import('./components/problem/list.vue')
-    }, {
-        path: '/problem/:id',
-        component: () => import('./components/problem/viewproblem.vue')
-    }, {
-        path: '*',
-        component: () => import('./components/404.vue')
-    }]
+  mode: 'history',
+  routes: [{
+    path: '/',
+    component: () => import('./components/homepage/home.vue')
+  }, {
+    path: '/user/logout',
+    component: () => import('./components/user/logout.vue')
+  }, {
+    path: '/problem/list',
+    component: () => import('./components/problem/list.vue')
+  }, {
+    path: '/problem/:id',
+    component: () => import('./components/problem/viewproblem.vue')
+  }, {
+    path: '*',
+    component: () => import('./components/404.vue')
+  }]
 });
 
 export default router;

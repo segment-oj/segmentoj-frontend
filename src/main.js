@@ -5,12 +5,12 @@ import VueKatex from 'vue-katex';
 import 'katex/dist/katex.min.css';
 
 Vue.use(VueKatex, {
-    globalOptions: {
-        delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false }
-        ]
-    }
+  globalOptions: {
+    delimiters: [
+      { left: '$$', right: '$$', display: true },
+      { left: '$', right: '$', display: false }
+    ]
+  }
 });
 
 import 'element-ui/lib/theme-chalk/index.css';
@@ -33,7 +33,7 @@ Vue.config.productionTip = false;
 
 
 new Vue({
-    router,
-    store,
-    render: h => h(App),
+  router,
+  store,
+  render: h => h(App),
 }).$mount('#app');
