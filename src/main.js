@@ -26,7 +26,7 @@ Vue.prototype.$axios = axios;
 import store from './store/store';
 
 import hljs from 'highlight.js';
-import 'highlight.js/styles/vs.css';
+import 'highlight.js/styles/color-brewer.css';
 import marked from 'marked';
 marked.setOptions({
   ...sfconfig.markdown,

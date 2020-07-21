@@ -22,8 +22,9 @@ export default {
   mounted() {
     let content = this.content;
     content = content.replaceAll('\\', '\\\\'); // for KaTeX
+    content = this.$marked(content);
     let sanitize = !(this.allowHTML);
-    this.renderedContent = this.$marked(content);
+    this.renderedContent = sanitize ? this.$DOMPurify.sanitize(content) : content;
   }
 }
 </script>
