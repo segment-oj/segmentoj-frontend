@@ -17,15 +17,15 @@ export default {
 
 <style scoped>
 .logo {
-  font-size: 5em;
+    font-size: 5em;
 }
 
 .message {
-  font-size: 2em;
-  font-weight: 100;
+    font-size: 2em;
+    font-weight: 100;
 }
 
 .box {
-  text-align: center;
+    text-align: center;
 }
 </style>

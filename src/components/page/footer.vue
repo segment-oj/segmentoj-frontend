@@ -20,13 +20,13 @@ export default {
 
 <style lang="css" scoped>
 .footer {
-  width: 100%;
-  text-align: center;
-  color: #909399;
+    width: 100%;
+    text-align: center;
+    color: #909399;
 }
 
 .footer-content {
-  font-size: 15px;
-  padding: 10px;
+    font-size: 15px;
+    padding: 10px;
 }
 </style>

@@ -78,12 +78,12 @@ export default {
 
 <style scoped>
 .pagination {
-  height: 36px;
-  margin-top: 20px;
-  text-align: center;
+    height: 36px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .table {
-  min-height: calc(100vh - 80px - 60px - 41.05px);
+    min-height: calc(100vh - 80px - 60px - 41.05px);
 }
 </style>

@@ -4,7 +4,7 @@
       <div id="problem-content">
         <i class="el-icon-arrow-right" @click="full_screen()" id="full-screen-button" v-if="!isWider"></i>
         <i class="el-icon-arrow-left" @click="full_screen()" id="full-screen-button" v-else></i>
-        <div style="display: flex">
+        <div style="display: flex;">
           <div id="title" class="header text-bold">#{{pid}}. {{ title }}</div>
         </div>
         <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
@@ -108,40 +108,40 @@ export default {
 
 <style scoped>
 .el-menu {
-  border-right: none;
+    border-right: none;
 }
 
 #content {
-  margin-top: 30px;
-  display: flex;
+    margin-top: 30px;
+    display: flex;
 }
 
 .header {
-  font-size: 35px;
-  font-weight: 400;
-  color: #303133;
+    font-size: 35px;
+    font-weight: 400;
+    color: #303133;
 }
 
 #problem-content {
-  z-index: 10;
-  width: 100%;
-  padding: 20px;
-  border: 1px solid #E4E7ED;
-  border-radius: 4px;
+    z-index: 10;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #e4e7ed;
+    border-radius: 4px;
 }
 
 #pannel {
-  margin-left: 20px;
-  width: calc(1140px - 850px - 20px);
+    margin-left: 20px;
+    width: calc(1140px - 850px - 20px);
 }
 
 #tools {
-  padding: 20px;
-  border: 1px solid #E4E7ED;
-  border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #e4e7ed;
+    border-radius: 4px;
 }
 
 #full-screen-button {
-  float: right;
+    float: right;
 }
 </style>

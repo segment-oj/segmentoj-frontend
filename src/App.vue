@@ -37,26 +37,26 @@ export default {
 
 <style>
 #app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #main {
-  margin-top: 80px;
-  min-height: calc(100vh - 80px - 41.05px);
+    margin-top: 80px;
+    min-height: calc(100vh - 80px - 41.05px);
 }
 
 #content {
-  max-width: 1140px;
-  margin-left: auto;
-  margin-right: auto;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
 .highzindex {
-  z-index: 10000 !important;
+    z-index: 10000 !important;
 }
 </style>
