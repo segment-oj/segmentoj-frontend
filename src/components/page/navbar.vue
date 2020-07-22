@@ -59,30 +59,30 @@ export default {
 
 <style lang="css" scoped>
 #nav {
-  z-index: 1000;
-  background-color: #545c64;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: auto;
-  right: auto;
+    z-index: 1000;
+    background-color: #545c64;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: auto;
+    right: auto;
 }
 
 #nav-content {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #menu {
-  border: none;
+    border: none;
 }
 
 #user {
-  float: right;
+    float: right;
 }
 
 #user_icon {
-  height: 50%;
+    height: 50%;
 }
 </style>

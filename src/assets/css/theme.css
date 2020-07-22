@@ -1,13 +1,13 @@
 .color-danger {
-    color: #F56C6C;
+    color: #f56c6c;
 }
 
 .color-success {
-    color: #67C23A;
+    color: #67c23a;
 }
 
 .color-warning {
-    color: #E6A23C;
+    color: #e6a23c;
 }
 
 .color-info {
@@ -15,7 +15,7 @@
 }
 
 .color-info {
-    color: #409EFF;
+    color: #409eff;
 }
 
 .color-primary-text {
@@ -31,19 +31,19 @@
 }
 
 .color-placeholder {
-    color: #C0C4CC;
+    color: #c0c4cc;
 }
 
 .background-color-danger {
-    background-color: #F56C6C;
+    background-color: #f56c6c;
 }
 
 .background-color-success {
-    background-color: #67C23A;
+    background-color: #67c23a;
 }
 
 .background-color-warning {
-    background-color: #E6A23C;
+    background-color: #e6a23c;
 }
 
 .background-color-info {
@@ -51,7 +51,7 @@
 }
 
 .background-color-info {
-    background-color: #409EFF;
+    background-color: #409eff;
 }
 
 .markdown-container h1 {
@@ -66,9 +66,9 @@
     color: #303133;
 }
 
-.markdown-container h1:before {
-    color: #409EFF;
-    content: '# ';
+.markdown-container h1::before {
+    color: #409eff;
+    content: "# ";
 }
 
 body {
@@ -76,7 +76,7 @@ body {
 }
 
 blockquote {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     border-left: 5px solid #a8a8a8;
     padding-left: 15px;
     padding-right: 10px;
@@ -88,15 +88,15 @@ blockquote {
 }
 
 .markdown-container code {
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
     padding: 5px;
 }
 
 .markdown-container pre {
     padding: 10px;
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
 }
 
-.markdown-container pre>code {
+.markdown-container pre > code {
     padding: 0;
 }

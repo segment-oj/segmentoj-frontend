@@ -1,4 +1,4 @@
-/*--scrollbar--*/
+/* --scrollbar-- */
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -18,8 +18,7 @@
     background-color: #808080;
 }
 
-
-/*--selection--*/
+/* --selection-- */
 
 *::selection {
     background-color: #b9d7ff;
@@ -37,5 +36,5 @@
 }
 
 a {
-    text-decoration: none; 
+    text-decoration: none;
 }

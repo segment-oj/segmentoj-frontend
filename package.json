@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lint:css": "stylelint src/**/*.{html,vue,css,sass,scss}"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -26,6 +27,9 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "katex": "^0.11.1",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.18.0",
     "vue-katex": "^0.4.0",
     "vue-template-compiler": "^2.6.11"
   },
