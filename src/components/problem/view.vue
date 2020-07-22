@@ -15,9 +15,9 @@
           <el-row>
             <el-col>
               <div>Tool Bar</div>
-              <el-menu>
-                <el-menu-item index="">
-                  Submit
+              <el-menu default-active="3">
+                <el-menu-item index="3">
+                  <span slot="title">Submit</span>
                 </el-menu-item>
                 <el-submenu index="0">
                   <template slot="title">Statistics</template>
