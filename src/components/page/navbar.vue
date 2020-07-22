@@ -26,7 +26,8 @@
             <el-menu-item>
               <MyUserName />
             </el-menu-item>
-            <el-menu-item index="/user/logout">Logout</el-menu-item>
+            <UserLogout v-if="$store.state.user.showlogout" />
+            <el-menu-item @click="$store.state.user.showlogout = true;">Logout</el-menu-item>
           </div>
           <div v-else>
             <el-menu-item @click="$store.state.user.showlogin = true;">Login</el-menu-item>
@@ -40,6 +41,7 @@
 
 <script>
 import MyUserName from './../user/MyUserName.vue';
+import UserLogout from './../user/logout.vue';
 
 export default {
   name: 'NavBar',
@@ -49,7 +51,8 @@ export default {
     };
   },
   components: {
-    MyUserName
+    MyUserName,
+    UserLogout
   }
 };
 </script>

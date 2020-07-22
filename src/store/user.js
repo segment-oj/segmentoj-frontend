@@ -4,7 +4,8 @@ const userstore = {
     username: localStorage.getItem('user-username') || null,
     userid: localStorage.getItem('user-userid') || null,
     showlogin: false,
-    showregister: false
+    showregister: false,
+    showlogout: false
   },
   mutations: {
     userLogin(state, data) {
