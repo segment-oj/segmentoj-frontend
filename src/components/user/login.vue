@@ -47,7 +47,6 @@ export default {
             type: 'success'
           });
           this.$store.state.user.showlogin = false;
-          this.$router.push('/');
         })
         .catch(err => {
           if (err.request.status === 403) {
