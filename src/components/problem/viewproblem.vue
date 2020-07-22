@@ -1,10 +1,58 @@
 <template>
   <div id="problem-view">
-    <div id="title" class="header text-bold">#{{pid}}. {{ title }}</div>
     <div id="content">
-      <MarkdownContainer id="problem-content" v-if="description" :content="description" :allowHTML="this.allowHTML"/>
-      <div id="pannel">
-
+      <div id="problem-content">
+        <div style="display: flex">
+          <div id="title" class="header text-bold">#{{pid}}. {{ title }}</div>
+          <div @click="full_screen()">
+            <i class="el-icon-full-screen"></i>
+          </div>
+        </div>
+        <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
+      </div>
+      <div id="pannel" v-if="!isWider">
+        <div id="tools">
+          <el-row>
+            <el-col>
+              <div>Tool Bar</div>
+              <el-menu>
+                <el-menu-item index="">
+                  Submit
+                </el-menu-item>
+                <el-submenu index="0">
+                  <template slot="title">Statistics</template>
+                  <el-menu-item index="">
+                    Submissions
+                  </el-menu-item>
+                  <el-menu-item index="">
+                    Statistics
+                  </el-menu-item>
+                </el-submenu>
+                <el-submenu index="1">
+                  <template slot="title">Discuss</template>
+                  <el-menu-item index="">
+                    Discussions
+                  </el-menu-item>
+                  <el-menu-item index="">
+                    Solutions
+                  </el-menu-item>
+                </el-submenu>
+                <el-submenu index="2">
+                  <template slot="title">Edit</template>
+                  <el-menu-item index="">
+                    Edit
+                  </el-menu-item>
+                  <el-menu-item index="">
+                    Delete
+                  </el-menu-item>
+                  <el-menu-item index="">
+                    Settings
+                  </el-menu-item>
+                </el-submenu>
+              </el-menu>
+            </el-col>
+          </el-row>
+        </div>
       </div>
     </div>
   </div>
@@ -22,6 +70,7 @@ export default {
       title: null,
       pid: this.$route.params.id,
       allowHTML: false,
+      isWider: false
     };
   },
   methods: {
@@ -43,6 +92,10 @@ export default {
           this.$message.error('Problem loading error');
           console.log(err);
         });
+    },
+    full_screen() {
+      console.log('full screen');
+      this.isWider = !this.isWider;
     }
   },
   mounted() {
@@ -55,6 +108,10 @@ export default {
 </script>
 
 <style scoped>
+.el-menu {
+  border-right: none;
+}
+
 #content {
   margin-top: 30px;
   display: flex;
@@ -62,19 +119,22 @@ export default {
 
 .header {
   font-size: 35px;
-  text-align: center;
 }
 
 #problem-content {
-  width: 800px;
-  padding: 0px 20px 20px 20px;
+  z-index: 10;
+  width: 100%;
+  padding: 20px;
   border: 1px solid #E4E7ED;
   border-radius: 4px;
 }
 
 #pannel {
   margin-left: 20px;
-  width: calc(1140px - 800px - 20px);
+  width: calc(1140px - 850px - 20px);
+}
+
+#tools {
   padding: 20px;
   border: 1px solid #E4E7ED;
   border-radius: 4px;
