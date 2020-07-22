@@ -2,11 +2,10 @@
   <div id="problem-view">
     <div id="content">
       <div id="problem-content">
+        <i class="el-icon-arrow-right" @click="full_screen()" id="full-screen-button" v-if="!isWider"></i>
+        <i class="el-icon-arrow-left" @click="full_screen()" id="full-screen-button" v-else></i>
         <div style="display: flex">
           <div id="title" class="header text-bold">#{{pid}}. {{ title }}</div>
-          <div @click="full_screen()">
-            <i class="el-icon-full-screen"></i>
-          </div>
         </div>
         <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
       </div>
@@ -21,31 +20,31 @@
                 </el-menu-item>
                 <el-submenu index="0">
                   <template slot="title">Statistics</template>
-                  <el-menu-item index="">
+                  <el-menu-item index="0-0">
                     Submissions
                   </el-menu-item>
-                  <el-menu-item index="">
+                  <el-menu-item index="0-1">
                     Statistics
                   </el-menu-item>
                 </el-submenu>
                 <el-submenu index="1">
                   <template slot="title">Discuss</template>
-                  <el-menu-item index="">
+                  <el-menu-item index="1-0">
                     Discussions
                   </el-menu-item>
-                  <el-menu-item index="">
+                  <el-menu-item index="1-1">
                     Solutions
                   </el-menu-item>
                 </el-submenu>
                 <el-submenu index="2">
                   <template slot="title">Edit</template>
-                  <el-menu-item index="">
+                  <el-menu-item index="2-0">
                     Edit
                   </el-menu-item>
-                  <el-menu-item index="">
+                  <el-menu-item index="2-1">
                     Delete
                   </el-menu-item>
-                  <el-menu-item index="">
+                  <el-menu-item index="2-2">
                     Settings
                   </el-menu-item>
                 </el-submenu>
@@ -119,6 +118,8 @@ export default {
 
 .header {
   font-size: 35px;
+  font-weight: 400;
+  color: #303133;
 }
 
 #problem-content {
@@ -138,5 +139,9 @@ export default {
   padding: 20px;
   border: 1px solid #E4E7ED;
   border-radius: 4px;
+}
+
+#full-screen-button {
+  float: right;
 }
 </style>

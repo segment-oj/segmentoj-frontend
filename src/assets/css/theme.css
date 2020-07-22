@@ -60,6 +60,12 @@
     color: #303133;
 }
 
+.markdown-container h2 {
+    font-weight: 300;
+    font-size: 25px;
+    color: #303133;
+}
+
 .markdown-container h1:before {
     color: #409EFF;
     content: '# ';
