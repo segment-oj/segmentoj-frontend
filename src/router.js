@@ -15,7 +15,7 @@ let router = new Router({
     component: () => import('./components/problem/list.vue')
   }, {
     path: '/problem/:id',
-    component: () => import('./components/problem/viewproblem.vue')
+    component: () => import('./components/problem/view.vue')
   }, {
     path: '*',
     component: () => import('./components/404.vue')
