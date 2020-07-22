@@ -54,22 +54,39 @@
     background-color: #409EFF;
 }
 
-h1 {
+.markdown-container h1 {
+    font-weight: 300;
+    font-size: 30px;
     color: #303133;
+}
+
+.markdown-container h1:before {
+    color: #409EFF;
+    content: '# ';
 }
 
 body {
     color: #606266;
 }
 
+blockquote {
+    background-color: #F8F8F8;
+    border-left: 5px solid #a8a8a8;
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #909399;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .markdown-container code {
     background-color: #F8F8F8;
     padding: 5px;
-    border-radius: 2px;
 }
 
 .markdown-container pre {
-    border-radius: 4px;
     padding: 10px;
     background-color: #F8F8F8;
 }

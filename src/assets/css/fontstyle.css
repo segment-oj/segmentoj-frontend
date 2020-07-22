@@ -5,3 +5,7 @@
 .text-extra-bold {
     font-weight: 600;
 }
+
+.text-normal {
+    font-weight: 400;
+}
