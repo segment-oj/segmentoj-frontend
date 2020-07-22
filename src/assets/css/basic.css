@@ -35,3 +35,7 @@
     background-color: #b9d7ff;
     opacity: 0.2;
 }
+
+a {
+    text-decoration: none; 
+}

@@ -34,18 +34,14 @@ export default {
   methods: {
     process(x) {
       let color = 'text-extra-bold ';
-      let link_type;
       if (x.score === 100) {
         color += 'color-success';
-        link_type = 'success';
       } else if (x.score < 100 && x.score >= 0) {
         color += 'color-danger';
-        link_type = 'warning';
       } else {
-        color += 'color-primary-text';
-        link_type = 'info';
+        color += 'color-regular-text';
       }
-      x.title = (<el-link href={'/problem/' + String(x.pid)} type={link_type}>{ x.title }</el-link>);
+      x.title = (<router-link to={'/problem/' + String(x.pid)} class={color}>{ x.title }</router-link>);
       x.score = (<div class={color}>{x.score >= 0 ? x.score : '-'}</div>)
       return x;
     }

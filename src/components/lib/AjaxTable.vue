@@ -39,7 +39,6 @@ export default {
           }
         })
         .then(res => {
-          console.log(res);
           this.tableData = res.data.res.map(this.process);
           this.loading = false;
         })
