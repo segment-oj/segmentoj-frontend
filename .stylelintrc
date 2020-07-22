@@ -22,9 +22,9 @@
     "block-opening-brace-space-after": "always-single-line",
     "block-opening-brace-space-before": "always",
 
-    "font-family-no-missing-generic-family-keyword": false,
-    "no-duplicate-selectors": false,
-    "no-empty-source": false,
-    "no-descending-specificity": false
+    "font-family-no-missing-generic-family-keyword": null,
+    "no-duplicate-selectors": null,
+    "no-empty-source": null,
+    "no-descending-specificity": null
   }
 }
