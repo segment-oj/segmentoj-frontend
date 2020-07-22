@@ -47,7 +47,7 @@ export default {
 }
 
 #content {
-  max-width: 1000px;
+  max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
 }
