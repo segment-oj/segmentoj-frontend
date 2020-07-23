@@ -86,13 +86,13 @@ blockquote {
 }
 
 .markdown-container code {
-    background-color: #f8f8f8;
+    background-color: #f9f9f9;
     padding: 5px;
 }
 
 .markdown-container pre {
     padding: 10px;
-    background-color: #f8f8f8;
+    background-color: #f9f9f9;
 }
 
 .markdown-container pre>code {
