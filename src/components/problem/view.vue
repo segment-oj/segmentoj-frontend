@@ -2,8 +2,14 @@
   <div id="problem-view">
     <div id="content">
       <div id="problem-content">
-        <i class="el-icon-arrow-right" @click="full_screen()" id="full-screen-button" v-if="!isWider"></i>
-        <i class="el-icon-arrow-left" @click="full_screen()" id="full-screen-button" v-else></i>
+        <div v-if="!isWider" id="full-screen-button" @click="full_screen()">
+          Expand
+          <i class="el-icon-arrow-right"></i>
+        </div>
+        <div v-else id="full-screen-button" @click="full_screen()">
+          Fold
+          <i class="el-icon-arrow-left"></i>
+        </div>
         <div style="display: flex;">
           <div id="title" class="header text-bold">#{{pid}}. {{ title }}</div>
         </div>
@@ -143,5 +149,9 @@ export default {
 
 #full-screen-button {
     float: right;
+}
+
+#full-screen-button:hover {
+    cursor: pointer;
 }
 </style>
