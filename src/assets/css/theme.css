@@ -97,7 +97,7 @@ blockquote {
     background-color: #f8f8f8;
 }
 
-.markdown-container pre>code {
+.markdown-container pre > code {
     padding: 0;
 }
 
