@@ -19,7 +19,7 @@ let router = new Router({
   }, {
     path: '/problem/:id',
     component: () =>
-      import ('./components/problem/view.vue')
+      import ('./components/problem/content.vue')
   }, {
     path: '*',
     component: () =>

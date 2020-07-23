@@ -16,7 +16,7 @@
         <el-submenu index="2" id="user">
           <template slot="title">
               <el-avatar v-if="this.$store.state.user.authenticated">
-                <MyUserName />
+                {{this.$store.state.user.username}}
               </el-avatar>
               <el-avatar v-else>
                 User
@@ -24,7 +24,7 @@
           </template>
           <div v-if="this.$store.state.user.authenticated">
             <el-menu-item>
-              <MyUserName />
+              {{this.$store.state.user.username}}
             </el-menu-item>
             <UserLogout v-if="$store.state.user.showlogout" />
             <el-menu-item @click="$store.state.user.showlogout = true;">Logout</el-menu-item>
@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import MyUserName from './../user/MyUserName.vue';
 import UserLogout from './../user/logout.vue';
 
 export default {
@@ -51,7 +50,6 @@ export default {
     };
   },
   components: {
-    MyUserName,
     UserLogout
   }
 };
