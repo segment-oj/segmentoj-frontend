@@ -54,19 +54,19 @@
     background-color: #409eff;
 }
 
-.markdown-container h1 {
-    font-weight: 300;
-    font-size: 30px;
+.markdown-container h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
     color: #303133;
 }
 
-.markdown-container h2 {
-    font-weight: 300;
-    font-size: 25px;
-    color: #303133;
-}
-
-.markdown-container h1::before {
+.markdown-container h1::before,
+h2::before,
+h3::before {
     color: #409eff;
     content: "# ";
 }
@@ -97,7 +97,7 @@ blockquote {
     background-color: #f8f8f8;
 }
 
-.markdown-container pre > code {
+.markdown-container pre>code {
     padding: 0;
 }
 
