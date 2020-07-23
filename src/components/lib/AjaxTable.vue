@@ -43,7 +43,7 @@ export default {
           this.loading = false;
         })
         .catch(err => {
-          this.$message.error('[Ajax Table] Request Failed');
+          this.$message.error('[Ajax Table] Request Failed.');
           console.log(err);
         });
     }
