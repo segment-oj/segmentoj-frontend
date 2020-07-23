@@ -129,6 +129,7 @@ export default {
 
 #problem-content {
     z-index: 10;
+    max-width: 900px;
     width: 100%;
     padding: 20px;
     border: 1px solid #e4e7ed;
