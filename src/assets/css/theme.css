@@ -100,3 +100,18 @@ blockquote {
 .markdown-container pre > code {
     padding: 0;
 }
+
+.markdown-container table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.markdown-container th {
+    padding: 10px;
+    border-bottom: 2px solid #909399;
+}
+
+.markdown-container td {
+    border-top: 1px solid rgb(244, 244, 245);
+    padding: 10px;
+}

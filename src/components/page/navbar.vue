@@ -9,7 +9,7 @@
         mode="horizontal"
         background-color="#545c64"
         text-color="#fff"
-        active-text-color="#C0C4CC"
+        active-text-color="rgb(233, 233, 235)"
       >
         <el-menu-item index="/">Home</el-menu-item>
         <el-menu-item index="/problem/list">Problem List</el-menu-item>
