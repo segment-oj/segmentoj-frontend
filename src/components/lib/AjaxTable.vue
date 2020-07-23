@@ -39,6 +39,7 @@ export default {
           }
         })
         .then(res => {
+          this.total = res.data.count;
           this.tableData = res.data.res.map(this.process);
           this.loading = false;
         })
