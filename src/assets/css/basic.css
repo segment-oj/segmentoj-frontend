@@ -56,9 +56,8 @@ pre {
 h2,
 h3,
 h4,
-h5,
-h6 {
-    font-weight: 400;
+h5 {
+    font-weight: 300;
     color: #303133;
 }
 
@@ -67,6 +66,26 @@ h2::before,
 h3::before {
     color: #409eff;
     content: "# ";
+}
+
+.markdown-container h1 {
+    font-size: 30px;
+}
+
+.markdown-container h2 {
+    font-size: 23px;
+}
+
+.markdown-container h3 {
+    font-size: 18px;
+}
+
+.markdown-container h4 {
+    font-size: 17px;
+}
+
+.markdown-container h5 {
+    font-size: 14px;
 }
 
 body {
