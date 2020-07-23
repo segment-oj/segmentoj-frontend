@@ -132,7 +132,6 @@ export default {
     width: 100%;
     padding: 20px;
     border: 1px solid #e4e7ed;
-    border-radius: 4px;
 }
 
 #pannel {
@@ -143,7 +142,6 @@ export default {
 #tools {
     padding: 20px;
     border: 1px solid #e4e7ed;
-    border-radius: 4px;
 }
 
 #full-screen-button {
