@@ -5,6 +5,3 @@
 
 // font
 import('./fonts');
-
-// katex
-import('./katex');
