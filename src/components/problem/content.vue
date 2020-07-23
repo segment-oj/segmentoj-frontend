@@ -121,6 +121,19 @@ export default {
     display: flex;
 }
 
+@media only screen and (max-width: 700px) {
+    #pannel {
+        opacity: 0.5;
+        position: fixed;
+        transition: 0.5s;
+        right: 30px;
+    }
+    #pannel:hover {
+        opacity: 1;
+        position: fixed;
+    }
+}
+
 .header {
     font-size: 35px;
     font-weight: 400;
@@ -135,6 +148,7 @@ export default {
 }
 
 #pannel {
+    background-color: #fff;
     margin-left: 20px;
     width: calc(1140px - 850px - 20px);
 }
