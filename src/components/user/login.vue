@@ -43,6 +43,7 @@ export default {
             userid: res.data.res.id
           });
           this.$message({
+            showClose: true,
             message: 'Logged in',
             type: 'success'
           });
@@ -50,11 +51,23 @@ export default {
         })
         .catch(err => {
           if (err.request.status === 403) {
-            this.$message.error('Username or password incorrect');
+            this.$message({
+              showClose: true,
+              message: 'Username or password incorrect',
+              type: 'error'
+            });
           } else if (err.request.status === 429) {
-            this.$message.error('Requests are too frequent');
+            this.$message({
+              showClose: true,
+              message: 'Requesting too frequently',
+              type: 'error'
+            });
           } else {
-            this.$message.error('Unkown error');
+            this.$message({
+              showClose: true,
+              message: 'Unknown error',
+              type: 'error'
+            });
           }
         });
     }

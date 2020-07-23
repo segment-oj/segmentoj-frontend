@@ -52,6 +52,7 @@ export default {
             this.$store.state.user.showregister = false;
             this.$store.state.user.showlogin = true;
             this.$message({
+              showClose: true,
               message: 'Your acount has been registered successfully',
               type: 'success',
               customClass: 'highzindex'
@@ -60,19 +61,39 @@ export default {
           .catch(err => {
             if (err.request.status === 400) {
               // HTTP 400 Bad Request
-              this.$message.error(JSON.parse(err.request.response).detail);
+              this.$message({
+                showClose: true,
+                message: JSON.parse(err.request.response).detail,
+                type: 'error'
+              });
             } else if (err.request.status === 409) {
               // HTTP 409 Conflict
-              this.$message.error('Username has been taken');
+              this.$message({
+                showClose: true,
+                message: 'Username has been taken',
+                type: 'error'
+              });
             } else if (err.request.status === 429) {
               // HTTP 429 Too Many Requests
-              this.$message.error('Requesting too frequently');
+              this.$message({
+                showClose: true,
+                message: 'Requesting too frequently',
+                type: 'error'
+              });
             } else {
-              this.$message.error('Unknown error');
+              this.$message({
+                showClose: true,
+                message: 'Unknown error',
+                type: 'error'
+              });
             }
           });
       } else {
-        this.$message.error('Password mismatch');
+        this.$message({
+          showClose: true,
+          message: 'Password mismatch',
+          type: 'error'
+        });
       }
     }
   }

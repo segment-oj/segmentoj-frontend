@@ -20,12 +20,24 @@ export default {
         })
         .catch(err => {
           if (err.request.status === 401) {
-            this.$message.error('Not logged in');
+            this.$message({
+              showClose: true,
+              message: 'Not logged in',
+              type: 'error'
+            });
             this.$store.commit('userLogout');
           } else if (err.request.status === 429) {
-            this.$message.error('Requesting too frequently');
+            this.$message({
+              showClose: true,
+              message: 'Requesting too frequently',
+              type: 'error'
+            });
           } else {
-            this.$message.error('Unknown error');
+            this.$message({
+              showClose: true,
+              message: 'Unknown error',
+              type: 'error'
+            });
           }
         });
       
