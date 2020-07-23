@@ -99,7 +99,6 @@ export default {
         });
     },
     full_screen() {
-      console.log('full screen');
       this.isWider = !this.isWider;
     }
   },
