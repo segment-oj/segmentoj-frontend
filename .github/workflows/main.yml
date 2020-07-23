@@ -7,8 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      max-parallel: 2
       matrix:
-        node-version: [10.1]
+        node-version: [10.1, 10.19, 12.1, 13.1, 14.5, 14.6]
 
     steps:
       - uses: actions/checkout@v2
