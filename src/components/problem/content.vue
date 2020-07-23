@@ -120,6 +120,7 @@ export default {
         transition: 0.5s;
         right: 30px;
     }
+
     #pannel:hover {
         z-index: 1000;
         opacity: 1;
@@ -149,7 +150,7 @@ export default {
 }
 
 #pannel {
-    background-color: #fff !important;
+    background-color: #ffffff !important;
     margin-left: 20px;
     width: calc(1140px - 850px - 20px);
 }
