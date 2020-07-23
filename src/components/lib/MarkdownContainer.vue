@@ -5,6 +5,22 @@
 </template>
 
 <script>
+import hljs from 'highlight.js';
+import 'highlight.js/styles/tomorrow.css';
+import marked from 'marked';
+import sfconfig from './../../sfconfig';
+import DOMPurify from 'dompurify';
+
+marked.setOptions({
+  ...sfconfig.markdown,
+  highlight: ((code, lang) => {
+    if (lang && hljs.getLanguage(lang)) {
+      return hljs.highlight(lang, code, true).value;
+    }
+  }),
+  renderer: new marked.Renderer(),
+});
+
 export default {
   name: 'MarkdownContainer',
   data() {
@@ -22,9 +38,12 @@ export default {
   mounted() {
     let content = this.content;
     content = content.replaceAll('\\', '\\\\'); // for KaTeX
-    content = this.$marked(content);
+    content = marked(content);
     let sanitize = !(this.allowHTML);
-    this.renderedContent = sanitize ? this.$DOMPurify.sanitize(content) : content;
+    this.renderedContent = sanitize ? DOMPurify.sanitize(content) : content;
+  },
+  components: {
+
   }
 }
 </script>

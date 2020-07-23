@@ -1,6 +1,7 @@
 /*
  * This file loads font for pages.
- * We use Fira Code for monospace font
+ * We use Fira Code for monospace font.
+ * We use Fira Sans for normal font.
  */
 
 Promise.all([
