@@ -25,7 +25,7 @@ export default {
           } else if (err.request.status === 429) {
             this.$message.error('Requesting too frequently');
           } else {
-            this.$message.error('Unkown error');
+            this.$message.error('Unknown error');
           }
         });
       

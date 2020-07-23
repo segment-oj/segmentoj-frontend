@@ -63,12 +63,12 @@ export default {
               this.$message.error(JSON.parse(err.request.response).detail);
             } else if (err.request.status === 409) {
               // HTTP 409 Conflict
-              this.$message.error('This username is already registered');
+              this.$message.error('Username has been taken');
             } else if (err.request.status === 429) {
               // HTTP 429 Too Many Requests
               this.$message.error('Requesting too frequently');
             } else {
-              this.$message.error('Unkown error');
+              this.$message.error('Unknown error');
             }
           });
       } else {
