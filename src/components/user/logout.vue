@@ -14,6 +14,7 @@ export default {
         .then(() => {
           this.$store.commit('userLogout');
           this.$message({
+            showClose: true,
             message: 'Logged out',
             type: 'success'
           });
