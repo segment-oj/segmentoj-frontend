@@ -112,6 +112,20 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-width: 700px) {
+    #pannel {
+        z-index: 1000;
+        opacity: 0.5;
+        position: fixed;
+        transition: 0.5s;
+        right: 30px;
+    }
+    #pannel:hover {
+        z-index: 1000;
+        opacity: 1;
+    }
+}
+
 .el-menu {
     border-right: none;
 }
@@ -119,19 +133,6 @@ export default {
 #content {
     margin-top: 30px;
     display: flex;
-}
-
-@media only screen and (max-width: 700px) {
-    #pannel {
-        opacity: 0.5;
-        position: fixed;
-        transition: 0.5s;
-        right: 30px;
-    }
-    #pannel:hover {
-        opacity: 1;
-        position: fixed;
-    }
 }
 
 .header {
@@ -148,7 +149,7 @@ export default {
 }
 
 #pannel {
-    background-color: #fff;
+    background-color: #fff !important;
     margin-left: 20px;
     width: calc(1140px - 850px - 20px);
 }
