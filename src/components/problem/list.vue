@@ -1,11 +1,11 @@
 <template>
   <div id="problem-list">
     <AjaxTable
-      :ajax_url="this.ajax_url"
-      :columns="this.columns"
+      :ajax_url="ajax_url"
+      :columns="columns"
       :limit=10
-      :total=20
-      :process="this.process"
+      :total="data_count"
+      :process="process"
     ></AjaxTable>
   </div>
 </template>
@@ -28,7 +28,8 @@ export default {
       }, {
         name: 'title',
         label: 'Title'
-      }]
+      }],
+      data_count: 10
     }
   },
   methods: {
@@ -48,6 +49,18 @@ export default {
   },
   components: {
     AjaxTable
+  },
+  mounted() {
+    this.$axios
+      .get(apiurl('/problem/list/count'))
+      .then(response => {
+        let data = response.data;
+        this.data_count = data.res;
+      })
+      .catch(err => {
+        this.$message.error('[Problem List] Get List Length Failed.');
+        console.log(err);
+      })
   }
 };
 </script>
