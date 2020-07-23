@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     process(x) {
-      let color = 'text-extra-bold ';
+      let color = '';
       if (x.score === 100) {
         color += 'color-success';
       } else if (x.score < 100 && x.score >= 0) {
@@ -42,8 +42,8 @@ export default {
       } else {
         color += 'color-regular-text';
       }
-      x.title = (<router-link to={'/problem/' + String(x.pid)} class={color}>{ x.title }</router-link>);
-      x.score = (<div class={color}>{x.score >= 0 ? x.score : '-'}</div>)
+      x.title = (<router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title }</router-link>);
+      x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>)
       return x;
     }
   },
