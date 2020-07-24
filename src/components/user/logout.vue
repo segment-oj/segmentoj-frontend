@@ -8,37 +8,39 @@ import apiurl from '../../apiurl';
 export default {
   name: 'UserLogout',
   methods: {
+    SendMessageSuccess(content) {
+      this.$message({
+        showClose: true,
+        message: content,
+        type: 'success',
+        customClass: 'highzindex'
+      });
+    },
+    SendMessageError(content) {
+      this.$message({
+        showClose: true,
+        message: content,
+        type: 'error',
+        customClass: 'highzindex'
+      });
+    },
     logout() {
       this.$axios
         .delete(apiurl('/user'))
         .then(() => {
           this.$store.commit('userLogout');
-          this.$message({
-            showClose: true,
-            message: 'Logged out',
-            type: 'success'
-          });
+          this.SendMessageSuccess('Logged out');
         })
         .catch(err => {
           if (err.request.status === 401) {
-            this.$message({
-              showClose: true,
-              message: 'Not logged in',
-              type: 'error'
-            });
+            this.SendMessageError('Not logged in');
             this.$store.commit('userLogout');
           } else if (err.request.status === 429) {
-            this.$message({
-              showClose: true,
-              message: 'Requesting too frequently',
-              type: 'error'
-            });
+            // HTTP 429 Too Many Requests
+            this.SendMessageError('Requesting too frequently');
           } else {
-            this.$message({
-              showClose: true,
-              message: 'Unknown error',
-              type: 'error'
-            });
+            // Unknown error
+            this.SendMessageError('Unknown error');
           }
         });
       

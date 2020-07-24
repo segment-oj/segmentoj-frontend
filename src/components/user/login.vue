@@ -31,6 +31,22 @@ export default {
     };
   },
   methods: {
+    SendMessageSuccess(content) {
+      this.$message({
+        showClose: true,
+        message: content,
+        type: 'success',
+        customClass: 'highzindex'
+      });
+    },
+    SendMessageError(content) {
+      this.$message({
+        showClose: true,
+        message: content,
+        type: 'error',
+        customClass: 'highzindex'
+      });
+    },
     onSubmit() {
       this.$axios
         .post(apiurl('/user'), {
@@ -42,32 +58,18 @@ export default {
             username: this.ldata.username,
             userid: res.data.res.id
           });
-          this.$message({
-            showClose: true,
-            message: 'Logged in',
-            type: 'success'
-          });
+          this.SendMessageSuccess('Logged in');
           this.$store.state.user.showlogin = false;
         })
         .catch(err => {
           if (err.request.status === 403) {
-            this.$message({
-              showClose: true,
-              message: 'Username or password incorrect',
-              type: 'error'
-            });
+            this.SendMessageError('Username or password incorrect');
           } else if (err.request.status === 429) {
-            this.$message({
-              showClose: true,
-              message: 'Requesting too frequently',
-              type: 'error'
-            });
+            // HTTP 429 Too Many Requests
+            this.SendMessageError('Requesting too frequently');
           } else {
-            this.$message({
-              showClose: true,
-              message: 'Unknown error',
-              type: 'error'
-            });
+            // Unknown error
+            this.SendMessageError('Unknown error');
           }
         });
     }

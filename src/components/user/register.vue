@@ -40,6 +40,22 @@ export default {
     };
   },
   methods: {
+    SendMessageSuccess(content) {
+      this.$message({
+        showClose: true,
+        message: content,
+        type: 'success',
+        customClass: 'highzindex'
+      });
+    },
+    SendMessageError(content) {
+      this.$message({
+        showClose: true,
+        message: content,
+        type: 'error',
+        customClass: 'highzindex'
+      });
+    },
     onSubmit() {
       if (this.ldata.password === this.ldata.passwdrepeat) {
         this.$axios
@@ -51,49 +67,27 @@ export default {
           .then(() => {
             this.$store.state.user.showregister = false;
             this.$store.state.user.showlogin = true;
-            this.$message({
-              showClose: true,
-              message: 'Your acount has been registered successfully',
-              type: 'success',
-              customClass: 'highzindex'
-            });
+            // Successed
+            this.SendMessageSuccess('Your acount has been registered successfully');
           })
           .catch(err => {
             if (err.request.status === 400) {
               // HTTP 400 Bad Request
-              this.$message({
-                showClose: true,
-                message: JSON.parse(err.request.response).detail,
-                type: 'error'
-              });
+              this.SendMessageError(JSON.parse(err.request.response).detail);
             } else if (err.request.status === 409) {
               // HTTP 409 Conflict
-              this.$message({
-                showClose: true,
-                message: 'Username has been taken',
-                type: 'error'
-              });
+              this.SendMessageError('Username has been taken');
             } else if (err.request.status === 429) {
               // HTTP 429 Too Many Requests
-              this.$message({
-                showClose: true,
-                message: 'Requesting too frequently',
-                type: 'error'
-              });
+              this.SendMessageError('Requesting too frequently');
             } else {
-              this.$message({
-                showClose: true,
-                message: 'Unknown error',
-                type: 'error'
-              });
+              // Unknown error
+              this.SendMessageError('Unknown error');
             }
           });
       } else {
-        this.$message({
-          showClose: true,
-          message: 'Password mismatch',
-          type: 'error'
-        });
+        // Password mismatch
+        this.SendMessageError('Password mismatch');
       }
     }
   }
