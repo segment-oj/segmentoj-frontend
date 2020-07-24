@@ -41,9 +41,6 @@ export default {
     content = marked(content);
     let sanitize = !(this.allowHTML);
     this.renderedContent = sanitize ? DOMPurify.sanitize(content) : content;
-  },
-  components: {
-
   }
 };
 </script>
