@@ -101,6 +101,10 @@
     "strict": 2,
     "use-isnan": 2,
     "no-unused-expressions": 0,
-    "no-ternary": 0
+    "no-ternary": 0,
+    "semi": [2, "always"],
+    "semi-style": [2, "last"],
+    "no-extra-semi": 2,
+    "func-call-spacing": [2, "never"]
   }
 }
