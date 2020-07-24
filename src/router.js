@@ -6,24 +6,19 @@ let router = new Router({
   mode: 'history',
   routes: [{
     path: '/',
-    component: () =>
-      import ('./components/home/page.vue')
+    component: () => import('./components/home/page.vue')
   }, {
     path: '/user/logout',
-    component: () =>
-      import ('./components/user/logout.vue')
+    component: () => import('./components/user/logout.vue')
   }, {
     path: '/problem/list',
-    component: () =>
-      import ('./components/problem/list.vue')
+    component: () => import('./components/problem/list.vue')
   }, {
     path: '/problem/:id',
-    component: () =>
-      import ('./components/problem/content.vue')
+    component: () => import('./components/problem/content.vue')
   }, {
     path: '*',
-    component: () =>
-      import ('./components/404.vue')
+    component: () => import('./components/404.vue')
   }]
 });
 
