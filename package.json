@@ -15,8 +15,10 @@
     "element-ui": "^2.13.2",
     "highlight.js": "^10.1.1",
     "marked": "^1.1.1",
+    "simplemde": "^1.11.2",
     "vue": "^2.6.11",
     "vue-router": "^3.3.4",
+    "vue-unique-id": "^3.1.0",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
@@ -137,10 +139,19 @@
       "use-isnan": 2,
       "no-unused-expressions": 0,
       "no-ternary": 0,
-      "semi": [2, "always"],
-      "semi-style": [2, "last"],
+      "semi": [
+        2,
+        "always"
+      ],
+      "semi-style": [
+        2,
+        "last"
+      ],
       "no-extra-semi": 2,
-      "func-call-spacing": [2, "never"]
+      "func-call-spacing": [
+        2,
+        "never"
+      ]
     }
   },
   "browserslist": [

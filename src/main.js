@@ -24,6 +24,9 @@ Vue.use(VueKatex, {
   }
 });
 
+import UniqueId from 'vue-unique-id';
+Vue.use(UniqueId);
+
 import './assets/css/theme.css';
 import './assets/css/fontstyle.css';
 import './assets/css/basic.css';
