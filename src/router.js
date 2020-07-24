@@ -6,7 +6,7 @@ let router = new Router({
   mode: 'history',
   routes: [{
     path: '/',
-    component: () => import('./components/homepage/home.vue')
+    component: () => import('./components/home/page.vue')
   }, {
     path: '/user/logout',
     component: () => import('./components/user/logout.vue')
@@ -15,7 +15,7 @@ let router = new Router({
     component: () => import('./components/problem/list.vue')
   }, {
     path: '/problem/:id',
-    component: () => import('./components/problem/view.vue')
+    component: () => import('./components/problem/content.vue')
   }, {
     path: '*',
     component: () => import('./components/404.vue')

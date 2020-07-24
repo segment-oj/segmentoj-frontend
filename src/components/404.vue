@@ -4,7 +4,7 @@
       404
     </div>
     <div class="message">
-      Page not found!
+      Page Not Found
     </div>
   </div>
 </template>

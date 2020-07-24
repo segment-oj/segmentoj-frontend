@@ -37,7 +37,7 @@ export default {
   },
   mounted() {
     let content = this.content;
-    content = content.replaceAll('\\', '\\\\'); // for KaTeX
+    content = content.replaceAll('\\', '\\\\'); // For KeTeX
     content = marked(content);
     let sanitize = !(this.allowHTML);
     this.renderedContent = sanitize ? DOMPurify.sanitize(content) : content;
