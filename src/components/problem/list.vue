@@ -30,7 +30,7 @@ export default {
         label: 'Title'
       }],
       data_count: 10
-    }
+    };
   },
   methods: {
     process(x) {
@@ -43,7 +43,7 @@ export default {
         color += 'color-regular-text';
       }
       x.title = (<router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title }</router-link>);
-      x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>)
+      x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
       return x;
     }
   },
@@ -60,7 +60,7 @@ export default {
       .catch(err => {
         this.$message.error('[Problem List] Get List Length Failed.');
         console.log(err);
-      })
+      });
   }
 };
 </script>

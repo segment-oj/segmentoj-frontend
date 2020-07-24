@@ -27,6 +27,6 @@ const userstore = {
       localStorage.removeItem('user-username');
     }
   }
-}
+};
 
 export default userstore;
