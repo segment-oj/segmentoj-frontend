@@ -18,7 +18,7 @@ let router = new Router({
     component: () => import('./components/problem/content.vue')
   }, {
     path: '/problem/:id/edit',
-    component: () => import('./components/lib/MarkdownEditor.vue')
+    component: () => import('./components/problem/edit.vue')
   }, {
     path: '*',
     component: () => import('./components/404.vue')

@@ -5,7 +5,13 @@
       <el-tab-pane label="Preview" name="second" />
     </el-tabs>
     <div :class="editorVisbleClassName">
-      <textarea :id="uid + '-markdown-editor'" />
+      <textarea 
+        :value="value" 
+        @input="handleInput($event.target.value)" 
+        class="markdown-editor-value-placeholder" 
+        :id="uid + '-markdown-editor'" 
+        />
+
     </div>
     <MarkdownContainer v-if="showPreview" :content="content" />
   </div>
@@ -24,20 +30,41 @@ export default {
       content: null,
       activeName: 'first',
       mde: null,
-      showPreview: false
+      showPreview: false,
+      isValueUpdateFromInner: false
     };
+  },
+  methods: {
+    handleInput(val) {
+      this.isValueUpdateFromInner = true;
+      this.$emit('input', val);
+    },
+
+    handleBlur(val) {
+      this.isValueUpdateFromInner = true;
+      this.$emit('blur', val);
+    },
   },
   mounted() {
     this.mde = new SimpleMDE({
       element: document.getElementById(this.uid + '-markdown-editor'),
       autoDownloadFontAwesome: false,
       spellChecker: this.spellChecker,
-      autosave: {
-        enabled: true,
-        uniqueId: this.uid,
-        delay: 1000
-      },
-      toolbar: false
+      toolbar: false,
+      forceSync: true
+    });
+
+    this.mde.codemirror.on('change', (instance, changeObj) => {
+      if (changeObj.origin === 'setValue') {
+        return;
+      }
+      const val = this.mde.value();
+      this.handleInput(val);
+    });
+
+    this.mde.codemirror.on('blur', () => {
+      const val = this.mde.value();
+      this.handleBlur(val);
     });
   },
   watch: {
@@ -48,7 +75,14 @@ export default {
       } else if (oldName == 'second' && newName == 'first') {
         this.showPreview = false;
       }
-    }
+    },
+    value(val) {
+      if (this.isValueUpdateFromInner) {
+        this.isValueUpdateFromInner = false;
+      } else {
+        this.simplemde.value(val);
+      }
+    },
   }, 
   computed: {
     editorVisbleClassName() {
@@ -66,6 +100,9 @@ export default {
     spellChecker: {
       default: false,
       type: Boolean
+    },
+    value: {
+      type: String
     }
   },
   components: {
@@ -76,10 +113,14 @@ export default {
 
 <style scoped>
 .dispaly-visble {
-  display: block;
+    display: block;
 }
 
 .dispaly-invisble {
-  display: none;
+    display: none;
+}
+
+.markdown-editor-value-placeholder {
+    display: none;
 }
 </style>
