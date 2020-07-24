@@ -109,7 +109,7 @@ body {
     background-color: #f9f9f9;
 }
 
-.markdown-container pre>code {
+.markdown-container pre > code {
     padding: 0;
 }
 
