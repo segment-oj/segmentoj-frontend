@@ -44,7 +44,7 @@
                 </el-submenu>
                 <el-submenu index="2">
                   <template slot="title">Edit</template>
-                  <el-menu-item index="2-0">
+                  <el-menu-item index="2-0" @click="$router.push('/problem/' + $route.params.id +'/edit');">
                     Edit
                   </el-menu-item>
                   <el-menu-item index="2-1">
