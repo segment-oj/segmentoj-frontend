@@ -133,3 +133,7 @@ body {
     height: 2px;
     border: none;
 }
+
+.highzindex {
+    z-index: 10000 !important;
+}

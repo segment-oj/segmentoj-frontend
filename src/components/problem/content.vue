@@ -44,7 +44,7 @@
                 </el-submenu>
                 <el-submenu index="2">
                   <template slot="title">Edit</template>
-                  <el-menu-item index="2-0">
+                  <el-menu-item index="2-0" @click="$router.push('/problem/' + $route.params.id +'/edit');">
                     Edit
                   </el-menu-item>
                   <el-menu-item index="2-1">
@@ -94,8 +94,13 @@ export default {
           this.description = data.description;
         })
         .catch(err => {
-          this.$message.error('Problem loading error');
-          console.log(err);
+          if(err.request.status === '404') {
+            this.$SegmentMessage.error(this, 'Problem not found');
+          } else if(err.request.status === '403') {
+            this.$SegmentMessage.error(this, 'Permission denied');
+          } else {
+            this.$SegmentMessage.error(this, 'Unkown error');
+          }
         });
     },
     full_screen() {

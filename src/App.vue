@@ -55,8 +55,4 @@ export default {
 body {
     margin: 0;
 }
-
-.highzindex {
-    z-index: 10000 !important;
-}
 </style>

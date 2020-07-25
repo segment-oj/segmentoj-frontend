@@ -39,7 +39,7 @@ export default {
       this.isValueUpdateFromInner = true;
       this.$emit('input', val);
     },
-
+    
     handleBlur(val) {
       this.isValueUpdateFromInner = true;
       this.$emit('blur', val);
@@ -80,7 +80,7 @@ export default {
       if (this.isValueUpdateFromInner) {
         this.isValueUpdateFromInner = false;
       } else {
-        this.simplemde.value(val);
+        this.mde.value(val);
       }
     },
   }, 

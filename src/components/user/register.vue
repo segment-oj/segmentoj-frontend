@@ -59,7 +59,7 @@ export default {
     onSubmit() {
       if (this.ldata.password === this.ldata.passwdrepeat) {
         this.$axios
-          .put(apiurl('/user'), {
+          .post(apiurl('/account'), {
             username: this.ldata.username,
             password: this.ldata.password,
             email: this.ldata.email
@@ -68,21 +68,21 @@ export default {
             this.$store.state.user.showregister = false;
             this.$store.state.user.showlogin = true;
             // Successed
-            this.SendMessageSuccess('Your acount has been registered successfully');
+            this.$SegmentMessage.success(this, 'Your acount has been registered successfully');
           })
           .catch(err => {
             if (err.request.status === 400) {
               // HTTP 400 Bad Request
-              this.SendMessageError(JSON.parse(err.request.response).detail);
+              this.$SegmentMessage.error(this, JSON.parse(err.request.response).detail);
             } else if (err.request.status === 409) {
               // HTTP 409 Conflict
-              this.SendMessageError('Username has been taken');
+              this.$SegmentMessage.error(this, 'Username has been taken');
             } else if (err.request.status === 429) {
               // HTTP 429 Too Many Requests
-              this.SendMessageError('Requesting too frequently');
+              this.$SegmentMessage.error(this, 'Requesting too frequently');
             } else {
               // Unknown error
-              this.SendMessageError('Unknown error');
+              this.$SegmentMessage.error(this, 'Unknown error');
             }
           });
       } else {
