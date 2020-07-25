@@ -3,7 +3,7 @@
     <h1>Edit proble #.{{this.$route.params.id}}</h1>
     <el-input v-model="title" placeholder="input problem title here"></el-input>
     <MarkdownEditor v-model="mdContent" />
-    <el-button type="primary" @click="submit();">Submit</el-button>
+    <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
     <el-button @click="back();">Back</el-button>
   </div>
 </template>
@@ -17,26 +17,11 @@ export default {
   data() {
     return {
       title: '',
-      mdContent: 'Loading...'
+      mdContent: 'Loading...',
+      buttonLoading: false
     };
   },
   methods: {
-    SendMessageSuccess(content) {
-      this.$message({
-        showClose: true,
-        message: content,
-        type: 'success',
-        customClass: 'highzindex'
-      });
-    },
-    SendMessageError(content) {
-      this.$message({
-        showClose: true,
-        message: content,
-        type: 'error',
-        customClass: 'highzindex'
-      });
-    },
     loadproblem() {
       this.$axios
         .get(apiurl('/problem/content'), {
@@ -58,6 +43,7 @@ export default {
       this.$router.push('/problem/'+this.$route.params.id);
     },
     submit() {
+      this.buttonLoading = true;
       this.$axios
         .patch(apiurl('/problem/content'), {
           pid: Number(this.$route.params.id),
@@ -76,6 +62,7 @@ export default {
           } else {
             this.$SegmentMessage.error(this, 'Unkown error');
           }
+          this.buttonLoading = false;
         });
     }
   },

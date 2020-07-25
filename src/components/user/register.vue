@@ -15,7 +15,7 @@
           <el-input type="email" v-model="ldata.email"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" v-on:click="onSubmit();">Register</el-button>
+          <el-button type="primary" v-on:click="onSubmit();" :loading="buttonLoading">Register</el-button>
           <el-button v-on:click="$store.state.user.showregister = false;">Cancel</el-button>
         </el-form-item>
       </el-form>
@@ -36,27 +36,12 @@ export default {
         passwdrepeat: '',
         email: ''
       },
-      err_msg: null
+      buttonLoading: false
     };
   },
   methods: {
-    SendMessageSuccess(content) {
-      this.$message({
-        showClose: true,
-        message: content,
-        type: 'success',
-        customClass: 'highzindex'
-      });
-    },
-    SendMessageError(content) {
-      this.$message({
-        showClose: true,
-        message: content,
-        type: 'error',
-        customClass: 'highzindex'
-      });
-    },
     onSubmit() {
+      this.buttonLoading = true;
       if (this.ldata.password === this.ldata.passwdrepeat) {
         this.$axios
           .post(apiurl('/account'), {
@@ -84,6 +69,7 @@ export default {
               // Unknown error
               this.$SegmentMessage.error(this, 'Unknown error');
             }
+            this.buttonLoading = false;
           });
       } else {
         // Password mismatch

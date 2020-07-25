@@ -9,7 +9,7 @@
           <el-input type="password" v-model="ldata.password"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" v-on:click="onSubmit();">Login</el-button>
+          <el-button type="primary" v-on:click="onSubmit();" :loading="buttonLoading">Login</el-button>
           <el-button v-on:click="$store.state.user.showlogin = false">Cancel</el-button>
         </el-form-item>
       </el-form>
@@ -27,11 +27,13 @@ export default {
       ldata: {
         username: '',
         password: ''
-      }
+      },
+      buttonLoading: false
     };
   },
   methods: {
     onSubmit() {
+      this.buttonLoading = true;
       this.$axios
         .post(apiurl('/account/session'), {
           username: this.ldata.username,
@@ -55,6 +57,7 @@ export default {
             // Unknown error
             this.$SegmentMessage.error(this, 'Unknown error');
           }
+          this.buttonLoading = false;
         });
     }
   }
