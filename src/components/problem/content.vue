@@ -94,8 +94,13 @@ export default {
           this.description = data.description;
         })
         .catch(err => {
-          this.$message.error('Problem loading error');
-          console.log(err);
+          if(err.request.status === '404') {
+            this.$SegmentMessage.error(this, 'Problem not found');
+          } else if(err.request.status === '403') {
+            this.$SegmentMessage.error(this, 'Permission denied');
+          } else {
+            this.$SegmentMessage.error(this, 'Unkown error');
+          }
         });
     },
     full_screen() {
