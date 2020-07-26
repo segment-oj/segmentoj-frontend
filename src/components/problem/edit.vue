@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>Edit proble #.{{this.$route.params.id}}</h1>
+    <h3 class="no-bottom-margin">Problem Name</h3>
     <el-input v-model="title" placeholder="input problem title here"></el-input>
+    <h3 class="no-bottom-margin">Problem Content</h3>
     <MarkdownEditor v-model="mdContent" />
     <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
     <el-button @click="back();">Back</el-button>
