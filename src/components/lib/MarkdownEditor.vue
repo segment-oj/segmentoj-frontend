@@ -127,7 +127,7 @@ export default {
 
 #markdown-container-outline {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #dddddd;
     margin-bottom: 20px;
 }
 </style>
