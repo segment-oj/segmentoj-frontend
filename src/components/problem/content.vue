@@ -21,7 +21,7 @@
             <el-col>
               <div>Tool Bar</div>
               <el-menu default-active="3">
-                <el-menu-item index="3">
+                <el-menu-item index="3" @click="$router.push('/problem/' + $route.params.id +'/submit');">
                   <span slot="title">Submit</span>
                 </el-menu-item>
                 <el-submenu index="0">
