@@ -11,7 +11,12 @@
         text-color="#fff"
         active-text-color="rgb(233, 233, 235)"
       >
-        <el-menu-item index="/">Home</el-menu-item>
+        <el-menu-item index="">
+          <img id="icon" src="./../../assets/icon/white/SOJ-white.svg" />
+        </el-menu-item>
+        <el-menu-item index="/">
+          Home
+        </el-menu-item>
         <el-menu-item index="/problem/list">Problem List</el-menu-item>
         <el-submenu index="2" id="user">
           <template slot="title">
@@ -56,6 +61,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#icon {
+    height: 50px;
+}
+
 #nav {
     z-index: 1000;
     background-color: #545c64;

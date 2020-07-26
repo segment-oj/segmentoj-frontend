@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1100" height="1100" viewBox="0 0 1100 1100">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-custom_1);
+      }
+
+      .cls-2 {
+        fill: #fff;
+        stroke: #000;
+        stroke-width: 40px;
+      }
+
+      .cls-3 {
+        filter: url(#SOJ);
+      }
+    </style>
+    <filter id="SOJ" x="165.696" y="32.945" width="769.525" height="1037.514" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-custom_1">
+      <rect width="1100" height="1100"/>
+    </clipPath>
+  </defs>
+  <g id="custom_1" data-name="custom – 1" class="cls-1">
+    <g class="cls-3" transform="matrix(1, 0, 0, 1, 0, 0)">
+      <path id="SOJ-2" data-name="SOJ" class="cls-2" d="M195.822,726.991,204,731Zm0,0L-204,531,195.822,726.991,187.777,731Zm0,0,287.955-143.5V302.728L494,308l-10.223-5.272V583.492l5-2.492-5,2.492Zm287.955-143.5v0ZM-158,179.635,237,382ZM88.777,99l395,203.728ZM-158,179.635-169,174l11,5.636v0Zm0,0V-102.5L133.389-248.195,137-250l-3.611,1.805L529.777-50,133.389-248.195-158-102.5Zm0-282.136-5,2.5ZM129.777-250l3.612,1.805Z" transform="translate(387.5 309.5)"/>
+    </g>
+  </g>
+</svg>
