@@ -104,7 +104,7 @@ export default {
           this.$router.push('/problem/'+this.$route.params.id);
         })
         .catch(err => {
-          if(err.request.status === '401') {
+          if(err.request.status === 401) {
             this.$SegmentMessage.error(this, 'Please login first');
           } else {
             this.$SegmentMessage.error(this, 'Unkown error');
