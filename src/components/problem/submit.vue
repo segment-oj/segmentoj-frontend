@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Submit #{{this.$route.params.id}}</h1>
+    <h1>Submit Problem #{{this.$route.params.id}}</h1>
     <el-select v-model="lang_num" placeholder="Select language">
       <el-option
         v-for="item in options"
