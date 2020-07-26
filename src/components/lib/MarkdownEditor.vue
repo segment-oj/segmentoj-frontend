@@ -5,15 +5,16 @@
       <el-tab-pane label="Preview" name="second" />
     </el-tabs>
     <div :class="editorVisbleClassName">
-      <textarea 
-        :value="value" 
-        @input="handleInput($event.target.value)" 
-        class="markdown-editor-value-placeholder" 
-        :id="uid + '-markdown-editor'" 
+      <textarea
+        :value="value"
+        @input="handleInput($event.target.value)"
+        class="markdown-editor-value-placeholder"
+        :id="uid + '-markdown-editor'"
         />
-
     </div>
-    <MarkdownContainer v-if="showPreview" :content="content" />
+    <div id="markdown-container-outline" v-if="showPreview">
+      <MarkdownContainer :content="content" />
+    </div>
   </div>
 </template>
 
@@ -122,5 +123,11 @@ export default {
 
 .markdown-editor-value-placeholder {
     display: none;
+}
+
+#markdown-container-outline {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
 }
 </style>

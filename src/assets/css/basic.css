@@ -149,3 +149,7 @@ body {
 .no-top-margin {
     margin-top: 0;
 }
+
+.CodeMirror-vscrollbar {
+    display: none !important;
+}
