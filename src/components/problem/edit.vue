@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Edit Problem #{{this.$route.params.id}}</h1>
+    <span class="text-extra-big">Edit problem #{{this.$route.params.id}}</span>
     <h3 class="no-bottom-margin">Problem Name</h3>
     <el-input v-model="title" placeholder="input problem title here"></el-input>
     <h3 class="no-bottom-margin">Problem Content</h3>
@@ -57,9 +57,9 @@ export default {
           this.$router.push('/problem/'+this.$route.params.id);
         })
         .catch(err => {
-          if(err.request.status === '404') {
+          if(err.request.status === 404) {
             this.$SegmentMessage.error(this, 'Problem not found');
-          } else if(err.request.status === '403') {
+          } else if(err.request.status === 403) {
             this.$SegmentMessage.error(this, 'Permission denied');
           } else {
             this.$SegmentMessage.error(this, 'Unkown error');

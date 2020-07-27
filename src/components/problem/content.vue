@@ -94,9 +94,9 @@ export default {
           this.description = data.description;
         })
         .catch(err => {
-          if(err.request.status === '404') {
+          if(err.request.status === 404) {
             this.$SegmentMessage.error(this, 'Problem not found');
-          } else if(err.request.status === '403') {
+          } else if(err.request.status === 403) {
             this.$SegmentMessage.error(this, 'Permission denied');
           } else {
             this.$SegmentMessage.error(this, 'Unkown error');

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dialog title="Register" :visible.sync="$store.state.user.showregister" width="30%">
+    <el-dialog title="Register" :visible.sync="$store.state.user.showregister" width="500px">
       <el-form :model="ldata">
         <el-form-item label="Username">
           <el-input v-model="ldata.username"></el-input>

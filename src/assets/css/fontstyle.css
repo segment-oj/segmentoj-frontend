@@ -17,3 +17,11 @@
 .text-extra-light {
     font-weight: 200;
 }
+
+.text-extra-big {
+    font-size: 30px;
+}
+
+.text-big {
+    font-size: 23px;
+}
