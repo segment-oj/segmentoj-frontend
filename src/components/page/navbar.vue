@@ -23,7 +23,7 @@
               </el-avatar>
           </template>
           <div v-if="this.$store.state.user.authenticated">
-            <el-menu-item>
+            <el-menu-item :index="'/account/' + $store.state.user.userid">
               {{this.$store.state.user.username}}
             </el-menu-item>
             <UserLogout v-if="$store.state.user.showlogout" />
