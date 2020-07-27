@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="text-extra-big">Submit problem #{{this.$route.params.id}}</span>
+    <h1>Submit problem #{{this.$route.params.id}}</h1>
     <el-select v-model="lang_num" placeholder="Select language">
       <el-option
         v-for="item in options"

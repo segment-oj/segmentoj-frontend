@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="text-extra-big">Edit problem #{{this.$route.params.id}}</span>
+    <h1>Edit problem #{{this.$route.params.id}}</h1>
     <h3 class="no-bottom-margin">Problem Name</h3>
     <el-input v-model="title" placeholder="input problem title here"></el-input>
     <h3 class="no-bottom-margin">Problem Content</h3>
