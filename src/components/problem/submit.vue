@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Submit proble #.{{this.$route.params.id}}</h1>
+    <h1>Submit Problem #{{this.$route.params.id}}</h1>
     <el-select v-model="lang_num" placeholder="Select language">
       <el-option
         v-for="item in options"
@@ -9,8 +9,15 @@
         :value="item.value">
       </el-option>
     </el-select>
-    <br>
-    <textarea placeholder="Input your code here" required v-model="code" />
+    <el-input
+      class="code-input"
+      type="textarea"
+      :rows="20"
+      placeholder="Paste your code"
+      required
+      v-model="code"
+    >
+    </el-input>
     <br>
     <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
     <el-button @click="back();">Back</el-button>
@@ -115,3 +122,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.code-input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+</style>

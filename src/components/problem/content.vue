@@ -143,7 +143,6 @@ export default {
 
 .header {
     font-size: 35px;
-    font-weight: 400;
     color: #303133;
 }
 

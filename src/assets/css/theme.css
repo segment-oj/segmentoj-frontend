@@ -63,3 +63,9 @@ a {
 a:hover {
     color: #66b1ff;
 }
+
+.CodeMirror .CodeMirror-code .cm-comment {
+    background-color: #ffffff00 !important;
+    font-family: "Fira Code";
+    color: #cc6666;
+}
