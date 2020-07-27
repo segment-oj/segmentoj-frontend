@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Edit proble #.{{this.$route.params.id}}</h1>
+    <span class="text-extra-big">Edit proble #.{{this.$route.params.id}}</span>
     <el-input v-model="title" placeholder="input problem title here"></el-input>
     <MarkdownEditor v-model="mdContent" />
     <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
@@ -55,9 +55,9 @@ export default {
           this.$router.push('/problem/'+this.$route.params.id);
         })
         .catch(err => {
-          if(err.request.status === '404') {
+          if(err.request.status === 404) {
             this.$SegmentMessage.error(this, 'Problem not found');
-          } else if(err.request.status === '403') {
+          } else if(err.request.status === 403) {
             this.$SegmentMessage.error(this, 'Permission denied');
           } else {
             this.$SegmentMessage.error(this, 'Unkown error');

@@ -8,8 +8,8 @@ let router = new Router({
     path: '/',
     component: () => import('./components/home/page.vue')
   }, {
-    path: '/user/logout',
-    component: () => import('./components/user/logout.vue')
+    path: '/user/:id',
+    component: () => import('./components/user/content.vue')
   }, {
     path: '/problem/list',
     component: () => import('./components/problem/list.vue')
