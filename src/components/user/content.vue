@@ -53,7 +53,7 @@ export default {
 
 <style scoped>
 .introduction {
-  border: dashed 1px rgb(189, 189, 189);
-  padding: 15px;
+    border: dashed 1px rgb(189, 189, 189);
+    padding: 15px;
 }
 </style>
