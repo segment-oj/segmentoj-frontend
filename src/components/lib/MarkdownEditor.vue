@@ -23,6 +23,7 @@ import MarkdownContainer from './MarkdownContainer.vue';
 
 import SimpleMDE from 'simplemde';
 import 'simplemde/dist/simplemde.min.css';
+import './../../assets/css/mde.css';
 
 export default {
   name: 'MarkdownEditor',
