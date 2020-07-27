@@ -11,7 +11,7 @@
           <i class="el-icon-arrow-left"></i>
         </div>
         <div style="display: flex;">
-          <div id="title" class="header text-bold">#{{pid}}. {{ title }}</div>
+          <h1 id="title" class="header">#{{pid}}. {{ title }}</h1>
         </div>
         <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
       </div>
