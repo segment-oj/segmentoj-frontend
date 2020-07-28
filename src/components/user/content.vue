@@ -45,7 +45,6 @@ export default {
         .get(apiurl('/account/' + this.$route.params.id))
         .then(res => {
           let data = res.data.res;
-          console.log(data);
           this.username = data.username;
           this.email = data.email;
           this.introduction = data.introduction;
