@@ -1,16 +1,17 @@
 <template>
   <div>
-    <el-dialog title="Login" :visible.sync="$store.state.user.showlogin" width="500px">
-      <el-form :model="ldata">
-        <el-form-item label="Username">
+    <el-dialog title="Login" :visible.sync="$store.state.user.showlogin" :destroy-on-close="true" :close-on-click-modal="false" width="500px">
+      <el-form :model="ldata" ref="loginForm" :rules="rules" :status-icon="true">
+        <el-form-item label="Username" prop="username">
           <el-input v-model="ldata.username"></el-input>
         </el-form-item>
-        <el-form-item label="Password">
+        <el-form-item label="Password" prop="password">
           <el-input type="password" v-model="ldata.password"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" v-on:click="onSubmit();" :loading="buttonLoading">Login</el-button>
           <el-button v-on:click="$store.state.user.showlogin = false">Cancel</el-button>
+          <el-button v-on:click="reset();">Reset</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -23,16 +24,38 @@ import apiurl from './../../apiurl';
 export default {
   name: 'UserLogin',
   data() {
+    let validateUsername = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('Input your username'));
+      } else {
+        callback();
+      }
+    };
+    let validatePasswd = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('Input your password'));
+      } else {
+        callback();
+      }
+    };
     return {
       ldata: {
         username: '',
         password: ''
       },
+      rules: {
+        username: [
+          { validator: validateUsername, trigger: 'blur' }
+        ],
+        password: [
+          { validator: validatePasswd, trigger: 'blur' }
+        ]
+      },
       buttonLoading: false
     };
   },
   methods: {
-    onSubmit() {
+    submit() {
       this.buttonLoading = true;
       this.$axios
         .post(apiurl('/account/session'), {
@@ -59,6 +82,18 @@ export default {
           }
           this.buttonLoading = false;
         });
+    },
+    onSubmit() {
+      this.$refs['loginForm'].validate((valid) => {
+        if (valid) {
+          this.submit();
+        } else {
+          return false;
+        }
+      });
+    },
+    reset() {
+      this.$refs['loginForm'].resetFields();
     }
   }
 };
