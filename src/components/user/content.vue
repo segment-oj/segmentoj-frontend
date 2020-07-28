@@ -1,11 +1,27 @@
 <template>
-  <div>
-    <span class="text-extra-big">{{username}}  </span>
-    <span>{{email}}</span>
-    <br>
-    <span class="text-extra-big">Introduction</span>
-    <div class="introduction">
-      <MarkdownContainer v-if="introduction" :content="introduction"/>
+  <div id="user-content">
+    <div>
+      <el-card shadow="never">
+        <el-avatar shape="square" icon="el-icon-user-solid" :size="400"></el-avatar>
+      </el-card>
+    </div>
+    <div id="info">
+      <el-card shadow="never">
+        <div slot="header" class="clearfix">User Name</div>
+        {{username}}
+      </el-card>
+      <el-card shadow="never" class="item">
+        <div slot="header" class="clearfix">Email</div>
+        {{email}}
+      </el-card>
+      <el-card shadow="never" class="item">
+        <div slot="header" class="clearfix">Sloved</div>
+        {{solved}}
+      </el-card>
+      <el-card shadow="never" class="item">
+        <div slot="header" class="clearfix">Introduction</div>
+        <MarkdownContainer v-if="introduction" :content="introduction"/>
+      </el-card>
     </div>
   </div>
 </template>
@@ -32,6 +48,7 @@ export default {
           this.username = data.username;
           this.email = data.email;
           this.introduction = data.introduction;
+          this.solved = data.solved;
         })
         .catch(err => {
           if(err.request.status === 404) {
@@ -52,8 +69,16 @@ export default {
 </script>
 
 <style scoped>
-.introduction {
-    border: dashed 1px rgb(189, 189, 189);
-    padding: 15px;
+.item {
+    margin-top: 20px;
+}
+
+#info {
+    margin-left: 30px;
+    width: 800px;
+}
+
+#user-content {
+    display: flex;
 }
 </style>
