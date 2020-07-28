@@ -7,19 +7,19 @@
     </div>
     <div id="info">
       <el-card shadow="never">
-        <div slot="header" class="clearfix">User Name</div>
+        <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
         {{username}}
       </el-card>
       <el-card shadow="never" class="item">
-        <div slot="header" class="clearfix">Email</div>
+        <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
         {{email}}
       </el-card>
       <el-card shadow="never" class="item">
-        <div slot="header" class="clearfix">Sloved</div>
+        <div slot="header" class="clearfix"><i class="el-icon-check" /> Sloved</div>
         {{solved}} Problems
       </el-card>
       <el-card shadow="never" class="item">
-        <div slot="header" class="clearfix">Introduction</div>
+        <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Introduction</div>
         <MarkdownContainer v-if="introduction" :content="introduction"/>
       </el-card>
     </div>

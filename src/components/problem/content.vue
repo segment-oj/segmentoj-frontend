@@ -10,7 +10,8 @@
           Fold
           <i class="el-icon-arrow-left"></i>
         </div>
-        <div style="display: flex;">
+        <div class="flex-header">
+          <el-tag v-if="hidden" type="warning" id="hidden-problem" effect="dark">Hidden</el-tag>
           <h1 id="title" class="header">#{{pid}}. {{ title }}</h1>
         </div>
         <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
@@ -19,44 +20,49 @@
         <div id="tools">
           <el-row>
             <el-col>
-              <div>Tool Bar</div>
+              <div><i class="el-icon-s-tools" /> Tool Bar</div>
               <el-menu default-active="3">
                 <el-menu-item index="3" @click="$router.push('/problem/' + $route.params.id +'/submit');">
-                  <span slot="title">Submit</span>
+                  <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
                 </el-menu-item>
                 <el-submenu index="0">
-                  <template slot="title">Statistics</template>
-                  <el-menu-item index="0-0">
-                    Submissions
-                  </el-menu-item>
-                  <el-menu-item index="0-1">
-                    Statistics
-                  </el-menu-item>
+                  <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
+                  <el-menu-item index="0-0">Submissions</el-menu-item>
+                  <el-menu-item index="0-1">Statistics</el-menu-item>
                 </el-submenu>
                 <el-submenu index="1">
-                  <template slot="title">Discuss</template>
-                  <el-menu-item index="1-0">
-                    Discussions
-                  </el-menu-item>
-                  <el-menu-item index="1-1">
-                    Solutions
-                  </el-menu-item>
+                  <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
+                  <el-menu-item index="1-0">Discussions</el-menu-item>
+                  <el-menu-item index="1-1">Solutions</el-menu-item>
                 </el-submenu>
                 <el-submenu index="2">
-                  <template slot="title">Edit</template>
+                  <template slot="title"><div class="text-bold"><i class="el-icon-edit" /> Edit</div></template>
                   <el-menu-item index="2-0" @click="$router.push('/problem/' + $route.params.id +'/edit');">
                     Edit
                   </el-menu-item>
-                  <el-menu-item index="2-1">
-                    Delete
-                  </el-menu-item>
-                  <el-menu-item index="2-2">
-                    Settings
-                  </el-menu-item>
+                  <el-menu-item index="2-1">Delete</el-menu-item>
+                  <el-menu-item index="2-2">Settings</el-menu-item>
                 </el-submenu>
               </el-menu>
+              <el-button @click="$router.push('/problem/list');">Back</el-button>
             </el-col>
           </el-row>
+        </div>
+        <div id="info">
+          <el-card shadow="never">
+            <div><i class="el-icon-info" /> Information </div>
+            <el-divider class="divider">Name</el-divider>
+            <div class="tool-content">{{title}}</div>
+            <el-divider class="divider">PID</el-divider>
+            <div class="tool-content">#{{pid}}</div>
+          </el-card>
+          <el-card shadow="never" class="margin-top">
+            <div><i class="el-icon-menu" /> Limitation </div>
+            <el-divider class="divider">Time</el-divider>
+            <div class="tool-content">{{time}} MS</div>
+            <el-divider class="divider">Memery</el-divider>
+            <div class="tool-content">{{memery}} MB</div>
+          </el-card>
         </div>
       </div>
     </div>
@@ -72,26 +78,30 @@ export default {
   data() {
     return {
       description: null,
-      title: null,
+      title: '-',
       pid: this.$route.params.id,
       allowHTML: false,
-      isWider: false
+      isWider: false,
+      enable: true,
+      hidden: false,
+      time: '-',
+      memery: '-'
     };
   },
   methods: {
     loadproblem() {
       this.$axios
-        .get(apiurl('/problem/content'), {
-          params: {
-            pid: this.$route.params.id
-          }
-        })
+        .get(apiurl('/problem/' + String(this.$route.params.id)))
         .then(res => {
-          let data = res.data;
+          let data = res.data.res;
+          console.log(data);
           this.title = data.title;
           this.pid = data.pid;
           this.allowHTML = data.allow_html;
           this.description = data.description;
+          this.memery = data.memory_limit / 1000;
+          this.time = data.time_limit;
+          this.hidden = !data.enabled;
         })
         .catch(err => {
           if(err.request.status === 404) {
@@ -117,6 +127,19 @@ export default {
 </script>
 
 <style scoped>
+#hidden-problem {
+    margin: 30px 0;
+    margin-right: 10px;
+}
+
+.flex-header {
+    display: flex;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
 @media only screen and (max-width: 700px) {
     #pannel {
         z-index: 1000;
@@ -160,6 +183,7 @@ export default {
 }
 
 #tools {
+    width: 200px;
     padding: 20px;
     border: 1px solid #e4e7ed;
 }
@@ -170,5 +194,17 @@ export default {
 
 #full-screen-button:hover {
     cursor: pointer;
+}
+
+#info {
+    margin-top: 20px;
+}
+
+.divider {
+    margin: 20px 0;
+}
+
+.tool-content {
+    color: #606266;
 }
 </style>

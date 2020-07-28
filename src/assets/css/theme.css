@@ -69,3 +69,7 @@ a:hover {
     font-family: "Fira Code";
     color: #cc6666;
 }
+
+.el-card {
+    color: #606266;
+}
