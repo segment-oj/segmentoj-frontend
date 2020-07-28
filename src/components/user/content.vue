@@ -16,7 +16,7 @@
       </el-card>
       <el-card shadow="never" class="item">
         <div slot="header" class="clearfix">Sloved</div>
-        {{solved}}
+        {{solved}} Problems
       </el-card>
       <el-card shadow="never" class="item">
         <div slot="header" class="clearfix">Introduction</div>

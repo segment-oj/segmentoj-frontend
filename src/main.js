@@ -9,7 +9,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 Vue.prototype.$axios = axios;
 
-import 'element-ui/lib/theme-chalk/index.css';
+import './assets/element/index.css';
 import locale from 'element-ui/lib/locale/lang/en';
 import ElementUI from 'element-ui';
 Vue.use(ElementUI, { locale });
