@@ -55,8 +55,20 @@
                   </el-menu-item>
                 </el-submenu>
               </el-menu>
+              <el-button @click="$router.push('/problem/list');">Back</el-button>
             </el-col>
           </el-row>
+        </div>
+        <div id="info">
+          <el-card shadow="never">
+            <div slot="header" class="clearfix">Information</div>
+            <el-divider class="divider" content-position="left">Name</el-divider>
+            <div class="tool-content">{{title}}</div>
+            <el-divider class="divider" content-position="left">PID</el-divider>
+            <div class="tool-content">{{pid}}</div>
+            <el-divider class="divider" content-position="left">Enabled</el-divider>
+            <div class="tool-content">{{enable}}</div>
+          </el-card>
         </div>
       </div>
     </div>
@@ -72,10 +84,11 @@ export default {
   data() {
     return {
       description: null,
-      title: null,
+      title: 'problem',
       pid: this.$route.params.id,
       allowHTML: false,
-      isWider: false
+      isWider: false,
+      enable: true
     };
   },
   methods: {
@@ -88,6 +101,7 @@ export default {
           this.pid = data.pid;
           this.allowHTML = data.allow_html;
           this.description = data.description;
+          this.enable = data.enabled;
         })
         .catch(err => {
           if(err.request.status === 404) {
@@ -166,5 +180,17 @@ export default {
 
 #full-screen-button:hover {
     cursor: pointer;
+}
+
+#info {
+    margin-top: 30px;
+}
+
+.divider {
+    margin: 15px 0;
+}
+
+.tool-content {
+    color: #606266;
 }
 </style>
