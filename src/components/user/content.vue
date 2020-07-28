@@ -16,7 +16,7 @@
       </el-card>
       <el-card shadow="never" class="item">
         <div slot="header" class="clearfix">Sloved</div>
-        {{solved}}
+        {{solved}} Problems
       </el-card>
       <el-card shadow="never" class="item">
         <div slot="header" class="clearfix">Introduction</div>
@@ -45,6 +45,7 @@ export default {
         .get(apiurl('/account/' + this.$route.params.id))
         .then(res => {
           let data = res.data.res;
+          console.log(data);
           this.username = data.username;
           this.email = data.email;
           this.introduction = data.introduction;
