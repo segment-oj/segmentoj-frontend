@@ -49,7 +49,7 @@
         </div>
         <div id="info">
           <el-card shadow="never">
-            Information
+            <div><i class="el-icon-info" /> Information </div>
             <el-divider class="divider">Name</el-divider>
             <div class="tool-content">{{title}}</div>
             <el-divider class="divider">PID</el-divider>
@@ -158,6 +158,7 @@ export default {
 }
 
 #tools {
+    width: 200px;
     padding: 20px;
     border: 1px solid #e4e7ed;
 }
