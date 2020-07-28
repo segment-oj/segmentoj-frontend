@@ -3,7 +3,7 @@
 .el-dropdown-menu,
 .el-menu--collapse .el-submenu .el-menu {
     z-index: 10;
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
     top: 0;
 }
 
@@ -1265,7 +1265,7 @@
 
 .el-pagination .el-select .el-input .el-input__inner {
     padding-right: 25px;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .el-pagination button {
@@ -1395,7 +1395,7 @@
     margin: 0 2px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .el-pager,
@@ -1425,7 +1425,7 @@
     background-color: #f4f4f5;
     color: #606266;
     min-width: 30px;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .el-pagination.is-background .btn-next.disabled,
@@ -1694,8 +1694,8 @@
 
 .el-autocomplete-suggestion {
     margin: 5px 0;
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
     border-radius: 0;
     border: 1px solid #e4e7ed;
     -webkit-box-sizing: border-box;
@@ -1824,7 +1824,7 @@
     background-color: #ffffff;
     border: 1px solid #ebeef5;
     border-radius: 0;
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .el-dropdown-menu__item {
@@ -2071,7 +2071,7 @@
     left: 100%;
     border: 1px solid #e4e7ed;
     border-radius: 0;
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .el-menu-item,
@@ -2094,8 +2094,8 @@
     border: none;
     padding: 5px 0;
     border-radius: 0;
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .el-menu--popup-bottom-start {
@@ -2456,7 +2456,7 @@
     height: 20px;
     border: 1px solid #dcdfe6;
     outline: 0;
-    border-radius: 0px;
+    border-radius: 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background: #dcdfe6;
@@ -2511,8 +2511,8 @@
     border: 1px solid #e4e7ed;
     border-radius: 0;
     background-color: #ffffff;
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 5px 0;
@@ -3201,7 +3201,7 @@
 
 .el-picker-panel,
 .el-table-filter {
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .el-table__body-wrapper .el-table--border.is-scrolling-right ~ .el-table__fixed-right {
@@ -3331,9 +3331,9 @@
 
 .el-table-filter {
     border: 1px solid #ebeef5;
-    border-radius: 0px;
+    border-radius: 0;
     background-color: #ffffff;
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 2px 0;
@@ -3536,7 +3536,7 @@
     margin-left: 5px;
     margin-right: 5px;
     background-color: #f2f6fc;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .el-date-table td.selected div:hover {
@@ -3546,7 +3546,7 @@
 .el-date-table td.selected span {
     background-color: #409eff;
     color: #ffffff;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .el-date-table td.week {
@@ -3611,7 +3611,7 @@
     line-height: 36px;
     color: #606266;
     margin: 0 auto;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .el-month-table td .cell:hover {
@@ -4119,7 +4119,7 @@
 .el-picker-panel {
     color: #606266;
     border: 1px solid #e4e7ed;
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
     background: #ffffff;
     border-radius: 0;
     line-height: 30px;
@@ -4128,7 +4128,7 @@
 
 .el-popover,
 .el-time-panel {
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .el-picker-panel__body-wrapper::after,
@@ -4179,7 +4179,7 @@
     border: 1px solid #dcdcdc;
     color: #333333;
     line-height: 24px;
-    border-radius: 0px;
+    border-radius: 0;
     padding: 0 20px;
     cursor: pointer;
     background-color: transparent;
@@ -4345,8 +4345,8 @@
     margin: 5px 0;
     border: 1px solid #e4e7ed;
     background-color: #ffffff;
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
-    border-radius: 0px;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0;
     position: absolute;
     width: 180px;
     left: 0;
@@ -4464,7 +4464,7 @@
 }
 
 .el-time-range-picker__body {
-    border-radius: 0px;
+    border-radius: 0;
     border: 1px solid #e4e7ed;
 }
 
@@ -4472,7 +4472,7 @@
     position: absolute;
     background: #ffffff;
     min-width: 150px;
-    border-radius: 0px;
+    border-radius: 0;
     border: 1px solid #ebeef5;
     padding: 12px;
     z-index: 2000;
@@ -4480,7 +4480,7 @@
     line-height: 1.4;
     text-align: justify;
     font-size: 14px;
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
     word-break: break-all;
 }
 
@@ -4537,11 +4537,11 @@
     padding-bottom: 10px;
     vertical-align: middle;
     background-color: #ffffff;
-    border-radius: 0px;
+    border-radius: 0;
     border: 1px solid #ebeef5;
     font-size: 18px;
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
     text-align: left;
     overflow: hidden;
     -webkit-backface-visibility: hidden;
@@ -5046,7 +5046,7 @@
     width: 18px;
     line-height: 18px;
     margin: 12px 0 9px 10px;
-    border-radius: 0px;
+    border-radius: 0;
     text-align: center;
     font-size: 12px;
     color: #d3dce6;
@@ -5164,7 +5164,7 @@
 .el-tabs__item:focus.is-active.is-focus:not(:active) {
     -webkit-box-shadow: 0 0 2px 2px #409eff inset;
     box-shadow: 0 0 2px 2px #409eff inset;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .el-tabs__item .el-icon-close {
@@ -5212,7 +5212,7 @@
 .el-tabs--card > .el-tabs__header .el-tabs__nav {
     border: 1px solid #e4e7ed;
     border-bottom: none;
-    border-radius: 0px 0px 0 0;
+    border-radius: 0 0 0 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
@@ -5536,7 +5536,7 @@
 }
 
 .el-tabs--left.el-tabs--card .el-tabs__nav {
-    border-radius: 0px 0 0 0;
+    border-radius: 0 0 0 0;
     border-bottom: 1px solid #e4e7ed;
     border-right: none;
 }
@@ -6069,14 +6069,14 @@
     display: flex;
     width: 330px;
     padding: 14px 26px 14px 13px;
-    border-radius: 0px;
+    border-radius: 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border: 1px solid #ebeef5;
     position: fixed;
     background-color: #ffffff;
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
     -webkit-transition: opacity 0.3s, left 0.3s, right 0.3s, top 0.4s, bottom 0.3s, -webkit-transform 0.3s;
     transition: opacity 0.3s, left 0.3s, right 0.3s, top 0.4s, bottom 0.3s, -webkit-transform 0.3s;
     transition: opacity 0.3s, transform 0.3s, left 0.3s, right 0.3s, top 0.4s, bottom 0.3s;
@@ -6349,7 +6349,7 @@
 
 .el-tooltip__popper {
     position: absolute;
-    border-radius: 0px;
+    border-radius: 0;
     padding: 10px;
     z-index: 2000;
     font-size: 12px;
@@ -6518,7 +6518,7 @@
     height: 6px;
     margin: 16px 0;
     background-color: #e4e7ed;
-    border-radius: 0px;
+    border-radius: 0;
     position: relative;
     cursor: pointer;
     vertical-align: middle;
@@ -9714,7 +9714,7 @@
 .el-upload--picture-card {
     background-color: #fbfdff;
     border: 1px dashed #c0ccda;
-    border-radius: 0px;
+    border-radius: 0;
     box-sizing: border-box;
     width: 148px;
     height: 148px;
@@ -9740,7 +9740,7 @@
 .el-upload-dragger {
     background-color: #ffffff;
     border: 1px dashed #d9d9d9;
-    border-radius: 0px;
+    border-radius: 0;
     box-sizing: border-box;
     width: 360px;
     height: 180px;
@@ -9802,7 +9802,7 @@
     position: relative;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border-radius: 0px;
+    border-radius: 0;
     width: 100%;
 }
 
@@ -9943,7 +9943,7 @@
     overflow: hidden;
     background-color: #ffffff;
     border: 1px solid #c0ccda;
-    border-radius: 0px;
+    border-radius: 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     width: 148px;
@@ -10060,7 +10060,7 @@
     z-index: 0;
     background-color: #ffffff;
     border: 1px solid #c0ccda;
-    border-radius: 0px;
+    border-radius: 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin-top: 10px;
@@ -10620,7 +10620,7 @@
 
 .el-badge__content {
     background-color: #f56c6c;
-    border-radius: 0px;
+    border-radius: 0;
     color: #ffffff;
     display: inline-block;
     font-size: 12px;
@@ -10679,7 +10679,7 @@
 }
 
 .el-card {
-    border-radius: 0px;
+    border-radius: 0;
     border: 1px solid #ebeef5;
     background-color: #ffffff;
     overflow: hidden;
@@ -10691,8 +10691,8 @@
 .el-card.is-always-shadow,
 .el-card.is-hover-shadow:focus,
 .el-card.is-hover-shadow:hover {
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .el-card__header {
@@ -10758,7 +10758,7 @@
 
 .el-steps--simple {
     padding: 13px 8%;
-    border-radius: 0px;
+    border-radius: 0;
     background: #f5f7fa;
 }
 
@@ -11655,7 +11655,7 @@
     color: #409eff;
     border-width: 1px;
     border-style: solid;
-    border-radius: 0px;
+    border-radius: 0;
     box-sizing: border-box;
     white-space: nowrap;
 }
@@ -12058,8 +12058,8 @@
     background: #ffffff;
     border: 1px solid #e4e7ed;
     border-radius: 0;
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .el-cascader__tags {
@@ -12216,7 +12216,7 @@
     margin: 0 0 8px 8px;
     width: 20px;
     height: 20px;
-    border-radius: 0px;
+    border-radius: 0;
     cursor: pointer;
 }
 
@@ -12234,7 +12234,7 @@
     display: -ms-flexbox;
     display: flex;
     height: 100%;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .el-color-predefine__color-selector.is-alpha {
@@ -12414,7 +12414,7 @@
     border: 1px solid #dcdcdc;
     color: #333333;
     line-height: 24px;
-    border-radius: 0px;
+    border-radius: 0;
     padding: 0 20px;
     cursor: pointer;
     background-color: transparent;
@@ -12512,7 +12512,7 @@
 .el-color-picker__mask {
     height: 38px;
     width: 38px;
-    border-radius: 0px;
+    border-radius: 0;
     position: absolute;
     top: 1px;
     left: 1px;
@@ -12529,7 +12529,7 @@
     width: 40px;
     padding: 4px;
     border: 1px solid #e6e6e6;
-    border-radius: 0px;
+    border-radius: 0;
     font-size: 0;
     position: relative;
     cursor: pointer;
@@ -12591,8 +12591,8 @@
     background-color: #ffffff;
     border: 1px solid #ebeef5;
     border-radius: 0;
-    -webkit-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .el-textarea {
@@ -12695,7 +12695,7 @@
 }
 
 .el-input::-webkit-scrollbar-thumb {
-    border-radius: 0px;
+    border-radius: 0;
     width: 6px;
     background: #b4bccc;
 }
@@ -13139,7 +13139,7 @@
     display: inline-block;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border-radius: 0px;
+    border-radius: 0;
     padding-right: 10px;
     padding-left: 30px;
 }
@@ -13232,7 +13232,7 @@
 .el-transfer-panel .el-checkbox__inner {
     height: 14px;
     width: 14px;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .el-transfer-panel .el-checkbox__inner::after {
@@ -15243,7 +15243,7 @@
     right: 2px;
     bottom: 2px;
     z-index: 1;
-    border-radius: 0px;
+    border-radius: 0;
     opacity: 0;
     -webkit-transition: opacity 120ms ease-out;
     transition: opacity 120ms ease-out;
