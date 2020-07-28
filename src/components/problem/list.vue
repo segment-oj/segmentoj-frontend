@@ -42,7 +42,16 @@ export default {
       } else {
         color += 'color-regular-text';
       }
-      x.title = (<router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title }</router-link>);
+      if (!x.enabled) {
+        x.title = (
+          <div>
+            <el-tag effect="dark" type="warning">Hidden</el-tag>
+            <router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}> { x.title }</router-link>
+          </div>
+        );
+      } else {
+        x.title = (<router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title }</router-link>);
+      }
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
       return x;
     }

@@ -10,7 +10,8 @@
           Fold
           <i class="el-icon-arrow-left"></i>
         </div>
-        <div style="display: flex;">
+        <div class="flex-header">
+          <el-tag v-if="hidden" type="warning" id="hidden-problem" effect="dark">Hidden</el-tag>
           <h1 id="title" class="header">#{{pid}}. {{ title }}</h1>
         </div>
         <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
@@ -53,9 +54,14 @@
             <el-divider class="divider">Name</el-divider>
             <div class="tool-content">{{title}}</div>
             <el-divider class="divider">PID</el-divider>
-            <div class="tool-content">#. {{pid}}</div>
-            <el-divider class="divider">Enabled</el-divider>
-            <div class="tool-content">{{enable}}</div>
+            <div class="tool-content">#{{pid}}</div>
+          </el-card>
+          <el-card shadow="never" class="margin-top">
+            <div><i class="el-icon-menu" /> Limitation </div>
+            <el-divider class="divider">Time</el-divider>
+            <div class="tool-content">{{time}} MS</div>
+            <el-divider class="divider">Memery</el-divider>
+            <div class="tool-content">{{memery}} MB</div>
           </el-card>
         </div>
       </div>
@@ -76,7 +82,10 @@ export default {
       pid: this.$route.params.id,
       allowHTML: false,
       isWider: false,
-      enable: true
+      enable: true,
+      hidden: false,
+      time: 1000,
+      memery: 128
     };
   },
   methods: {
@@ -85,11 +94,14 @@ export default {
         .get(apiurl('/problem/' + String(this.$route.params.id)))
         .then(res => {
           let data = res.data.res;
+          console.log(data);
           this.title = data.title;
           this.pid = data.pid;
           this.allowHTML = data.allow_html;
           this.description = data.description;
-          this.enable = data.enabled;
+          this.memery = data.memory_limit / 1000;
+          this.time = data.time_limit;
+          this.hidden = !data.enabled;
         })
         .catch(err => {
           if(err.request.status === 404) {
@@ -115,6 +127,19 @@ export default {
 </script>
 
 <style scoped>
+#hidden-problem {
+    margin: 30px 0;
+    margin-right: 10px;
+}
+
+.flex-header {
+    display: flex;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
 @media only screen and (max-width: 700px) {
     #pannel {
         z-index: 1000;
@@ -172,7 +197,7 @@ export default {
 }
 
 #info {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .divider {
