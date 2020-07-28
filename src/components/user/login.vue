@@ -2,10 +2,12 @@
   <div>
     <el-dialog title="Login" :visible.sync="$store.state.user.showlogin" :destroy-on-close="true" :close-on-click-modal="false" width="500px">
       <el-form :model="ldata" ref="loginForm" :rules="rules" :status-icon="true">
-        <el-form-item label="Username" prop="username">
+        <div class="icon-lable"><i class="el-icon-user" /> Username</div>
+        <el-form-item prop="username">
           <el-input v-model="ldata.username"></el-input>
         </el-form-item>
-        <el-form-item label="Password" prop="password">
+        <div class="icon-lable"><i class="el-icon-lock" /> Password</div>
+        <el-form-item prop="password">
           <el-input type="password" v-model="ldata.password"></el-input>
         </el-form-item>
         <el-form-item>
@@ -100,4 +102,7 @@ export default {
 </script>
 
 <style scoped>
+.icon-lable {
+    margin-bottom: 5px;
+}
 </style>

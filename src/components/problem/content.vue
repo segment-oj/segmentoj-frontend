@@ -25,12 +25,12 @@
                   <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
                 </el-menu-item>
                 <el-submenu index="0">
-                  <template slot="title"><div class="text-bold"><i class="el-icon-s-order" /> Statistics</div></template>
+                  <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
                   <el-menu-item index="0-0">Submissions</el-menu-item>
                   <el-menu-item index="0-1">Statistics</el-menu-item>
                 </el-submenu>
                 <el-submenu index="1">
-                  <template slot="title"><div class="text-bold"><i class="el-icon-s-comment" /> Discuss</div></template>
+                  <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
                   <el-menu-item index="1-0">Discussions</el-menu-item>
                   <el-menu-item index="1-1">Solutions</el-menu-item>
                 </el-submenu>

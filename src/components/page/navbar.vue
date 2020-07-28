@@ -11,8 +11,8 @@
         text-color="#fff"
         active-text-color="rgb(233, 233, 235)"
       >
-        <el-menu-item index="/">Home</el-menu-item>
-        <el-menu-item index="/problem/list">Problem List</el-menu-item>
+        <el-menu-item index="/"><i class="el-icon-s-home" /> Home</el-menu-item>
+        <el-menu-item index="/problem/list"><i class="el-icon-s-order" />Problem List</el-menu-item>
         <el-submenu index="2" id="user">
           <template slot="title">
               <el-avatar shape="square" v-if="this.$store.state.user.authenticated">
