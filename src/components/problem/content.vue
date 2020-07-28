@@ -81,13 +81,9 @@ export default {
   methods: {
     loadproblem() {
       this.$axios
-        .get(apiurl('/problem/content'), {
-          params: {
-            pid: this.$route.params.id
-          }
-        })
+        .get(apiurl('/problem/' + String(this.$route.params.id)))
         .then(res => {
-          let data = res.data;
+          let data = res.data.res;
           this.title = data.title;
           this.pid = data.pid;
           this.allowHTML = data.allow_html;
