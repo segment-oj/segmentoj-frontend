@@ -19,40 +19,28 @@
         <div id="tools">
           <el-row>
             <el-col>
-              <div>Tool Bar</div>
+              <div><i class="el-icon-s-tools" /> Tool Bar</div>
               <el-menu default-active="3">
                 <el-menu-item index="3" @click="$router.push('/problem/' + $route.params.id +'/submit');">
-                  <span slot="title">Submit</span>
+                  <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
                 </el-menu-item>
                 <el-submenu index="0">
-                  <template slot="title">Statistics</template>
-                  <el-menu-item index="0-0">
-                    Submissions
-                  </el-menu-item>
-                  <el-menu-item index="0-1">
-                    Statistics
-                  </el-menu-item>
+                  <template slot="title"><div class="text-bold"><i class="el-icon-s-order" /> Statistics</div></template>
+                  <el-menu-item index="0-0">Submissions</el-menu-item>
+                  <el-menu-item index="0-1">Statistics</el-menu-item>
                 </el-submenu>
                 <el-submenu index="1">
-                  <template slot="title">Discuss</template>
-                  <el-menu-item index="1-0">
-                    Discussions
-                  </el-menu-item>
-                  <el-menu-item index="1-1">
-                    Solutions
-                  </el-menu-item>
+                  <template slot="title"><div class="text-bold"><i class="el-icon-s-comment" /> Discuss</div></template>
+                  <el-menu-item index="1-0">Discussions</el-menu-item>
+                  <el-menu-item index="1-1">Solutions</el-menu-item>
                 </el-submenu>
                 <el-submenu index="2">
-                  <template slot="title">Edit</template>
+                  <template slot="title"><div class="text-bold"><i class="el-icon-edit" /> Edit</div></template>
                   <el-menu-item index="2-0" @click="$router.push('/problem/' + $route.params.id +'/edit');">
                     Edit
                   </el-menu-item>
-                  <el-menu-item index="2-1">
-                    Delete
-                  </el-menu-item>
-                  <el-menu-item index="2-2">
-                    Settings
-                  </el-menu-item>
+                  <el-menu-item index="2-1">Delete</el-menu-item>
+                  <el-menu-item index="2-2">Settings</el-menu-item>
                 </el-submenu>
               </el-menu>
               <el-button @click="$router.push('/problem/list');">Back</el-button>
@@ -61,12 +49,12 @@
         </div>
         <div id="info">
           <el-card shadow="never">
-            <div slot="header" class="clearfix">Information</div>
-            <el-divider class="divider" content-position="left">Name</el-divider>
+            Information
+            <el-divider class="divider">Name</el-divider>
             <div class="tool-content">{{title}}</div>
-            <el-divider class="divider" content-position="left">PID</el-divider>
-            <div class="tool-content">{{pid}}</div>
-            <el-divider class="divider" content-position="left">Enabled</el-divider>
+            <el-divider class="divider">PID</el-divider>
+            <div class="tool-content">#. {{pid}}</div>
+            <el-divider class="divider">Enabled</el-divider>
             <div class="tool-content">{{enable}}</div>
           </el-card>
         </div>
@@ -187,7 +175,7 @@ export default {
 }
 
 .divider {
-    margin: 15px 0;
+    margin: 20px 0;
 }
 
 .tool-content {
