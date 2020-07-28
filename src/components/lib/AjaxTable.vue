@@ -7,7 +7,7 @@
       :page-size="this.limit"
       :total="this.total"
       background
-      layout="prev, pager, next, jumper"
+      layout="prev, pager, next, jumper, total"
       @current-change="this.onPageChange"
       class="pagination"
     ></el-pagination>
@@ -44,7 +44,7 @@ export default {
           this.loading = false;
         })
         .catch(err => {
-          this.$message.error('[Ajax Table] Request Failed.');
+          this.$SegmentMessage.error(this, '[Ajax Table] Request Failed.');
           console.log(err);
         });
     }
