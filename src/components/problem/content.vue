@@ -78,14 +78,14 @@ export default {
   data() {
     return {
       description: null,
-      title: 'problem',
+      title: '-',
       pid: this.$route.params.id,
       allowHTML: false,
       isWider: false,
       enable: true,
       hidden: false,
-      time: 1000,
-      memery: 128
+      time: '-',
+      memery: '-'
     };
   },
   methods: {
