@@ -6,15 +6,25 @@
       </el-card>
       <el-card class="item">
         <div slot="header" class="clearfix"><i class="el-icon-user" /> Tool Bar</div>
-        <el-button type="primary">Edit</el-button>
+        <el-button v-if="ismine" type="primary">Edit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
     </div>
     <div id="info">
-      <el-card shadow="never">
-        <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
-        {{username}}
-      </el-card>
+      <el-row :gutter="20">
+        <el-col :span="18">
+          <el-card shadow="never">
+            <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
+            {{username}}
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card shadow="never">
+            <div slot="header" class="clearfix"><i class="el-icon-user" /> User ID</div>
+            {{userid}}
+          </el-card>
+        </el-col>
+      </el-row>
       <el-card shadow="never" class="item">
         <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
         {{email}}
@@ -56,11 +66,13 @@ export default {
   data() {
     return {
       username: '-',
+      userid: '-',
       email: '-',
       introduction: null,
       solved: '-',
       submit: '-',
-      rate: '-'
+      rate: '-',
+      ismine: false
     };
   },
   methods: {
@@ -70,6 +82,7 @@ export default {
         .then(res => {
           let data = res.data.res;
           this.username = data.username;
+          this.userid = data.id;
           this.email = data.email;
           this.introduction = data.introduction;
           this.solved = data.solved;
@@ -79,6 +92,9 @@ export default {
           } else {
             this.rate = (this.solved * 100.0) / this.submit;
             this.rate = this.rate.toFixed(2);
+          }
+          if (this.userid == String(this.$store.state.user.userid)) {
+            this.ismine = true;
           }
         })
         .catch(err => {
