@@ -14,7 +14,7 @@
         <el-form-item prop="passwdrepeat">
           <el-input type="password" v-model="ldata.passwdrepeat"></el-input>
         </el-form-item>
-        <div class="icon-lable"><i class="el-icon-message" /> Email</div>
+        <div class="icon-lable form-required"><i class="el-icon-message" /> Email</div>
         <el-form-item prop="email">
           <el-input type="email" v-model="ldata.email"></el-input>
         </el-form-item>
