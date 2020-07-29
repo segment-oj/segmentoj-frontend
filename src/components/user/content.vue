@@ -12,13 +12,13 @@
     </div>
     <div id="info" v-loading="userLoading">
       <el-row :gutter="20">
-        <el-col :span="16">
+        <el-col :span="18">
           <el-card shadow="never">
             <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
             {{username}}
           </el-card>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="6">
           <el-card shadow="never">
             <div slot="header" class="clearfix"><i class="el-icon-warning-outline" /> User ID</div>
             {{userid}}
@@ -26,19 +26,19 @@
         </el-col>
       </el-row>
       <el-row :gutter="20">
-        <el-col :span="10">
+        <el-col :span="12">
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
             {{email}}
           </el-card>
         </el-col>
-        <el-col :span="7">
+        <el-col :span="6">
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix"><i class="el-icon-date" /> Time Joined</div>
             {{timeJoin}}
           </el-card>
         </el-col>
-        <el-col :span="7">
+        <el-col :span="6">
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix"><i class="el-icon-time" /> Last Login</div>
             {{lastLogin}}
