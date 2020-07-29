@@ -142,7 +142,7 @@ export default {
 
 <style scoped>
 .form-required::before {
-    content: '*';
-    color: red;
+    content: "*";
+    color: #f56c6c;
 }
 </style>
