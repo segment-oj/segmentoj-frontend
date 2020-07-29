@@ -10,7 +10,7 @@
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
     </div>
-    <div id="info">
+    <div id="info" v-loading="userLoading">
       <el-row :gutter="20">
         <el-col :span="16">
           <el-card shadow="never">
@@ -91,7 +91,8 @@ export default {
       rate: 100,
       ismine: false,
       timeJoin: null,
-      lastLogin: null
+      lastLogin: null,
+      userLoading: true
     };
   },
   methods: {
@@ -108,6 +109,7 @@ export default {
           this.submit = data.submit_time;
           this.timeJoin = timeFormat(data.date_joined);
           this.lastLogin = timeFormat(data.last_login);
+          this.userLoading = false;
           if (this.solved == 0) {
             this.rate = 100;
           } else {
