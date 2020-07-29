@@ -4,20 +4,51 @@
       <el-card shadow="never">
         <el-avatar shape="square" icon="el-icon-user-solid" :size="400"></el-avatar>
       </el-card>
+      <el-card class="item">
+        <div slot="header" class="clearfix"><i class="el-icon-setting" /> Tool Bar</div>
+        <el-button v-if="ismine" type="primary">Edit</el-button>
+        <el-button @click="$router.go(-1);">Back</el-button>
+      </el-card>
     </div>
     <div id="info">
-      <el-card shadow="never">
-        <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
-        {{username}}
-      </el-card>
+      <el-row :gutter="20">
+        <el-col :span="18">
+          <el-card shadow="never">
+            <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
+            {{username}}
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card shadow="never">
+            <div slot="header" class="clearfix"><i class="el-icon-warning-outline" /> User ID</div>
+            {{userid}}
+          </el-card>
+        </el-col>
+      </el-row>
       <el-card shadow="never" class="item">
         <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
         {{email}}
       </el-card>
-      <el-card shadow="never" class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-check" /> Sloved</div>
-        {{solved}} Problems
-      </el-card>
+      <el-row :gutter="20">
+        <el-col :span="8">
+          <el-card shadow="never" class="item">
+            <div slot="header" class="clearfix"><i class="el-icon-check" /> Sloved</div>
+            {{solved}} Problems
+          </el-card>
+        </el-col>
+        <el-col :span="8">
+          <el-card shadow="never" class="item">
+            <div slot="header" class="clearfix"><i class="el-icon-upload2" /> Submited</div>
+            {{submit}} Problems
+          </el-card>
+        </el-col>
+        <el-col :span="8">
+          <el-card shadow="never" class="item">
+            <div slot="header" class="clearfix"><i class="el-icon-finished" /> AC Rate</div>
+            <el-progress :text-inside="true" :stroke-width="24" :percentage="rate" status="success" :color="ACRateColorMode"></el-progress>
+          </el-card>
+        </el-col>
+      </el-row>
       <el-card shadow="never" class="item">
         <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Introduction</div>
         <MarkdownContainer v-if="introduction" :content="introduction"/>
@@ -34,9 +65,14 @@ export default {
   name: 'UserHomepage',
   data() {
     return {
-      username: '',
-      email: '',
-      introduction: null
+      username: '-',
+      userid: '-',
+      email: '-',
+      introduction: null,
+      solved: '-',
+      submit: '-',
+      rate: '-',
+      ismine: false
     };
   },
   methods: {
@@ -46,9 +82,20 @@ export default {
         .then(res => {
           let data = res.data.res;
           this.username = data.username;
+          this.userid = data.id;
           this.email = data.email;
           this.introduction = data.introduction;
           this.solved = data.solved;
+          this.submit = data.submit_time;
+          if (this.solved == 0) {
+            this.rate = 100;
+          } else {
+            this.rate = (this.solved * 100.0) / this.submit;
+            this.rate = this.rate.toFixed(2);
+          }
+          if (this.userid == String(this.$store.state.user.userid)) {
+            this.ismine = true;
+          }
         })
         .catch(err => {
           if(err.request.status === 404) {
@@ -57,6 +104,16 @@ export default {
             this.$SegmentMessage.error(this, 'Unkown error');
           }
         });
+    },
+    ACRateColorMode(percentage) {
+      if (percentage < 20) {
+        return '#F56C6C';
+      } else if (percentage < 30) {
+        return '#E6A23C';
+      } else if (percentage < 50) {
+        return '#67C23A';
+      }
+      return '#409EFF';
     }
   },
   mounted() {
