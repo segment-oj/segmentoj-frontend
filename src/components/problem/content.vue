@@ -1,7 +1,7 @@
 <template>
   <div id="problem-view">
     <div id="content">
-      <div id="problem-content">
+      <div id="problem-content" v-loading="problemLoading">
         <div v-if="!isWider" id="full-screen-button" @click="full_screen()">
           Expand
           <i class="el-icon-arrow-right"></i>
@@ -85,7 +85,8 @@ export default {
       enable: true,
       hidden: false,
       time: '-',
-      memery: '-'
+      memery: '-',
+      problemLoading: true
     };
   },
   methods: {
@@ -94,7 +95,6 @@ export default {
         .get(apiurl('/problem/' + String(this.$route.params.id)))
         .then(res => {
           let data = res.data.res;
-          console.log(data);
           this.title = data.title;
           this.pid = data.pid;
           this.allowHTML = data.allow_html;
@@ -102,6 +102,7 @@ export default {
           this.memery = data.memory_limit / 1000;
           this.time = data.time_limit;
           this.hidden = !data.enabled;
+          this.problemLoading = false;
         })
         .catch(err => {
           if(err.request.status === 404) {
