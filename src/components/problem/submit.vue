@@ -118,7 +118,10 @@ export default {
           }
           this.buttonLoading = false;
         });
-    }
+    },
+  },
+  mounted() {
+    this.lang_num = String(this.$store.state.user.userlang);
   }
 };
 </script>
