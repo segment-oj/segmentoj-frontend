@@ -1,7 +1,7 @@
 <template>
   <div id="problem-view">
     <div id="content">
-      <div id="problem-content">
+      <div id="problem-content" v-loading="problemLoading">
         <div v-if="!isWider" id="full-screen-button" @click="full_screen()">
           Expand
           <i class="el-icon-arrow-right"></i>
@@ -85,7 +85,8 @@ export default {
       enable: true,
       hidden: false,
       time: '-',
-      memery: '-'
+      memery: '-',
+      problemLoading: true
     };
   },
   methods: {
@@ -101,6 +102,7 @@ export default {
           this.memery = data.memory_limit / 1000;
           this.time = data.time_limit;
           this.hidden = !data.enabled;
+          this.problemLoading = false;
         })
         .catch(err => {
           if(err.request.status === 404) {
