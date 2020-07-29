@@ -69,8 +69,12 @@ export default {
           this.introduction = data.introduction;
           this.solved = data.solved;
           this.submit = data.submit_time;
-          this.rate = (this.solved * 100.0) / this.submit;
-          this.rate = this.rate.toFixed(2);
+          if (this.solved == 0) {
+            this.rate = 100;
+          } else {
+            this.rate = (this.solved * 100.0) / this.submit;
+            this.rate = this.rate.toFixed(2);
+          }
         })
         .catch(err => {
           if(err.request.status === 404) {

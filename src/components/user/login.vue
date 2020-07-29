@@ -65,6 +65,13 @@ export default {
           password: this.ldata.password
         })
         .then(res => {
+          this.$axios
+            .get(apiurl('/account/' + res.data.res.id))
+            .then(detail => {
+              this.$store.commit('userLang', {
+                lang: detail.data.res.lang
+              });
+            });
           this.$store.commit('userLogin', {
             username: this.ldata.username,
             userid: res.data.res.id
