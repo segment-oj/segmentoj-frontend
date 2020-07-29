@@ -11,7 +11,7 @@
         text-color="#fff"
         active-text-color="rgb(233, 233, 235)"
       >
-        <el-menu-item index=""><img src="./../../assets/icon/SOJ-thick-white.svg" style="height: 40px" /></el-menu-item>
+        <el-menu-item index=""><img src="./../../assets/icon/SOJ-thick-white.svg" style="height: 40px;" /></el-menu-item>
         <el-menu-item index="/"><i class="el-icon-s-home" /> Home</el-menu-item>
         <el-menu-item index="/problem/list"><i class="el-icon-s-order" />Problem List</el-menu-item>
         <el-submenu index="2" id="user">
