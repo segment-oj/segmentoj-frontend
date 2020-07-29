@@ -4,13 +4,18 @@
       <el-card shadow="never">
         <el-avatar shape="square" icon="el-icon-user-solid" :size="400"></el-avatar>
       </el-card>
-      <el-card shadow="never" class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
-        {{username}}
+      <el-card class="item">
+        <div slot="header" class="clearfix"><i class="el-icon-user" /> Tool Bar</div>
+        <el-button type="primary">Edit</el-button>
+        <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
     </div>
     <div id="info">
       <el-card shadow="never">
+        <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
+        {{username}}
+      </el-card>
+      <el-card shadow="never" class="item">
         <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
         {{email}}
       </el-card>
