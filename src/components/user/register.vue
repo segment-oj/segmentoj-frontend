@@ -2,22 +2,26 @@
   <div>
     <el-dialog title="Register" :visible.sync="$store.state.user.showregister" :destroy-on-close="true" :close-on-click-modal="false" width="500px">
       <el-form :model="ldata" ref="registerForm" :rules="rules" :status-icon="true">
-        <el-form-item label="Username" prop="username">
+        <div class="icon-lable form-required"><i class="el-icon-user" /> Username</div>
+        <el-form-item prop="username">
           <el-input v-model="ldata.username"></el-input>
         </el-form-item>
-        <el-form-item label="Password" prop="password">
+        <div class="icon-lable form-required"><i class="el-icon-lock" /> Password</div>
+        <el-form-item prop="password">
           <el-input type="password" v-model="ldata.password"></el-input>
         </el-form-item>
-        <el-form-item label="Repeat password" prop="passwdrepeat">
+        <div class="icon-lable form-required"><i class="el-icon-lock" /> Repeat password</div>
+        <el-form-item prop="passwdrepeat">
           <el-input type="password" v-model="ldata.passwdrepeat"></el-input>
         </el-form-item>
-        <el-form-item label="Email" prop="email">
+        <div class="icon-lable"><i class="el-icon-message" /> Email</div>
+        <el-form-item prop="email">
           <el-input type="email" v-model="ldata.email"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" v-on:click="onSubmit();" :loading="buttonLoading">Register</el-button>
           <el-button v-on:click="$store.state.user.showregister = false;">Cancel</el-button>
-          <el-button v-on:click="$refs['registerForm'].resetFields();">Reset</el-button>
+          <el-button v-on:click="reset();">Reset</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -136,3 +140,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.form-required::before {
+    content: "*";
+    color: #f56c6c;
+}
+</style>
