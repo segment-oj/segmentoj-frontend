@@ -73,18 +73,19 @@ export default {
       rules: {
         username: [
           { required: true, message: 'Input your username', trigger: 'blur' },
-          { max: 10, message: 'No more than 10 characters', trigger: 'blur' },
+          { max: 150, message: 'No more than 150 characters', trigger: 'blur' },
           { validator: validateUsername, trigger: 'blur'}
         ],
         password: [
           { required: true, message: 'Input your password', trigger: 'blur' },
-          { min: 6, message: 'Password must be more than 6 characters', trigger: 'blur' }
+          { min: 6, message: 'No less than 6 characters', trigger: 'blur' }
         ],
         passwdrepeat: [
           { required: true, message: 'Repeat your password', trigger: 'blur' },
           { validator: validatePasswd, trigger: 'blur' },
         ],
         email: [
+          { required: true, message: 'Input your email', trigger: 'blur' },
           { validator: validateEmail, trigger: 'blur'}
         ]
       },
