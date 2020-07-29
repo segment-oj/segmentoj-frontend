@@ -2,9 +2,9 @@ if (String.prototype.replaceAll === undefined) {
   String.prototype.replaceAll = function (before, after) {
     let res = new String(), matched = 0;
     for (let i = 0; i < this.length; i += 1) {
-      if (this[i] == before[matched]) {
+      if (this[i] === before[matched]) {
         matched += 1;
-        if (matched == before.length) {
+        if (matched === before.length) {
           res += after;
           matched = 0;
         }
@@ -13,6 +13,11 @@ if (String.prototype.replaceAll === undefined) {
         res += this[i];
       }
     }
+
+    for (let i = this.length - matched; i < this.length; i += 1) {
+      res += this[i];
+    }
+    
     return res;
   };
 }
