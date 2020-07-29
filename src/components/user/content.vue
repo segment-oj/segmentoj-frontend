@@ -5,7 +5,7 @@
         <el-avatar shape="square" icon="el-icon-user-solid" :size="400"></el-avatar>
       </el-card>
       <el-card class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-user" /> Tool Bar</div>
+        <div slot="header" class="clearfix"><i class="el-icon-setting" /> Tool Bar</div>
         <el-button v-if="ismine" type="primary">Edit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
@@ -20,7 +20,7 @@
         </el-col>
         <el-col :span="6">
           <el-card shadow="never">
-            <div slot="header" class="clearfix"><i class="el-icon-user" /> User ID</div>
+            <div slot="header" class="clearfix"><i class="el-icon-warning-outline" /> User ID</div>
             {{userid}}
           </el-card>
         </el-col>
