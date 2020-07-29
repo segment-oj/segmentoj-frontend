@@ -10,7 +10,7 @@
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
     </div>
-    <div id="info">
+    <div id="info" v-loading="userLoading">
       <el-row :gutter="20">
         <el-col :span="18">
           <el-card shadow="never">
@@ -25,10 +25,26 @@
           </el-card>
         </el-col>
       </el-row>
-      <el-card shadow="never" class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
-        {{email}}
-      </el-card>
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <el-card shadow="never" class="item">
+            <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
+            {{email}}
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card shadow="never" class="item">
+            <div slot="header" class="clearfix"><i class="el-icon-date" /> Time Joined</div>
+            {{timeJoin}}
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card shadow="never" class="item">
+            <div slot="header" class="clearfix"><i class="el-icon-time" /> Last Login</div>
+            {{lastLogin}}
+          </el-card>
+        </el-col>
+      </el-row>
       <el-row :gutter="20">
         <el-col :span="8">
           <el-card shadow="never" class="item">
@@ -39,7 +55,7 @@
         <el-col :span="8">
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix"><i class="el-icon-upload2" /> Submited</div>
-            {{submit}} Problems
+            {{submit}} Times
           </el-card>
         </el-col>
         <el-col :span="8">
@@ -58,6 +74,7 @@
 </template>
 
 <script>
+import timeFormat from './../../methods/time';
 import apiurl from './../../apiurl';
 import MarkdownContainer from './../lib/MarkdownContainer.vue';
 
@@ -65,14 +82,17 @@ export default {
   name: 'UserHomepage',
   data() {
     return {
-      username: '-',
+      username: 'Unknown',
       userid: '-',
-      email: '-',
+      email: 'Unknown',
       introduction: null,
       solved: '-',
       submit: '-',
-      rate: '-',
-      ismine: false
+      rate: 100,
+      ismine: false,
+      timeJoin: 'Unknown',
+      lastLogin: 'Unknown',
+      userLoading: true
     };
   },
   methods: {
@@ -87,6 +107,9 @@ export default {
           this.introduction = data.introduction;
           this.solved = data.solved;
           this.submit = data.submit_time;
+          this.timeJoin = timeFormat(data.date_joined);
+          this.lastLogin = timeFormat(data.last_login);
+          this.userLoading = false;
           if (this.solved == 0) {
             this.rate = 100;
           } else {

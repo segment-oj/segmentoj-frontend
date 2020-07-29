@@ -63,6 +63,10 @@ h3::before {
     content: "# ";
 }
 
+.markdown-container img {
+    max-width: 100%;
+}
+
 .markdown-container h1,
 .cm-header-1 {
     font-size: 30px;

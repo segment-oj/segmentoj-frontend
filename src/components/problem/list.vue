@@ -45,8 +45,8 @@ export default {
       if (!x.enabled) {
         x.title = (
           <div>
+            <router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title } </router-link>
             <el-tag effect="dark" type="warning">Hidden</el-tag>
-            <router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}> { x.title }</router-link>
           </div>
         );
       } else {

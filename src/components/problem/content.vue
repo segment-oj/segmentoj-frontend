@@ -55,6 +55,8 @@
             <div class="tool-content">{{title}}</div>
             <el-divider class="divider">PID</el-divider>
             <div class="tool-content">#{{pid}}</div>
+            <el-divider class="divider">Date Created</el-divider>
+            <div class="tool-content">{{timeAdd}}</div>
           </el-card>
           <el-card shadow="never" class="margin-top">
             <div><i class="el-icon-menu" /> Limitation </div>
@@ -70,6 +72,7 @@
 </template>
 
 <script>
+import timeFormat from './../../methods/time';
 import apiurl from './../../apiurl';
 import MarkdownContainer from './../lib/MarkdownContainer.vue';
 
@@ -78,7 +81,7 @@ export default {
   data() {
     return {
       description: null,
-      title: '-',
+      title: 'Unknown',
       pid: this.$route.params.id,
       allowHTML: false,
       isWider: false,
@@ -86,6 +89,7 @@ export default {
       hidden: false,
       time: '-',
       memery: '-',
+      timeAdd: 'Unknown',
       problemLoading: true
     };
   },
@@ -102,6 +106,7 @@ export default {
           this.memery = data.memory_limit / 1000;
           this.time = data.time_limit;
           this.hidden = !data.enabled;
+          this.timeAdd = timeFormat(data.date_added);
           this.problemLoading = false;
         })
         .catch(err => {

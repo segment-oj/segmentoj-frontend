@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       code: '',
-      lang_num: null,
+      lang_num: '-',
       buttonLoading: false,
       options: [{
         value: '0',
