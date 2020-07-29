@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-dialog title="Login" :visible.sync="$store.state.user.showlogin" :destroy-on-close="true" :close-on-click-modal="false" width="500px">
-      <el-form :model="ldata" ref="loginForm" :rules="rules" :status-icon="true">
+      <el-form :model="ldata" ref="loginForm" :rules="rules">
         <div class="icon-lable"><i class="el-icon-user" /> Username</div>
         <el-form-item prop="username">
           <el-input v-model="ldata.username"></el-input>
@@ -71,6 +71,7 @@ export default {
           });
           this.$SegmentMessage.success(this, 'Logged in');
           this.$store.state.user.showlogin = false;
+          this.buttonLoading = false;
         })
         .catch(err => {
           if (err.request.status === 403) {
