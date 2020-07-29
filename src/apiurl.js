@@ -5,7 +5,7 @@ let apiurl = (url) => {
     url = '/' + url;
   }
   let res = sfconfig.api.server + url;
-  return res;
+  return encodeURI(res);
 };
 
 export default apiurl;
