@@ -81,14 +81,14 @@ export default {
   data() {
     return {
       description: null,
-      title: '-',
+      title: 'Unknown',
       pid: this.$route.params.id,
       allowHTML: false,
       isWider: false,
       enable: true,
       hidden: false,
-      time: '-',
-      memery: '-',
+      time: 'Unknown',
+      memery: 'Unknown',
       timeAdd: 'Unknown'
     };
   },

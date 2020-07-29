@@ -12,13 +12,13 @@
     </div>
     <div id="info">
       <el-row :gutter="20">
-        <el-col :span="18">
+        <el-col :span="16">
           <el-card shadow="never">
             <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
             {{username}}
           </el-card>
         </el-col>
-        <el-col :span="6">
+        <el-col :span="8">
           <el-card shadow="never">
             <div slot="header" class="clearfix"><i class="el-icon-warning-outline" /> User ID</div>
             {{userid}}
@@ -26,16 +26,22 @@
         </el-col>
       </el-row>
       <el-row :gutter="20">
-        <el-col :span="18">
+        <el-col :span="10">
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
             {{email}}
           </el-card>
         </el-col>
-        <el-col :span="6">
+        <el-col :span="7">
           <el-card shadow="never" class="item">
-            <div slot="header" class="clearfix"><i class="el-icon-warning-outline" /> Time Joined</div>
-            {{time_join}}
+            <div slot="header" class="clearfix"><i class="el-icon-date" /> Time Joined</div>
+            {{timeJoin}}
+          </el-card>
+        </el-col>
+        <el-col :span="7">
+          <el-card shadow="never" class="item">
+            <div slot="header" class="clearfix"><i class="el-icon-time" /> Last Login</div>
+            {{lastLogin}}
           </el-card>
         </el-col>
       </el-row>
@@ -49,7 +55,7 @@
         <el-col :span="8">
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix"><i class="el-icon-upload2" /> Submited</div>
-            {{submit}} Problems
+            {{submit}} Times
           </el-card>
         </el-col>
         <el-col :span="8">
@@ -82,8 +88,10 @@ export default {
       introduction: null,
       solved: '-',
       submit: '-',
-      rate: '-',
-      ismine: false
+      rate: 100,
+      ismine: false,
+      timeJoin: null,
+      lastLogin: null
     };
   },
   methods: {
@@ -98,7 +106,8 @@ export default {
           this.introduction = data.introduction;
           this.solved = data.solved;
           this.submit = data.submit_time;
-          this.time_join = timeFormat(data.date_joined);
+          this.timeJoin = timeFormat(data.date_joined);
+          this.lastLogin = timeFormat(data.last_login);
           if (this.solved == 0) {
             this.rate = 100;
           } else {
