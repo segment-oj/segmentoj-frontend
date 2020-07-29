@@ -63,24 +63,33 @@ h3::before {
     content: "# ";
 }
 
-.markdown-container h1 {
+.markdown-container h1,
+.cm-header-1 {
     font-size: 30px;
 }
 
-.markdown-container h2 {
+.markdown-container h2,
+.cm-header-2 {
     font-size: 23px;
 }
 
-.markdown-container h3 {
+.markdown-container h3,
+.cm-header-3 {
     font-size: 18px;
 }
 
-.markdown-container h4 {
+.markdown-container h4,
+.cm-header-4 {
     font-size: 17px;
 }
 
-.markdown-container h5 {
+.markdown-container h5,
+.cm-header-5 {
     font-size: 14px;
+}
+
+.cm-header, .cm-strong {
+    font-weight: 400 !important;
 }
 
 body {
