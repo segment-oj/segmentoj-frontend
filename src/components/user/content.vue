@@ -25,10 +25,20 @@
           </el-card>
         </el-col>
       </el-row>
-      <el-card shadow="never" class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
-        {{email}}
-      </el-card>
+      <el-row :gutter="20">
+        <el-col :span="18">
+          <el-card shadow="never" class="item">
+            <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
+            {{email}}
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card shadow="never" class="item">
+            <div slot="header" class="clearfix"><i class="el-icon-warning-outline" /> Time Joined</div>
+            {{time_join}}
+          </el-card>
+        </el-col>
+      </el-row>
       <el-row :gutter="20">
         <el-col :span="8">
           <el-card shadow="never" class="item">
@@ -58,6 +68,7 @@
 </template>
 
 <script>
+import timeFormat from './../../methods/time';
 import apiurl from './../../apiurl';
 import MarkdownContainer from './../lib/MarkdownContainer.vue';
 
@@ -87,6 +98,7 @@ export default {
           this.introduction = data.introduction;
           this.solved = data.solved;
           this.submit = data.submit_time;
+          this.time_join = timeFormat(data.date_joined);
           if (this.solved == 0) {
             this.rate = 100;
           } else {
