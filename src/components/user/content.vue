@@ -82,16 +82,16 @@ export default {
   name: 'UserHomepage',
   data() {
     return {
-      username: '-',
+      username: 'Unknown',
       userid: '-',
-      email: '-',
+      email: 'Unknown',
       introduction: null,
       solved: '-',
       submit: '-',
       rate: 100,
       ismine: false,
-      timeJoin: null,
-      lastLogin: null,
+      timeJoin: 'Unknown',
+      lastLogin: 'Unknown',
       userLoading: true
     };
   },

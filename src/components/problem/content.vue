@@ -87,8 +87,8 @@ export default {
       isWider: false,
       enable: true,
       hidden: false,
-      time: 'Unknown',
-      memery: 'Unknown',
+      time: '-',
+      memery: '-',
       timeAdd: 'Unknown',
       problemLoading: true
     };
