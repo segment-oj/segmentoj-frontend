@@ -11,16 +11,13 @@
         text-color="#fff"
         active-text-color="rgb(233, 233, 235)"
       >
-        <el-menu-item index=""><img src="./../../assets/icon/SOJ-thick-white.svg" style="height: 40px;" /></el-menu-item>
+        <el-menu-item index=""><img src="./../../assets/icon/SOJ-thick-white.png" style="height: 40px;" /></el-menu-item>
         <el-menu-item index="/"><i class="el-icon-s-home" /> Home</el-menu-item>
         <el-menu-item index="/problem/list"><i class="el-icon-s-order" />Problem List</el-menu-item>
         <el-submenu index="2" id="user">
           <template slot="title">
-              <el-avatar shape="square" v-if="this.$store.state.user.authenticated">
-                {{this.$store.state.user.username}}
-              </el-avatar>
-              <el-avatar shape="square" v-else>
-                User
+              <el-avatar shape="square">
+                <img src="./../../assets/icon/SOJ-thick-white-background.png" />
               </el-avatar>
           </template>
           <div v-if="this.$store.state.user.authenticated">
