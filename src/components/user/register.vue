@@ -18,6 +18,8 @@
         <el-form-item prop="email">
           <el-input type="email" v-model="ldata.email"></el-input>
         </el-form-item>
+        <div class="icon-lable form-required"><i class="el-icon-check" /> Captcha</div>
+        <captcha class="margin-bottom" />
         <el-form-item>
           <el-button type="primary" v-on:click="onSubmit();" :loading="buttonLoading">Register</el-button>
           <el-button v-on:click="$store.state.user.showregister = false;">Cancel</el-button>
@@ -30,6 +32,7 @@
 
 <script>
 import apiurl from './../../apiurl';
+import captcha from './../lib/captcha.vue';
 
 export default {
   name: 'UserRegister',
@@ -99,7 +102,9 @@ export default {
         .post(apiurl('/account'), {
           username: this.ldata.username,
           password: this.ldata.password,
-          email: this.ldata.email
+          email: this.ldata.email,
+          captcha_key: this.$store.state.captcha.captchaKey,
+          captcha_answer: this.$store.state.captcha.captchaAnswer
         })
         .then(() => {
           this.$store.state.user.showregister = false;
@@ -137,13 +142,19 @@ export default {
     reset() {
       this.$refs['register'].resetFields();
     }
+  },
+  components: {
+    captcha
   }
 };
 </script>
 
 <style scoped>
-.form-required::before {
-    content: "*";
-    color: #f56c6c;
+.form-required {
+    margin-bottom: 5px;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
 }
 </style>

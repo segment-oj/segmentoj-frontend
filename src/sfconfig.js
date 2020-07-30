@@ -9,5 +9,6 @@ export default {
     pedantic: false,
     smartLists: true,
     smartypants: false,
-  }
+  },
+  captchaKeyMax: 2000000000
 };
