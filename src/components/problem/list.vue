@@ -67,7 +67,7 @@ export default {
         this.data_count = data.res;
       })
       .catch(err => {
-        this.$SegmentMessage.error(this, '[Problem List] Get List Length Failed.');
+        this.$SegmentMessage.error(this, '[Problem List] Get List Length Failed');
         console.log(err);
       });
   }

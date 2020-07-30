@@ -18,6 +18,8 @@
         <el-form-item prop="email">
           <el-input type="email" v-model="ldata.email"></el-input>
         </el-form-item>
+        <div class="icon-lable form-required"><i class="el-icon-check" /> Captcha</div>
+        <captcha ref="captchaElement" class="margin-bottom" />
         <el-form-item>
           <el-button type="primary" v-on:click="onSubmit();" :loading="buttonLoading">Register</el-button>
           <el-button v-on:click="$store.state.user.showregister = false;">Cancel</el-button>
@@ -30,6 +32,7 @@
 
 <script>
 import apiurl from './../../apiurl';
+import captcha from './../lib/captcha.vue';
 
 export default {
   name: 'UserRegister',
@@ -93,13 +96,18 @@ export default {
     };
   },
   methods: {
+    refresh_captcha() {
+      this.$refs.captchaElement.refresh_captcha();
+    },
     submit() {
       this.buttonLoading = true;
       this.$axios
         .post(apiurl('/account'), {
           username: this.ldata.username,
           password: this.ldata.password,
-          email: this.ldata.email
+          email: this.ldata.email,
+          captcha_key: this.$store.state.captcha.captchaKey,
+          captcha_answer: this.$store.state.captcha.captchaAnswer
         })
         .then(() => {
           this.$store.state.user.showregister = false;
@@ -112,6 +120,9 @@ export default {
           if (err.request.status === 400) {
             // HTTP 400 Bad Request
             this.$SegmentMessage.error(this, JSON.parse(err.request.response).detail);
+          } else if (err.request.status === 406){
+            // HTTP 406 Not Acceptable
+            this.$SegmentMessage.error(this, JSON.parse(err.request.response).detail);
           } else if (err.request.status === 409) {
             // HTTP 409 Conflict
             this.$SegmentMessage.error(this, 'Username has been taken');
@@ -122,6 +133,7 @@ export default {
             // Unknown error
             this.$SegmentMessage.error(this, 'Unknown error');
           }
+          this.refresh_captcha();
           this.buttonLoading = false;
         });
     },
@@ -137,13 +149,19 @@ export default {
     reset() {
       this.$refs['register'].resetFields();
     }
+  },
+  components: {
+    captcha
   }
 };
 </script>
 
 <style scoped>
-.form-required::before {
-    content: "*";
-    color: #f56c6c;
+.form-required {
+    margin-bottom: 5px;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
 }
 </style>
