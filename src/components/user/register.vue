@@ -117,6 +117,9 @@ export default {
           if (err.request.status === 400) {
             // HTTP 400 Bad Request
             this.$SegmentMessage.error(this, JSON.parse(err.request.response).detail);
+          } else if (err.request.status === 406){
+            // HTTP 406 Not Acceptable
+            this.$SegmentMessage.error(this, JSON.parse(err.request.response).detail);
           } else if (err.request.status === 409) {
             // HTTP 409 Conflict
             this.$SegmentMessage.error(this, 'Username has been taken');
