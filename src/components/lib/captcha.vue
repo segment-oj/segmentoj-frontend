@@ -39,10 +39,14 @@ export default {
 
 <style scoped>
 .captcha {
-  display: flex;
+    display: flex;
 }
 
 .captcha-img {
-  margin-left: 10px;
+    margin-left: 10px;
+}
+
+.captcha-img:hover {
+    cursor: pointer;
 }
 </style>
