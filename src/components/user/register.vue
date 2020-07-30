@@ -19,7 +19,7 @@
           <el-input type="email" v-model="ldata.email"></el-input>
         </el-form-item>
         <div class="icon-lable form-required"><i class="el-icon-check" /> Captcha</div>
-        <captcha class="margin-bottom" />
+        <captcha ref="captchaElement" class="margin-bottom" />
         <el-form-item>
           <el-button type="primary" v-on:click="onSubmit();" :loading="buttonLoading">Register</el-button>
           <el-button v-on:click="$store.state.user.showregister = false;">Cancel</el-button>
@@ -96,6 +96,9 @@ export default {
     };
   },
   methods: {
+    refresh_captcha() {
+      this.$refs.captchaElement.refresh_captcha();
+    },
     submit() {
       this.buttonLoading = true;
       this.$axios
@@ -130,6 +133,7 @@ export default {
             // Unknown error
             this.$SegmentMessage.error(this, 'Unknown error');
           }
+          this.refresh_captcha();
           this.buttonLoading = false;
         });
     },
