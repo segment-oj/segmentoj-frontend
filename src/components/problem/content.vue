@@ -65,6 +65,23 @@
             <el-divider class="divider">Memery</el-divider>
             <div class="tool-content">{{memery}} MB</div>
           </el-card>
+          <el-card shadow="never" class="margin-top">
+            <div class="margin-bottom">
+              <i class="el-icon-collection-tag" />
+              Tags
+              <div v-if="showTag" @click="showTag = false" id="tag-button"><i class="el-icon-arrow-up" />Hide tags</div>
+              <div v-if="!showTag" @click="showTag = true" id="tag-button"><i class="el-icon-arrow-down" />Show tags</div>
+            </div>
+            <div class="tags" v-if="showTag">
+              <SegmentTag
+                v-for="item in rendertags"
+                :key="item.content"
+                :border_color="item.color"
+                :content="item.content"
+                >
+              </SegmentTag>
+            </div>
+          </el-card>
         </div>
       </div>
     </div>
@@ -75,6 +92,7 @@
 import timeFormat from './../../methods/time';
 import apiurl from './../../apiurl';
 import MarkdownContainer from './../lib/MarkdownContainer.vue';
+import SegmentTag from './../lib/tag.vue';
 
 export default {
   name: 'ProblemView',
@@ -90,10 +108,29 @@ export default {
       time: '-',
       memery: '-',
       timeAdd: 'Unknown',
-      problemLoading: true
+      tags: [],
+      rendertags: [],
+      problemLoading: true,
+      showTag: false
     };
   },
   methods: {
+    render_tags() {
+      for(let i = 0; i < this.tags.length; i += 1) {
+        this.$axios
+          .get(apiurl('/problem/tag/' + this.tags[i]))
+          .then(res => {
+            let data = res.data;
+            this.rendertags.push({
+              color: data.res.color,
+              content: data.res.content
+            });
+          })
+          .catch(() => {
+
+          });
+      } 
+    },
     loadproblem() {
       this.$axios
         .get(apiurl('/problem/' + String(this.$route.params.id)))
@@ -107,7 +144,9 @@ export default {
           this.time = data.time_limit;
           this.hidden = !data.enabled;
           this.timeAdd = timeFormat(data.date_added);
+          this.tags = data.tags;
           this.problemLoading = false;
+          this.render_tags();
         })
         .catch(err => {
           if(err.request.status === 404) {
@@ -127,7 +166,8 @@ export default {
     this.loadproblem();
   },
   components: {
-    MarkdownContainer
+    MarkdownContainer,
+    SegmentTag
   }
 };
 </script>
@@ -144,6 +184,10 @@ export default {
 
 .margin-top {
     margin-top: 20px;
+}
+
+.margin-bottom {
+    margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -193,11 +237,13 @@ export default {
     border: 1px solid #e4e7ed;
 }
 
-#full-screen-button {
+#full-screen-button,
+#tag-button {
     float: right;
 }
 
-#full-screen-button:hover {
+#full-screen-button:hover,
+#tag-button:hover {
     cursor: pointer;
 }
 
