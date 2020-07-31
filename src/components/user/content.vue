@@ -6,7 +6,7 @@
       </el-card>
       <el-card class="item">
         <div slot="header" class="clearfix"><i class="el-icon-setting" /> Tool Bar</div>
-        <el-button v-if="ismine" type="primary">Edit</el-button>
+        <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');">Edit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
     </div>
@@ -66,8 +66,14 @@
         </el-col>
       </el-row>
       <el-card shadow="never" class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Introduction</div>
+        <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Introductions</div>
         <MarkdownContainer v-if="introduction" :content="introduction"/>
+      </el-card>
+      <el-card class="item">
+        <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Permissions</div>
+        <el-checkbox v-model="isStaff" disabled>Staff</el-checkbox>
+        <el-checkbox v-model="isRoot" disabled>Root</el-checkbox>
+        <el-checkbox v-model="isActive" disabled>Active</el-checkbox>
       </el-card>
     </div>
   </div>
@@ -82,6 +88,7 @@ export default {
   name: 'UserHomepage',
   data() {
     return {
+      staff: false,
       username: 'Unknown',
       userid: '-',
       email: 'Unknown',
@@ -92,7 +99,10 @@ export default {
       ismine: false,
       timeJoin: 'Unknown',
       lastLogin: 'Unknown',
-      userLoading: true
+      userLoading: true,
+      isRoot: false,
+      isStaff: false,
+      isActive: true
     };
   },
   methods: {
@@ -109,14 +119,17 @@ export default {
           this.submit = data.submit_time;
           this.timeJoin = timeFormat(data.date_joined);
           this.lastLogin = timeFormat(data.last_login);
+          this.isRoot = data.is_superuser;
+          this.isStaff = data.is_staff;
+          this.isActive = data.is_active;
           this.userLoading = false;
-          if (this.solved == 0) {
+          if (this.submit === 0) {
             this.rate = 100;
           } else {
             this.rate = (this.solved * 100.0) / this.submit;
             this.rate = this.rate.toFixed(2);
           }
-          if (this.userid == String(this.$store.state.user.userid)) {
+          if (this.$store.state.user.isStaff || this.userid == String(this.$store.state.user.userid)) {
             this.ismine = true;
           }
         })

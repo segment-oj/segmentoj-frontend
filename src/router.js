@@ -11,6 +11,9 @@ let router = new Router({
     path: '/account/:id',
     component: () => import('./components/user/content.vue')
   }, {
+    path: '/account/:id/edit',
+    component: () => import('./components/user/edit.vue')
+  }, {
     path: '/problem/list',
     component: () => import('./components/problem/list.vue')
   }, {

@@ -71,6 +71,10 @@ export default {
               this.$store.commit('userLang', {
                 lang: detail.data.res.lang
               });
+              this.$store.commit('userStaff', {
+                is_staff: detail.data.res.is_staff,
+                is_superuser: detail.data.res.is_superuser
+              });
             });
           this.$store.commit('userLogin', {
             username: this.ldata.username,
