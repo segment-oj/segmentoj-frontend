@@ -7,8 +7,8 @@
       </div>
     </div>
     <Footer />
-    <UserLogin></UserLogin>
-    <UserRegister></UserRegister>
+    <UserLogin v-if="$store.state.user.showlogin"></UserLogin>
+    <UserRegister v-if="$store.state.user.showregister"></UserRegister>
   </div>
 </template>
 
