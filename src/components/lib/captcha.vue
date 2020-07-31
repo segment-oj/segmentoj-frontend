@@ -1,6 +1,6 @@
 <template>
   <div class="captcha">
-    <el-input v-model="captcha_answer" placeholder="Solve Captcha"></el-input>
+    <el-input v-model="captcha_answer"></el-input>
     <img class="captcha-img" v-if="loaded" @click="refresh_captcha();" :src="img_url" />
   </div>
 </template>
