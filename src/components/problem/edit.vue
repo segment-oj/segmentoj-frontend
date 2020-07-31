@@ -43,8 +43,7 @@ export default {
     submit() {
       this.buttonLoading = true;
       this.$axios
-        .patch(apiurl('/problem/content'), {
-          pid: Number(this.$route.params.id),
+        .patch(apiurl('/problem/' + this.$route.params.id), {
           title: this.title,
           description: this.mdContent
         })
