@@ -123,7 +123,7 @@ export default {
           this.isStaff = data.is_staff;
           this.isActive = data.is_active;
           this.userLoading = false;
-          if (this.solved === 0) {
+          if (this.submit === 0) {
             this.rate = 100;
           } else {
             this.rate = (this.solved * 100.0) / this.submit;
