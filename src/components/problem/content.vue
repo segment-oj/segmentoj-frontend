@@ -238,11 +238,13 @@ export default {
     border: 1px solid #e4e7ed;
 }
 
-#full-screen-button, #tag-button {
+#full-screen-button,
+#tag-button {
     float: right;
 }
 
-#full-screen-button:hover, #tag-button:hover {
+#full-screen-button:hover,
+#tag-button:hover {
     cursor: pointer;
 }
 

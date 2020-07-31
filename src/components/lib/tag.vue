@@ -52,16 +52,16 @@ export default {
 
 <style scoped>
 .seg-tag {
-  display: inline-block;
-  height: 32px;
-  padding: 0 10px;
-  line-height: 30px;
-  font-size: 12px;
-  font-weight: 500;
-  border-width: 1px;
-  border-style: solid;
-  box-sizing: border-box;
-  white-space: nowrap;
-  margin: 3px;
+    display: inline-block;
+    height: 32px;
+    padding: 0 10px;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    white-space: nowrap;
+    margin: 3px;
 }
 </style>
