@@ -5,7 +5,6 @@
     </el-table>
     <el-pagination
       :page-size="this.limit"
-      :total="this.total"
       background
       layout="prev, pager, next, jumper, total"
       @current-change="this.onPageChange"
