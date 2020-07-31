@@ -185,7 +185,6 @@ export default {
 #pannel {
     background-color: #ffffff !important;
     margin-left: 20px;
-    width: calc(1140px - 850px - 20px);
 }
 
 #tools {
