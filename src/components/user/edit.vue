@@ -2,7 +2,7 @@
   <div class="content">
     <div id="tool-bar">
       <el-card shadow="never">
-        <el-avatar shape="square" :size="400"><img src="./../../assets/icon/SOJ-thick-white-background.png" /></el-avatar>
+        <el-avatar shape="square" :size="avatarWidth"><img src="./../../assets/icon/SOJ-thick-white-background.png" /></el-avatar>
       </el-card>
       <el-card class="item">
         <el-button v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot" type="primary" @click="submit()" :loading="buttonLoading">Submit</el-button>
@@ -47,6 +47,7 @@ export default {
       isStaffMe: false,
       isActiveMe: true,
       buttonLoading: false,
+      avatarWidth: 800 < screen.width ? 400 : screen.width - 40
     };
   },
   methods: {
@@ -116,5 +117,19 @@ export default {
 
 .item {
     margin-top: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+    .content {
+        display: inline;
+    }
+
+    #tool-bar {
+        margin-right: 0px;
+    }
+
+    .edit-content {
+        margin-top: 20px;
+    }
 }
 </style>
