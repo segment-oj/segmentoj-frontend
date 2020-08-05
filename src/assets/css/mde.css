@@ -2,3 +2,8 @@
     height: 500px;
     border: none;
 }
+
+.cm-header,
+.cm-strong {
+    font-weight: 400 !important;
+}

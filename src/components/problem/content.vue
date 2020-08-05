@@ -43,7 +43,7 @@
                 <el-menu-item index="2-2">Settings</el-menu-item>
               </el-submenu>
             </el-menu>
-            <el-button @click="$router.push('/problem/list');">Back</el-button>
+            <el-button @click="$router.push('/problem/list');" class="margin-top">Back</el-button>
           </el-card>
         </div>
         <div id="info">
@@ -253,5 +253,9 @@ export default {
 
 .tool-content {
     color: #606266;
+}
+
+.margin-top {
+    margin-top: 10px;
 }
 </style>
