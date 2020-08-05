@@ -1,8 +1,10 @@
 <template>
   <div id="user-content">
-    <div>
+    <div id="tool">
       <el-card shadow="never">
-        <el-avatar shape="square" :size="400"><img src="./../../assets/icon/SOJ-thick-white-background.png" /></el-avatar>
+        <el-avatar shape="square" :size="this.avatarWidth">
+          <img src="./../../assets/icon/SOJ-thick-white-background.png" />
+        </el-avatar>
       </el-card>
       <el-card class="item">
         <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');">Edit</el-button>
@@ -101,7 +103,8 @@ export default {
       userLoading: true,
       isRoot: false,
       isStaff: false,
-      isActive: true
+      isActive: true,
+      avatarWidth: 440 < screen.width ? 400 : screen.width - 40
     };
   },
   methods: {
@@ -172,5 +175,17 @@ export default {
 
 #user-content {
     display: flex;
+}
+
+@media only screen and (max-width: 800px) {
+    #user-content {
+        display: inline;
+    }
+
+    #info {
+        margin-left: 0px;
+        margin-top: 20px;
+        max-width: 100vw;
+    }
 }
 </style>

@@ -1,6 +1,13 @@
 <template>
   <div>
-    <el-dialog title="Login" :visible.sync="$store.state.user.showlogin" :destroy-on-close="true" :close-on-click-modal="false" width="500px">
+    <el-dialog
+      title="Login"
+      :visible.sync="$store.state.user.showlogin"
+      :destroy-on-close="true"
+      :close-on-click-modal="false"
+      width="500px"
+      class="max-screen"
+      >
       <el-form :model="ldata" ref="loginForm" :rules="rules">
         <div class="icon-lable"><i class="el-icon-user" /> Username</div>
         <el-form-item prop="username">

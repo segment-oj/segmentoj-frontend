@@ -43,7 +43,7 @@
                 <el-menu-item index="2-2">Settings</el-menu-item>
               </el-submenu>
             </el-menu>
-            <el-button @click="$router.push('/problem/list');" class="margin-top">Back</el-button>
+            <el-button @click="$router.push('/problem/list');" class="margin-top-small">Back</el-button>
           </el-card>
         </div>
         <div id="info">
@@ -197,9 +197,13 @@ export default {
         right: 30px;
     }
 
-    #pannel:hover {
+    #pannel:active {
         z-index: 1000;
         opacity: 1;
+    }
+
+    #info {
+        display: none;
     }
 }
 
@@ -255,7 +259,7 @@ export default {
     color: #606266;
 }
 
-.margin-top {
+.margin-top-small {
     margin-top: 10px;
 }
 </style>

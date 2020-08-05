@@ -11,9 +11,17 @@
         text-color="#fff"
         active-text-color="rgb(233, 233, 235)"
       >
-        <el-menu-item index=""><img src="./../../assets/icon/SOJ-thick-white.png" style="height: 40px;" /></el-menu-item>
-        <el-menu-item index="/"><i class="el-icon-s-home" /> Home</el-menu-item>
-        <el-menu-item index="/problem/list"><i class="el-icon-s-order" />Problem List</el-menu-item>
+        <el-menu-item index="" @click="$router.push('/')">
+          <img src="./../../assets/icon/SOJ-thick-white.png" style="height: 40px;" />
+        </el-menu-item>
+        <el-menu-item index="/" class="webkit-box">
+          <i class="el-icon-s-home" />
+          <div class="lable"> Home</div>
+        </el-menu-item>
+        <el-menu-item index="/problem/list" class="webkit-box">
+          <i class="el-icon-s-order" /> 
+          <div class="lable"> Problem List</div>
+        </el-menu-item>
         <el-submenu index="2" id="user">
           <template slot="title">
               <el-avatar shape="square">
@@ -53,7 +61,13 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style scoped>
+@media only screen and (max-width: 500px) {
+    .lable {
+        display: none;
+    }
+}
+
 #nav {
     z-index: 1000;
     background-color: #545c64;
@@ -80,5 +94,9 @@ export default {
 
 #user_icon {
     height: 50%;
+}
+
+.webkit-box {
+    display: -webkit-box;
 }
 </style>
