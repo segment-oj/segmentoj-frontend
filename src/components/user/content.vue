@@ -6,7 +6,11 @@
           <img src="./../../assets/icon/SOJ-thick-white-background.png" />
         </el-avatar>
       </el-card>
-      <el-card class="item">
+      <el-card class="item float" v-if="!smallScreen">
+        <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');" icon="el-icon-edit" circle />
+        <el-button @click="$router.go(-1);" icon="el-icon-back" circle />
+      </el-card>
+      <el-card class="item" v-else>
         <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');">Edit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
@@ -136,7 +140,8 @@ export default {
       isRoot: false,
       isStaff: false,
       isActive: true,
-      avatarWidth: 800 < screen.width ? 300 : screen.width - 40
+      avatarWidth: 800 < screen.width ? 300 : screen.width - 40,
+      smallScreen: 700 < screen.width
     };
   },
   methods: {
@@ -234,6 +239,27 @@ export default {
 
     .small-lable {
         display: unset;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .float {
+        z-index: 1000;
+        opacity: 0.5;
+        position: fixed;
+        transition: 0.5s;
+        right: 30px;
+        top: 50px;
+    }
+
+    .float:active {
+        z-index: 1000;
+        opacity: 1;
+    }
+
+    .float:hover {
+        z-index: 1000;
+        opacity: 1;
     }
 }
 </style>

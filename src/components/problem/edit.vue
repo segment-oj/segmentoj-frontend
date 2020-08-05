@@ -162,13 +162,6 @@ export default {
     margin-top: 0.7rem;
 }
 
-.float {
-    position: fixed;
-    z-index: 1000;
-    right: 30px;
-    top: 80px;
-}
-
 @media only screen and (max-width: 700px) {
     .float {
         z-index: 1000;
@@ -176,6 +169,7 @@ export default {
         position: fixed;
         transition: 0.5s;
         right: 30px;
+        top: 80px;
     }
 
     .float:active {

@@ -4,14 +4,21 @@
       <el-card shadow="never">
         <el-avatar shape="square" :size="avatarWidth"><img src="./../../assets/icon/SOJ-thick-white-background.png" /></el-avatar>
       </el-card>
-      <el-card class="item">
+      <el-card class="item float" v-if="smallScreen">
+        <el-button v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot" type="primary" @click="submit()" icon="el-icon-check" circle />
+        <el-button @click="$router.go(-1);" icon="el-icon-back" circle />
+      </el-card>
+      <el-card class="item" v-else>
         <el-button v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot" type="primary" @click="submit()" :loading="buttonLoading">Submit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
     </div>
     <div v-loading="!(isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot)" class="edit-content">
       <el-card>
-        <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
+        <div slot="header" class="clearfix">
+          <i class="el-icon-user" />
+          User Name
+        </div>
         <el-input v-model="username"></el-input>
       </el-card>
       <el-card class="item">
@@ -47,7 +54,8 @@ export default {
       isStaffMe: false,
       isActiveMe: true,
       buttonLoading: false,
-      avatarWidth: 800 < screen.width ? 400 : screen.width - 40
+      avatarWidth: 800 < screen.width ? 400 : screen.width - 40,
+      smallScreen: screen.width < 700
     };
   },
   methods: {
@@ -130,6 +138,27 @@ export default {
 
     .edit-content {
         margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .float {
+        z-index: 1000;
+        opacity: 0.5;
+        position: fixed;
+        transition: 0.5s;
+        right: 30px;
+        top: 50px;
+    }
+
+    .float:active {
+        z-index: 1000;
+        opacity: 1;
+    }
+
+    .float:hover {
+        z-index: 1000;
+        opacity: 1;
     }
 }
 </style>
