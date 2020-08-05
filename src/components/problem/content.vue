@@ -67,8 +67,14 @@
             <div class="margin-bottom">
               <i class="el-icon-s-flag" />
               Tags
-              <div v-if="showTag" @click="showTag = false" id="tag-button"><i class="el-icon-arrow-up" /> Hide tags</div>
-              <div v-if="!showTag" @click="showTag = true" id="tag-button"><i class="el-icon-arrow-down" /> Show tags</div>
+              <div v-if="showTag" @click="showTag = false" id="tag-button">
+                <i class="el-icon-arrow-up" />
+                Hide
+              </div>
+              <div v-else @click="showTag = true" id="tag-button">
+                <i class="el-icon-arrow-down" />
+                Show
+              </div>
             </div>
             <div class="tags" v-if="showTag">
               <SegmentTag
