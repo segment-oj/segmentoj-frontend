@@ -18,35 +18,33 @@
       </div>
       <div id="pannel" v-if="!isWider">
         <div id="tools">
-          <el-row>
-            <el-col>
-              <div><i class="el-icon-s-tools" /> Tool Bar</div>
-              <el-menu default-active="3">
-                <el-menu-item index="3" @click="$router.push('/problem/' + $route.params.id +'/submit');">
-                  <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
+          <el-card>
+            <div><i class="el-icon-s-tools" /> Tool Bar</div>
+            <el-menu default-active="3">
+              <el-menu-item index="3" @click="$router.push('/problem/' + $route.params.id +'/submit');">
+                <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
+              </el-menu-item>
+              <el-submenu index="0">
+                <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
+                <el-menu-item index="0-0">Submissions</el-menu-item>
+                <el-menu-item index="0-1">Statistics</el-menu-item>
+              </el-submenu>
+              <el-submenu index="1">
+                <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
+                <el-menu-item index="1-0">Discussions</el-menu-item>
+                <el-menu-item index="1-1">Solutions</el-menu-item>
+              </el-submenu>
+              <el-submenu index="2">
+                <template slot="title"><div class="text-bold"><i class="el-icon-edit" /> Edit</div></template>
+                <el-menu-item index="2-0" @click="$router.push('/problem/' + $route.params.id +'/edit');">
+                  Edit
                 </el-menu-item>
-                <el-submenu index="0">
-                  <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
-                  <el-menu-item index="0-0">Submissions</el-menu-item>
-                  <el-menu-item index="0-1">Statistics</el-menu-item>
-                </el-submenu>
-                <el-submenu index="1">
-                  <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
-                  <el-menu-item index="1-0">Discussions</el-menu-item>
-                  <el-menu-item index="1-1">Solutions</el-menu-item>
-                </el-submenu>
-                <el-submenu index="2">
-                  <template slot="title"><div class="text-bold"><i class="el-icon-edit" /> Edit</div></template>
-                  <el-menu-item index="2-0" @click="$router.push('/problem/' + $route.params.id +'/edit');">
-                    Edit
-                  </el-menu-item>
-                  <el-menu-item index="2-1">Delete</el-menu-item>
-                  <el-menu-item index="2-2">Settings</el-menu-item>
-                </el-submenu>
-              </el-menu>
-              <el-button @click="$router.push('/problem/list');">Back</el-button>
-            </el-col>
-          </el-row>
+                <el-menu-item index="2-1">Delete</el-menu-item>
+                <el-menu-item index="2-2">Settings</el-menu-item>
+              </el-submenu>
+            </el-menu>
+            <el-button @click="$router.push('/problem/list');">Back</el-button>
+          </el-card>
         </div>
         <div id="info">
           <el-card shadow="never">
@@ -223,18 +221,16 @@ export default {
     z-index: 10;
     width: 100%;
     padding: 20px;
-    border: 1px solid #e4e7ed;
+    border: 1px solid #ebeef5;
 }
 
 #pannel {
     background-color: #ffffff !important;
-    margin-left: 20px;
+    margin-left: 30px;
 }
 
 #tools {
-    width: 200px;
-    padding: 20px;
-    border: 1px solid #e4e7ed;
+    width: 250px;
 }
 
 #full-screen-button,
