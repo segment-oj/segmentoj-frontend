@@ -223,7 +223,7 @@ export default {
     }
 
     #info {
-        margin-left: 0;
+        margin-left: 0px;
         margin-top: 20px;
         max-width: 100vw;
     }
