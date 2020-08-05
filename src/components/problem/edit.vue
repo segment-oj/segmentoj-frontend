@@ -4,6 +4,7 @@
       <el-card>
         <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
         <el-input v-model="title" placeholder="Input problem title here"></el-input>
+        <el-checkbox v-model="enabled" label="Enabled" class="item"></el-checkbox>
       </el-card>
       <el-card class="item">
         <i class="el-icon-menu" /> Limitation
@@ -53,7 +54,8 @@ export default {
       contentLoading: true,
       buttonLoading: false,
       time: 'Unknown',
-      memery: 'Unknown'
+      memery: 'Unknown',
+      enabled: true
     };
   },
   methods: {
@@ -66,6 +68,7 @@ export default {
           this.mdContent = data.description;
           this.memery = data.memory_limit / 1000;
           this.time = data.time_limit;
+          this.enabled = data.enabled;
           this.contentLoading = false;
         })
         .catch(err => {
@@ -83,7 +86,8 @@ export default {
           title: this.title,
           description: this.mdContent,
           memory_limit: this.memery * 1000,
-          time_limit: this.time
+          time_limit: this.time,
+          enabled: this.enabled
         })
         .then(() => {
           this.$SegmentMessage.success(this, 'Your change has been submited');
