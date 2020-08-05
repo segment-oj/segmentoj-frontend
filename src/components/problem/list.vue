@@ -3,7 +3,7 @@
     <AjaxTable
       :ajax_url="ajax_url"
       :columns="columns"
-      :limit=10
+      :limit="10"
       :total="data_count"
       :process="process"
     ></AjaxTable>

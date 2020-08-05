@@ -36,7 +36,7 @@
                 <el-menu-item index="1-0">Discussions</el-menu-item>
                 <el-menu-item index="1-1">Solutions</el-menu-item>
               </el-submenu>
-              <el-submenu index="2">
+              <el-submenu index="2" :disabled="!this.$store.state.user.isStaff">
                 <template slot="title"><div class="text-bold"><i class="el-icon-edit" /> Edit</div></template>
                 <el-menu-item index="2-0" @click="$router.push('/problem/' + $route.params.id +'/edit');">
                   Edit
