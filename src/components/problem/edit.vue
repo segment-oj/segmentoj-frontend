@@ -51,6 +51,7 @@
       <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
       <el-input v-model="title" placeholder="Input problem title here"></el-input>
       <el-checkbox v-model="enabled" label="Enabled" class="item"></el-checkbox>
+      <el-checkbox v-model="html" label="Allow HTML" class="item"></el-checkbox>
     </el-card>
     <el-card class="item">
       <i class="el-icon-menu" /> Limitation
