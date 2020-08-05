@@ -125,7 +125,7 @@ export default {
     }
 
     #tool-bar {
-        margin-right: 0px;
+        margin-right: 0;
     }
 
     .edit-content {
