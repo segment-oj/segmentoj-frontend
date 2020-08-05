@@ -5,7 +5,7 @@
         <el-card>
           <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
           <el-input v-model="title" placeholder="Input problem title here"></el-input>
-          <el-checkbox v-model="enabled" label="Enabled" class="item"></el-checkbox>
+          <el-checkbox v-model="disable" label="Disabled" class="item"></el-checkbox>
           <el-checkbox v-model="html" label="Allow HTML" class="item"></el-checkbox>
         </el-card>
         <el-card class="item">
@@ -50,7 +50,7 @@
     <el-card>
       <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
       <el-input v-model="title" placeholder="Input problem title here"></el-input>
-      <el-checkbox v-model="enabled" label="Enabled" class="item"></el-checkbox>
+      <el-checkbox v-model="disable" label="Disabled" class="item"></el-checkbox>
       <el-checkbox v-model="html" label="Allow HTML" class="item"></el-checkbox>
     </el-card>
     <el-card class="item">
@@ -95,7 +95,7 @@ export default {
       buttonLoading: false,
       time: 'Unknown',
       memery: 'Unknown',
-      enabled: true,
+      disable: false,
       html: false,
       smallScreen: screen.width < 700
     };
@@ -110,7 +110,7 @@ export default {
           this.mdContent = data.description;
           this.memery = data.memory_limit / 1000;
           this.time = data.time_limit;
-          this.enabled = data.enabled;
+          this.disable = !data.enabled;
           this.html = data.allow_html;
           this.contentLoading = false;
         })
@@ -131,7 +131,7 @@ export default {
           memory_limit: this.memery * 1000,
           time_limit: this.time,
           allow_html: this.html,
-          enabled: this.enabled
+          enabled: !this.disable
         })
         .then(() => {
           this.buttonLoading = false;
