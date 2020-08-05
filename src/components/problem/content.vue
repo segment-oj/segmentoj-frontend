@@ -42,7 +42,6 @@
                   Edit
                 </el-menu-item>
                 <el-menu-item index="2-1">Delete</el-menu-item>
-                <el-menu-item index="2-2">Settings</el-menu-item>
               </el-submenu>
             </el-menu>
             <el-button @click="$router.push('/problem/list');" class="margin-top-small">Back</el-button>

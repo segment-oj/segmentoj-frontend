@@ -6,6 +6,7 @@
           <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
           <el-input v-model="title" placeholder="Input problem title here"></el-input>
           <el-checkbox v-model="enabled" label="Enabled" class="item"></el-checkbox>
+          <el-checkbox v-model="html" label="Allow HTML" class="item"></el-checkbox>
         </el-card>
         <el-card class="item">
           <i class="el-icon-menu" /> Limitation
@@ -94,6 +95,7 @@ export default {
       time: 'Unknown',
       memery: 'Unknown',
       enabled: true,
+      html: false,
       smallScreen: screen.width < 700
     };
   },
@@ -108,6 +110,7 @@ export default {
           this.memery = data.memory_limit / 1000;
           this.time = data.time_limit;
           this.enabled = data.enabled;
+          this.html = data.allow_html;
           this.contentLoading = false;
         })
         .catch(err => {
@@ -126,6 +129,7 @@ export default {
           description: this.mdContent,
           memory_limit: this.memery * 1000,
           time_limit: this.time,
+          allow_html: this.html,
           enabled: this.enabled
         })
         .then(() => {
