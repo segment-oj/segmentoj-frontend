@@ -2,13 +2,15 @@
   <div id="problem-view">
     <div id="content">
       <div id="problem-content" v-loading="problemLoading">
-        <div v-if="!isWider" id="full-screen-button" @click="full_screen()">
-          Expand
-          <i class="el-icon-arrow-right"></i>
-        </div>
-        <div v-else id="full-screen-button" @click="full_screen()">
-          Fold
-          <i class="el-icon-arrow-left"></i>
+        <div v-if="!smallScreen">
+          <div v-if="!isWider" id="full-screen-button" @click="full_screen()">
+            Expand
+            <i class="el-icon-arrow-right"></i>
+          </div>
+          <div v-else id="full-screen-button" @click="full_screen()">
+            Fold
+            <i class="el-icon-arrow-left"></i>
+          </div>
         </div>
         <div class="flex-header">
           <el-tag v-if="hidden" type="warning" id="hidden-problem" effect="dark">Hidden</el-tag>
