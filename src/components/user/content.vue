@@ -70,7 +70,7 @@
         <MarkdownContainer v-if="introduction" :content="introduction"/>
       </el-card>
       <el-card class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Permissions</div>
+        <div slot="header" class="clearfix"><i class="el-icon-user" /> Permissions</div>
         <el-checkbox v-model="isStaff" disabled>Staff</el-checkbox>
         <el-checkbox v-model="isRoot" disabled>Root</el-checkbox>
         <el-checkbox v-model="isActive" disabled>Active</el-checkbox>

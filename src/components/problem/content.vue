@@ -67,10 +67,10 @@
           </el-card>
           <el-card shadow="never" class="margin-top">
             <div class="margin-bottom">
-              <i class="el-icon-collection-tag" />
+              <i class="el-icon-s-flag" />
               Tags
-              <div v-if="showTag" @click="showTag = false" id="tag-button"><i class="el-icon-arrow-up" />Hide tags</div>
-              <div v-if="!showTag" @click="showTag = true" id="tag-button"><i class="el-icon-arrow-down" />Show tags</div>
+              <div v-if="showTag" @click="showTag = false" id="tag-button"><i class="el-icon-arrow-up" /> Hide tags</div>
+              <div v-if="!showTag" @click="showTag = true" id="tag-button"><i class="el-icon-arrow-down" /> Show tags</div>
             </div>
             <div class="tags" v-if="showTag">
               <SegmentTag
