@@ -210,7 +210,6 @@ export default {
         bottom: 90px;
         right: 30px;
         z-index: 1000;
-        position: fixed;
         transition: 0.5s;
     }
 
