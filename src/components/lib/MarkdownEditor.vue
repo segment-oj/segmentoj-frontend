@@ -129,7 +129,7 @@ export default {
 #markdown-container-outline {
     padding: 10px;
     margin-bottom: 20px;
-    max-height: 800px;
+    max-height: 600px;
     overflow-y: scroll;
 }
 </style>
