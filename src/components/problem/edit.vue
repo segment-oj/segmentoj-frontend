@@ -1,12 +1,18 @@
 <template>
   <div>
     <h1>Edit problem #{{this.$route.params.id}}</h1>
-    <h3 class="no-bottom-margin">Problem Name</h3>
-    <el-input v-model="title" placeholder="input problem title here"></el-input>
-    <h3 class="no-bottom-margin">Problem Content</h3>
-    <MarkdownEditor v-model="mdContent" />
-    <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
-    <el-button @click="back();">Back</el-button>
+    <el-card>
+      <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
+      <el-input v-model="title" placeholder="input problem title here"></el-input>
+    </el-card>
+    <el-card class="item">
+      <div slot="header" class="clearfix"><i class="el-icon-document" /> Content</div>
+      <MarkdownEditor v-model="mdContent" />
+    </el-card>
+    <el-card class="item">
+      <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
+      <el-button @click="back();">Back</el-button>
+    </el-card>
   </div>
 </template>
 
@@ -71,3 +77,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.item {
+    margin-top: 20px;
+}
+</style>
