@@ -202,6 +202,11 @@ export default {
         opacity: 1;
     }
 
+    #pannel:hover {
+        z-index: 1000;
+        opacity: 1;
+    }
+
     #info {
         display: none;
     }

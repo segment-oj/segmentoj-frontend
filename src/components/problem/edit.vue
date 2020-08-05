@@ -1,44 +1,82 @@
 <template>
-  <el-row :gutter="30">
-    <el-col span="6">
-      <el-card>
-        <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
-        <el-input v-model="title" placeholder="Input problem title here"></el-input>
-        <el-checkbox v-model="enabled" label="Enabled" class="item"></el-checkbox>
-      </el-card>
-      <el-card class="item">
-        <i class="el-icon-menu" /> Limitation
-        <el-divider>Time</el-divider>
-        <el-row gutter="10">
-          <el-col span="20">
-            <el-input v-model="time" placeholder="Set time limitation"></el-input>
-          </el-col>
-          <el-col span="4" class="center-text">
-            MS
-          </el-col>
-        </el-row>
-        <el-divider>Memery</el-divider>
-        <el-row gutter="10">
-          <el-col span="20">
-            <el-input v-model="memery" placeholder="Set memery limitation"></el-input>
-          </el-col>
-          <el-col span="4" class="center-text">
-            MB
-          </el-col>
-        </el-row>
-      </el-card>
-      <el-card class="item">
-        <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
-        <el-button @click="back();">Back</el-button>
-      </el-card>
-    </el-col>
-    <el-col span="18">
-      <el-card v-loading="contentLoading">
-        <div slot="header" class="clearfix"><i class="el-icon-document" /> Content</div>
-        <MarkdownEditor v-model="mdContent" />
-      </el-card>
-    </el-col>
-  </el-row>
+  <div v-if="!smallScreen">
+    <el-row :gutter="30">
+      <el-col :span="6">
+        <el-card>
+          <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
+          <el-input v-model="title" placeholder="Input problem title here"></el-input>
+          <el-checkbox v-model="enabled" label="Enabled" class="item"></el-checkbox>
+        </el-card>
+        <el-card class="item">
+          <i class="el-icon-menu" /> Limitation
+          <el-divider>Time</el-divider>
+          <el-row :gutter="10">
+            <el-col :span="20">
+              <el-input v-model="time" placeholder="Set time limitation"></el-input>
+            </el-col>
+            <el-col :span="4" class="center-text">
+              MS
+            </el-col>
+          </el-row>
+          <el-divider>Memery</el-divider>
+          <el-row :gutter="10">
+            <el-col :span="20">
+              <el-input v-model="memery" placeholder="Set memery limitation"></el-input>
+            </el-col>
+            <el-col :span="4" class="center-text">
+              MB
+            </el-col>
+          </el-row>
+        </el-card>
+        <el-card class="item">
+          <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
+          <el-button @click="back();">Back</el-button>
+        </el-card>
+      </el-col>
+      <el-col :span="18">
+        <el-card v-loading="contentLoading">
+          <div slot="header" class="clearfix"><i class="el-icon-document" /> Content</div>
+          <MarkdownEditor v-model="mdContent" />
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
+  <div v-else>
+    <el-card class="float">
+      <el-button type="primary" @click="submit();" icon="el-icon-check" circle />
+      <el-button @click="back();" icon="el-icon-back" circle />
+    </el-card>
+    <el-card>
+      <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
+      <el-input v-model="title" placeholder="Input problem title here"></el-input>
+      <el-checkbox v-model="enabled" label="Enabled" class="item"></el-checkbox>
+    </el-card>
+    <el-card class="item">
+      <i class="el-icon-menu" /> Limitation
+      <el-divider>Time</el-divider>
+      <el-row :gutter="10">
+        <el-col :span="20">
+          <el-input v-model="time" placeholder="Set time limitation"></el-input>
+        </el-col>
+        <el-col :span="4" class="center-text">
+          MS
+        </el-col>
+      </el-row>
+      <el-divider>Memery</el-divider>
+      <el-row :gutter="10">
+        <el-col :span="20">
+          <el-input v-model="memery" placeholder="Set memery limitation"></el-input>
+        </el-col>
+        <el-col :span="4" class="center-text">
+          MB
+        </el-col>
+      </el-row>
+    </el-card>
+    <el-card v-loading="contentLoading" class="item">
+      <div slot="header" class="clearfix"><i class="el-icon-document" /> Content</div>
+      <MarkdownEditor v-model="mdContent" />
+    </el-card>
+  </div>
 </template>
 
 <script>
@@ -55,7 +93,8 @@ export default {
       buttonLoading: false,
       time: 'Unknown',
       memery: 'Unknown',
-      enabled: true
+      enabled: true,
+      smallScreen: screen.width < 700
     };
   },
   methods: {
@@ -121,5 +160,32 @@ export default {
 
 .center-text {
     margin-top: 0.7rem;
+}
+
+.float {
+    position: fixed;
+    z-index: 1000;
+    right: 30px;
+    top: 80px;
+}
+
+@media only screen and (max-width: 700px) {
+    .float {
+        z-index: 1000;
+        opacity: 0.5;
+        position: fixed;
+        transition: 0.5s;
+        right: 30px;
+    }
+
+    .float:active {
+        z-index: 1000;
+        opacity: 1;
+    }
+
+    .float:hover {
+        z-index: 1000;
+        opacity: 1;
+    }
 }
 </style>
