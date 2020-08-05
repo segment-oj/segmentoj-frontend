@@ -10,6 +10,7 @@
 
 ::-webkit-scrollbar-thumb {
     background-color: #b3b3b3;
+    transition: all 0.5s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -31,6 +32,19 @@
     opacity: 0.2;
 }
 
+body {
+    color: #606266;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 400;
+    color: #303133;
+}
+
 .markdown-container pre {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
@@ -47,13 +61,8 @@
     margin: 20px 0 20px 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-weight: 400;
-    color: #303133;
+.markdown-container thead {
+    background-color: #f9f9f9;
 }
 
 .markdown-container h1::before,
@@ -90,15 +99,6 @@ h3::before {
 .markdown-container h5,
 .cm-header-5 {
     font-size: 14px;
-}
-
-.cm-header,
-.cm-strong {
-    font-weight: 400 !important;
-}
-
-body {
-    color: #606266;
 }
 
 .markdown-container blockquote {

@@ -1,11 +1,12 @@
 <template>
   <div id="user-content">
-    <div>
+    <div id="tool">
       <el-card shadow="never">
-        <el-avatar shape="square" :size="400"><img src="./../../assets/icon/SOJ-thick-white-background.png" /></el-avatar>
+        <el-avatar shape="square" :size="this.avatarWidth">
+          <img src="./../../assets/icon/SOJ-thick-white-background.png" />
+        </el-avatar>
       </el-card>
       <el-card class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-setting" /> Tool Bar</div>
         <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');">Edit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
@@ -14,13 +15,20 @@
       <el-row :gutter="20">
         <el-col :span="18">
           <el-card shadow="never">
-            <div slot="header" class="clearfix"><i class="el-icon-user" /> User Name</div>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-user" />
+              <div class="lable"> User</div>
+              Name
+            </div>
             {{username}}
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card shadow="never">
-            <div slot="header" class="clearfix"><i class="el-icon-warning-outline" /> User ID</div>
+            <div slot="header" class="clearfix"><i class="el-icon-warning-outline" />
+              <div class="lable"> User</div>
+              ID
+            </div>
             {{userid}}
           </el-card>
         </el-col>
@@ -28,19 +36,27 @@
       <el-row :gutter="20">
         <el-col :span="12">
           <el-card shadow="never" class="item">
-            <div slot="header" class="clearfix"><i class="el-icon-message" /> Email</div>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-message" />Email
+            </div>
             {{email}}
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card shadow="never" class="item">
-            <div slot="header" class="clearfix"><i class="el-icon-date" /> Time Joined</div>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-date" />
+              <div class="lable"> Time Joined</div>
+            </div>
             {{timeJoin}}
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card shadow="never" class="item">
-            <div slot="header" class="clearfix"><i class="el-icon-time" /> Last Login</div>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-time" />
+              <div class="lable"> Last Login</div>
+            </div>
             {{lastLogin}}
           </el-card>
         </el-col>
@@ -48,19 +64,36 @@
       <el-row :gutter="20">
         <el-col :span="8">
           <el-card shadow="never" class="item">
-            <div slot="header" class="clearfix"><i class="el-icon-check" /> Sloved</div>
-            {{solved}} Problems
+            <div slot="header" class="clearfix">
+              <i class="el-icon-check" />
+              <div class="lable"> Sloved</div>
+              <div class="small-lable"> AC</div>
+            </div>
+            <div class="clearfix">
+              {{solved}}
+              <div class="lable"> Problems</div>
+            </div>
           </el-card>
         </el-col>
         <el-col :span="8">
           <el-card shadow="never" class="item">
-            <div slot="header" class="clearfix"><i class="el-icon-upload2" /> Submited</div>
-            {{submit}} Times
+            <div slot="header" class="clearfix"><i class="el-icon-upload2" />
+              <div class="lable"> Submited</div>
+              <div class="small-lable"> SU</div>
+            </div>
+            <div class="clearfix">
+              {{submit}}
+              <div class="lable"> Times</div>
+            </div>
           </el-card>
         </el-col>
         <el-col :span="8">
           <el-card shadow="never" class="item">
-            <div slot="header" class="clearfix"><i class="el-icon-finished" /> AC Rate</div>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-finished" />
+              <div class="lable"> AC</div>
+              Rate
+            </div>
             <el-progress :text-inside="true" :stroke-width="24" :percentage="rate" status="success" :color="ACRateColorMode"></el-progress>
           </el-card>
         </el-col>
@@ -70,7 +103,7 @@
         <MarkdownContainer v-if="introduction" :content="introduction"/>
       </el-card>
       <el-card class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Permissions</div>
+        <div slot="header" class="clearfix"><i class="el-icon-user" /> Permissions</div>
         <el-checkbox v-model="isStaff" disabled>Staff</el-checkbox>
         <el-checkbox v-model="isRoot" disabled>Root</el-checkbox>
         <el-checkbox v-model="isActive" disabled>Active</el-checkbox>
@@ -102,7 +135,8 @@ export default {
       userLoading: true,
       isRoot: false,
       isStaff: false,
-      isActive: true
+      isActive: true,
+      avatarWidth: 800 < screen.width ? 300 : screen.width - 40
     };
   },
   methods: {
@@ -162,6 +196,14 @@ export default {
 </script>
 
 <style scoped>
+.small-lable {
+    display: none;
+}
+
+.clearfix {
+    display: block ruby;
+}
+
 .item {
     margin-top: 20px;
 }
@@ -173,5 +215,25 @@ export default {
 
 #user-content {
     display: flex;
+}
+
+@media only screen and (max-width: 800px) {
+    #user-content {
+        display: inline;
+    }
+
+    #info {
+        margin-left: 0;
+        margin-top: 20px;
+        max-width: 100vw;
+    }
+
+    .lable {
+        display: none;
+    }
+
+    .small-lable {
+        display: unset;
+    }
 }
 </style>

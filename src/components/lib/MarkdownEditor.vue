@@ -128,7 +128,8 @@ export default {
 
 #markdown-container-outline {
     padding: 10px;
-    border: 1px solid #dddddd;
     margin-bottom: 20px;
+    max-height: 600px;
+    overflow-y: scroll;
 }
 </style>

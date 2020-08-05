@@ -1,13 +1,44 @@
 <template>
-  <div>
-    <h1>Edit problem #{{this.$route.params.id}}</h1>
-    <h3 class="no-bottom-margin">Problem Name</h3>
-    <el-input v-model="title" placeholder="input problem title here"></el-input>
-    <h3 class="no-bottom-margin">Problem Content</h3>
-    <MarkdownEditor v-model="mdContent" />
-    <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
-    <el-button @click="back();">Back</el-button>
-  </div>
+  <el-row :gutter="30">
+    <el-col span="6">
+      <el-card>
+        <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
+        <el-input v-model="title" placeholder="Input problem title here"></el-input>
+        <el-checkbox v-model="enabled" label="Enabled" class="item"></el-checkbox>
+      </el-card>
+      <el-card class="item">
+        <i class="el-icon-menu" /> Limitation
+        <el-divider>Time</el-divider>
+        <el-row gutter="10">
+          <el-col span="20">
+            <el-input v-model="time" placeholder="Set time limitation"></el-input>
+          </el-col>
+          <el-col span="4" class="center-text">
+            MS
+          </el-col>
+        </el-row>
+        <el-divider>Memery</el-divider>
+        <el-row gutter="10">
+          <el-col span="20">
+            <el-input v-model="memery" placeholder="Set memery limitation"></el-input>
+          </el-col>
+          <el-col span="4" class="center-text">
+            MB
+          </el-col>
+        </el-row>
+      </el-card>
+      <el-card class="item">
+        <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
+        <el-button @click="back();">Back</el-button>
+      </el-card>
+    </el-col>
+    <el-col span="18">
+      <el-card v-loading="contentLoading">
+        <div slot="header" class="clearfix"><i class="el-icon-document" /> Content</div>
+        <MarkdownEditor v-model="mdContent" />
+      </el-card>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
@@ -20,7 +51,11 @@ export default {
     return {
       title: '',
       mdContent: 'Loading...',
-      buttonLoading: false
+      contentLoading: true,
+      buttonLoading: false,
+      time: 'Unknown',
+      memery: 'Unknown',
+      enabled: true
     };
   },
   methods: {
@@ -31,6 +66,10 @@ export default {
           let data = res.data.res;
           this.title = data.title;
           this.mdContent = data.description;
+          this.memery = data.memory_limit / 1000;
+          this.time = data.time_limit;
+          this.enabled = data.enabled;
+          this.contentLoading = false;
         })
         .catch(err => {
           this.$SegmentMessage.error(this, 'Problem loading error');
@@ -45,11 +84,14 @@ export default {
       this.$axios
         .patch(apiurl('/problem/' + this.$route.params.id), {
           title: this.title,
-          description: this.mdContent
+          description: this.mdContent,
+          memory_limit: this.memery * 1000,
+          time_limit: this.time,
+          enabled: this.enabled
         })
         .then(() => {
-          this.$SegmentMessage.success(this, 'Your change has been submited');
-          this.$router.push('/problem/'+this.$route.params.id);
+          this.buttonLoading = false;
+          this.$SegmentMessage.success(this, 'Your changes have been submitted');
         })
         .catch(err => {
           if(err.request.status === 404) {
@@ -71,3 +113,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.item {
+    margin-top: 20px;
+}
+
+.center-text {
+    margin-top: 0.7rem;
+}
+</style>

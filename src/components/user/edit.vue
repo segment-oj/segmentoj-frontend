@@ -2,11 +2,10 @@
   <div class="content">
     <div id="tool-bar">
       <el-card shadow="never">
-        <el-avatar shape="square" :size="400"><img src="./../../assets/icon/SOJ-thick-white-background.png" /></el-avatar>
+        <el-avatar shape="square" :size="avatarWidth"><img src="./../../assets/icon/SOJ-thick-white-background.png" /></el-avatar>
       </el-card>
       <el-card class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-setting" /> Tool Bar</div>
-        <el-button v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot" type="primary" @click="submit()">Submit</el-button>
+        <el-button v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot" type="primary" @click="submit()" :loading="buttonLoading">Submit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
     </div>
@@ -46,7 +45,9 @@ export default {
       isActive: true,
       isRootMe: false,
       isStaffMe: false,
-      isActiveMe: true
+      isActiveMe: true,
+      buttonLoading: false,
+      avatarWidth: 800 < screen.width ? 400 : screen.width - 40
     };
   },
   methods: {
@@ -71,6 +72,7 @@ export default {
         });
     },
     submit() {
+      this.buttonLoading = true;
       this.$axios
         .patch(apiurl('/account/' + this.$route.params.id), {
           username: this.username,
@@ -80,7 +82,8 @@ export default {
           is_active: this.isActive
         })
         .then(() => {
-          this.$SegmentMessage.success(this, 'Submitted');
+          this.buttonLoading = false;
+          this.$SegmentMessage.success(this, 'Your changes have been submitted');
           if (this.isMine) {
             this.$store.commit('userStaffChange', {
               isStaff: this.isStaff,
@@ -114,5 +117,19 @@ export default {
 
 .item {
     margin-top: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+    .content {
+        display: inline;
+    }
+
+    #tool-bar {
+        margin-right: 0;
+    }
+
+    .edit-content {
+        margin-top: 20px;
+    }
 }
 </style>
