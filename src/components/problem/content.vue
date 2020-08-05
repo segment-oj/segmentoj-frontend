@@ -18,7 +18,7 @@
       </div>
       <div id="pannel" v-if="!isWider">
         <div id="tools">
-          <el-card>
+          <el-card v-if="showSmallToolBar || !smallScreen">
             <div><i class="el-icon-s-tools" /> Tool Bar</div>
             <el-menu default-active="3">
               <el-menu-item index="3" @click="$router.push('/problem/' + $route.params.id +'/submit');">
@@ -88,6 +88,7 @@
           </el-card>
         </div>
       </div>
+      <el-button v-if="smallScreen" class="float-bottom-right" icon="el-icon-more" @click="showSmallToolBar = !showSmallToolBar" type="info" circle />
     </div>
   </div>
 </template>
@@ -115,7 +116,9 @@ export default {
       tags: [],
       rendertags: [],
       problemLoading: true,
-      showTag: false
+      showTag: false,
+      smallScreen: screen.width < 700,
+      showSmallToolBar: false
     };
   },
   methods: {
@@ -194,13 +197,21 @@ export default {
     margin-bottom: 15px;
 }
 
+.float-bottom-right {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
 @media only screen and (max-width: 700px) {
     #pannel {
+        position: fixed;
+        bottom: 90px;
+        right: 30px;
         z-index: 1000;
-        opacity: 0.5;
         position: fixed;
         transition: 0.5s;
-        right: 30px;
     }
 
     #pannel:active {
