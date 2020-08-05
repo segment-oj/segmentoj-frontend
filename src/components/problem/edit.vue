@@ -32,7 +32,7 @@
       </el-card>
     </el-col>
     <el-col span="18">
-      <el-card>
+      <el-card v-loading="contentLoading">
         <div slot="header" class="clearfix"><i class="el-icon-document" /> Content</div>
         <MarkdownEditor v-model="mdContent" />
       </el-card>
@@ -50,6 +50,7 @@ export default {
     return {
       title: '',
       mdContent: 'Loading...',
+      contentLoading: true,
       buttonLoading: false,
       time: 'Unknown',
       memery: 'Unknown'
@@ -65,6 +66,7 @@ export default {
           this.mdContent = data.description;
           this.memery = data.memory_limit / 1000;
           this.time = data.time_limit;
+          this.contentLoading = false;
         })
         .catch(err => {
           this.$SegmentMessage.error(this, 'Problem loading error');

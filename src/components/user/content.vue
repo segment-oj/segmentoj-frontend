@@ -5,7 +5,6 @@
         <el-avatar shape="square" :size="400"><img src="./../../assets/icon/SOJ-thick-white-background.png" /></el-avatar>
       </el-card>
       <el-card class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-setting" /> Tool Bar</div>
         <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');">Edit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>

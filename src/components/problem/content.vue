@@ -145,8 +145,8 @@ export default {
           this.hidden = !data.enabled;
           this.timeAdd = timeFormat(data.date_added);
           this.tags = data.tags;
-          this.problemLoading = false;
           this.render_tags();
+          this.problemLoading = false;
         })
         .catch(err => {
           if(err.request.status === 404) {
