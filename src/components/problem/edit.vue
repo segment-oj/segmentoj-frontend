@@ -90,8 +90,8 @@ export default {
           enabled: this.enabled
         })
         .then(() => {
-          this.$SegmentMessage.success(this, 'Your change has been submited');
-          this.$router.push('/problem/'+this.$route.params.id);
+          this.buttonLoading = false;
+          this.$SegmentMessage.success(this, 'Your changes have been submitted');
         })
         .catch(err => {
           if(err.request.status === 404) {
