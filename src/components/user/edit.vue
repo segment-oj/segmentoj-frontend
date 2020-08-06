@@ -14,13 +14,34 @@
       </el-card>
     </div>
     <div v-loading="!(isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot)" class="edit-content">
-      <el-card>
-        <div slot="header" class="clearfix">
-          <i class="el-icon-user" />
-          User Name
-        </div>
-        <el-input v-model="username"></el-input>
-      </el-card>
+      <el-row :gutter="20">
+        <el-col :span="16">
+          <el-card>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-user" />
+              User Name
+            </div>
+            <el-input v-model="username"></el-input>
+          </el-card>
+        </el-col>
+        <el-col :span="8">
+          <el-card>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-s-operation" />
+              <div class="label">Default Language</div>
+              <div class="small-label">Lang</div>
+            </div>
+            <el-select v-model="lang" placeholder="Select language">
+              <el-option
+                v-for="item in langTable"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-card>
+        </el-col>
+      </el-row>
       <el-card class="item">
         <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Permissions</div>
         <el-checkbox v-model="isStaff" :disabled="!isStaffMe && !isRootMe">Staff</el-checkbox>
@@ -38,6 +59,7 @@
 <script>
 import apiurl from './../../apiurl';
 import MarkdownEditor from './../lib/MarkdownEditor.vue';
+import sfconfig from './../../sfconfig';
 
 export default {
   name: 'UserEdit',
@@ -54,8 +76,10 @@ export default {
       isStaffMe: false,
       isActiveMe: true,
       buttonLoading: false,
+      lang: '-',
       avatarWidth: 800 < screen.width ? 400 : screen.width - 40,
-      smallScreen: screen.width < 700
+      smallScreen: screen.width < 700,
+      langTable: sfconfig.langTable
     };
   },
   methods: {
@@ -76,6 +100,7 @@ export default {
             this.isStaff = data.is_staff;
             this.isRoot = data.is_superuser;
             this.isActive = data.is_active;
+            this.lang = String(data.lang);
           }
         });
     },
@@ -87,7 +112,8 @@ export default {
           introduction: this.introduction,
           is_staff: this.isStaff,
           is_superuser: this.isRoot,
-          is_active: this.isActive
+          is_active: this.isActive,
+          lang: this.lang
         })
         .then(() => {
           this.buttonLoading = false;
@@ -127,7 +153,15 @@ export default {
     margin-top: 20px;
 }
 
-@media only screen and (max-width: 800px) {
+.small-label {
+    display: none;
+}
+
+.clearfix {
+    display: -webkit-box;
+}
+
+@media only screen and (max-width: 700px) {
     .content {
         display: inline;
     }
@@ -139,9 +173,15 @@ export default {
     .edit-content {
         margin-top: 20px;
     }
-}
 
-@media only screen and (max-width: 700px) {
+    .label {
+        display: none;
+    }
+
+    .small-label {
+        display: unset;
+    }
+
     .float {
         z-index: 1000;
         opacity: 0.5;

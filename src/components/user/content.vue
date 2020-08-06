@@ -21,7 +21,7 @@
           <el-card shadow="never">
             <div slot="header" class="clearfix">
               <i class="el-icon-user" />
-              <div class="lable"> User</div>
+              <div class="label"> User</div>
               Name
             </div>
             {{username}}
@@ -29,8 +29,9 @@
         </el-col>
         <el-col :span="6">
           <el-card shadow="never">
-            <div slot="header" class="clearfix"><i class="el-icon-warning-outline" />
-              <div class="lable"> User</div>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-warning-outline" />
+              <div class="label"> User</div>
               ID
             </div>
             {{userid}}
@@ -50,7 +51,7 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-date" />
-              <div class="lable"> Time Joined</div>
+              <div class="label"> Time Joined</div>
             </div>
             {{timeJoin}}
           </el-card>
@@ -59,35 +60,45 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-time" />
-              <div class="lable"> Last Login</div>
+              <div class="label"> Last Login</div>
             </div>
             {{lastLogin}}
           </el-card>
         </el-col>
       </el-row>
       <el-row :gutter="20">
-        <el-col :span="8">
+        <el-col :span="4">
+          <el-card class="item">
+            <div slot="header" class="clearfix">
+              <i class="el-icon-s-operation" />
+              <div class="label">Lang</div>
+            </div>
+            {{langTable[lang].label}}
+          </el-card>
+        </el-col>
+        <el-col :span="6">
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-check" />
-              <div class="lable"> Sloved</div>
-              <div class="small-lable"> AC</div>
+              <div class="label"> Sloved</div>
+              <div class="small-label"> AC</div>
             </div>
             <div class="clearfix">
               {{solved}}
-              <div class="lable"> Problems</div>
+              <div class="label"> Problems</div>
             </div>
           </el-card>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="6">
           <el-card shadow="never" class="item">
-            <div slot="header" class="clearfix"><i class="el-icon-upload2" />
-              <div class="lable"> Submited</div>
-              <div class="small-lable"> SU</div>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-upload2" />
+              <div class="label"> Submited</div>
+              <div class="small-label"> SU</div>
             </div>
             <div class="clearfix">
               {{submit}}
-              <div class="lable"> Times</div>
+              <div class="label"> Times</div>
             </div>
           </el-card>
         </el-col>
@@ -95,7 +106,7 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-finished" />
-              <div class="lable"> AC</div>
+              <div class="label"> AC</div>
               Rate
             </div>
             <el-progress :text-inside="true" :stroke-width="24" :percentage="rate" status="success" :color="ACRateColorMode"></el-progress>
@@ -103,7 +114,10 @@
         </el-col>
       </el-row>
       <el-card shadow="never" class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Introductions</div>
+        <div slot="header" class="clearfix">
+          <i class="el-icon-chat-line-square" />
+          Introductions
+        </div>
         <MarkdownContainer v-if="introduction" :content="introduction"/>
       </el-card>
       <el-card class="item">
@@ -120,6 +134,7 @@
 import timeFormat from './../../methods/time';
 import apiurl from './../../apiurl';
 import MarkdownContainer from './../lib/MarkdownContainer.vue';
+import sfconfig from './../../sfconfig';
 
 export default {
   name: 'UserHomepage',
@@ -141,7 +156,8 @@ export default {
       isStaff: false,
       isActive: true,
       avatarWidth: 800 < screen.width ? 300 : screen.width - 40,
-      smallScreen: 700 < screen.width
+      smallScreen: 700 < screen.width,
+      langTable: sfconfig.langTable
     };
   },
   methods: {
@@ -161,7 +177,7 @@ export default {
           this.isRoot = data.is_superuser;
           this.isStaff = data.is_staff;
           this.isActive = data.is_active;
-          this.userLoading = false;
+          this.lang = data.lang;
           if (this.submit === 0) {
             this.rate = 100;
           } else {
@@ -171,6 +187,7 @@ export default {
           if (this.$store.state.user.isStaff || this.userid == String(this.$store.state.user.userid)) {
             this.ismine = true;
           }
+          this.userLoading = false;
         })
         .catch(err => {
           if(err.request.status === 404) {
@@ -178,6 +195,7 @@ export default {
           } else {
             this.$SegmentMessage.error(this, 'Unkown error');
           }
+          this.userLoading = false;
         });
     },
     ACRateColorMode(percentage) {
@@ -201,7 +219,7 @@ export default {
 </script>
 
 <style scoped>
-.small-lable {
+.small-label {
     display: none;
 }
 
@@ -233,11 +251,11 @@ export default {
         max-width: 100vw;
     }
 
-    .lable {
+    .label {
         display: none;
     }
 
-    .small-lable {
+    .small-label {
         display: unset;
     }
 }
