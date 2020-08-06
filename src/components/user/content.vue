@@ -157,7 +157,8 @@ export default {
       isActive: true,
       avatarWidth: 800 < screen.width ? 300 : screen.width - 40,
       smallScreen: 700 < screen.width,
-      langTable: sfconfig.langTable
+      langTable: sfconfig.langTable,
+      lang: 0
     };
   },
   methods: {
