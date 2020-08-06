@@ -123,13 +123,11 @@ export default {
               isStaff: this.isStaff,
               isRoot: this.isRoot
             });
+            this.$store.commit('userLang', {
+              lang: this.lang
+            });
           }
         });
-      if (this.isMine) {
-        this.$store.commit('userLang', {
-          lang: this.lang
-        });
-      }
     }
   },
   mounted() {
