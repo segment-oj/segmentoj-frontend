@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row :gutter="20">
+    <el-row :gutter="20" v-if="!smallScreen">
       <el-col :span="6">
         <el-card>
           <div slot="header" class="clearfix"><i class="el-icon-s-operation" /> Language</div>
@@ -41,6 +41,34 @@
         </el-card>
       </el-col>
     </el-row>
+    <div v-else>
+      <el-card>
+        <div slot="header" class="clearfix"><i class="el-icon-s-operation" /> Language</div>
+        <el-select v-model="lang_num" placeholder="Select language">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+      </el-card>
+      <el-card class="float">
+        <el-button type="primary" @click="submit();" icon="el-icon-check" circle />
+        <el-button @click="back();" icon="el-icon-back" circle />
+      </el-card>
+      <el-card class="item">
+        <div slot="header" class="clearfix"><i class="el-icon-document" /> Code</div>
+        <el-input
+          class="code-input"
+          type="textarea"
+          :rows="20"
+          placeholder="Paste your code"
+          required
+          v-model="code"
+        />
+      </el-card>
+    </div>
   </div>
 </template>
 
@@ -58,6 +86,7 @@ export default {
       code: '',
       lang_num: '-',
       buttonLoading: false,
+      smallScreen: screen.width < 700,
       options: [{
         value: '0',
         label: 'C++'
@@ -176,5 +205,26 @@ export default {
 <style scoped>
 .item {
     margin-top: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+    .float {
+        z-index: 1000;
+        opacity: 0.5;
+        position: fixed;
+        transition: 0.5s;
+        right: 30px;
+        top: 80px;
+    }
+
+    .float:active {
+        z-index: 1000;
+        opacity: 1;
+    }
+
+    .float:hover {
+        z-index: 1000;
+        opacity: 1;
+    }
 }
 </style>
