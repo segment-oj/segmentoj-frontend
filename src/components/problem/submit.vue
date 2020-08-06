@@ -6,7 +6,7 @@
           <div slot="header" class="clearfix"><i class="el-icon-s-operation" /> Language</div>
           <el-select v-model="lang_num" placeholder="Select language">
             <el-option
-              v-for="item in options"
+              v-for="item in langTable"
               :key="item.value"
               :label="item.label"
               :value="item.value">
@@ -46,7 +46,7 @@
         <div slot="header" class="clearfix"><i class="el-icon-s-operation" /> Language</div>
         <el-select v-model="lang_num" placeholder="Select language">
           <el-option
-            v-for="item in options"
+            v-for="item in langTable"
             :key="item.value"
             :label="item.label"
             :value="item.value">
@@ -74,6 +74,7 @@
 
 <script>
 import apiurl from './../../apiurl';
+import sfconfig from './../../sfconfig';
 
 export default {
   name: 'ProblemSubmit',
@@ -87,64 +88,7 @@ export default {
       lang_num: '-',
       buttonLoading: false,
       smallScreen: screen.width < 700,
-      options: [{
-        value: '0',
-        label: 'C++'
-      }, {
-        value: '1',
-        label: 'C++11'
-      }, {
-        value: '2',
-        label: 'C++14'
-      }, {
-        value: '3',
-        label: 'C++17'
-      }, {
-        value: '4',
-        label: 'C++20'
-      }, {
-        value: '5',
-        label: 'C'
-      }, {
-        value: '6',
-        label: 'C#'
-      }, {
-        value: '7',
-        label: 'Clang'
-      }, {
-        value: '8',
-        label: 'Clang11'
-      }, {
-        value: '9',
-        label: 'Clang14'
-      }, {
-        value: '10',
-        label: 'Clang17'
-      }, {
-        value: '11',
-        label: 'Clang20'
-      }, {
-        value: '12',
-        label: 'Rust'
-      }, {
-        value: '13',
-        label: 'Python2'
-      }, {
-        value: '14',
-        label: 'Python3'
-      }, {
-        value: '15',
-        label: 'Pascal'
-      }, {
-        value: '16',
-        label: 'Go'
-      }, {
-        value: '17',
-        label: 'Ruby'
-      }, {
-        value: '18',
-        label: 'Java'
-      }]
+      langTable: sfconfig.langTable
     };
   },
   methods: {
