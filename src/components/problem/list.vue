@@ -6,7 +6,7 @@
       :limit="10"
       :total="data_count"
       :process="process"
-    ></AjaxTable>
+    />
   </div>
 </template>
 

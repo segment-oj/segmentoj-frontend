@@ -6,9 +6,10 @@
     <el-pagination
       :page-size="this.limit"
       background
-      layout="prev, pager, next, jumper, total"
+      layout="prev, pager, next, jumper"
       @current-change="this.onPageChange"
       class="pagination"
+      :total="this.total"
     ></el-pagination>
   </div>
 </template>
