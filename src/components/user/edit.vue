@@ -125,6 +125,11 @@ export default {
             });
           }
         });
+      if (this.isMine) {
+        this.$store.commit('userLang', {
+          lang: this.lang
+        });
+      }
     }
   },
   mounted() {
