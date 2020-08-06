@@ -54,16 +54,6 @@
     background-color: #409eff;
 }
 
-a {
-    color: #409eff;
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-a:hover {
-    color: #66b1ff;
-}
-
 .CodeMirror .CodeMirror-code .cm-comment {
     background-color: #ffffff00 !important;
     font-family: "Fira Code";

@@ -45,6 +45,21 @@ h5 {
     color: #303133;
 }
 
+a {
+    text-decoration: none;
+}
+
+.markdown-container a {
+    color: #409eff;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.markdown-container a:hover {
+    color: #66b1ff;
+    text-decoration: underline;
+}
+
 .markdown-container pre {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
