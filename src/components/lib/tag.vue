@@ -31,7 +31,11 @@ export default {
     },
     background_color: {
       type: String,
-      default: 'rgb (244, 255, 255)'
+      default: 'rgb(244, 255, 255)'
+    },
+    height: {
+      type: String,
+      default: '32px'
     }
   },
   data() {
@@ -44,6 +48,8 @@ export default {
     if(this.border) {
       this.style += 'border-color: '+ this.border_color + ';';
     }
+    this.style += 'height: ' + this.height + ';';
+    this.style += 'line-height: ' + this.height + ';';
   }
 };
 </script>
@@ -51,13 +57,9 @@ export default {
 <style scoped>
 .seg-tag {
     display: inline-block;
-    height: 32px;
     padding: 0 10px;
-    line-height: 30px;
     font-size: 12px;
-    font-weight: 500;
-    border-width: 1px;
-    border-style: solid;
+    border: 1px solid;
     box-sizing: border-box;
     white-space: nowrap;
     margin: 3px;
