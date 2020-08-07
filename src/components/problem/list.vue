@@ -11,8 +11,16 @@
           <el-slider
             v-model="limit"
             :step="10"
-            @change="test"
+            @change="refresh"
           />
+          <el-divider />
+          <el-switch
+            v-model="showTags"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+            @change="refresh"
+          />
+          <span> Show Tags</span>
         </el-card>
       </el-col>
     </el-row>
@@ -40,6 +48,7 @@ export default {
       alive: true,
       ajax_url: apiurl('/problem/list'),
       limit: 50,
+      showTags: false,
       columns: [{
         name: 'score',
         label: 'Status',
@@ -55,10 +64,8 @@ export default {
         label: 'Title'
       }, {
         name: 'tag',
-        label: 'Tags',
         width: '300',
-        align: 'right',
-        headerAlign: 'center'
+        align: 'right'
       }],
       data_count: 10
     };
@@ -84,10 +91,12 @@ export default {
         x.title = (<router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title }</router-link>);
       }
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
-      x.tag = (<listTag id={x.pid}></listTag>);
+      if (this.showTags) {
+        x.tag = (<listTag pid={x.pid}></listTag>);
+      }
       return x;
     },
-    test() {
+    refresh() {
       this.alive = false;
       this.$nextTick(() => {
         this.alive = true;

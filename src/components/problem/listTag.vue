@@ -25,7 +25,7 @@ export default {
     };
   },
   props: {
-    id: {
+    pid: {
       type: Number,
       default: 0
     }
@@ -33,7 +33,7 @@ export default {
   methods: {
     loadTag() {
       this.$axios
-        .get(apiurl('/problem/' + String(this.id)))
+        .get(apiurl('/problem/' + String(this.pid)))
         .then(res => {
           this.tags = res.data.res.tags;
           for(let i = 0; i < this.tags.length; i += 1) {
