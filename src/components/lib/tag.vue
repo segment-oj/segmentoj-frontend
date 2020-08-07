@@ -49,7 +49,7 @@ export default {
       this.style += 'border-color: '+ this.border_color + ';';
     }
     this.style += 'height: ' + this.height + ';';
-    this.style += 'line-height: ' + this.height + ';';
+    this.style += 'line-height: ' + this.height - 2 + ';';
   }
 };
 </script>

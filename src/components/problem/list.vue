@@ -53,7 +53,7 @@ export default {
         x.title = (
           <div>
             <router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title } </router-link>
-            <el-tag effect="dark" type="warning">Hidden</el-tag>
+            <el-tag effect="dark" type="warning" size="small">Hidden</el-tag>
           </div>
         );
       } else {
