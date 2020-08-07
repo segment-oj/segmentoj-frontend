@@ -3,7 +3,7 @@
     <AjaxTable
       :ajax_url="ajax_url"
       :columns="columns"
-      :limit="limit"
+      :limit="50"
       :total="data_count"
       :process="process"
     />
@@ -19,13 +19,12 @@ export default {
   data() {
     return {
       ajax_url: apiurl('/problem/list'),
-      limit: parseInt((innerHeight * 0.68) / 50),
       columns: [{
-        name: 'pid',
-        label: 'Problem ID'
-      }, {
         name: 'score',
         label: 'Status'
+      }, {
+        name: 'pid',
+        label: 'Problem ID'
       }, {
         name: 'title',
         label: 'Title'
