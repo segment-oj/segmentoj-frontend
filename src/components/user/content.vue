@@ -21,7 +21,7 @@
           <el-card shadow="never">
             <div slot="header" class="clearfix">
               <i class="el-icon-user" />
-              <div class="label"> User</div>
+              <span class="label"> User</span>
               Name
             </div>
             {{username}}
@@ -31,7 +31,7 @@
           <el-card shadow="never">
             <div slot="header" class="clearfix">
               <i class="el-icon-warning-outline" />
-              <div class="label"> User</div>
+              <span class="label"> User</span>
               ID
             </div>
             {{userid}}
@@ -42,7 +42,7 @@
         <el-col :span="12">
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
-              <i class="el-icon-message" />Email
+              <i class="el-icon-message" /> Email
             </div>
             {{email}}
           </el-card>
@@ -51,7 +51,7 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-date" />
-              <div class="label"> Time Joined</div>
+              <span class="label"> Time Joined</span>
             </div>
             {{timeJoin}}
           </el-card>
@@ -60,7 +60,7 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-time" />
-              <div class="label"> Last Login</div>
+              <span class="label"> Last Login</span>
             </div>
             {{lastLogin}}
           </el-card>
@@ -71,7 +71,7 @@
           <el-card class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-s-operation" />
-              <div class="label">Lang</div>
+              <span class="label"> Lang</span>
             </div>
             {{langTable[lang].label}}
           </el-card>
@@ -80,12 +80,12 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-check" />
-              <div class="label"> Sloved</div>
+              <span class="label"> Sloved</span>
               <div class="small-label"> AC</div>
             </div>
             <div class="clearfix">
               {{solved}}
-              <div class="label"> Problems</div>
+              <span class="label"> Problems</span>
             </div>
           </el-card>
         </el-col>
@@ -93,12 +93,12 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-upload2" />
-              <div class="label"> Submited</div>
+              <span class="label"> Submited</span>
               <div class="small-label"> SU</div>
             </div>
             <div class="clearfix">
               {{submit}}
-              <div class="label"> Times</div>
+              <span class="label"> Times</span>
             </div>
           </el-card>
         </el-col>
@@ -106,7 +106,7 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-finished" />
-              <div class="label"> AC</div>
+              <span class="label"> AC</span>
               Rate
             </div>
             <el-progress :text-inside="true" :stroke-width="24" :percentage="rate" status="success" :color="ACRateColorMode"></el-progress>
