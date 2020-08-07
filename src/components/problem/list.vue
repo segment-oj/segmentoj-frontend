@@ -1,12 +1,30 @@
 <template>
-  <div id="problem-list">
-    <AjaxTable
-      :ajax_url="ajax_url"
-      :columns="columns"
-      :limit="50"
-      :total="data_count"
-      :process="process"
-    />
+  <div>
+    <el-row :gutter="20">
+      <el-col :span="16">
+        <el-card>
+        </el-card>
+      </el-col>
+      <el-col :span="8">
+        <el-card>
+          <span>Columns</span>
+          <el-slider
+            v-model="limit"
+            :step="10"
+            @change="test"
+          />
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-card class="item" v-if="alive">
+      <AjaxTable
+        :ajax_url="ajax_url"
+        :columns="columns"
+        :limit="limit"
+        :total="data_count"
+        :process="process"
+      />
+    </el-card>
   </div>
 </template>
 
@@ -19,22 +37,28 @@ export default {
   name: 'ProblemList',
   data() {
     return {
+      alive: true,
       ajax_url: apiurl('/problem/list'),
+      limit: 50,
       columns: [{
         name: 'score',
         label: 'Status',
-        width: '80'
+        width: '120',
+        align: 'center'
       }, {
         name: 'pid',
         label: 'Problem ID',
-        width: '120'
+        width: '120',
+        align: 'center'
       }, {
         name: 'title',
         label: 'Title'
       }, {
         name: 'tag',
         label: 'Tags',
-        width: '300'
+        width: '300',
+        align: 'right',
+        headerAlign: 'center'
       }],
       data_count: 10
     };
@@ -62,6 +86,12 @@ export default {
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
       x.tag = (<listTag id={x.pid}></listTag>);
       return x;
+    },
+    test() {
+      this.alive = false;
+      this.$nextTick(() => {
+        this.alive = true;
+      });
     }
   },
   components: {
@@ -81,3 +111,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.item {
+    margin-top: 20px;
+}
+</style>

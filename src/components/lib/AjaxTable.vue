@@ -1,12 +1,14 @@
 <template>
   <div class="ajax-table">
-    <el-table v-loading="loading" :data="tableData" stripe class="table">
+    <el-table v-loading="loading" :data="tableData">
       <el-table-column
         v-for="item in columns"
         :key="item"
         :prop="item.name"
         :label="item.label"
         :width="item.width"
+        :align="item.align"
+        :header-align="item.headerAlign"
       >
       </el-table-column>
     </el-table>
@@ -89,9 +91,5 @@ export default {
     height: 36px;
     margin-top: 20px;
     text-align: center;
-}
-
-.table {
-    min-height: calc(100vh - 80px - 60px - 41.05px);
 }
 </style>

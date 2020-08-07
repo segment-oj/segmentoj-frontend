@@ -69,7 +69,7 @@ export default {
 }
 
 #nav {
-    z-index: 1000;
+    z-index: 1000000;
     background-color: #545c64;
     width: 100vw;
     position: fixed;
