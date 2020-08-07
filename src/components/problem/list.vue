@@ -1,26 +1,54 @@
 <template>
   <div>
     <el-row :gutter="20">
-      <el-col :span="16">
+      <el-col :span="10">
         <el-card>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card>
+          <i class="el-icon-s-promotion" />
+          Jump to
+          <el-input
+            placeholder="PID"
+            v-model="jumpToProblem"
+            class="input-with-select" 
+            style="margin-top: 9px;"
+          >
+            <template slot="prepend">#.</template>
+            <el-button slot="append" icon="el-icon-top-right" @click="jump"></el-button>
+          </el-input>
         </el-card>
       </el-col>
       <el-col :span="8">
         <el-card>
-          <span>Columns</span>
-          <el-slider
-            v-model="limit"
-            :step="10"
-            @change="refresh"
-          />
-          <el-divider />
-          <el-switch
-            v-model="showTags"
-            active-color="#13ce66"
-            inactive-color="#ff4949"
-            @change="refresh"
-          />
-          <span> Show Tags</span>
+          <el-row :gutter="20">
+            <el-col :span="16">
+              <span>
+                <i class="el-icon-s-grid" />
+                Columns
+              </span>
+              <el-slider
+                v-model="limit"
+                :step="10"
+                @change="refresh"
+                style="margin-top: 10px;"
+              />
+            </el-col>
+            <el-col :span="8">
+              <div>
+                <i class="el-icon-collection-tag" />
+                Show Tags
+              </div>
+              <el-switch
+                v-model="showTags"
+                active-color="#13ce66"
+                inactive-color="#ff4949"
+                @change="refresh"
+                style="margin-top: 17px;"
+              />
+            </el-col>
+          </el-row>
         </el-card>
       </el-col>
     </el-row>
@@ -48,6 +76,7 @@ export default {
       alive: true,
       ajax_url: apiurl('/problem/list'),
       limit: 50,
+      jumpToProblem: null,
       showTags: false,
       columns: [{
         name: 'score',
@@ -101,6 +130,9 @@ export default {
       this.$nextTick(() => {
         this.alive = true;
       });
+    },
+    jump() {
+      this.$router.push('/problem/' + this.jumpToProblem);
     }
   },
   components: {
@@ -124,5 +156,9 @@ export default {
 <style scoped>
 .item {
     margin-top: 20px;
+}
+
+.margin-top {
+    margin-top: 8px;
 }
 </style>

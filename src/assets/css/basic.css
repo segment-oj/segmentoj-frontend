@@ -164,7 +164,7 @@ h3::before {
 }
 
 .highzindex {
-    z-index: 10000 !important;
+    z-index: 1000000000000 !important;
 }
 
 .no-margin {
