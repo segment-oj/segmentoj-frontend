@@ -1,7 +1,13 @@
 <template>
   <div class="ajax-table">
     <el-table v-loading="loading" :data="tableData" stripe class="table">
-      <el-table-column v-for="item in columns" :key="item" :prop="item.name" :label="item.label"></el-table-column>
+      <el-table-column
+        v-for="item in columns"
+        :key="item"
+        :prop="item.name"
+        :label="item.label"
+        :width="item.width"
+      />
     </el-table>
     <el-pagination
       :page-size="this.limit"

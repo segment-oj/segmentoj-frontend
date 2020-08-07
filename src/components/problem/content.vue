@@ -133,9 +133,6 @@ export default {
               color: data.res.color,
               content: data.res.content
             });
-          })
-          .catch(() => {
-
           });
       } 
     },

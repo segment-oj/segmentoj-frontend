@@ -21,10 +21,12 @@ export default {
       ajax_url: apiurl('/problem/list'),
       columns: [{
         name: 'score',
-        label: 'Status'
+        label: 'Status',
+        width: '80'
       }, {
         name: 'pid',
-        label: 'Problem ID'
+        label: 'Problem ID',
+        width: '120'
       }, {
         name: 'title',
         label: 'Title'
