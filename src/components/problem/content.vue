@@ -81,7 +81,9 @@
               <SegmentTag
                 v-for="item in rendertags"
                 :key="item.content"
+                color="#fff"
                 :border_color="item.color"
+                :background_color="item.color"
                 :content="item.content"
                 >
               </SegmentTag>

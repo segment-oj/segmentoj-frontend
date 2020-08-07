@@ -40,7 +40,6 @@ export default {
     };
   },
   mounted() {
-    console.log('hi');
     this.style = 'color: ' + this.color + '; background-color: ' + this.background_color + ';';
     if(this.border) {
       this.style += 'border-color: '+ this.border_color + ';';
