@@ -1,5 +1,5 @@
 <template>
-  <span :v-if="showTag" class="seg-tag" :style="style">
+  <span class="seg-tag" :style="style">
     <i :v-if="icon" :class="'el-icon-' + icon_detail"></i>{{content}}
   </span>
 </template>
@@ -36,16 +36,15 @@ export default {
   },
   data() {
     return {
-      style: '',
-      showTag: false
+      style: ''
     };
   },
   mounted() {
+    console.log('hi');
     this.style = 'color: ' + this.color + '; background-color: ' + this.background_color + ';';
     if(this.border) {
       this.style += 'border-color: '+ this.border_color + ';';
     }
-    this.showTag = true;
   }
 };
 </script>

@@ -7,7 +7,8 @@
         :prop="item.name"
         :label="item.label"
         :width="item.width"
-      />
+      >
+      </el-table-column>
     </el-table>
     <el-pagination
       :page-size="this.limit"

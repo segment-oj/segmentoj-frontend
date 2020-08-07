@@ -13,6 +13,7 @@
 <script>
 import apiurl from './../../apiurl';
 import AjaxTable from './../lib/AjaxTable.vue';
+import listTag from './listTag.vue';
 
 export default {
   name: 'ProblemList',
@@ -30,6 +31,10 @@ export default {
       }, {
         name: 'title',
         label: 'Title'
+      }, {
+        name: 'tag',
+        label: 'Tags',
+        width: '300'
       }],
       data_count: 10
     };
@@ -55,6 +60,7 @@ export default {
         x.title = (<router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title }</router-link>);
       }
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
+      x.tag = (<listTag id={x.pid}></listTag>);
       return x;
     }
   },

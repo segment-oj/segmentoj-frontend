@@ -1,0 +1,57 @@
+<template>
+  <div>
+    <SegmentTag
+      v-for="item in this.rendertags"
+      :key="item.content"
+      :border_color="item.color"
+      :content="item.content"
+    />
+  </div>
+</template>
+
+<script>
+import SegmentTag from './../lib/tag.vue';
+import apiurl from './../../apiurl';
+
+export default {
+  name: 'listTag',
+  data() {
+    return {
+      tags: [],
+      rendertags: []
+    };
+  },
+  props: {
+    id: {
+      type: Number,
+      default: 0
+    }
+  },
+  methods: {
+    loadTag() {
+      this.$axios
+        .get(apiurl('/problem/' + String(this.id)))
+        .then(res => {
+          this.tags = res.data.res.tags;
+          for(let i = 0; i < this.tags.length; i += 1) {
+            this.$axios
+              .get(apiurl('/problem/tag/' + this.tags[i]))
+              .then(detail => {
+                let data = detail.data;
+                this.rendertags.push({
+                  color: data.res.color,
+                  content: data.res.content
+                });
+              });
+          }
+        });
+    }
+  },
+  mounted() {
+    this.loadTag();
+  },
+  components: {
+    SegmentTag
+  }
+};
+</script>
