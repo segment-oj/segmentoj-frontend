@@ -1,14 +1,25 @@
 <template>
-  <carousel/>
+  <div>
+    <carousel/>
+    <jumpTo class="item" />
+  </div>
 </template>
 
 <script>
 import Carousel from './carousel.vue';
+import jumpTo from './../lib/jumpTo.vue';
 
 export default {
   name: 'Home',
   components: {
-    Carousel
+    Carousel,
+    jumpTo
   }
 };
 </script>
+
+<style scoped>
+.item {
+    margin-top: 20px;
+}
+</style>

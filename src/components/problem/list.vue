@@ -6,19 +6,7 @@
         </el-card>
       </el-col>
       <el-col :span="6">
-        <el-card>
-          <i class="el-icon-s-promotion" />
-          Jump to
-          <el-input
-            placeholder="PID"
-            v-model="jumpToProblem"
-            class="input-with-select" 
-            style="margin-top: 9px;"
-          >
-            <template slot="prepend">#.</template>
-            <el-button slot="append" icon="el-icon-top-right" @click="jump"></el-button>
-          </el-input>
-        </el-card>
+        <jumpTo />
       </el-col>
       <el-col :span="8">
         <el-card>
@@ -67,6 +55,7 @@
 <script>
 import apiurl from './../../apiurl';
 import AjaxTable from './../lib/AjaxTable.vue';
+import jumpTo from './../lib/jumpTo.vue';
 import listTag from './listTag.vue';
 
 export default {
@@ -76,7 +65,6 @@ export default {
       alive: true,
       ajax_url: apiurl('/problem/list'),
       limit: 50,
-      jumpToProblem: null,
       showTags: false,
       columns: [{
         name: 'score',
@@ -130,13 +118,11 @@ export default {
       this.$nextTick(() => {
         this.alive = true;
       });
-    },
-    jump() {
-      this.$router.push('/problem/' + this.jumpToProblem);
     }
   },
   components: {
-    AjaxTable
+    AjaxTable,
+    jumpTo
   },
   mounted() {
     this.$axios
@@ -156,9 +142,5 @@ export default {
 <style scoped>
 .item {
     margin-top: 20px;
-}
-
-.margin-top {
-    margin-top: 8px;
 }
 </style>

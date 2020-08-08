@@ -9,8 +9,7 @@
         :width="item.width"
         :align="item.align"
         :header-align="item.headerAlign"
-      >
-      </el-table-column>
+      />
     </el-table>
     <el-pagination
       :page-size="this.limit"
@@ -19,7 +18,7 @@
       @current-change="this.onPageChange"
       class="pagination"
       :total="this.total"
-    ></el-pagination>
+    />
   </div>
 </template>
 
