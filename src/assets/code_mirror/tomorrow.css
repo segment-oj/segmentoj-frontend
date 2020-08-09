@@ -1,0 +1,45 @@
+.CodeMirror {
+    height: 600px !important;
+    background-color: #f9f9f9;
+    color: #4d4d4c;
+}
+
+.cm-meta, .cm-number {
+    color: #f5871f;
+}
+
+.cm-comment {
+    color: #8e908c !important;
+}
+
+.cm-keyword, .cm-type {
+    color: #8959a8;
+}
+
+.cm-def {
+    color: #4271ae;
+}
+
+.cm-string {
+    color: #718c00;
+}
+
+.CodeMirror-activeline-background, .CodeMirror-linebackground, .CodeMirror-selected {
+    background-color: #efefef !important;
+}
+
+.CodeMirror-gutters {
+    background: #f9f9f9;
+    border-right: none;
+}
+
+.CodeMirror-matchingbracket {
+    color: #8e908c !important;
+    outline: 1px solid #d6d6d6;
+    -moz-outline-radius: 3px;
+}
+
+.CodeMirror-foldmarker {
+    text-shadow: none !important;
+    color: #8e908c !important;
+}
