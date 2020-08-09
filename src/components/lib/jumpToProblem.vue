@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'jumpToProblem',
+  name: 'JumpToProblem',
   data() {
     return {
       jumpToProblem: null
