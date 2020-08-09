@@ -6,7 +6,7 @@
         </el-card>
       </el-col>
       <el-col :span="6">
-        <jumpTo />
+        <jumpToProblem />
       </el-col>
       <el-col :span="8">
         <el-card>
@@ -55,7 +55,7 @@
 <script>
 import apiurl from './../../apiurl';
 import AjaxTable from './../lib/AjaxTable.vue';
-import jumpTo from './../lib/jumpTo.vue';
+import jumpToProblem from './../lib/jumpToProblem.vue';
 import listTag from './listTag.vue';
 
 export default {
@@ -122,7 +122,7 @@ export default {
   },
   components: {
     AjaxTable,
-    jumpTo
+    jumpToProblem
   },
   mounted() {
     this.$axios

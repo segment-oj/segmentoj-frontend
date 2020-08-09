@@ -7,7 +7,7 @@
 
 <script>
 import Carousel from './carousel.vue';
-import jumpTo from './../lib/jumpTo.vue';
+import jumpTo from './../lib/jumpToProblem.vue';
 
 export default {
   name: 'Home',
