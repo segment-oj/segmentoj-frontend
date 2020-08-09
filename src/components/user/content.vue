@@ -6,10 +6,12 @@
           <img src="./../../assets/icon/SOJ-thick-white-background.png" />
         </el-avatar>
       </el-card>
+      <!-- Mobile screen -->
       <el-card class="item float" v-if="!smallScreen">
         <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');" icon="el-icon-edit" circle />
         <el-button @click="$router.go(-1);" icon="el-icon-back" circle />
       </el-card>
+      <!-- Normal screen -->
       <el-card class="item" v-else>
         <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');">Edit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>

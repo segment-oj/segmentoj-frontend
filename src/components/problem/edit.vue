@@ -1,4 +1,5 @@
 <template>
+  <!-- Normal screen -->
   <div v-if="!smallScreen">
     <el-row :gutter="30">
       <el-col :span="6">
@@ -42,6 +43,7 @@
       </el-col>
     </el-row>
   </div>
+  <!-- Mobile screen -->
   <div v-else>
     <el-card class="float">
       <el-button type="primary" @click="submit();" icon="el-icon-check" circle />

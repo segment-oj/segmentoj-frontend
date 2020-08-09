@@ -2,12 +2,16 @@
   <div class="content">
     <div id="tool-bar">
       <el-card shadow="never">
-        <el-avatar shape="square" :size="avatarWidth"><img src="./../../assets/icon/SOJ-thick-white-background.png" /></el-avatar>
+        <el-avatar shape="square" :size="avatarWidth">
+          <img src="./../../assets/icon/SOJ-thick-white-background.png" />
+        </el-avatar>
       </el-card>
+      <!-- Mobile screen -->
       <el-card class="item float" v-if="smallScreen">
         <el-button v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot" type="primary" @click="submit()" icon="el-icon-check" circle />
         <el-button @click="$router.go(-1);" icon="el-icon-back" circle />
       </el-card>
+      <!-- Normal screen -->
       <el-card class="item" v-else>
         <el-button v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot" type="primary" @click="submit()" :loading="buttonLoading">Submit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>

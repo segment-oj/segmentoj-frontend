@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Normal screen -->
     <el-row :gutter="20" v-if="!smallScreen">
       <el-col :span="6">
         <el-card>
@@ -41,6 +42,7 @@
         </el-card>
       </el-col>
     </el-row>
+    <!-- Mobile screen -->
     <div v-else>
       <el-card>
         <div slot="header" class="clearfix"><i class="el-icon-s-operation" /> Language</div>
