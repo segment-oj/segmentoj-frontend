@@ -22,6 +22,15 @@
           <i class="el-icon-s-order" /> 
           <div class="lable"> Problem List</div>
         </el-menu-item>
+        <el-submenu index="1">
+          <template slot="title">
+            <i class="el-icon-s-help" />
+            <span class="lable"> Applications</span>
+          </template>
+          <el-menu-item index="/app/editor">
+            Code Editor
+          </el-menu-item>
+        </el-submenu>
         <el-submenu index="2" id="user">
           <template slot="title">
               <el-avatar shape="square">
