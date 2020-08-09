@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <div id="nav" class="high-zindex">
     <div id="nav-content">
       <el-menu
         id="menu"
@@ -69,7 +69,6 @@ export default {
 }
 
 #nav {
-    z-index: 1000000;
     background-color: #545c64;
     width: 100vw;
     position: fixed;

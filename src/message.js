@@ -5,7 +5,7 @@ export default {
       showClose: true,
       message: content,
       type: 'success',
-      customClass: 'highzindex'
+      customClass: 'top-zindex'
     });
   },
   error: (element, content) => {
@@ -13,7 +13,7 @@ export default {
       showClose: true,
       message: content,
       type: 'error',
-      customClass: 'highzindex'
+      customClass: 'top-zindex'
     });
   }
 };

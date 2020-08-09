@@ -163,8 +163,24 @@ h3::before {
     border: none;
 }
 
-.highzindex {
-    z-index: 1000000000000 !important;
+.bottom-zindex {
+    z-index: 10;
+}
+
+.low-zindex {
+    z-index: 100;
+}
+
+.mid-zindex {
+    z-index: 1000;
+}
+
+.high-zindex {
+    z-index: 10000;
+}
+
+.top-zindex {
+    z-index: 100000;
 }
 
 .no-margin {
