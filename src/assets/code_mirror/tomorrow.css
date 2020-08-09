@@ -4,7 +4,8 @@
     color: #4d4d4c;
 }
 
-.cm-meta, .cm-number {
+.cm-meta,
+.cm-number {
     color: #f5871f;
 }
 
@@ -12,7 +13,8 @@
     color: #8e908c !important;
 }
 
-.cm-keyword, .cm-type {
+.cm-keyword,
+.cm-type {
     color: #8959a8;
 }
 
@@ -24,7 +26,9 @@
     color: #718c00;
 }
 
-.CodeMirror-activeline-background, .CodeMirror-linebackground, .CodeMirror-selected {
+.CodeMirror-activeline-background,
+.CodeMirror-linebackground,
+.CodeMirror-selected {
     background-color: #efefef !important;
 }
 
