@@ -25,7 +25,7 @@
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-s-help" />
-            <span class="lable"> Applications</span>
+            <span class="lable"> Apps</span>
           </template>
           <el-menu-item index="/app/editor">
             Code Editor
