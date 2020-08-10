@@ -80,7 +80,7 @@ export default {
         label: 'Title'
       }, {
         name: 'tag',
-        width: '300',
+        width: '400',
         align: 'right',
       }],
       data_count: 10
