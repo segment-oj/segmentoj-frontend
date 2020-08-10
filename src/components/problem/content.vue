@@ -22,27 +22,27 @@
         <div id="tools">
           <el-card v-if="showSmallToolBar || !smallScreen">
             <div><i class="el-icon-s-tools" /> Tool Bar</div>
-            <el-menu default-active="3">
-              <el-menu-item index="3" @click="$router.push('/problem/' + $route.params.id +'/submit');">
+            <el-menu default-active="0">
+              <el-menu-item index="0" @click="$router.push('/problem/' + $route.params.id +'/submit');">
                 <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
               </el-menu-item>
-              <el-submenu index="0">
-                <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
-                <el-menu-item index="0-0">Submissions</el-menu-item>
-                <el-menu-item index="0-1">Statistics</el-menu-item>
-              </el-submenu>
               <el-submenu index="1">
+                <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
+                <el-menu-item index="1-0">Submissions</el-menu-item>
+                <el-menu-item index="1-1">Statistics</el-menu-item>
+              </el-submenu>
+              <el-submenu index="2">
                 <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
-                <el-menu-item index="1-0">Discussions</el-menu-item>
-                <el-menu-item index="1-1">Solutions</el-menu-item>
+                <el-menu-item index="2-0">Discussions</el-menu-item>
+                <el-menu-item index="2-1">Solutions</el-menu-item>
               </el-submenu>
-              <el-submenu index="2" v-if="this.$store.state.user.isStaff || this.$store.state.user.isRoot">
-                <template slot="title"><div class="text-bold"><i class="el-icon-edit" /> Edit</div></template>
-                <el-menu-item index="2-0" @click="$router.push('/problem/' + $route.params.id +'/edit');">
-                  Edit
-                </el-menu-item>
-                <el-menu-item index="2-1">Delete</el-menu-item>
-              </el-submenu>
+              <el-menu-item
+                index="3"
+                v-if="this.$store.state.user.isStaff || this.$store.state.user.isRoot" 
+                @click="$router.push('/problem/' + $route.params.id +'/edit');"
+              >
+                <span slot="title" class="text-bold"><i class="el-icon-edit" /> Edit</span>
+              </el-menu-item>
             </el-menu>
             <el-button @click="$router.push('/problem/list');" class="margin-top-small">Back</el-button>
           </el-card>

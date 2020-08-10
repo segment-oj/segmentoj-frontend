@@ -2,7 +2,7 @@
   <!-- Normal screen -->
   <div v-if="!smallScreen">
     <el-row :gutter="30">
-      <el-col :span="6">
+      <el-col :span="7">
         <el-card>
           <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
           <el-input v-model="title" placeholder="Input problem title here"></el-input>
@@ -35,7 +35,7 @@
           <el-button @click="back();">Back</el-button>
         </el-card>
       </el-col>
-      <el-col :span="18">
+      <el-col :span="17">
         <el-card v-loading="contentLoading">
           <div slot="header" class="clearfix"><i class="el-icon-document" /> Content</div>
           <MarkdownEditor v-model="mdContent" />
