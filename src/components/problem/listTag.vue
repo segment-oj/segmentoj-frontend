@@ -1,14 +1,16 @@
 <template>
   <div>
-    <SegmentTag
-      v-for="item in this.rendertags"
-      :key="item.content"
-      color="#fff"
-      height="25px"
-      :border_color="item.color"
-      :background_color="item.color"
-      :content="item.content"
-    />
+    <div v-if="$store.state.tags.displayTags">
+      <SegmentTag
+        v-for="item in this.rendertags"
+        :key="item.content"
+        color="#fff"
+        height="25px"
+        :border_color="item.color"
+        :background_color="item.color"
+        :content="item.content"
+      />
+    </div>
   </div>
 </template>
 
@@ -28,10 +30,17 @@ export default {
     pid: {
       type: Number,
       default: 0
+    },
+  },
+  watch: {
+    pid() {
+      this.loadTag();
     }
   },
   methods: {
     loadTag() {
+      this.rendertags = [];
+      this.tags = [];
       this.$axios
         .get(apiurl('/problem/' + String(this.pid)))
         .then(res => {

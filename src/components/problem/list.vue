@@ -32,7 +32,6 @@
                 v-model="showTags"
                 active-color="#13ce66"
                 inactive-color="#ff4949"
-                @change="refresh"
                 style="margin-top: 17px;"
               />
             </el-col>
@@ -82,10 +81,17 @@ export default {
       }, {
         name: 'tag',
         width: '300',
-        align: 'right'
+        align: 'right',
       }],
       data_count: 10
     };
+  },
+  watch: {
+    showTags(val) {
+      this.$store.commit('setDisplayTag', {
+        val: val
+      });
+    }
   },
   methods: {
     process(x) {
@@ -108,16 +114,16 @@ export default {
         x.title = (<router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title }</router-link>);
       }
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
-      if (this.showTags) {
-        x.tag = (<listTag pid={x.pid}></listTag>);
-      }
+      
+      x.tag = (<listTag pid={x.pid}></listTag>);
+      
       return x;
     },
     refresh() {
-      this.alive = false;
-      this.$nextTick(() => {
-        this.alive = true;
-      });
+      // this.alive = false;
+      // this.$nextTick(() => {
+      //   this.alive = true;
+      // });
     }
   },
   components: {
