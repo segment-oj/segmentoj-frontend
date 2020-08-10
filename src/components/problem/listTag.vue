@@ -31,12 +31,13 @@ export default {
     },
   },
   watch: {
-    pid() {
+    tags() {
       this.loadTag();
     }
   },
   methods: {
     loadTag() {
+      this.rendertags = [];
       for(let i = 0; i < this.tags.length; i += 1) {
         this.$axios
           .get(apiurl('/problem/tag/' + this.tags[i]))
