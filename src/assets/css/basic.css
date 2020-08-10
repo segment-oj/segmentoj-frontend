@@ -164,23 +164,23 @@ h3::before {
 }
 
 .bottom-zindex {
-    z-index: 10;
+    z-index: 10 !important;
 }
 
 .low-zindex {
-    z-index: 100;
+    z-index: 100 !important;
 }
 
 .mid-zindex {
-    z-index: 1000;
+    z-index: 1000 !important;
 }
 
 .high-zindex {
-    z-index: 10000;
+    z-index: 10000 !important;
 }
 
 .top-zindex {
-    z-index: 100000;
+    z-index: 100000 !important;
 }
 
 .no-margin {
