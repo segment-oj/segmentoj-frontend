@@ -33,26 +33,12 @@
         <el-card class="item">
           <el-button type="primary" @click="submit" :loading="buttonLoading">Submit</el-button>
           <el-button @click="back();">Back</el-button>
-          <el-popover
-            placement="top"
-            width="250"
-            v-model="visible"
-          >
-            <div style="font-size: 16px;">
-              <strong>
-                <i class="el-icon-warning" />
-                Are you sure
-              </strong>
-            </div>
-            <p>Are you sure to delete this problem? This action cannot be undone!</p>
-            <p>Please type <strong>#{{this.$route.params.id}}/{{title}}</strong> to confirm.</p>
-            <el-input :placeholder="'Type #' + this.$route.params.id + '/' + title" v-model="confirmAnswer"></el-input>
-            <div style="text-align: right; margin: 10px;">
-              <el-button size="mini" type="text" @click="visible = false">Cancel</el-button>
-              <el-button type="primary" size="mini" @click="visible = false" v-if="confirmAnswerCorrect">Confirm</el-button>
-            </div>
-            <el-button type="danger" slot="reference" style="margin-left: 10px;">Delete</el-button>
-          </el-popover>
+          <Confirm
+            buttonName="Delete"
+            buttonType="danger"
+            name="problem"
+            :confirmInput="'#' + this.$route.params.id + '/' + this.title"
+          />
         </el-card>
       </el-col>
       <el-col :span="17">
@@ -107,6 +93,7 @@
 <script>
 import apiurl from './../../apiurl';
 import MarkdownEditor from './../lib/MarkdownEditor.vue';
+import Confirm from './../lib/confirm.vue';
 
 export default {
   name: 'ProblemEdit',
@@ -125,15 +112,6 @@ export default {
       confirmAnswer: '',
       confirmAnswerCorrect: false
     };
-  },
-  watch: {
-    confirmAnswer(val) {
-      let answer = '#' + this.$route.params.id + '/' + this.title;
-      this.confirmAnswerCorrect = false;
-      if (val == answer) {
-        this.confirmAnswerCorrect = true;
-      }
-    }
   },
   methods: {
     loadproblem() {
@@ -188,7 +166,8 @@ export default {
     this.loadproblem();
   },
   components: {
-    MarkdownEditor
+    MarkdownEditor,
+    Confirm
   }
 };
 </script>
