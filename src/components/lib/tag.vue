@@ -34,8 +34,8 @@ export default {
       default: 'rgb(244, 255, 255)'
     },
     height: {
-      type: String,
-      default: '32px'
+      type: Number,
+      default: 32
     }
   },
   data() {
@@ -48,8 +48,8 @@ export default {
     if(this.border) {
       this.style += 'border-color: '+ this.border_color + ';';
     }
-    this.style += 'height: ' + this.height + ';';
-    this.style += 'line-height: ' + this.height - 2 + ';';
+    this.style += 'height: ' + this.height + 'px;';
+    this.style += 'line-height: ' + String(this.height - 2) + 'px;';
   }
 };
 </script>
