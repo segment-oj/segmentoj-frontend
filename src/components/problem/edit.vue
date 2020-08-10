@@ -31,9 +31,28 @@
           </el-row>
         </el-card>
         <el-card class="item">
-          <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
+          <el-button type="primary" @click="submit" :loading="buttonLoading">Submit</el-button>
           <el-button @click="back();">Back</el-button>
-          <el-button type="danger">Delete</el-button>
+          <el-popover
+            placement="top"
+            width="250"
+            v-model="visible"
+          >
+            <div style="font-size: 16px;">
+              <strong>
+                <i class="el-icon-warning" />
+                Are you sure
+              </strong>
+            </div>
+            <p>Are you sure to delete this problem? This action cannot be undone!</p>
+            <p>Please type <strong>#{{this.$route.params.id}}/{{title}}</strong> to confirm.</p>
+            <el-input :placeholder="'Type #' + this.$route.params.id + '/' + title" v-model="confirmAnswer"></el-input>
+            <div style="text-align: right; margin: 10px;">
+              <el-button size="mini" type="text" @click="visible = false">Cancel</el-button>
+              <el-button type="primary" size="mini" @click="visible = false" v-if="confirmAnswerCorrect">Confirm</el-button>
+            </div>
+            <el-button type="danger" slot="reference" style="margin-left: 10px;">Delete</el-button>
+          </el-popover>
         </el-card>
       </el-col>
       <el-col :span="17">
@@ -49,6 +68,7 @@
     <el-card class="float">
       <el-button type="primary" @click="submit();" icon="el-icon-check" circle />
       <el-button @click="back();" icon="el-icon-back" circle />
+      <el-button type="danger">Delete</el-button>
     </el-card>
     <el-card>
       <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
@@ -100,8 +120,20 @@ export default {
       memery: 'Unknown',
       disable: false,
       html: false,
-      smallScreen: screen.width < 700
+      smallScreen: screen.width < 700,
+      visible: false,
+      confirmAnswer: '',
+      confirmAnswerCorrect: false
     };
+  },
+  watch: {
+    confirmAnswer(val) {
+      let answer = '#' + this.$route.params.id + '/' + this.title;
+      this.confirmAnswerCorrect = false;
+      if (val == answer) {
+        this.confirmAnswerCorrect = true;
+      }
+    }
   },
   methods: {
     loadproblem() {
