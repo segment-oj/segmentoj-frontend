@@ -1,11 +1,12 @@
 <template>
-  <el-card>
-    <div slot="header" class="clearfix">
+<div>
+  <!-- <el-card> -->
+    <!-- <div slot="header" class="clearfix">
       <i class="el-icon-document" />
       Code Editor
-    </div>
+    </div> -->
     <codeMirror />
-  </el-card>
+  <!-- </el-card> --></div>
 </template>
 
 <script>
