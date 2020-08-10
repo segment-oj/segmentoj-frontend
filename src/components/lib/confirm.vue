@@ -15,8 +15,8 @@
       <p>Please type <strong>{{this.confirmInput}}</strong> to confirm.</p>
       <el-input :placeholder="'Type ' + this.confirmInput" v-model="confirmAnswer"></el-input>
       <div style="text-align: right; margin: 10px;">
-        <el-button size="mini" type="text" @click="visible = false">Cancel</el-button>
-        <el-button type="primary" size="mini" @click="visible = false" :disabled="!confirmAnswerCorrect">Confirm</el-button>
+        <el-button size="mini" type="text" @click="this.visible = false">Cancel</el-button>
+        <el-button type="primary" size="mini" @click="confirmed" :disabled="!confirmAnswerCorrect">Confirm</el-button>
       </div>
       <el-button :type="this.buttonType" slot="reference" style="margin-left: 10px;">{{buttonName}}</el-button>
     </el-popover>
@@ -42,6 +42,10 @@ export default {
       type: String,
       default: 'primary'
     },
+    buttonFunction: {
+      type: Function,
+      required: true
+    },
     name: {
       type: String,
       required: true
@@ -57,7 +61,7 @@ export default {
     placement: {
       type: String,
       default: 'top'
-    }
+    },
   },
   watch: {
     confirmAnswer(val) {
@@ -67,5 +71,11 @@ export default {
       }
     }
   },
+  methods: {
+    confirmed() {
+      this.visible = false;
+      this.buttonFunction();
+    }
+  }
 };
 </script>

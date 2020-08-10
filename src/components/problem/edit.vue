@@ -36,6 +36,7 @@
           <Confirm
             buttonName="Delete"
             buttonType="danger"
+            :buttonFunction="this.delete"
             name="problem"
             :confirmInput="'#' + this.$route.params.id + '/' + this.title"
           />
@@ -133,7 +134,7 @@ export default {
         });
     },
     back() {
-      this.$router.push('/problem/'+this.$route.params.id);
+      this.$router.push('/problem/' + this.$route.params.id);
     },
     submit() {
       this.buttonLoading = true;
@@ -151,14 +152,30 @@ export default {
           this.$SegmentMessage.success(this, 'Your changes have been submitted');
         })
         .catch(err => {
-          if(err.request.status === 404) {
+          if (err.request.status === 404) {
             this.$SegmentMessage.error(this, 'Problem not found');
-          } else if(err.request.status === 403) {
+          } else if (err.request.status === 403) {
             this.$SegmentMessage.error(this, 'Permission denied');
           } else {
             this.$SegmentMessage.error(this, 'Unkown error');
           }
           this.buttonLoading = false;
+        });
+    },
+    delete() {
+      this.$axios
+        .delete(apiurl('/problem/' + this.$route.params.id))
+        .then(() => {
+          this.$SegmentMessage.success(this, 'Deleted problem #' + this.$route.params.id);
+        })
+        .catch(err => {
+          if (err.request.status === 404) {
+            this.$SegmentMessage.error(this, 'Problem not found');
+          } else if (err.request.status === 403) {
+            this.$SegmentMessage.error(this, 'Permission denied');
+          } else {
+            this.$SegmentMessage.error(this, 'Unkown error');
+          }
         });
     }
   },
