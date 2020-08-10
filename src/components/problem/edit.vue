@@ -33,6 +33,7 @@
         <el-card class="item">
           <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
           <el-button @click="back();">Back</el-button>
+          <el-button type="danger">Delete</el-button>
         </el-card>
       </el-col>
       <el-col :span="17">

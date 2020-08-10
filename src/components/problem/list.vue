@@ -115,7 +115,7 @@ export default {
       }
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
       
-      x.tag = (<listTag pid={x.pid}></listTag>);
+      x.tag = (<listTag tags={ x.tags }></listTag>);
       
       return x;
     },
