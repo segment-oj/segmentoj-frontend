@@ -11,7 +11,7 @@
           Are you sure
         </strong>
       </div>
-      <p>Are you sure to delete this {{this.name}}? This action cannot be undone!</p>
+      <p>Once you delete this {{this.name}}, <strong class="color-warning">THERE IS NO GOING BACK</strong>.</p>
       <p>Please type <strong>{{this.confirmInput}}</strong> to confirm.</p>
       <el-input :placeholder="'Type ' + this.confirmInput" v-model="confirmAnswer"></el-input>
       <div style="text-align: right; margin: 10px;">
