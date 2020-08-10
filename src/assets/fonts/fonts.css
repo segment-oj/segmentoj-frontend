@@ -1,6 +1,6 @@
 pre,
 code {
-    font-family: "Fira Code", "Cascadia Code", "Noto Sans SC", "Source Code Pro", Consolas, "微软雅黑", monospace;
+    font-family: "Fira Code", "Cascadia Code", "Noto Sans SC", "Source Code Pro", Consolas, "微软雅黑", monospace !important;
 }
 
 body {
