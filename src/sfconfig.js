@@ -67,5 +67,6 @@ export default {
   }, {
     value: '18',
     label: 'Java'
-  }]
+  }],
+  captchaKeyMax: 2000000000
 };
