@@ -163,6 +163,22 @@ h3::before {
     border: none;
 }
 
+.CodeMirror-linenumber {
+    font-size: 15px;
+}
+
+.CodeMirror {
+    padding: 5px !important;
+}
+
+.CodeMirror span[role="presentation"] {
+    font-size: 14px;
+}
+
+.CodeMirror-cursors {
+    transition: all 0.2s;
+}
+
 .bottom-zindex {
     z-index: 10 !important;
 }
