@@ -1,6 +1,6 @@
 export default {
   api: {
-    server: 'http://172.32.1.144:8000/api'
+    server: 'http://172.32.1.144/api'
   },
   markdown: {
     gfm: true,
@@ -67,5 +67,6 @@ export default {
   }, {
     value: '18',
     label: 'Java'
-  }]
+  }],
+  captchaKeyMax: 2000000000
 };
