@@ -19,6 +19,7 @@
               <el-slider
                 v-model="limit"
                 :step="10"
+                :min="10"
                 @change="refresh"
                 style="margin-top: 10px;"
               />
