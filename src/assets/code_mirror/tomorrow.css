@@ -65,9 +65,9 @@
 .CodeMirror-hints {
     max-height: 200px !important;
     box-shadow: none !important;
-    border-color: #DCDFE6 !important;
+    border-color: #dcdfe6 !important;
     background-color: #fefefe !important;
-    font-family: 'Fira Code' !important;
+    font-family: "Fira Code" !important;
     padding: 5px !important;
 }
 
