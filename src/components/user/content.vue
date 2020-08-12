@@ -82,7 +82,7 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-check" />
-              <span class="label"> Sloved</span>
+              <span class="label"> Solved</span>
               <div class="small-label"> AC</div>
             </div>
             <div class="clearfix">
