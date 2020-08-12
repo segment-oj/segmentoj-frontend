@@ -14,6 +14,7 @@
 import codeMirror from './../lib/editor.vue';
 
 export default {
+  name: 'CodeEditorContainer',
   data() {
     return {
       source: null
