@@ -10,7 +10,6 @@ import 'codemirror/mode/clike/clike';
 import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/hint/show-hint.css';
 import 'codemirror/addon/hint/anyword-hint';
-import 'codemirror/addon/hint/css-hint';
 import 'codemirror/addon/edit/matchbrackets';
 import 'codemirror/addon/edit/closebrackets';
 import 'codemirror/addon/fold/foldcode';

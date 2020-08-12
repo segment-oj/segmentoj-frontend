@@ -1,6 +1,6 @@
 .CodeMirror {
     height: 600px !important;
-    background-color: #f9f9f9;
+    background-color: #fcfcfc;
     color: #4d4d4c;
 }
 
@@ -41,14 +41,21 @@
     color: #718c00 !important;
 }
 
-.CodeMirror-activeline-background,
 .CodeMirror-linebackground,
-.CodeMirror-selected {
+.CodeMirror-activeline-background {
     background-color: #efefef !important;
 }
 
+.cm-operator {
+    color: #3e999f !important;
+}
+
+.CodeMirror-selected {
+    background-color: #d6d6d6 !important;
+}
+
 .CodeMirror-gutters {
-    background: #f9f9f9;
+    background: #fcfcfc;
     border-right: none;
 }
 
