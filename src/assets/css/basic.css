@@ -1,20 +1,16 @@
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
-    background-color: #cccccc;
+    background-color: #eeeeee;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #cccccc;
+    background-color: #eeeeee;
 }
 
 ::-webkit-scrollbar-thumb {
     background-color: #b3b3b3;
     transition: all 0.5s;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: #808080;
 }
 
 *::selection {

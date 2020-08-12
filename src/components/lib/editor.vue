@@ -22,9 +22,13 @@ import 'codemirror/addon/comment/continuecomment';
 import 'codemirror/addon/comment/comment.js';
 import 'codemirror/addon/dialog/dialog';
 import 'codemirror/addon/dialog/dialog.css';
+import 'codemirror/addon/scroll/simplescrollbars';
+import 'codemirror/addon/scroll/annotatescrollbar';
+import 'codemirror/addon/scroll/simplescrollbars.css';
 import 'codemirror/addon/search/searchcursor';
 import 'codemirror/addon/search/search';
 import 'codemirror/addon/search/jump-to-line';
+import 'codemirror/addon/search/match-highlighter';
 import 'codemirror/keymap/sublime';
 
 export default {
@@ -53,6 +57,12 @@ export default {
         continueLineComment: false,
         autofocus: true,
         keyMap: 'sublime',
+        scrollbarStyle: 'simple',
+        highlightSelectionMatches: {
+          showToken: /\w/, 
+          annotateScrollbar: true
+        },
+        undoDepth: 1000,
         hintOptions: {
           completeSingle: false
         }
