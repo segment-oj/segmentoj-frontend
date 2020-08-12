@@ -9,8 +9,17 @@
     border-left: 2px solid #4d4d4c;
 }
 
+.cm-qualifier {
+    color: #c82829;
+}
+
+.cm-property {
+    color: #eab700;
+}
+
 .cm-meta,
-.cm-number {
+.cm-number,
+.cm-atom {
     color: #f5871f;
 }
 
@@ -19,7 +28,8 @@
 }
 
 .cm-keyword,
-.cm-type {
+.cm-type,
+.cm-tag {
     color: #8959a8;
 }
 
