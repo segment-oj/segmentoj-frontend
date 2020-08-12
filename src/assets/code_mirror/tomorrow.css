@@ -72,6 +72,7 @@
 }
 
 .CodeMirror-linenumber {
+    color: #C0C4CC;
     font-size: 15px;
 }
 
