@@ -4,6 +4,12 @@
     color: #4d4d4c;
 }
 
+.CodeMirror-cursor {
+    transition: all 0.2s ease;
+    opacity: 0.7;
+    border-left: 2px solid #4d4d4c;
+}
+
 .cm-meta,
 .cm-number {
     color: #f5871f;
@@ -47,4 +53,16 @@
     text-shadow: none !important;
     color: #8e908c !important;
     font-family: 'Fira Sans' !important;
+}
+
+.CodeMirror-linenumber {
+    font-size: 15px;
+}
+
+.CodeMirror span[role="presentation"] {
+    font-size: 14px;
+}
+
+.CodeMirror-cursors {
+    transition: all 0.2s;
 }

@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     loadEditor() {
-      CodeMirror.fromTextArea(this.$refs.editor, {
+      let editor = CodeMirror.fromTextArea(this.$refs.editor, {
         theme: '3024-day',
         mode: 'text/x-c++src',
         indentUnit: 4,
@@ -48,7 +48,14 @@ export default {
         foldGutter: true,
         gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
         continueComments: true,
-        continueLineComment: false
+        continueLineComment: false,
+        extraKeys: {'Ctrl': 'autocomplete'}
+      });
+      editor.setOption('extraKeys', {
+        Tab: function(cm) {
+          let spaces = Array(cm.getOption('indentUnit') + 1).join(' ');
+          cm.replaceSelection(spaces);
+        }
       });
     }
   },
