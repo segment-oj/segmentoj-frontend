@@ -1,6 +1,6 @@
 export default {
   api: {
-    server: 'http://backend.soj.ac.cn/api'
+    server: 'http://backend.soj.szdytom.tk/api'
   },
   markdown: {
     gfm: true,
