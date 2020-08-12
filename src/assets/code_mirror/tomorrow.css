@@ -51,7 +51,7 @@
 .CodeMirror-foldmarker {
     text-shadow: none !important;
     color: #8e908c !important;
-    font-family: 'Fira Sans' !important;
+    font-family: "Fira Sans" !important;
 }
 
 .CodeMirror-linenumber {
