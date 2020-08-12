@@ -19,11 +19,13 @@ import 'codemirror/addon/fold/brace-fold';
 import 'codemirror/addon/fold/comment-fold';
 import 'codemirror/addon/selection/active-line';
 import 'codemirror/addon/comment/continuecomment';
+import 'codemirror/addon/comment/comment.js';
 import 'codemirror/addon/dialog/dialog';
 import 'codemirror/addon/dialog/dialog.css';
 import 'codemirror/addon/search/searchcursor';
 import 'codemirror/addon/search/search';
 import 'codemirror/addon/search/jump-to-line';
+import 'codemirror/keymap/sublime';
 
 export default {
   name: 'codeMirror',
@@ -49,6 +51,8 @@ export default {
         gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
         continueComments: true,
         continueLineComment: false,
+        autofocus: true,
+        keyMap: 'sublime',
         hintOptions: {
           completeSingle: false
         }

@@ -108,5 +108,17 @@ li.CodeMirror-hint-active {
 }
 
 .CodeMirror-search-label {
+    line-height: 24px;
     font-weight: 500;
+}
+
+.CodeMirror-search-field {
+    line-height: 20px;
+    border: 1px solid #dcdfe6 !important;
+    width: 50em !important;
+}
+
+.CodeMirror-search-hint {
+    line-height: 25px;
+    float: right;
 }
