@@ -55,8 +55,13 @@
 }
 
 .CodeMirror-gutters {
-    background: #fcfcfc;
+    background: #f9f9f9;
     border-right: none;
+}
+
+.CodeMirror-linenumber {
+    color: #909399;
+    font-size: 15px;
 }
 
 .CodeMirror-matchingbracket {
@@ -69,11 +74,8 @@
     text-shadow: none !important;
     color: #8e908c !important;
     font-family: "Fira Sans" !important;
-}
-
-.CodeMirror-linenumber {
-    color: #C0C4CC;
-    font-size: 15px;
+    outline: 1px solid #d6d6d6;
+    -moz-outline-radius: 3px;
 }
 
 .CodeMirror span[role="presentation"] {
