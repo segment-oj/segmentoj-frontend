@@ -144,10 +144,11 @@ li.CodeMirror-hint-active {
     opacity: 0.6;
 }
 
-.CodeMirror-simplescroll-horizontal div, .CodeMirror-simplescroll-vertical div {
+.CodeMirror-simplescroll-horizontal div,
+.CodeMirror-simplescroll-vertical div {
     background: #b3b3b3 !important;
     border: none !important;
-    border-radius: 0px !important;
+    border-radius: 0 !important;
 }
 
 .CodeMirror-simplescroll-vertical {
@@ -155,6 +156,5 @@ li.CodeMirror-hint-active {
 }
 
 .CodeMirror-simplescroll-horizontal {
-    bottom: 0; left: 0;
     height: 10px !important;
 }
