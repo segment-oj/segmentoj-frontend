@@ -32,6 +32,11 @@ export default {
       offset: 0
     };
   },
+  watch: {
+    limit() {
+      this.onPageChange(1);
+    }
+  },
   methods: {
     onPageChange(page_id) {
       this.offset = (page_id - 1) * this.limit;
@@ -81,7 +86,7 @@ export default {
       type: Function,
       default: x => x
     }
-  }
+  },
 };
 </script>
 
