@@ -49,21 +49,17 @@ export default {
         gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
         continueComments: true,
         continueLineComment: false,
-        extraKeys: {'Ctrl': 'autocomplete'}
-      });
-      editor.setOption('extraKeys', {
-        Tab: function(cm) {
-          let spaces = Array(cm.getOption('indentUnit') + 1).join(' ');
-          cm.replaceSelection(spaces);
+        hintOptions: {
+          completeSingle: false
         }
+      });
+      editor.on('keypress', function() {
+        editor.showHint();
       });
     }
   },
   mounted() {
     this.loadEditor();
-  },
-  destroyed() {
-    // this.$router.go(0);
   }
 };
 </script>

@@ -5,7 +5,6 @@
 }
 
 .CodeMirror-cursor {
-    transition: all 0.2s ease;
     opacity: 0.7;
     border-left: 2px solid #4d4d4c;
 }
@@ -63,6 +62,22 @@
     font-size: 14px;
 }
 
-.CodeMirror-cursors {
-    transition: all 0.2s;
+.CodeMirror-hints {
+    max-height: 200px !important;
+    box-shadow: none !important;
+    border-color: #DCDFE6 !important;
+    background-color: #fefefe !important;
+    font-family: 'Fira Code' !important;
+    padding: 5px !important;
+}
+
+.CodeMirror-hint {
+    line-height: 20px;
+    color: #444444 !important;
+}
+
+li.CodeMirror-hint-active {
+    background-color: #efefef !important;
+    color: #444444 !important;
+    font-weight: 500;
 }
