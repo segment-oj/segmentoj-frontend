@@ -1,5 +1,7 @@
 <template>
-  <textarea ref="editor" v-model="source" />
+  <div>
+    <textarea ref="editor" v-model="source" />
+  </div>
 </template>
 
 <script>

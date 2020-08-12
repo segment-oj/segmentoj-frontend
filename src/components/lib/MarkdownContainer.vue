@@ -1,7 +1,7 @@
 <template>
-    <div class="markdown-container">
-        <div v-html="renderedContent" v-katex:auto></div>
-    </div>
+  <div class="markdown-container">
+    <div v-html="renderedContent" v-katex:auto></div>
+  </div>
 </template>
 
 <script>
