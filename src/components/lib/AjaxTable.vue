@@ -29,16 +29,18 @@ export default {
     return {
       loading: true,
       tableData: null,
-      offset: 0
+      offset: 0,
+      pageId: 1,
     };
   },
   watch: {
     limit() {
-      this.onPageChange(1);
+      this.onPageChange(this.pageId);
     }
   },
   methods: {
     onPageChange(page_id) {
+      this.pageId = page_id;
       this.offset = (page_id - 1) * this.limit;
       this.load_data();
     },
