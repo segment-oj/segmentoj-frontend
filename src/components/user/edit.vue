@@ -8,12 +8,29 @@
       </el-card>
       <!-- Mobile screen -->
       <el-card class="item float" v-if="smallScreen">
-        <el-button v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot" type="primary" @click="submit()" icon="el-icon-check" circle />
-        <el-button @click="$router.go(-1);" icon="el-icon-back" circle />
+        <el-button
+          v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot"
+          type="primary"
+          @click="submit()"
+          icon="el-icon-check"
+          circle
+        />
+        <el-button
+          @click="$router.go(-1);"
+          icon="el-icon-back"
+          circle
+        />
       </el-card>
       <!-- Normal screen -->
       <el-card class="item" v-else>
-        <el-button v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot" type="primary" @click="submit()" :loading="buttonLoading">Submit</el-button>
+        <el-button
+          v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot"
+          type="primary"
+          @click="submit()"
+          :loading="buttonLoading"
+        >
+          Submit
+        </el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
     </div>
@@ -47,13 +64,19 @@
         </el-col>
       </el-row>
       <el-card class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Permissions</div>
+        <div slot="header" class="clearfix">
+          <i class="el-icon-chat-line-square" />
+          Permissions
+        </div>
         <el-checkbox v-model="isStaff" :disabled="!isStaffMe && !isRootMe">Staff</el-checkbox>
         <el-checkbox v-model="isRoot" :disabled="!isStaffMe && !isRootMe">Root</el-checkbox>
         <el-checkbox v-model="isActive" :disabled="(!isStaffMe && !isRootMe) || isMine">Active</el-checkbox>
       </el-card>
       <el-card class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Introductions</div>
+        <div slot="header" class="clearfix">
+          <i class="el-icon-chat-line-square" />
+          Introductions
+        </div>
         <MarkdownEditor v-model="introduction" />
       </el-card>
     </div>
