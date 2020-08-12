@@ -65,8 +65,14 @@
 }
 
 .CodeMirror-matchingbracket {
-    color: #8e908c !important;
+    color: #4d4d4c !important;
     outline: 1px solid #d6d6d6;
+    -moz-outline-radius: 3px;
+}
+
+.CodeMirror-nonmatchingbracket {
+    color: #c82829 !important;
+    outline: 1px solid #c82829;
     -moz-outline-radius: 3px;
 }
 
