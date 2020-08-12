@@ -98,3 +98,15 @@ li.CodeMirror-hint-active {
     color: #444444 !important;
     font-weight: 500;
 }
+
+.CodeMirror-dialog {
+    background-color: #fefefe !important;
+}
+
+.cm-searching {
+    background-color: #d6d6d6;
+}
+
+.CodeMirror-search-label {
+    font-weight: 500;
+}
