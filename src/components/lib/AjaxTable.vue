@@ -42,7 +42,7 @@ export default {
     limit() {
       this.onPageChange(this.pageId);
     },
-    title() {
+    costumData() {
       this.load_data();
     }
   },
