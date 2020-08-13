@@ -1,5 +1,5 @@
 <template>
-  <span class="seg-tag" :style="style">
+  <span class="segment-tag" :style="style">
     <i :v-if="icon" :class="'el-icon-' + icon_detail"></i>{{content}}
   </span>
 </template>
