@@ -92,8 +92,8 @@ export default {
       type: Number,
       default: 20
     },
-    title: {
-      type: String
+    costumData: {
+      type: Object
     },
     total: {
       type: Number,
