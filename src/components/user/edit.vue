@@ -123,7 +123,6 @@ export default {
           if (this.isMine || this.isRootMe || this.isStaffMe) {
             this.username = data.username;
             this.email = data.email;
-            this.introduction = data.introduction;
             this.isStaff = data.is_staff;
             this.isRoot = data.is_superuser;
             this.isActive = data.is_active;
@@ -139,13 +138,26 @@ export default {
             this.$SegmentMessage.error(this, 'Unkown error');
           }
         });
+      this.$axios
+        .get(apiurl('/account/' + this.$route.params.id + '/introduction'))
+        .then(res => {
+          let data = res.data.res;
+          this.introduction = data.introduction;
+        })
+        .catch(err => {
+          if(err.request.status === 404) {
+            this.$SegmentMessage.error(this, 'User does not exist');
+          } else {
+            this.$SegmentMessage.error(this, 'Unkown error');
+          }
+          this.userLoading = false;
+        });
     },
     submit() {
       this.buttonLoading = true;
       this.$axios
         .patch(apiurl('/account/' + this.$route.params.id), {
           username: this.username,
-          introduction: this.introduction,
           is_staff: this.isStaff,
           is_superuser: this.isRoot,
           is_active: this.isActive,
@@ -163,6 +175,21 @@ export default {
               lang: this.lang
             });
           }
+          this.$axios
+            .patch(apiurl('/account/' + this.$route.params.id + '/introduction'), {
+              introduction: this.introduction,
+            })
+            .then(() => {
+              this.buttonLoading = false;
+            })
+            .catch(err => {
+              if(err.request.status === 404) {
+                this.$SegmentMessage.error(this, 'User does not exist');
+              } else {
+                this.$SegmentMessage.error(this, 'Unkown error');
+              }
+              this.userLoading = false;
+            });
         })
         .catch(err => {
           this.buttonLoading = false;

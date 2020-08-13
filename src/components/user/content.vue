@@ -172,7 +172,6 @@ export default {
           this.username = data.username;
           this.userid = data.id;
           this.email = data.email;
-          this.introduction = data.introduction;
           this.solved = data.solved;
           this.submit = data.submit_time;
           this.timeJoin = timeFormat(data.date_joined);
@@ -194,6 +193,18 @@ export default {
           if (this.$store.state.user.isStaff || this.userid == String(this.$store.state.user.userid)) {
             this.ismine = true;
           }
+          this.$axios
+            .get(apiurl('/account/' + this.$route.params.id + '/introduction'))
+            .then(detail => {
+              this.introduction = detail.data.res.introduction;
+            })
+            .catch(err => {
+              if(err.request.status === 404) {
+                this.$SegmentMessage.error(this, 'User does not exist');
+              } else {
+                this.$SegmentMessage.error(this, 'Unkown error');
+              }
+            });
           this.userLoading = false;
         })
         .catch(err => {
