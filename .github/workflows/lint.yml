@@ -1,0 +1,60 @@
+name: Lint Check CI
+
+on: [pull_request]
+
+jobs:
+  lint-ubuntu:
+    runs-on: ubuntu-latest
+
+    strategy:
+      max-parallel: 6
+      matrix:
+        node-version: [10.1, 10.19, 12.1, 13.1, 14.5, 14.6]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: npm install
+        working-directory: .
+        run: npm install
+
+      - name: Run Lint
+        run: |
+          npm run lint -- --no-fix
+          npm run lint:css
+
+  lint-windows:
+    runs-on: windows-latest
+
+    strategy:
+      max-parallel: 6
+      matrix:
+        node-version: [10.1, 10.19, 12.1, 13.1, 14.5, 14.6]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: npm install
+        working-directory: .
+        run: npm install
+
+      - name: Run Lint
+        run: |
+          npm run lint -- --no-fix
+          npm run lint:css
