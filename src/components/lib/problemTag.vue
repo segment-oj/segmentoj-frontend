@@ -1,12 +1,12 @@
 <template>
-  <span class="segment-tag" :style="style">
+  <span class="tag" :style="style">
     <i :v-if="icon" :class="'el-icon-' + icon_detail"></i>{{content}}
   </span>
 </template>
 
 <script>
 export default {
-  name: 'SegmentTag',
+  name: 'ProblemTag',
   props: {
     content: {
       type: String,
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style scoped>
-.segment-tag {
+.tag {
     display: inline-block;
     padding: 0 10px;
     font-size: 12px;

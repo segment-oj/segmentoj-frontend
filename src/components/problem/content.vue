@@ -78,15 +78,14 @@
               </div>
             </div>
             <div class="tags" v-if="showTag">
-              <SegmentTag
+              <ProblemTag
                 v-for="item in rendertags"
                 :key="item.content"
                 color="#fff"
                 :border_color="item.color"
                 :background_color="item.color"
                 :content="item.content"
-                >
-              </SegmentTag>
+              />
             </div>
           </el-card>
         </div>
@@ -100,7 +99,7 @@
 import timeFormat from './../../methods/time';
 import apiurl from './../../apiurl';
 import MarkdownContainer from './../lib/MarkdownContainer.vue';
-import SegmentTag from './../lib/tag.vue';
+import ProblemTag from './../lib/problemTag.vue';
 
 export default {
   name: 'ProblemView',
@@ -174,7 +173,7 @@ export default {
   },
   components: {
     MarkdownContainer,
-    SegmentTag
+    ProblemTag
   }
 };
 </script>

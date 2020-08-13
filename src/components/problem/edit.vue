@@ -31,7 +31,7 @@
           </el-row>
         </el-card>
         <el-card class="item">
-          <el-button type="primary" @click="submit" :loading="buttonLoading">Submit</el-button>
+          <el-button type="primary" @click="submit">Submit</el-button>
           <el-button @click="back();">Back</el-button>
           <ConfirmDelete
             buttonName="Delete"
@@ -93,7 +93,10 @@
       </el-row>
     </el-card>
     <el-card v-loading="contentLoading" class="item">
-      <div slot="header" class="clearfix"><i class="el-icon-document" /> Content</div>
+      <div slot="header" class="clearfix">
+        <i class="el-icon-document" />
+        Content
+      </div>
       <MarkdownEditor v-model="mdContent" />
     </el-card>
   </div>
@@ -111,7 +114,6 @@ export default {
       title: '',
       mdContent: 'Loading...',
       contentLoading: true,
-      buttonLoading: false,
       time: 'Unknown',
       memery: 'Unknown',
       disable: false,
@@ -137,15 +139,19 @@ export default {
           this.contentLoading = false;
         })
         .catch(err => {
-          this.$SegmentMessage.error(this, 'Problem loading error');
-          console.log(err);
+          if (err.request.status === 404) {
+            this.$SegmentMessage.error(this, 'Problem not found');
+          } else if (err.request.status === 403) {
+            this.$SegmentMessage.error(this, 'Permission denied');
+          } else {
+            this.$SegmentMessage.error(this, 'Unkown error');
+          }
         });
     },
     back() {
       this.$router.push('/problem/' + this.$route.params.id);
     },
     submit() {
-      this.buttonLoading = true;
       this.$axios
         .patch(apiurl('/problem/' + this.$route.params.id), {
           title: this.title,
@@ -156,7 +162,6 @@ export default {
           enabled: !this.disable
         })
         .then(() => {
-          this.buttonLoading = false;
           this.$SegmentMessage.success(this, 'Your changes have been submitted');
         })
         .catch(err => {
@@ -167,7 +172,6 @@ export default {
           } else {
             this.$SegmentMessage.error(this, 'Unkown error');
           }
-          this.buttonLoading = false;
         });
     },
     delete() {

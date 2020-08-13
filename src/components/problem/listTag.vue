@@ -1,11 +1,11 @@
 <template>
   <div>
     <div v-if="$store.state.tags.displayTags">
-      <SegmentTag
+      <ProblemTag
         v-for="item in this.rendertags"
         :key="item.content"
         color="#fff"
-        height="22"
+        :height="22"
         :border_color="item.color"
         :background_color="item.color"
         :content="item.content"
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import SegmentTag from './../lib/tag.vue';
+import ProblemTag from './../lib/problemTag.vue';
 import apiurl from './../../apiurl';
 import AWaitLock from './../../methods/lock';
 
@@ -74,7 +74,7 @@ export default {
     this.loadTag();
   },
   components: {
-    SegmentTag,
+    ProblemTag
   },
 };
 </script>
