@@ -1,6 +1,8 @@
 const tagsstore = {
   state: {
-    displayTags: false
+    displayTags: false,
+    tagsData: new Array(),
+    tagsLock: new Array()
   },
   mutations: {
     setDisplayTag(state, data) {
