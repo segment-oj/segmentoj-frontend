@@ -175,6 +175,7 @@ export default {
           this.introduction = data.introduction;
           this.solved = data.solved;
           this.submit = data.submit_time;
+          this.timeJoin = timeFormat(data.date_joined);
           if (data.last_login == null) {
             this.lastLogin = 'Never';
           } else {
