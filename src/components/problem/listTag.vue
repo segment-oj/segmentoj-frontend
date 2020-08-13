@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="$store.state.tags.displayTags">
-      <SegmentTag
+      <Tag
         v-for="item in this.rendertags"
         :key="item.content"
         color="#fff"
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import SegmentTag from './../lib/tag.vue';
+import Tag from './../lib/tag.vue';
 import apiurl from './../../apiurl';
 
 export default {
@@ -55,7 +55,7 @@ export default {
     this.loadTag();
   },
   components: {
-    SegmentTag
+    Tag
   }
 };
 </script>
