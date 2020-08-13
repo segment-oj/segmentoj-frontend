@@ -60,7 +60,7 @@ export default {
           params: {
             offset: this.offset,
             limit: this.limit,
-            title: this.title
+            ...this.costumData
           }
         })
         .then(res => {
