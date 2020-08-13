@@ -129,6 +129,15 @@ export default {
             this.isActive = data.is_active;
             this.lang = String(data.lang);
           }
+        })
+        .catch(err => {
+          if (err.request.status === 404) {
+            this.$SegmentMessage.error(this, 'User not found');
+          } else if (err.request.status === 403) {
+            this.$SegmentMessage.error(this, 'Permission denied');
+          } else {
+            this.$SegmentMessage.error(this, 'Unkown error');
+          }
         });
     },
     submit() {
@@ -153,6 +162,15 @@ export default {
             this.$store.commit('userLang', {
               lang: this.lang
             });
+          }
+        })
+        .catch(err => {
+          if (err.request.status === 404) {
+            this.$SegmentMessage.error(this, 'User not found');
+          } else if (err.request.status === 403) {
+            this.$SegmentMessage.error(this, 'Permission denied');
+          } else {
+            this.$SegmentMessage.error(this, 'Unkown error');
           }
         });
     }
