@@ -1,5 +1,5 @@
 <template>
-  <span :v-if="showTag" class="seg-tag" :style="style">
+  <span class="segment-tag" :style="style">
     <i :v-if="icon" :class="'el-icon-' + icon_detail"></i>{{content}}
   </span>
 </template>
@@ -31,13 +31,16 @@ export default {
     },
     background_color: {
       type: String,
-      default: 'rgb (244, 255, 255)'
+      default: 'rgb(244, 255, 255)'
+    },
+    height: {
+      type: Number,
+      default: 32
     }
   },
   data() {
     return {
-      style: '',
-      showTag: false
+      style: ''
     };
   },
   mounted() {
@@ -45,21 +48,18 @@ export default {
     if(this.border) {
       this.style += 'border-color: '+ this.border_color + ';';
     }
-    this.showTag = true;
+    this.style += 'height: ' + this.height + 'px;';
+    this.style += 'line-height: ' + String(this.height - 2) + 'px;';
   }
 };
 </script>
 
 <style scoped>
-.seg-tag {
+.segment-tag {
     display: inline-block;
-    height: 32px;
     padding: 0 10px;
-    line-height: 30px;
     font-size: 12px;
-    font-weight: 500;
-    border-width: 1px;
-    border-style: solid;
+    border: 1px solid;
     box-sizing: border-box;
     white-space: nowrap;
     margin: 3px;

@@ -1,7 +1,9 @@
 <template>
-  <el-carousel trigger="click" :interval="5000" arrow="none" id="carousel">
-    <el-carousel-item v-for="item in 4" :key="item"></el-carousel-item>
-  </el-carousel>
+  <div>
+    <el-carousel trigger="click" :interval="5000" arrow="none" id="carousel">
+      <el-carousel-item v-for="item in 4" :key="item"></el-carousel-item>
+    </el-carousel>
+  </div>
 </template>
 
 <script>

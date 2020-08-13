@@ -1,36 +1,98 @@
 <template>
-  <div id="problem-list">
-    <AjaxTable
-      :ajax_url="ajax_url"
-      :columns="columns"
-      :limit=10
-      :total="data_count"
-      :process="process"
-    ></AjaxTable>
+  <div>
+    <el-row :gutter="20">
+      <el-col :span="10">
+        <el-card>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <JumpToProblem />
+      </el-col>
+      <el-col :span="8">
+        <el-card>
+          <el-row :gutter="20">
+            <el-col :span="16">
+              <span>
+                <i class="el-icon-s-grid" />
+                Columns
+              </span>
+              <el-slider
+                v-model="limit"
+                :step="10"
+                :min="10"
+                @change="refresh"
+                style="margin-top: 10px;"
+              />
+            </el-col>
+            <el-col :span="8">
+              <div>
+                <i class="el-icon-collection-tag" />
+                Show Tags
+              </div>
+              <el-switch
+                v-model="showTags"
+                active-color="#13ce66"
+                inactive-color="#ff4949"
+                style="margin-top: 17px;"
+              />
+            </el-col>
+          </el-row>
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-card class="item" v-if="alive">
+      <AjaxTable
+        :ajax_url="ajax_url"
+        :columns="columns"
+        :limit="limit"
+        :total="data_count"
+        :process="process"
+      />
+    </el-card>
   </div>
 </template>
 
 <script>
 import apiurl from './../../apiurl';
 import AjaxTable from './../lib/AjaxTable.vue';
+import JumpToProblem from './../lib/jumpToProblem.vue';
+import listTag from './listTag.vue';
 
 export default {
   name: 'ProblemList',
   data() {
     return {
+      alive: true,
       ajax_url: apiurl('/problem/list'),
+      limit: 50,
+      showTags: false,
       columns: [{
-        name: 'pid',
-        label: 'Problem ID'
-      }, {
         name: 'score',
-        label: 'Status'
+        label: 'Status',
+        width: '120',
+        align: 'center'
+      }, {
+        name: 'pid',
+        label: 'Problem ID',
+        width: '120',
+        align: 'center'
       }, {
         name: 'title',
         label: 'Title'
+      }, {
+        name: 'tag',
+        width: '400',
+        align: 'right',
       }],
       data_count: 10
     };
+  },
+  watch: {
+    showTags(val) {
+      this.$store.commit('setDisplayTag', {
+        val: val
+      });
+    }
   },
   methods: {
     process(x) {
@@ -46,18 +108,28 @@ export default {
         x.title = (
           <div>
             <router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title } </router-link>
-            <el-tag effect="dark" type="warning">Hidden</el-tag>
+            <el-tag effect="dark" type="warning" size="small">Hidden</el-tag>
           </div>
         );
       } else {
         x.title = (<router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title }</router-link>);
       }
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
+      
+      x.tag = (<listTag tags={ x.tags }></listTag>);
+      
       return x;
+    },
+    refresh() {
+      // this.alive = false;
+      // this.$nextTick(() => {
+      //   this.alive = true;
+      // });
     }
   },
   components: {
-    AjaxTable
+    AjaxTable,
+    JumpToProblem
   },
   mounted() {
     this.$axios
@@ -73,3 +145,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.item {
+    margin-top: 20px;
+}
+</style>

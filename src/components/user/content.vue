@@ -6,7 +6,13 @@
           <img src="./../../assets/icon/SOJ-thick-white-background.png" />
         </el-avatar>
       </el-card>
-      <el-card class="item">
+      <!-- Mobile screen -->
+      <el-card class="item float" v-if="!smallScreen">
+        <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');" icon="el-icon-edit" circle />
+        <el-button @click="$router.go(-1);" icon="el-icon-back" circle />
+      </el-card>
+      <!-- Normal screen -->
+      <el-card class="item" v-else>
         <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');">Edit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
@@ -17,7 +23,7 @@
           <el-card shadow="never">
             <div slot="header" class="clearfix">
               <i class="el-icon-user" />
-              <div class="lable"> User</div>
+              <span class="label"> User</span>
               Name
             </div>
             {{username}}
@@ -25,8 +31,9 @@
         </el-col>
         <el-col :span="6">
           <el-card shadow="never">
-            <div slot="header" class="clearfix"><i class="el-icon-warning-outline" />
-              <div class="lable"> User</div>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-warning-outline" />
+              <span class="label"> User</span>
               ID
             </div>
             {{userid}}
@@ -37,7 +44,7 @@
         <el-col :span="12">
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
-              <i class="el-icon-message" />Email
+              <i class="el-icon-message" /> Email
             </div>
             {{email}}
           </el-card>
@@ -46,7 +53,7 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-date" />
-              <div class="lable"> Time Joined</div>
+              <span class="label"> Time Joined</span>
             </div>
             {{timeJoin}}
           </el-card>
@@ -55,35 +62,45 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-time" />
-              <div class="lable"> Last Login</div>
+              <span class="label"> Last Login</span>
             </div>
             {{lastLogin}}
           </el-card>
         </el-col>
       </el-row>
       <el-row :gutter="20">
-        <el-col :span="8">
+        <el-col :span="4">
+          <el-card class="item">
+            <div slot="header" class="clearfix">
+              <i class="el-icon-s-operation" />
+              <span class="label"> Lang</span>
+            </div>
+            {{langTable[lang].label}}
+          </el-card>
+        </el-col>
+        <el-col :span="6">
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-check" />
-              <div class="lable"> Sloved</div>
-              <div class="small-lable"> AC</div>
+              <span class="label"> Solved</span>
+              <div class="small-label"> AC</div>
             </div>
             <div class="clearfix">
               {{solved}}
-              <div class="lable"> Problems</div>
+              <span class="label"> Problems</span>
             </div>
           </el-card>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="6">
           <el-card shadow="never" class="item">
-            <div slot="header" class="clearfix"><i class="el-icon-upload2" />
-              <div class="lable"> Submited</div>
-              <div class="small-lable"> SU</div>
+            <div slot="header" class="clearfix">
+              <i class="el-icon-upload2" />
+              <span class="label"> Submited</span>
+              <div class="small-label"> SU</div>
             </div>
             <div class="clearfix">
               {{submit}}
-              <div class="lable"> Times</div>
+              <span class="label"> Times</span>
             </div>
           </el-card>
         </el-col>
@@ -91,7 +108,7 @@
           <el-card shadow="never" class="item">
             <div slot="header" class="clearfix">
               <i class="el-icon-finished" />
-              <div class="lable"> AC</div>
+              <span class="label"> AC</span>
               Rate
             </div>
             <el-progress :text-inside="true" :stroke-width="24" :percentage="rate" status="success" :color="ACRateColorMode"></el-progress>
@@ -99,7 +116,10 @@
         </el-col>
       </el-row>
       <el-card shadow="never" class="item">
-        <div slot="header" class="clearfix"><i class="el-icon-chat-line-square" /> Introductions</div>
+        <div slot="header" class="clearfix">
+          <i class="el-icon-chat-line-square" />
+          Introductions
+        </div>
         <MarkdownContainer v-if="introduction" :content="introduction"/>
       </el-card>
       <el-card class="item">
@@ -116,6 +136,7 @@
 import timeFormat from './../../methods/time';
 import apiurl from './../../apiurl';
 import MarkdownContainer from './../lib/MarkdownContainer.vue';
+import sfconfig from './../../sfconfig';
 
 export default {
   name: 'UserHomepage',
@@ -136,7 +157,10 @@ export default {
       isRoot: false,
       isStaff: false,
       isActive: true,
-      avatarWidth: 800 < screen.width ? 300 : screen.width - 40
+      avatarWidth: 800 < screen.width ? 300 : screen.width - 40,
+      smallScreen: 700 < screen.width,
+      langTable: sfconfig.langTable,
+      lang: 0
     };
   },
   methods: {
@@ -156,7 +180,7 @@ export default {
           this.isRoot = data.is_superuser;
           this.isStaff = data.is_staff;
           this.isActive = data.is_active;
-          this.userLoading = false;
+          this.lang = data.lang;
           if (this.submit === 0) {
             this.rate = 100;
           } else {
@@ -166,6 +190,7 @@ export default {
           if (this.$store.state.user.isStaff || this.userid == String(this.$store.state.user.userid)) {
             this.ismine = true;
           }
+          this.userLoading = false;
         })
         .catch(err => {
           if(err.request.status === 404) {
@@ -173,6 +198,7 @@ export default {
           } else {
             this.$SegmentMessage.error(this, 'Unkown error');
           }
+          this.userLoading = false;
         });
     },
     ACRateColorMode(percentage) {
@@ -196,7 +222,7 @@ export default {
 </script>
 
 <style scoped>
-.small-lable {
+.small-label {
     display: none;
 }
 
@@ -228,12 +254,33 @@ export default {
         max-width: 100vw;
     }
 
-    .lable {
+    .label {
         display: none;
     }
 
-    .small-lable {
+    .small-label {
         display: unset;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .float {
+        z-index: 1000;
+        opacity: 0.5;
+        position: fixed;
+        transition: 0.5s;
+        right: 30px;
+        top: 50px;
+    }
+
+    .float:active {
+        z-index: 1000;
+        opacity: 1;
+    }
+
+    .float:hover {
+        z-index: 1000;
+        opacity: 1;
     }
 }
 </style>

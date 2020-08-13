@@ -9,16 +9,28 @@
       class="max-screen"
       >
       <el-form :model="ldata" ref="loginForm" :rules="rules">
-        <div class="icon-lable"><i class="el-icon-user" /> Username</div>
+        <div class="icon-lable">
+          <i class="el-icon-user" />
+          Username
+        </div>
         <el-form-item prop="username">
           <el-input v-model="ldata.username"></el-input>
         </el-form-item>
-        <div class="icon-lable"><i class="el-icon-lock" /> Password</div>
+        <div class="icon-lable">
+          <i class="el-icon-lock" />
+          Password
+        </div>
         <el-form-item prop="password">
           <el-input type="password" v-model="ldata.password"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" v-on:click="onSubmit();" :loading="buttonLoading">Login</el-button>
+          <el-button
+            type="primary"
+            v-on:click="onSubmit();"
+            :loading="buttonLoading"
+          >
+            Login
+          </el-button>
           <el-button v-on:click="$store.state.user.showlogin = false">Cancel</el-button>
           <el-button v-on:click="reset();">Reset</el-button>
         </el-form-item>

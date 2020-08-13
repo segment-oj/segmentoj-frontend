@@ -1,15 +1,24 @@
 <template>
   <div class="ajax-table">
-    <el-table v-loading="loading" :data="tableData" stripe class="table">
-      <el-table-column v-for="item in columns" :key="item" :prop="item.name" :label="item.label"></el-table-column>
+    <el-table v-loading="loading" :data="tableData">
+      <el-table-column
+        v-for="item in columns"
+        :key="item"
+        :prop="item.name"
+        :label="item.label"
+        :width="item.width"
+        :align="item.align"
+        :header-align="item.headerAlign"
+      />
     </el-table>
     <el-pagination
       :page-size="this.limit"
       background
-      layout="prev, pager, next, jumper, total"
+      layout="prev, pager, next, jumper"
       @current-change="this.onPageChange"
       class="pagination"
-    ></el-pagination>
+      :total="this.total"
+    />
   </div>
 </template>
 
@@ -20,11 +29,18 @@ export default {
     return {
       loading: true,
       tableData: null,
-      offset: 0
+      offset: 0,
+      pageId: 1,
     };
+  },
+  watch: {
+    limit() {
+      this.onPageChange(this.pageId);
+    }
   },
   methods: {
     onPageChange(page_id) {
+      this.pageId = page_id;
       this.offset = (page_id - 1) * this.limit;
       this.load_data();
     },
@@ -72,7 +88,7 @@ export default {
       type: Function,
       default: x => x
     }
-  }
+  },
 };
 </script>
 
@@ -81,9 +97,5 @@ export default {
     height: 36px;
     margin-top: 20px;
     text-align: center;
-}
-
-.table {
-    min-height: calc(100vh - 80px - 60px - 41.05px);
 }
 </style>

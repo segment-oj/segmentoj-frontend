@@ -1,0 +1,160 @@
+.CodeMirror {
+    height: 600px !important;
+    background-color: #fcfcfc;
+    color: #4d4d4c;
+}
+
+.CodeMirror-cursor {
+    opacity: 0.7;
+    border-left: 2px solid #4d4d4c;
+}
+
+.cm-qualifier {
+    color: #c82829;
+}
+
+.cm-property {
+    color: #eab700;
+}
+
+.cm-meta,
+.cm-number,
+.cm-atom {
+    color: #f5871f;
+}
+
+.cm-comment {
+    color: #8e908c !important;
+}
+
+.cm-keyword,
+.cm-type,
+.cm-tag {
+    color: #8959a8;
+}
+
+.cm-def {
+    color: #4271ae;
+}
+
+.cm-string {
+    color: #718c00 !important;
+}
+
+.CodeMirror-linebackground,
+.CodeMirror-activeline-background {
+    background-color: #efefef !important;
+}
+
+.cm-operator {
+    color: #3e999f !important;
+}
+
+.CodeMirror-selected {
+    background-color: #d6d6d6 !important;
+}
+
+.CodeMirror-gutters {
+    background: #f9f9f9;
+    border-right: none;
+}
+
+.CodeMirror-linenumber {
+    color: #909399;
+    font-size: 15px;
+}
+
+.CodeMirror-matchingbracket {
+    color: #4d4d4c !important;
+    outline: 1px solid #d6d6d6;
+    -moz-outline-radius: 3px;
+}
+
+.CodeMirror-nonmatchingbracket {
+    color: #c82829 !important;
+    outline: 1px solid #c82829;
+    -moz-outline-radius: 3px;
+}
+
+.CodeMirror-foldmarker {
+    text-shadow: none !important;
+    color: #8e908c !important;
+    font-family: "Fira Sans" !important;
+    outline: 1px solid #d6d6d6;
+    -moz-outline-radius: 3px;
+}
+
+.CodeMirror span[role="presentation"] {
+    font-size: 14px;
+}
+
+.CodeMirror-hints {
+    max-height: 200px !important;
+    box-shadow: none !important;
+    border-color: #dcdfe6 !important;
+    background-color: #fefefe !important;
+    font-family: "Fira Code" !important;
+    padding: 5px !important;
+}
+
+.CodeMirror-hint {
+    line-height: 20px;
+    color: #444444 !important;
+}
+
+li.CodeMirror-hint-active {
+    background-color: #efefef !important;
+    color: #444444 !important;
+    font-weight: 500;
+}
+
+.CodeMirror-dialog {
+    background-color: #fefefe !important;
+}
+
+.cm-searching {
+    background-color: #d6d6d6;
+}
+
+.CodeMirror-search-label {
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.CodeMirror-search-field {
+    line-height: 20px;
+    border: 1px solid #dcdfe6 !important;
+    width: 50em !important;
+}
+
+.CodeMirror-search-hint {
+    line-height: 25px;
+    float: right;
+}
+
+.cm-matchhighlight {
+    outline: 1px solid #d6d6d6;
+    -moz-outline-radius: 3px;
+}
+
+.CodeMirror-selection-highlight-scrollbar {
+    margin-right: 2.5px;
+    width: 5px !important;
+    background-color: #8e908c;
+    opacity: 0.6;
+}
+
+.CodeMirror-simplescroll-horizontal div,
+.CodeMirror-simplescroll-vertical div {
+    background: #b3b3b3 !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.CodeMirror-simplescroll-vertical {
+    width: 10px !important;
+}
+
+.CodeMirror-simplescroll-horizontal {
+    height: 10px !important;
+}

@@ -2,13 +2,15 @@
   <div id="problem-view">
     <div id="content">
       <div id="problem-content" v-loading="problemLoading">
-        <div v-if="!isWider" id="full-screen-button" @click="full_screen()">
-          Expand
-          <i class="el-icon-arrow-right"></i>
-        </div>
-        <div v-else id="full-screen-button" @click="full_screen()">
-          Fold
-          <i class="el-icon-arrow-left"></i>
+        <div v-if="!smallScreen">
+          <div v-if="!isWider" id="full-screen-button" @click="full_screen()">
+            Expand
+            <i class="el-icon-arrow-right"></i>
+          </div>
+          <div v-else id="full-screen-button" @click="full_screen()">
+            Fold
+            <i class="el-icon-arrow-left"></i>
+          </div>
         </div>
         <div class="flex-header">
           <el-tag v-if="hidden" type="warning" id="hidden-problem" effect="dark">Hidden</el-tag>
@@ -18,30 +20,29 @@
       </div>
       <div id="pannel" v-if="!isWider">
         <div id="tools">
-          <el-card>
+          <el-card v-if="showSmallToolBar || !smallScreen">
             <div><i class="el-icon-s-tools" /> Tool Bar</div>
-            <el-menu default-active="3">
-              <el-menu-item index="3" @click="$router.push('/problem/' + $route.params.id +'/submit');">
+            <el-menu default-active="0">
+              <el-menu-item index="0" @click="$router.push('/problem/' + $route.params.id +'/submit');">
                 <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
               </el-menu-item>
-              <el-submenu index="0">
-                <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
-                <el-menu-item index="0-0">Submissions</el-menu-item>
-                <el-menu-item index="0-1">Statistics</el-menu-item>
-              </el-submenu>
               <el-submenu index="1">
-                <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
-                <el-menu-item index="1-0">Discussions</el-menu-item>
-                <el-menu-item index="1-1">Solutions</el-menu-item>
+                <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
+                <el-menu-item index="1-0">Submissions</el-menu-item>
+                <el-menu-item index="1-1">Statistics</el-menu-item>
               </el-submenu>
               <el-submenu index="2">
-                <template slot="title"><div class="text-bold"><i class="el-icon-edit" /> Edit</div></template>
-                <el-menu-item index="2-0" @click="$router.push('/problem/' + $route.params.id +'/edit');">
-                  Edit
-                </el-menu-item>
-                <el-menu-item index="2-1">Delete</el-menu-item>
-                <el-menu-item index="2-2">Settings</el-menu-item>
+                <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
+                <el-menu-item index="2-0">Discussions</el-menu-item>
+                <el-menu-item index="2-1">Solutions</el-menu-item>
               </el-submenu>
+              <el-menu-item
+                index="3"
+                v-if="this.$store.state.user.isStaff || this.$store.state.user.isRoot" 
+                @click="$router.push('/problem/' + $route.params.id +'/edit');"
+              >
+                <span slot="title" class="text-bold"><i class="el-icon-edit" /> Edit</span>
+              </el-menu-item>
             </el-menu>
             <el-button @click="$router.push('/problem/list');" class="margin-top-small">Back</el-button>
           </el-card>
@@ -67,14 +68,22 @@
             <div class="margin-bottom">
               <i class="el-icon-s-flag" />
               Tags
-              <div v-if="showTag" @click="showTag = false" id="tag-button"><i class="el-icon-arrow-up" /> Hide tags</div>
-              <div v-if="!showTag" @click="showTag = true" id="tag-button"><i class="el-icon-arrow-down" /> Show tags</div>
+              <div v-if="showTag" @click="showTag = false" id="tag-button">
+                <i class="el-icon-arrow-up" />
+                Hide
+              </div>
+              <div v-else @click="showTag = true" id="tag-button">
+                <i class="el-icon-arrow-down" />
+                Show
+              </div>
             </div>
             <div class="tags" v-if="showTag">
               <SegmentTag
                 v-for="item in rendertags"
                 :key="item.content"
+                color="#fff"
                 :border_color="item.color"
+                :background_color="item.color"
                 :content="item.content"
                 >
               </SegmentTag>
@@ -82,6 +91,7 @@
           </el-card>
         </div>
       </div>
+      <el-button v-if="smallScreen" class="float-bottom-right" icon="el-icon-more" @click="showSmallToolBar = !showSmallToolBar" type="info" circle />
     </div>
   </div>
 </template>
@@ -109,7 +119,9 @@ export default {
       tags: [],
       rendertags: [],
       problemLoading: true,
-      showTag: false
+      showTag: false,
+      smallScreen: screen.width < 700,
+      showSmallToolBar: false
     };
   },
   methods: {
@@ -123,9 +135,6 @@ export default {
               color: data.res.color,
               content: data.res.content
             });
-          })
-          .catch(() => {
-
           });
       } 
     },
@@ -188,16 +197,28 @@ export default {
     margin-bottom: 15px;
 }
 
+.float-bottom-right {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
 @media only screen and (max-width: 700px) {
     #pannel {
-        z-index: 1000;
-        opacity: 0.5;
         position: fixed;
-        transition: 0.5s;
+        bottom: 90px;
         right: 30px;
+        z-index: 1000;
+        transition: 0.5s;
     }
 
     #pannel:active {
+        z-index: 1000;
+        opacity: 1;
+    }
+
+    #pannel:hover {
         z-index: 1000;
         opacity: 1;
     }
