@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style scoped>
-.seg-tag {
+.segment-tag {
     display: inline-block;
     padding: 0 10px;
     font-size: 12px;
