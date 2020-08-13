@@ -1,6 +1,10 @@
 <template>
   <div class="ajax-table">
-    <el-table v-loading="loading" :data="tableData">
+    <el-table
+      v-loading="loading"
+      :data="tableData"
+      :default-sort="default_sort"
+    >
       <el-table-column
         v-for="item in columns"
         :key="item"
@@ -9,6 +13,7 @@
         :width="item.width"
         :align="item.align"
         :header-align="item.headerAlign"
+        :sortable="item.sortable"
       />
     </el-table>
     <el-pagination
@@ -87,6 +92,9 @@ export default {
     process: {
       type: Function,
       default: x => x
+    },
+    default_sort: {
+      
     }
   },
 };

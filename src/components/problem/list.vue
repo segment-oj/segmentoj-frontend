@@ -46,6 +46,7 @@
         :limit="limit"
         :total="data_count"
         :process="process"
+        :default_sort="{prop: 'pid', order: 'ascending'}"
       />
     </el-card>
   </div>
@@ -69,19 +70,23 @@ export default {
         name: 'score',
         label: 'Status',
         width: '120',
-        align: 'center'
+        align: 'center',
+        sortable: true
       }, {
         name: 'pid',
         label: 'Problem ID',
         width: '120',
-        align: 'center'
+        align: 'center',
+        sortable: true
       }, {
         name: 'title',
-        label: 'Title'
+        label: 'Title',
+        sortable: false
       }, {
         name: 'tag',
         width: '400',
         align: 'right',
+        sortable: false
       }],
       data_count: 10
     };
