@@ -65,7 +65,7 @@ export default {
       alive: true,
       ajax_url: apiurl('/problem/list'),
       limit: 50,
-      showTags: false,
+      showTags: this.$store.state.tags.displayTags,
       columns: [{
         name: 'score',
         label: 'Status',
