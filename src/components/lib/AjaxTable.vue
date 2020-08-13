@@ -1,6 +1,10 @@
 <template>
   <div class="ajax-table">
-    <el-table v-loading="loading" :data="tableData">
+    <el-table
+      v-loading="loading"
+      :data="tableData"
+      :default-sort="default_sort"
+    >
       <el-table-column
         v-for="item in columns"
         :key="item"
@@ -9,6 +13,7 @@
         :width="item.width"
         :align="item.align"
         :header-align="item.headerAlign"
+        :sortable="item.sortable"
       />
     </el-table>
     <el-pagination
@@ -36,6 +41,9 @@ export default {
   watch: {
     limit() {
       this.onPageChange(this.pageId);
+    },
+    costumData() {
+      this.load_data();
     }
   },
   methods: {
@@ -51,7 +59,8 @@ export default {
         .get(this.ajax_url, {
           params: {
             offset: this.offset,
-            limit: this.limit
+            limit: this.limit,
+            ...this.costumData
           }
         })
         .then(res => {
@@ -83,6 +92,9 @@ export default {
       type: Number,
       default: 20
     },
+    costumData: {
+      type: Object
+    },
     total: {
       type: Number,
       required: true
@@ -90,6 +102,10 @@ export default {
     process: {
       type: Function,
       default: x => x
+    },
+    default_sort: {
+      type: Object,
+      default: null
     }
   },
 };
