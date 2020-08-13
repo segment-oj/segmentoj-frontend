@@ -39,7 +39,7 @@ import './StringPrototype';
 
 Vue.config.productionTip = false;
 
-window.that = new Vue({
+new Vue({
   router,
   store,
   render: h => h(App),
