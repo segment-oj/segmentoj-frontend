@@ -41,6 +41,9 @@ export default {
   watch: {
     limit() {
       this.onPageChange(this.pageId);
+    },
+    title() {
+      this.load_data();
     }
   },
   methods: {
@@ -56,7 +59,8 @@ export default {
         .get(this.ajax_url, {
           params: {
             offset: this.offset,
-            limit: this.limit
+            limit: this.limit,
+            title: this.title
           }
         })
         .then(res => {
@@ -88,6 +92,9 @@ export default {
       type: Number,
       default: 20
     },
+    title: {
+      type: String
+    },
     total: {
       type: Number,
       required: true
@@ -97,7 +104,8 @@ export default {
       default: x => x
     },
     default_sort: {
-      
+      type: Object,
+      default: null
     }
   },
 };

@@ -21,3 +21,7 @@ if (String.prototype.replaceAll === undefined) {
     return res;
   };
 }
+
+String.prototype.trim = function () {
+  return this.replace(/(^\s*)|(\s*$)/g, '');
+};

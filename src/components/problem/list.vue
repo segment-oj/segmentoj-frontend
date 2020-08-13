@@ -3,6 +3,18 @@
     <el-row :gutter="20">
       <el-col :span="10">
         <el-card>
+          <i class="el-icon-search" />
+          Search
+          <el-input
+            placeholder="Search"
+            v-model="searchTitle"
+            class="input-with-select" 
+            style="margin-top: 9px;"
+            @clear="search"
+            clearable
+          >
+            <el-button slot="append" icon="el-icon-check" @click="search"></el-button>
+          </el-input>
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -47,6 +59,7 @@
         :total="data_count"
         :process="process"
         :default_sort="{prop: 'pid', order: 'ascending'}"
+        :title="title"
       />
     </el-card>
   </div>
@@ -65,6 +78,8 @@ export default {
       alive: true,
       ajax_url: apiurl('/problem/list'),
       limit: 50,
+      searchTitle: '',
+      title: null,
       showTags: this.$store.state.tags.displayTags,
       columns: [{
         name: 'score',
@@ -123,6 +138,10 @@ export default {
       x.tag = (<listTag tags={ x.tags }></listTag>);
       
       return x;
+    },
+    search() {
+      this.searchTitle = this.searchTitle.trim();
+      this.title = this.searchTitle;
     }
   },
   components: {

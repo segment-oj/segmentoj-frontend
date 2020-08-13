@@ -165,6 +165,7 @@ export default {
           }
         })
         .catch(err => {
+          this.buttonLoading = false;
           if (err.request.status === 404) {
             this.$SegmentMessage.error(this, 'User not found');
           } else if (err.request.status === 403) {
