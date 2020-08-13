@@ -31,7 +31,7 @@ jobs:
           npm run lint -- --no-fix
           npm run lint:css
 
-  lint-ubuntu:
+  lint-windows:
     runs-on: windows-latest
 
     strategy:
