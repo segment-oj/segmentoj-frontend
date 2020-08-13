@@ -1,28 +1,27 @@
-const Lock = () => {
-  return {
-    lockQueue: new Array(),
-    locked: false
+class AWaitLock {
+  constructor() {
+    this.lockQueue = [];
+    this.locked = false;
+  }
+
+  async acquire() {
+    if (this.locked) {
+      let that = this;
+      await new Promise((resolve) => {
+        that.lockQueue.push(resolve);
+      });
+    }
+    this.locked = true;
+    return true;
+  }
+
+  release() {
+    this.locked = false;
+    let resolve = this.lockQueue.pop();
+    if (resolve) {
+      resolve();
+    }
   }
 }
 
-const acquire = async (lock) => {
-  if (lock.locked) {
-    let that = lock;
-    await new Promise((resolve) => {
-      that.lockQueue.push(resolve);
-    });
-  }
-  lock.locked = true;
-  return true;
-};
-
-
-const release = (lock) => {
-  lock.locked = false;
-  const resolve = lock.lockQueue.pop();
-  if (resolve) {
-    resolve();
-  }
-}
-
-export {Lock, acquire, release};
+export default AWaitLock;
