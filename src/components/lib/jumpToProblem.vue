@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     jump() {
+      this.jumpToProblem = String(parseInt(this.jumpToProblem.trim()));
       this.$router.push('/problem/' + this.jumpToProblem);
     }
   }
