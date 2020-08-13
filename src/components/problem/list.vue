@@ -111,9 +111,44 @@ export default {
       this.$store.commit('setDisplayTag', {
         val: val
       });
+    },
+    limit(val) {
+      this.set_column(val);
     }
   },
   methods: {
+    get_list_lenth() {
+      this.$axios
+        .get(apiurl('/problem/list/count'))
+        .then(response => {
+          let data = response.data;
+          this.data_count = data.res;
+        })
+        .catch(err => {
+          this.$SegmentMessage.error(this, '[Problem List] Get List Length Failed');
+          console.log(err);
+        });
+    },
+    get_column() {
+      if (this.$store.state.user.userid === null) {
+        return;
+      }
+      this.$axios
+        .get(apiurl('/account/' + this.$store.state.user.userid))
+        .then(res => {
+          let data = res.data.res;
+          this.limit = data.list_column;
+        });
+    },
+    set_column(x) {
+      if (this.$store.state.user.userid === null) {
+        return;
+      }
+      this.$axios
+        .patch(apiurl('/account/' + this.$store.state.user.userid), {
+          list_column: x
+        });
+    },
     process(x) {
       let color = '';
       if (x.score === 100) {
@@ -149,16 +184,8 @@ export default {
     JumpToProblem
   },
   mounted() {
-    this.$axios
-      .get(apiurl('/problem/list/count'))
-      .then(response => {
-        let data = response.data;
-        this.data_count = data.res;
-      })
-      .catch(err => {
-        this.$SegmentMessage.error(this, '[Problem List] Get List Length Failed');
-        console.log(err);
-      });
+    this.get_list_lenth();
+    this.get_column();
   }
 };
 </script>
