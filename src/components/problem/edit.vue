@@ -31,7 +31,7 @@
           </el-row>
         </el-card>
         <el-card class="item">
-          <el-button type="primary" @click="submit" :loading="buttonLoading">Submit</el-button>
+          <el-button type="primary" @click="submit">Submit</el-button>
           <el-button @click="back();">Back</el-button>
           <ConfirmDelete
             buttonName="Delete"
@@ -114,7 +114,6 @@ export default {
       title: '',
       mdContent: 'Loading...',
       contentLoading: true,
-      buttonLoading: false,
       time: 'Unknown',
       memery: 'Unknown',
       disable: false,
@@ -148,7 +147,6 @@ export default {
       this.$router.push('/problem/' + this.$route.params.id);
     },
     submit() {
-      this.buttonLoading = true;
       this.$axios
         .patch(apiurl('/problem/' + this.$route.params.id), {
           title: this.title,
@@ -159,7 +157,6 @@ export default {
           enabled: !this.disable
         })
         .then(() => {
-          this.buttonLoading = false;
           this.$SegmentMessage.success(this, 'Your changes have been submitted');
         })
         .catch(err => {
@@ -170,7 +167,6 @@ export default {
           } else {
             this.$SegmentMessage.error(this, 'Unkown error');
           }
-          this.buttonLoading = false;
         });
     },
     delete() {
