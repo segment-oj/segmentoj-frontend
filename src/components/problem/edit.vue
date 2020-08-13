@@ -33,7 +33,7 @@
         <el-card class="item">
           <el-button type="primary" @click="submit" :loading="buttonLoading">Submit</el-button>
           <el-button @click="back();">Back</el-button>
-          <Confirm
+          <ConfirmDelete
             buttonName="Delete"
             buttonType="danger"
             :buttonFunction="this.delete"
@@ -55,7 +55,15 @@
     <el-card class="float">
       <el-button type="primary" @click="submit();" icon="el-icon-check" circle />
       <el-button @click="back();" icon="el-icon-back" circle />
-      <el-button type="danger">Delete</el-button>
+      <ConfirmDelete
+        :buttonName="null"
+        buttonType="danger"
+        buttonIcon="el-icon-delete"
+        buttonCircle="true"
+        :buttonFunction="this.delete"
+        name="problem"
+        :confirmInput="'#' + this.$route.params.id + '/' + this.title"
+      />
     </el-card>
     <el-card>
       <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
@@ -94,7 +102,7 @@
 <script>
 import apiurl from './../../apiurl';
 import MarkdownEditor from './../lib/MarkdownEditor.vue';
-import Confirm from './../lib/confirm.vue';
+import ConfirmDelete from './../lib/confirmDelete.vue';
 
 export default {
   name: 'ProblemEdit',
@@ -184,7 +192,7 @@ export default {
   },
   components: {
     MarkdownEditor,
-    Confirm
+    ConfirmDelete
   }
 };
 </script>

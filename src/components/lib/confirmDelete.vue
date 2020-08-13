@@ -15,17 +15,38 @@
       <p>Please type <strong>{{this.confirmInput}}</strong> to confirm.</p>
       <el-input :placeholder="'Type ' + this.confirmInput" v-model="confirmAnswer"></el-input>
       <div style="text-align: right; margin: 10px;">
-        <el-button size="mini" type="text" @click="this.visible = false">Cancel</el-button>
-        <el-button type="primary" size="mini" @click="confirmed" :disabled="!confirmAnswerCorrect">Confirm</el-button>
+        <el-button
+          size="mini"
+          type="text"
+          @click="visible = false;"
+        >
+          Cancel
+        </el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          @click="confirmed"
+          :disabled="!confirmAnswerCorrect"
+        >
+          Confirm
+        </el-button>
       </div>
-      <el-button :type="this.buttonType" slot="reference" style="margin-left: 10px;">{{buttonName}}</el-button>
+      <el-button
+        :icon="this.buttonIcon"
+        :type="this.buttonType"
+        slot="reference"
+        style="margin-left: 10px;"
+        :circle="this.buttonCircle"
+      >
+        {{buttonName}}
+      </el-button>
     </el-popover>
   </span>
 </template>
 
 <script>
 export default {
-  name: 'Confirm',
+  name: 'ConfirmDelete',
   data() {
     return {
       visible: false,
@@ -37,6 +58,14 @@ export default {
     buttonName: {
       type: String,
       required: true
+    },
+    buttonIcon: {
+      type: String,
+      default: ''
+    },
+    buttonCircle: {
+      type: Boolean,
+      default: false
     },
     buttonType: {
       type: String,
