@@ -20,7 +20,6 @@
                 v-model="limit"
                 :step="10"
                 :min="10"
-                @change="refresh"
                 style="margin-top: 10px;"
               />
             </el-col>
@@ -119,12 +118,6 @@ export default {
       x.tag = (<listTag tags={ x.tags }></listTag>);
       
       return x;
-    },
-    refresh() {
-      // this.alive = false;
-      // this.$nextTick(() => {
-      //   this.alive = true;
-      // });
     }
   },
   components: {

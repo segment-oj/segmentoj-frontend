@@ -78,7 +78,7 @@
               </div>
             </div>
             <div class="tags" v-if="showTag">
-              <Tag
+              <ProblemTag
                 v-for="item in rendertags"
                 :key="item.content"
                 color="#fff"
@@ -99,7 +99,7 @@
 import timeFormat from './../../methods/time';
 import apiurl from './../../apiurl';
 import MarkdownContainer from './../lib/MarkdownContainer.vue';
-import Tag from './../lib/tag.vue';
+import ProblemTag from './../lib/problemTag.vue';
 
 export default {
   name: 'ProblemView',
@@ -173,7 +173,7 @@ export default {
   },
   components: {
     MarkdownContainer,
-    Tag
+    ProblemTag
   }
 };
 </script>

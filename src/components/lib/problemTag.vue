@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Tag',
+  name: 'ProblemTag',
   props: {
     content: {
       type: String,
