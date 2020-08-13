@@ -59,7 +59,7 @@
         :total="data_count"
         :process="process"
         :default_sort="{prop: 'pid', order: 'ascending'}"
-        :title="title"
+        :costumData="{title:this.title}"
       />
     </el-card>
   </div>
