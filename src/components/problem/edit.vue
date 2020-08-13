@@ -93,7 +93,10 @@
       </el-row>
     </el-card>
     <el-card v-loading="contentLoading" class="item">
-      <div slot="header" class="clearfix"><i class="el-icon-document" /> Content</div>
+      <div slot="header" class="clearfix">
+        <i class="el-icon-document" />
+        Content
+      </div>
       <MarkdownEditor v-model="mdContent" />
     </el-card>
   </div>

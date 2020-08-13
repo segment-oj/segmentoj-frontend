@@ -175,8 +175,11 @@ export default {
           this.introduction = data.introduction;
           this.solved = data.solved;
           this.submit = data.submit_time;
-          this.timeJoin = timeFormat(data.date_joined);
-          this.lastLogin = timeFormat(data.last_login);
+          if (data.last_login == null) {
+            this.lastLogin = 'Never';
+          } else {
+            this.lastLogin = timeFormat(data.last_login);
+          }
           this.isRoot = data.is_superuser;
           this.isStaff = data.is_staff;
           this.isActive = data.is_active;
