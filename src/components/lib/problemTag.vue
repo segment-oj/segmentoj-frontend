@@ -1,6 +1,6 @@
 <template>
   <span class="tag" :style="style">
-    <i :v-if="icon" :class="'el-icon-' + icon_detail"></i>{{content}}
+    <i v-if="icon" :class="'el-icon-' + icon_detail"></i>{{content}}
   </span>
 </template>
 
