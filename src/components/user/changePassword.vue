@@ -60,7 +60,6 @@ export default {
           callback();
         })
         .catch(err => {
-          console.log(err.request.status);
           callback(new Error('Old Password Wrong'));
         });
     };
@@ -99,7 +98,6 @@ export default {
           this.$SegmentMessage.success(this, 'Changed successfully');
         })
         .catch(err => {
-          console.table(err);
           if (err.request.status === 401) {
             this.$SegmentMessage.error(this, 'Please login first');
             this.$store.state.user.showlogin = true;
