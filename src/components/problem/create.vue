@@ -70,7 +70,6 @@ export default {
       }
     },
     title(val) {
-      console.log(val);
       if (val !== null && val !== '') {
         this.errorTitle = false;
       }
