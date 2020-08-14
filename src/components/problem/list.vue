@@ -47,7 +47,7 @@
           <el-divider />
           <el-button
             type="info"
-            style="width: 100%"
+            style="width: 100%;"
             @click="$store.state.createProblem.displayCreateProblem = true;"
             plain
           >
