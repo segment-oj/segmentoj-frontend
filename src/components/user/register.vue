@@ -85,6 +85,9 @@ export default {
       }
     };
     let validateUsername = (rule, value, callback) => {
+      if(value === '') {
+        callback();
+      }
       this.$axios
         .get(apiurl('account/username/accessibility/' + value))
         .then(() => {
@@ -94,7 +97,7 @@ export default {
           if (err.request.status === 409) {
             callback(new Error('The user name is already in use'));
           } else {
-            callback();
+            callback(new Error('Unkown Error'));
           }
         });
     };
