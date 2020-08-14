@@ -44,9 +44,13 @@
           />
           <el-divider />
           <el-checkbox v-model="showTags"> Show Tags</el-checkbox>
+          <el-divider />
+          <el-button type="info" style="width: 100%" @click="$store.state.createProblem.displayCreateProblem = true" plain>Create New Problem</el-button>
         </el-card>
       </el-col>
     </el-row>
+
+    <CreateProblem />
   </div>
 </template>
 
@@ -55,6 +59,7 @@ import apiurl from './../../apiurl';
 import AjaxTable from './../lib/AjaxTable.vue';
 import JumpToProblem from './../lib/jumpToProblem.vue';
 import listTag from './listTag.vue';
+import CreateProblem from './create.vue';
 
 export default {
   name: 'ProblemList',
@@ -83,7 +88,7 @@ export default {
         sortable: false
       }, {
         name: 'tag',
-        width: '400',
+        width: '300',
         align: 'right',
         sortable: false
       }],
@@ -166,7 +171,8 @@ export default {
   },
   components: {
     AjaxTable,
-    JumpToProblem
+    JumpToProblem,
+    CreateProblem
   },
   mounted() {
     this.get_list_lenth();

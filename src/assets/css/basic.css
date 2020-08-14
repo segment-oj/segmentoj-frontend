@@ -204,6 +204,23 @@ h3::before {
     position: fixed;
 }
 
+.el-dialog,
+.el-dialog__wrapper {
+    z-index: 200000 !important;
+}
+
+.v-modal {
+    z-index: 100000 !important;
+}
+
 * {
     border-radius: 0 !important;
+}
+
+.icon-error {
+    color: #f56c6c !important;
+}
+
+.icon-success {
+    color: #67c23a !important;
 }
