@@ -22,12 +22,16 @@
         Title
       </div>
       <el-form-item>
-        <el-input v-model="title" placeholder="Title"></el-input>
+        <el-input v-model="title" placeholder="Title">
+          <i v-if="errorTitle" slot="suffix" class="icon-error el-input__icon el-icon-circle-close"></i>
+          <i v-else slot="suffix" class="icon-success el-input__icon el-icon-circle-check"></i>
+        </el-input>
       </el-form-item>
       <el-form-item>
         <el-button
           type="primary"
           v-on:click="Submit();"
+          :disabled="errorPID || errorTitle"
         >
           Edit Detail
         </el-button>
@@ -46,19 +50,30 @@ export default {
     return {
       pid: null,
       title: null,
-      errorPID: true
+      errorPID: true,
+      errorTitle: true
     };
   },
   watch: {
     pid(val) {
-      this.$axios
-        .get(apiurl('/problem/' + String(val)))
-        .then(() => {
-          this.errorPID = true;
-        })
-        .catch(() => {
-          this.errorPID = false;
-        });
+      if (val === '') {
+        this.errorPID = true;
+      } else {
+        this.$axios
+          .get(apiurl('/problem/' + String(val)))
+          .then(() => {
+            this.errorPID = true;
+          })
+          .catch(() => {
+            this.errorPID = false;
+          });
+      }
+    },
+    title(val) {
+      console.log(val);
+      if (val !== null && val !== '') {
+        this.errorTitle = false;
+      }
     }
   },
   methods: {

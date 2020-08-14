@@ -46,11 +46,11 @@
           <el-checkbox v-model="showTags"> Show Tags</el-checkbox>
           <el-divider />
           <el-button
-            type="info"
             style="width: 100%;"
             @click="$store.state.createProblem.displayCreateProblem = true;"
-            plain
+            size="medium"
           >
+            <i class="el-icon-circle-plus" />
             Create New Problem
           </el-button>
         </el-card>
