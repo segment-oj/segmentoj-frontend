@@ -22,7 +22,7 @@
       layout="prev, pager, next, jumper"
       @current-change="this.onPageChange"
       class="pagination"
-      :total="this.total"
+      :total="this.own_total"
     />
   </div>
 </template>
@@ -36,14 +36,20 @@ export default {
       tableData: null,
       offset: 0,
       pageId: 1,
+      own_total: this.total,
     };
   },
   watch: {
     limit() {
       this.onPageChange(this.pageId);
+      console.log(this.limit);
     },
-    costumData() {
-      this.load_data();
+    costumData(new_val, old_val) {
+      let json_new_val = JSON.stringify(new_val);
+      let json_old_val = JSON.stringify(old_val);
+      if (json_new_val != json_old_val) {
+        this.onPageChange(1);
+      }
     }
   },
   methods: {
@@ -65,7 +71,7 @@ export default {
         })
         .then(res => {
           if (limit === this.limit) {
-            this.total = res.data.count;
+            this.own_total = res.data.count;
             this.tableData = res.data.res.map(this.process);
             this.loading = false;
           }

@@ -10,10 +10,8 @@
             v-model="searchTitle"
             class="input-with-select" 
             style="margin-top: 9px;"
-            @clear="search"
             clearable
           >
-            <el-button slot="append" icon="el-icon-check" @click="search"></el-button>
           </el-input>
         </el-card>
       </el-col>
@@ -59,7 +57,7 @@
         :total="data_count"
         :process="process"
         :default_sort="{prop: 'pid', order: 'ascending'}"
-        :costumData="{title:this.title}"
+        :costumData="{title:title}"
       />
     </el-card>
   </div>
@@ -79,7 +77,6 @@ export default {
       ajax_url: apiurl('/problem/list'),
       limit: 50,
       searchTitle: '',
-      title: null,
       showTags: this.$store.state.tags.displayTags,
       columns: [{
         name: 'score',
@@ -114,7 +111,12 @@ export default {
     },
     limit(val) {
       this.set_column(val);
-    }
+    },
+  },
+  computed: {
+    title() {
+      return this.searchTitle.trim();
+    },
   },
   methods: {
     get_list_lenth() {
@@ -174,10 +176,6 @@ export default {
       
       return x;
     },
-    search() {
-      this.searchTitle = this.searchTitle.trim();
-      this.title = this.searchTitle;
-    }
   },
   components: {
     AjaxTable,

@@ -22,6 +22,8 @@ if (String.prototype.replaceAll === undefined) {
   };
 }
 
-String.prototype.trim = function () {
-  return this.replace(/(^\s*)|(\s*$)/g, '');
-};
+if (String.prototype.trim === undefined) {
+  String.prototype.trim = function () {
+    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+  };
+}
