@@ -107,7 +107,7 @@ import apiurl from './../../apiurl';
 import MarkdownEditor from './../lib/MarkdownEditor.vue';
 import ConfirmDelete from './../lib/confirmDelete.vue';
 
-const sha256 = require('js-sha256').sha256;
+import sha256 from 'js-sha256';
 
 export default {
   name: 'ProblemEdit',
