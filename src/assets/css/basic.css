@@ -191,6 +191,36 @@ h3::before {
     margin-top: 0;
 }
 
+.problem-list-pagination {
+    border: 1px solid #ebeef5;
+    background: #ffffff;
+    margin-left: -20px;
+    padding: 10px;
+    height: 36px;
+    max-width: 100vw;
+    width: 827px;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+}
+
+.el-dialog,
+.el-dialog__wrapper {
+    z-index: 200000 !important;
+}
+
+.v-modal {
+    z-index: 100000 !important;
+}
+
 * {
     border-radius: 0 !important;
+}
+
+.icon-error {
+    color: #f56c6c !important;
+}
+
+.icon-success {
+    color: #67c23a !important;
 }

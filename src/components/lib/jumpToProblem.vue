@@ -1,13 +1,14 @@
 <template>
   <div>
     <el-card>
-      <i class="el-icon-s-promotion" />
-      Jump to
+      <div slot="header" class="clearfic">
+        <i class="el-icon-s-promotion" />
+        Jump to
+      </div>
       <el-input
         placeholder="PID"
         v-model="jumpToProblem"
-        class="input-with-select" 
-        style="margin-top: 9px;"
+        class="input-with-select"
       >
         <template slot="prepend">#.</template>
         <el-button slot="append" icon="el-icon-top-right" @click="jump"></el-button>

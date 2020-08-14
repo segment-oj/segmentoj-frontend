@@ -1,5 +1,5 @@
 <template>
-  <div class="ajax-table">
+  <div>
     <el-table
       v-loading="loading"
       :data="tableData"
@@ -16,14 +16,15 @@
         :sortable="item.sortable"
       />
     </el-table>
-    <el-pagination
-      :page-size="this.limit"
-      background
-      layout="prev, pager, next, jumper"
-      @current-change="this.onPageChange"
-      class="pagination"
-      :total="this.own_total"
-    />
+    <div :class="pagination_class + ' top-zindex'">
+      <el-pagination
+        :page-size="this.limit"
+        background
+        layout="prev, pager, next, jumper"
+        @current-change="this.onPageChange"
+        :total="this.own_total"
+      />
+    </div>
   </div>
 </template>
 
@@ -111,15 +112,11 @@ export default {
     default_sort: {
       type: Object,
       default: null
+    },
+    pagination_class: {
+      type: String,
+      default: 'pagination'
     }
   },
 };
 </script>
-
-<style scoped>
-.pagination {
-    height: 36px;
-    margin-top: 20px;
-    text-align: center;
-}
-</style>

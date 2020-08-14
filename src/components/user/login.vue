@@ -4,7 +4,6 @@
       title="Login"
       :visible.sync="$store.state.user.showlogin"
       :destroy-on-close="true"
-      :close-on-click-modal="false"
       width="500px"
       class="max-screen"
       >
