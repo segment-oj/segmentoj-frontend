@@ -167,7 +167,6 @@ export default {
         request_data['description'] = this.mdContent;
       }
       this.mdContent_sha256 = sha256(this.mdContent);
-      console.log(typeof(request_data));
       this.$axios
         .patch(apiurl('/problem/' + this.$route.params.id), request_data)
         .then(() => {
