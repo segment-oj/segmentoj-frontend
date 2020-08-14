@@ -142,10 +142,10 @@ export default {
         .get(apiurl('/problem/' + String(this.$route.params.id)))
         .then(res => {
           let data = res.data.res;
+          console.log(data);
           this.title = data.title;
           this.pid = data.pid;
           this.allowHTML = data.allow_html;
-          this.description = data.description;
           this.memery = data.memory_limit / 1000;
           this.time = data.time_limit;
           this.hidden = !data.enabled;
@@ -153,6 +153,11 @@ export default {
           this.tags = data.tags;
           this.render_tags();
           this.problemLoading = false;
+          this.$axios
+            .get(apiurl('/problem/' + String(this.$route.params.id) + '/description'))
+            .then(detail => {
+              this.description = detail.data.res.description;
+            });
         })
         .catch(err => {
           if(err.request.status === 404) {

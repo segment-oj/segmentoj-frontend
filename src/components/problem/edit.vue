@@ -131,12 +131,16 @@ export default {
         .then(res => {
           let data = res.data.res;
           this.title = data.title;
-          this.mdContent = data.description;
           this.memery = data.memory_limit / 1000;
           this.time = data.time_limit;
           this.disable = !data.enabled;
           this.html = data.allow_html;
           this.contentLoading = false;
+          this.$axios
+            .get(apiurl('/problem/' + String(this.$route.params.id) + '/description'))
+            .then(detail => {
+              this.mdContent = detail.data.res.description;
+            });
         })
         .catch(err => {
           if (err.request.status === 404) {
