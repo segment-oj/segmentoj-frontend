@@ -60,7 +60,11 @@ export default {
           callback();
         })
         .catch(err => {
-          callback(new Error('Old Password Wrong'));
+          if(err.request.status === 403) {
+            callback(new Error('Old Password Wrong'));
+          } else {
+            callback(new Error('Unkown Error'));
+          }
         });
     };
     return {
