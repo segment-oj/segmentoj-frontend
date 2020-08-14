@@ -42,7 +42,6 @@ export default {
   watch: {
     limit() {
       this.onPageChange(this.pageId);
-      console.log(this.limit);
     },
     costumData(new_val, old_val) {
       let json_new_val = JSON.stringify(new_val);

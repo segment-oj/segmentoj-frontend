@@ -42,7 +42,7 @@
                 v-model="showTags"
                 active-color="#13ce66"
                 inactive-color="#ff4949"
-                style="margin-top: 17px;"
+                style="margin-top: 18px;"
               />
             </el-col>
           </el-row>
