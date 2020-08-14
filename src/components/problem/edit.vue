@@ -107,12 +107,15 @@ import apiurl from './../../apiurl';
 import MarkdownEditor from './../lib/MarkdownEditor.vue';
 import ConfirmDelete from './../lib/confirmDelete.vue';
 
+const sha256 = require('js-sha256').sha256;
+
 export default {
   name: 'ProblemEdit',
   data() {
     return {
       title: '',
       mdContent: 'Loading...',
+      mdContent_sha256: null,
       contentLoading: true,
       time: 'Unknown',
       memery: 'Unknown',
@@ -137,6 +140,7 @@ export default {
           this.disable = !data.enabled;
           this.html = data.allow_html;
           this.contentLoading = false;
+          this.mdContent_sha256 = sha256(this.mdContent);
         })
         .catch(err => {
           if (err.request.status === 404) {
@@ -152,15 +156,20 @@ export default {
       this.$router.push('/problem/' + this.$route.params.id);
     },
     submit() {
+      let request_data = {
+        title: this.title,
+        memory_limit: this.memery * 1000,
+        time_limit: this.time,
+        allow_html: this.html,
+        enabled: !this.disable
+      };
+      if(sha256(this.mdContent) !== this.mdContent_sha256) {
+        request_data['description'] = this.mdContent;
+      }
+      this.mdContent_sha256 = sha256(this.mdContent);
+      console.log(typeof(request_data));
       this.$axios
-        .patch(apiurl('/problem/' + this.$route.params.id), {
-          title: this.title,
-          description: this.mdContent,
-          memory_limit: this.memery * 1000,
-          time_limit: this.time,
-          allow_html: this.html,
-          enabled: !this.disable
-        })
+        .patch(apiurl('/problem/' + this.$route.params.id), request_data)
         .then(() => {
           this.$SegmentMessage.success(this, 'Your changes have been submitted');
         })
