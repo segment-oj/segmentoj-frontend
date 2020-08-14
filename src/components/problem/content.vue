@@ -142,7 +142,6 @@ export default {
         .get(apiurl('/problem/' + String(this.$route.params.id)))
         .then(res => {
           let data = res.data.res;
-          console.log(data);
           this.title = data.title;
           this.pid = data.pid;
           this.allowHTML = data.allow_html;
