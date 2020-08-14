@@ -1,65 +1,52 @@
 <template>
   <div>
-    <el-row :gutter="20">
-      <el-col :span="10">
+    <el-row :gutter="20" style="margin-bottom: 30px">
+      <el-col :span="18">
+        <el-card v-if="alive">
+          <AjaxTable
+            :ajax_url="ajax_url"
+            :columns="columns"
+            :limit="limit"
+            :total="data_count"
+            :process="process"
+            :default_sort="{prop: 'pid', order: 'ascending'}"
+            :costumData="{title:title}"
+            pagination_class="problem-list-pagination"
+          />
+        </el-card>
+      </el-col>
+
+      <el-col :span="6">
         <el-card>
-          <i class="el-icon-search" />
-          Search
+          <div slot="header" class="clearfix">
+            <i class="el-icon-search" />
+            Search
+          </div>
           <el-input
             placeholder="Search"
             v-model="searchTitle"
-            class="input-with-select" 
-            style="margin-top: 9px;"
+            class="input-with-select"
             clearable
           >
           </el-input>
         </el-card>
-      </el-col>
-      <el-col :span="6">
-        <JumpToProblem />
-      </el-col>
-      <el-col :span="8">
-        <el-card>
-          <el-row :gutter="20">
-            <el-col :span="16">
-              <span>
-                <i class="el-icon-s-grid" />
-                Columns
-              </span>
-              <el-slider
-                v-model="limit"
-                :step="10"
-                :min="10"
-                style="margin-top: 10px;"
-              />
-            </el-col>
-            <el-col :span="8">
-              <div>
-                <i class="el-icon-collection-tag" />
-                Show Tags
-              </div>
-              <el-switch
-                v-model="showTags"
-                active-color="#13ce66"
-                inactive-color="#ff4949"
-                style="margin-top: 18px;"
-              />
-            </el-col>
-          </el-row>
+        <JumpToProblem class="item" />
+        <el-card class="item">
+          <span>
+            <i class="el-icon-s-grid" />
+            Columns
+          </span>
+          <el-slider
+            v-model="limit"
+            :step="10"
+            :min="10"
+            style="margin-top: 10px;"
+          />
+          <el-divider />
+          <el-checkbox v-model="showTags"> Show Tags</el-checkbox>
         </el-card>
       </el-col>
     </el-row>
-    <el-card class="item" v-if="alive">
-      <AjaxTable
-        :ajax_url="ajax_url"
-        :columns="columns"
-        :limit="limit"
-        :total="data_count"
-        :process="process"
-        :default_sort="{prop: 'pid', order: 'ascending'}"
-        :costumData="{title:title}"
-      />
-    </el-card>
   </div>
 </template>
 
