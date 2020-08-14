@@ -120,8 +120,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.pagination {
-}
-</style>
