@@ -1,12 +1,16 @@
 <template>
   <div>
-    <el-select v-model="value" placeholder="请选择">
+    <el-select
+      v-model="mode"
+      placeholder="Select Mode"
+      style="margin-bottom: 10px;"
+    >
       <el-option
         v-for="item in langTable"
         :key="item.value"
         :label="item.label"
-        :value="item.value">
-      </el-option>
+        :value="item.value"
+      />
     </el-select>
     <textarea ref="editor" v-model="source" />
   </div>
@@ -18,6 +22,10 @@ import * as CodeMirror from 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css';
 import './../../assets/code_mirror/tomorrow.css';
 import 'codemirror/mode/clike/clike';
+import 'codemirror/mode/rust/rust';
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/python/python';
+import 'codemirror/mode/markdown/markdown';
 import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/hint/show-hint.css';
 import 'codemirror/addon/hint/anyword-hint';
@@ -42,20 +50,28 @@ import 'codemirror/addon/search/jump-to-line';
 import 'codemirror/addon/search/match-highlighter';
 import 'codemirror/keymap/sublime';
 
+let editor;
+
 export default {
   name: 'codeMirror',
   data() {
     return {
       source: null,
       langTable: sfconfig.codeMirrorModeTable,
-      editor: null
+      editor: null,
+      mode: '-'
     };
+  },
+  watch: {
+    mode(val) {
+      editor.setOption('mode', this.langTable[val].mode);
+    }
   },
   methods: {
     loadEditor() {
-      this.editor = CodeMirror.fromTextArea(this.$refs.editor, {
+      editor = CodeMirror.fromTextArea(this.$refs.editor, {
         theme: '3024-day',
-        mode: 'text/x-c++src',
+        mode: 'text/x-markdown',
         indentUnit: 4,
         smartIndent: true,
         indentWithTabs: false,
@@ -80,13 +96,16 @@ export default {
           completeSingle: false
         }
       });
-      this.editor.on('keypress', function() {
-        this.editor.showHint();
+      editor.on('keypress', function() {
+        editor.showHint();
       });
     }
   },
   mounted() {
     this.loadEditor();
+    this.mode = this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].label;
+    console.log(this.mode);
+    editor.setOption('mode', this.langTable[this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].value].mode);
   }
 };
 </script>
