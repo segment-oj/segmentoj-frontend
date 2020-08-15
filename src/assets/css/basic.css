@@ -204,6 +204,18 @@ h3::before {
     position: fixed;
 }
 
+.status-list-pagination {
+    border: 1px solid #ebeef5;
+    background: #ffffff;
+    padding: 10px;
+    height: 36px;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .el-dialog,
 .el-dialog__wrapper {
     z-index: 200000 !important;
