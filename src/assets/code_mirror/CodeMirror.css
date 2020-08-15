@@ -4,6 +4,10 @@
     color: #4d4d4c;
 }
 
+.CodeMirror-linenumber {
+    font-family: "Fira Code" !important;
+}
+
 .CodeMirror-foldmarker {
     text-shadow: none !important;
     color: #8e908c !important;

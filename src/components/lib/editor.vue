@@ -35,7 +35,9 @@
 </template>
 
 <script>
+import apiurl from './../../apiurl';
 import sfconfig from './../../sfconfig';
+
 import * as CodeMirror from 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css';
 import './../../assets/code_mirror/CodeMirror.css';
@@ -95,8 +97,11 @@ export default {
       editor.setOption('mode', this.langTable[val].mode);
     },
     theme(val) {
-      console.log(this.themeTable[val]);
       editor.setOption('theme', this.CodeMirrorThemeTable[val].theme);
+      this.$axios
+        .patch(apiurl('/account/' + this.$store.state.user.userid), {
+          editor_theme: this.theme
+        });
     }
   },
   methods: {
@@ -135,11 +140,19 @@ export default {
     loadUserLangMode() {
       this.mode = this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].label;
       editor.setOption('mode', this.langTable[this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].value].mode);
+    },
+    loadUserTheme() {
+      this.$axios
+        .get(apiurl('/account/' + this.$store.state.user.userid))
+        .then(res => {
+          this.theme = String(res.data.res.editor_theme);
+        });
     }
   },
   mounted() {
     this.loadEditor();
     this.loadUserLangMode();
+    this.loadUserTheme();
   }
 };
 </script>

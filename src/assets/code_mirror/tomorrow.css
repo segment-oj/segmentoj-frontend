@@ -54,7 +54,6 @@ span.cm-tag {
 }
 
 .cm-s-3024-day .CodeMirror-linenumber {
-    font-family: "Fira Code" !important;
     color: #909399 !important;
     font-size: 15px !important;
 }
