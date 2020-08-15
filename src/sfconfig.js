@@ -68,5 +68,54 @@ export default {
     value: '18',
     label: 'Java'
   }],
+  codeMirrorModeTable: [{
+    value: '0',
+    label: 'C++',
+    mode: 'text/x-c++src'
+  }, {
+    value: '1',
+    label: 'C',
+    mode: 'text/x-csrc'
+  }, {
+    value: '2',
+    label: 'JAVA',
+    mode: 'text/x-java'
+  }, {
+    value: '3',
+    label: 'C#',
+    mode: 'text/x-csharp'
+  }, {
+    value: '4',
+    label: 'Rust',
+    mode: 'text/x-rustsrc'
+  }, {
+    value: '5',
+    label: 'TypeScript',
+    mode: 'text/typescript'
+  }, {
+    value: '6',
+    label: 'Python3',
+    mode: 'text/x-python'
+  }, {
+    value: '7',
+    label: 'Markdown',
+    mode: 'text/x-markdown'
+  }, {
+    value: '8',
+    label: 'Ruby',
+    mode: 'text/x-ruby'
+  }, {
+    value: '9',
+    label: 'php',
+    mode: 'text/x-php'
+  }, {
+    value: '10',
+    label: 'GO',
+    mode: 'text/x-go'
+  }, {
+    value: '11',
+    label: 'Pascal',
+    mode: 'text/x-pascal'
+  }],
   captchaKeyMax: 2000000000
 };

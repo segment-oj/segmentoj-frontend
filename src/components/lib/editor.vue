@@ -1,10 +1,19 @@
 <template>
   <div>
+    <el-select v-model="value" placeholder="请选择">
+      <el-option
+        v-for="item in langTable"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+      </el-option>
+    </el-select>
     <textarea ref="editor" v-model="source" />
   </div>
 </template>
 
 <script>
+import sfconfig from './../../sfconfig';
 import * as CodeMirror from 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css';
 import './../../assets/code_mirror/tomorrow.css';
@@ -37,12 +46,14 @@ export default {
   name: 'codeMirror',
   data() {
     return {
-      source: null
+      source: null,
+      langTable: sfconfig.codeMirrorModeTable,
+      editor: null
     };
   },
   methods: {
     loadEditor() {
-      let editor = CodeMirror.fromTextArea(this.$refs.editor, {
+      this.editor = CodeMirror.fromTextArea(this.$refs.editor, {
         theme: '3024-day',
         mode: 'text/x-c++src',
         indentUnit: 4,
@@ -69,8 +80,8 @@ export default {
           completeSingle: false
         }
       });
-      editor.on('keypress', function() {
-        editor.showHint();
+      this.editor.on('keypress', function() {
+        this.editor.showHint();
       });
     }
   },
