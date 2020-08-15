@@ -1,0 +1,55 @@
+.CodeMirror {
+    height: 600px !important;
+    background-color: #fcfcfc;
+    color: #4d4d4c;
+}
+
+.CodeMirror-foldmarker {
+    text-shadow: none !important;
+    color: #8e908c !important;
+    font-family: "Fira Sans" !important;
+    outline: 1px solid #d6d6d6 !important;
+    -moz-outline-radius: 3px !important;
+}
+
+.CodeMirror-hints {
+    max-height: 200px !important;
+    box-shadow: none !important;
+    border-color: #dcdfe6 !important;
+    background-color: #fefefe !important;
+    font-family: "Fira Code" !important;
+    padding: 5px !important;
+}
+
+.CodeMirror-hint {
+    line-height: 20px;
+    color: #444444 !important;
+}
+
+li.CodeMirror-hint-active {
+    background-color: #efefef !important;
+    color: #444444 !important;
+    font-weight: 500;
+}
+
+.CodeMirror-selection-highlight-scrollbar {
+    margin-right: 2.5px !important;
+    width: 5px !important;
+    background-color: #8e908c !important;
+    opacity: 0.6 !important;
+}
+
+.CodeMirror-simplescroll-horizontal div,
+.CodeMirror-simplescroll-vertical div {
+    background: #b3b3b3 !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.CodeMirror-simplescroll-vertical {
+    width: 10px !important;
+}
+
+.CodeMirror-simplescroll-horizontal {
+    height: 10px !important;
+}

@@ -38,6 +38,7 @@
 import sfconfig from './../../sfconfig';
 import * as CodeMirror from 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css';
+import './../../assets/code_mirror/CodeMirror.css';
 import './../../assets/code_mirror/tomorrow.css';
 import './../../assets/code_mirror/zenburn.css';
 import './../../assets/code_mirror/monokai.css';
