@@ -118,7 +118,7 @@ export default {
     },
   },
   methods: {
-    get_list_lenth() {
+    get_list_length() {
       this.$axios
         .get(apiurl('/problem/list/count'))
         .then(response => {
@@ -182,7 +182,7 @@ export default {
     CreateProblem
   },
   mounted() {
-    this.get_list_lenth();
+    this.get_list_length();
     this.get_column();
   }
 };
