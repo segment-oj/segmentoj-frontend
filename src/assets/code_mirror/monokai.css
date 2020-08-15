@@ -1,4 +1,3 @@
-.cm-s-monokai
-span .cm-comment {
-    color: #75715E !important;
+.cm-s-monokai span.cm-comment {
+    color: #75715e !important;
 }
