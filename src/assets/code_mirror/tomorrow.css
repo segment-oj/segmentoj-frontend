@@ -4,88 +4,105 @@
     color: #4d4d4c;
 }
 
+.cm-s-3024-day
 .CodeMirror-cursor {
-    opacity: 0.7;
-    border-left: 2px solid #4d4d4c;
+    opacity: 0.7 !important;
+    border-left: 2px solid #4d4d4c !important;
 }
 
-.cm-qualifier {
+.cm-s-3024-day
+span .cm-qualifier {
     color: #c82829;
 }
 
-.cm-property {
+.cm-s-3024-day
+span .cm-property {
     color: #eab700;
 }
 
-.cm-meta,
-.cm-number,
-.cm-atom {
+.cm-s-3024-day
+span .cm-meta,
+span .cm-number,
+span .cm-atom {
     color: #f5871f;
 }
 
-.cm-comment {
+.cm-s-3024-day
+span .cm-comment {
     color: #8e908c !important;
 }
 
-.cm-keyword,
-.cm-type,
-.cm-tag {
+.cm-s-3024-day
+span .cm-keyword,
+span .cm-type,
+span .cm-tag {
     color: #8959a8;
 }
 
-.cm-def {
+.cm-s-3024-day
+span .cm-def {
     color: #4271ae;
 }
 
-.cm-string {
-    color: #718c00 !important;
+.cm-s-3024-day
+span .cm-string {
+    color: #718c00;
 }
 
+.cm-s-3024-day
+span .cm-operator {
+    color: #3e999f;
+}
+
+.cm-s-3024-day
 .CodeMirror-linebackground,
 .CodeMirror-activeline-background {
-    background-color: #efefef !important;
+    background-color: #efefef;
 }
 
-.cm-operator {
-    color: #3e999f !important;
-}
-
+.cm-s-3024-day
 .CodeMirror-selected {
     background-color: #d6d6d6 !important;
 }
 
+.cm-s-3024-day
 .CodeMirror-gutters {
-    background: #fcfcfc;
-    border-right: none;
+    background: #fcfcfc !important;
+    border-right: none !important;
 }
 
+.cm-s-3024-day
 .CodeMirror-linenumber {
-    color: #909399;
-    font-size: 15px;
+    color: #909399 !important;
+    font-size: 15px !important;
 }
 
+.cm-s-3024-day
 .CodeMirror-matchingbracket {
     color: #4d4d4c !important;
-    outline: 1px solid #d6d6d6;
-    -moz-outline-radius: 3px;
+    outline: 1px solid #d6d6d6 !important;
+    -moz-outline-radius: 3px !important;
 }
 
+.cm-s-3024-day
 .CodeMirror-nonmatchingbracket {
     color: #c82829 !important;
-    outline: 1px solid #c82829;
-    -moz-outline-radius: 3px;
+    outline: 1px solid #c82829 !important;
+    -moz-outline-radius: 3px !important;
 }
 
+.cm-s-3024-day
 .CodeMirror-foldmarker {
     text-shadow: none !important;
     color: #8e908c !important;
     font-family: "Fira Sans" !important;
-    outline: 1px solid #d6d6d6;
-    -moz-outline-radius: 3px;
+    outline: 1px solid #d6d6d6 !important;
+    -moz-outline-radius: 3px !important;
 }
 
+.cm-s-3024-day
 .CodeMirror span[role="presentation"] {
-    font-size: 14px;
+    font-size: 14px !important;
 }
 
 .CodeMirror-hints {
@@ -108,40 +125,46 @@ li.CodeMirror-hint-active {
     font-weight: 500;
 }
 
+.cm-s-3024-day
 .CodeMirror-dialog {
     background-color: #fefefe !important;
 }
 
+.cm-s-3024-day
 .cm-searching {
-    background-color: #d6d6d6;
+    background-color: #d6d6d6 !important;
 }
 
+.cm-s-3024-day
 .CodeMirror-search-label {
-    line-height: 24px;
-    font-weight: 500;
+    line-height: 24px !important;
+    font-weight: 500 !important;
 }
 
+.cm-s-3024-day
 .CodeMirror-search-field {
-    line-height: 20px;
+    line-height: 20px !important;
     border: 1px solid #dcdfe6 !important;
-    width: 50em !important;
+    width: 30em !important;
 }
 
+.cm-s-3024-day
 .CodeMirror-search-hint {
-    line-height: 25px;
-    float: right;
+    line-height: 25px !important;
+    float: right !important;
 }
 
+.cm-s-3024-day
 .cm-matchhighlight {
-    outline: 1px solid #d6d6d6;
-    -moz-outline-radius: 3px;
+    outline: 1px solid #d6d6d6 !important;
+    -moz-outline-radius: 3px !important;
 }
 
 .CodeMirror-selection-highlight-scrollbar {
-    margin-right: 2.5px;
+    margin-right: 2.5px !important;
     width: 5px !important;
-    background-color: #8e908c;
-    opacity: 0.6;
+    background-color: #8e908c !important;
+    opacity: 0.6 !important;
 }
 
 .CodeMirror-simplescroll-horizontal div,

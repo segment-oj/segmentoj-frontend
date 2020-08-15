@@ -12,6 +12,24 @@
         :value="item.value"
       />
     </el-select>
+    <el-select
+      v-model="theme"
+      placeholder="Select Theme"
+      style="margin-bottom: 10px; margin-left: 20px;"
+    >
+      <el-option-group
+        v-for="group in themeTable"
+        :key="group.label"
+        :label="group.label"
+      >
+        <el-option
+          v-for="item in group.themes"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        />
+      </el-option-group>
+    </el-select>
     <textarea ref="editor" v-model="source" />
   </div>
 </template>
@@ -21,6 +39,12 @@ import sfconfig from './../../sfconfig';
 import * as CodeMirror from 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css';
 import './../../assets/code_mirror/tomorrow.css';
+import './../../assets/code_mirror/zenburn.css';
+import './../../assets/code_mirror/monokai.css';
+import 'codemirror/theme/neo.css';
+import 'codemirror/theme/ayu-mirage.css';
+import 'codemirror/theme/monokai.css';
+import 'codemirror/theme/zenburn.css';
 import 'codemirror/mode/clike/clike';
 import 'codemirror/mode/rust/rust';
 import 'codemirror/mode/javascript/javascript';
@@ -59,12 +83,19 @@ export default {
       source: null,
       langTable: sfconfig.codeMirrorModeTable,
       editor: null,
-      mode: '-'
+      mode: '-',
+      theme: '-', 
+      themeTable: sfconfig.CodeMirrorThemeTableOptions,
+      CodeMirrorThemeTable: sfconfig.CodeMirrorThemeTable
     };
   },
   watch: {
     mode(val) {
       editor.setOption('mode', this.langTable[val].mode);
+    },
+    theme(val) {
+      console.log(this.themeTable[val]);
+      editor.setOption('theme', this.CodeMirrorThemeTable[val].theme);
     }
   },
   methods: {
@@ -99,13 +130,15 @@ export default {
       editor.on('keypress', function() {
         editor.showHint();
       });
+    },
+    loadUserLangMode() {
+      this.mode = this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].label;
+      editor.setOption('mode', this.langTable[this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].value].mode);
     }
   },
   mounted() {
     this.loadEditor();
-    this.mode = this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].label;
-    console.log(this.mode);
-    editor.setOption('mode', this.langTable[this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].value].mode);
+    this.loadUserLangMode();
   }
 };
 </script>

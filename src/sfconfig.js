@@ -136,5 +136,47 @@ export default {
     label: 'Pascal',
     mode: 'text/x-pascal'
   }],
+  CodeMirrorThemeTableOptions: [{
+    label: 'Light',
+    themes: [{
+      value: '0',
+      label: 'Tomorrow'
+    }, {
+      value: '1',
+      label: 'Neo',
+      theme: 'neo'
+    }]
+  }, {
+    label: 'Dark',
+    themes: [{
+      value: '2',
+      label: 'Ayu Mirage',
+      theme: 'ayu-mirage'
+    }, {
+      value: '3',
+      label: 'Monokai',
+      theme: 'monokai'
+    }, {
+      value: '4',
+      label: 'Zenburn',
+      theme: 'zenburn'
+    }]
+  }],
+  CodeMirrorThemeTable: [{
+    value: '0',
+    theme: '3024-day'
+  }, {
+    value: '1',
+    theme: 'neo'
+  }, {
+    value: '2',
+    theme: 'ayu-mirage'
+  }, {
+    value: '3',
+    theme: 'monokai'
+  }, {
+    value: '4',
+    theme: 'zenburn'
+  }],
   captchaKeyMax: 2000000000
 };
