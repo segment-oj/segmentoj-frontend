@@ -44,6 +44,7 @@ import './../../assets/code_mirror/CodeMirror.css';
 import './../../assets/code_mirror/tomorrow.css';
 import './../../assets/code_mirror/zenburn.css';
 import './../../assets/code_mirror/monokai.css';
+import './../../assets/code_mirror/ayu-mirage.css';
 import 'codemirror/theme/neo.css';
 import 'codemirror/theme/ayu-mirage.css';
 import 'codemirror/theme/monokai.css';

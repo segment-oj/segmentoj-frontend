@@ -1,3 +1,7 @@
 .cm-s-monokai span.cm-comment {
     color: #75715e !important;
 }
+
+.cm-s-monokai .cm-matchhighlight {
+    background-color: #49483E;
+}

@@ -1,0 +1,20 @@
+.cm-s-ayu-mirage span.cm-comment {
+    color: #5C6773 !important;
+}
+
+.cm-s-ayu-mirage span.cm-atom {
+    color: #ffd580 !important;
+}
+
+.cm-s-ayu-mirage .cm-matchhighlight {
+    background-color: #323A4C !important;
+}
+
+.cm-s-ayu-mirage .CodeMirror-matchingbracket {
+    background-color: #323A4C !important;
+    text-decoration: none !important;
+}
+
+.cm-s-ayu-mirage .CodeMirror-cursor {
+    border-left: 2px solid #ffcc66 !important;
+}
