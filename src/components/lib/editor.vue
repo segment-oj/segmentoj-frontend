@@ -1,41 +1,10 @@
 <template>
   <div>
-    <el-select
-      v-model="mode"
-      placeholder="Select Mode"
-      style="margin-bottom: 10px;"
-    >
-      <el-option
-        v-for="item in langTable"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
-    </el-select>
-    <el-select
-      v-model="theme"
-      placeholder="Select Theme"
-      style="margin-bottom: 10px; margin-left: 20px;"
-    >
-      <el-option-group
-        v-for="group in themeTable"
-        :key="group.label"
-        :label="group.label"
-      >
-        <el-option
-          v-for="item in group.themes"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        />
-      </el-option-group>
-    </el-select>
     <textarea ref="editor" v-model="source" />
   </div>
 </template>
 
 <script>
-import apiurl from './../../apiurl';
 import sfconfig from './../../sfconfig';
 
 import * as CodeMirror from 'codemirror/lib/codemirror';
@@ -91,12 +60,18 @@ export default {
     return {
       source: null,
       langTable: sfconfig.codeMirrorModeTable,
-      editor: null,
-      mode: '-',
-      theme: '-', 
-      themeTable: sfconfig.CodeMirrorThemeTableOptions,
       CodeMirrorThemeTable: sfconfig.CodeMirrorThemeTable
     };
+  },
+  props: {
+    mode: {
+      type: String,
+      default: 'text/x-c++src'
+    },
+    theme: {
+      type: String,
+      default: '3024-day'
+    }
   },
   watch: {
     mode(val) {
@@ -104,17 +79,13 @@ export default {
     },
     theme(val) {
       editor.setOption('theme', this.CodeMirrorThemeTable[val].theme);
-      this.$axios
-        .patch(apiurl('/account/' + this.$store.state.user.userid), {
-          editor_theme: this.theme
-        });
     }
   },
   methods: {
     loadEditor() {
       editor = CodeMirror.fromTextArea(this.$refs.editor, {
         theme: '3024-day',
-        mode: 'text/x-markdown',
+        mode: 'text/x-c++src',
         indentUnit: 4,
         smartIndent: true,
         indentWithTabs: false,
@@ -143,22 +114,11 @@ export default {
         editor.showHint();
       });
     },
-    loadUserLangMode() {
-      this.mode = this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].label;
-      editor.setOption('mode', this.langTable[this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].value].mode);
-    },
-    loadUserTheme() {
-      this.$axios
-        .get(apiurl('/account/' + this.$store.state.user.userid))
-        .then(res => {
-          this.theme = String(res.data.res.editor_theme);
-        });
-    }
   },
   mounted() {
     this.loadEditor();
-    this.loadUserLangMode();
-    this.loadUserTheme();
+    editor.setOption('mode', this.langTable[this.mode].mode);
+    editor.setOption('theme', this.langTable[this.theme].mode);
   }
 };
 </script>
