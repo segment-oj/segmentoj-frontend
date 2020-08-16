@@ -59,14 +59,23 @@ export default {
       if (val === '') {
         this.errorPID = true;
       } else {
-        this.$axios
-          .get(apiurl('/problem/' + String(val)))
-          .then(() => {
+        this.errorPID = false;
+        for (let i = 0; i < val.length; i += 1) {
+          let now = val.charAt(i);
+          if (isNaN(parseInt(now))) {
             this.errorPID = true;
-          })
-          .catch(() => {
-            this.errorPID = false;
-          });
+          }
+        }
+        if (this.errorPID == false) {
+          this.$axios
+            .get(apiurl('/problem/' + String(val)))
+            .then(() => {
+              this.errorPID = true;
+            })
+            .catch(() => {
+              this.errorPID = false;
+            });
+        }
       }
     },
     title(val) {
