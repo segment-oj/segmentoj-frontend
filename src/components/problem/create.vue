@@ -58,15 +58,18 @@ export default {
     pid(val) {
       if (val === '') {
         this.errorPID = true;
+      } else if (val.length >= 8) {
+        this.errorPID = true;
       } else {
-        this.errorPID = false;
+        let flag = false;
         for (let i = 0; i < val.length; i += 1) {
           let now = val.charAt(i);
           if (isNaN(parseInt(now))) {
             this.errorPID = true;
+            flag = true;
           }
         }
-        if (this.errorPID == false) {
+        if (flag == false) {
           this.$axios
             .get(apiurl('/problem/' + String(val)))
             .then(() => {
