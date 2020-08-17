@@ -1,0 +1,15 @@
+.cm-s-neo .CodeMirror-matchingbracket {
+    color: #4d4d4c !important;
+    outline: 1px solid #d6d6d6 !important;
+    -moz-outline-radius: 3px !important;
+}
+
+.cm-s-neo .CodeMirror-nonmatchingbracket {
+    color: #c82829 !important;
+    outline: 1px solid #c82829 !important;
+    -moz-outline-radius: 3px !important;
+}
+
+.cm-s-neo .cm-matchhighlight {
+    background-color: #dddddd !important;
+}
