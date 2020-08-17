@@ -15,9 +15,11 @@
 </template>
 
 <script>
+import sfconfig from './../../sfconfig';
 import apiurl from './../../apiurl';
 import AjaxTable from './../lib/AjaxTable.vue';
 import ProblemTitleLink from './../problem/ProblemTitleLink.vue';
+import UserNameLink from './../user/UserNameLink.vue';
 
 export default {
   name: 'StatusList',
@@ -35,6 +37,12 @@ export default {
       }, {
         name: 'problem',
         label: 'Problem',
+        align: 'center',
+        sortable: false
+      }, {
+        name: 'state',
+        label: 'Status',
+        align: 'center',
         sortable: false
       }, {
         name: 'score',
@@ -43,26 +51,28 @@ export default {
         align: 'center',
         sortable: true
       }, {
-        name: 'state',
-        label: 'Status',
+        name: 'time',
+        label: 'Time',
         width: '120',
         align: 'center',
         sortable: false
       }, {
-        name: 'time',
-        label: 'Time',
-        sortable: false
-      }, {
         name: 'memory',
         label: 'Memory',
+        width: '120',
+        align: 'center',
         sortable: false
       }, {
         name: 'lang',
         label: 'Language',
+        width: '120',
+        align: 'center',
         sortable: false
       }, {
         name: 'owner',
         label: 'Author',
+        width: '120',
+        align: 'center',
         sortable: false
       }],
       data_count: 10
@@ -90,11 +100,16 @@ export default {
       } else {
         color += 'color-regular-text';
       }
-
       x.problem = (<ProblemTitleLink pid={x.problem}></ProblemTitleLink>);
-
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
-      
+      x.lang = sfconfig.langTable[x.lang].label;
+      let t = sfconfig.stateTable.filter(id => {
+        return id.value === String(x.state);
+      })[0];
+      x.state = (<div style={'color: ' + t.color + ';'}>{t.label}</div>);
+      x.time = x.time + ' ms';
+      x.memory = x.memory + ' KB';
+      x.owner = (<UserNameLink userid={x.owner}></UserNameLink>);
       return x;
     },
   },
