@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="( '/problem/' + String(this.pid))" class="text-normal">{{this.title}} </router-link>
+    <router-link :to="( '/problem/' + String(this.pid))" class="color-regular-text text-normal">{{this.title}} </router-link>
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
       this.$axios
         .get(apiurl('/problem/' + String(id)))
         .then(res => {
-          this.title = '#' + String(id) + '.' + res.data.res.title;
+          this.title = '#' + String(id) + '. ' + res.data.res.title;
         })
         .catch(() => {
           this.title = '#' + String(id);
@@ -33,7 +33,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.pid);
     this.title = '#' + this.pid;
     this.loadproblem(this.pid);
   }
