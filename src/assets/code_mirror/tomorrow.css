@@ -32,7 +32,7 @@ span.cm-tag {
 }
 
 .cm-s-3024-day span.cm-string {
-    color: #718c00;
+    color: #718c00 !important;
 }
 
 .cm-s-3024-day span.cm-operator {

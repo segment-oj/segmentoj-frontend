@@ -1,9 +1,14 @@
 .cm-s-ayu-mirage span.cm-comment {
     color: #5c6773 !important;
+    font-style: normal !important;
 }
 
 .cm-s-ayu-mirage span.cm-atom {
     color: #ffd580 !important;
+}
+
+.cm-s-ayu-mirage span.cm-string {
+    color: #bae67e !important;
 }
 
 .cm-s-ayu-mirage .cm-matchhighlight {
