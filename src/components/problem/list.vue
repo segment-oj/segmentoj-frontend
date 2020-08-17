@@ -80,7 +80,7 @@ export default {
       columns: [{
         name: 'score',
         label: 'Status',
-        width: '120',
+        width: '90',
         align: 'center',
         sortable: true
       }, {

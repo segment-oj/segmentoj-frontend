@@ -62,6 +62,6 @@ export default {
     border: 1px solid;
     box-sizing: border-box;
     white-space: nowrap;
-    margin: 3px;
+    margin: 0px 3px;
 }
 </style>
