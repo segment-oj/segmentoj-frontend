@@ -38,6 +38,7 @@
             placeholder="Paste your code"
             required
             v-model="code"
+            spellcheck="false"
           />
         </el-card>
       </el-col>
@@ -68,6 +69,7 @@
           placeholder="Paste your code"
           required
           v-model="code"
+          spellcheck="false"
         />
       </el-card>
     </div>

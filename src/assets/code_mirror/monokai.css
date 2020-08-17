@@ -1,0 +1,19 @@
+.cm-s-monokai span.cm-comment {
+    color: #75715e !important;
+}
+
+.cm-s-monokai span.cm-string {
+    color: #e6db74 !important;
+}
+
+.cm-s-monokai span.cm-keyword {
+    color: #f92772 !important;
+}
+
+.cm-s-monokai span.cm-operator {
+    color: #f92772 !important;
+}
+
+.cm-s-monokai .cm-matchhighlight {
+    background-color: #49483e;
+}

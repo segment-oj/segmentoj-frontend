@@ -1,160 +1,104 @@
-.CodeMirror {
-    height: 600px !important;
-    background-color: #fcfcfc;
-    color: #4d4d4c;
+.cm-s-3024-day .CodeMirror-cursor {
+    opacity: 0.7 !important;
+    border-left: 2px solid #4d4d4c !important;
 }
 
-.CodeMirror-cursor {
-    opacity: 0.7;
-    border-left: 2px solid #4d4d4c;
-}
-
-.cm-qualifier {
+.cm-s-3024-day span.cm-qualifier {
     color: #c82829;
 }
 
-.cm-property {
+.cm-s-3024-day span.cm-property {
     color: #eab700;
 }
 
-.cm-meta,
-.cm-number,
-.cm-atom {
+.cm-s-3024-day span.cm-meta,
+span.cm-number,
+span.cm-atom {
     color: #f5871f;
 }
 
-.cm-comment {
+.cm-s-3024-day span.cm-comment {
     color: #8e908c !important;
 }
 
-.cm-keyword,
-.cm-type,
-.cm-tag {
+.cm-s-3024-day span.cm-keyword,
+span.cm-type,
+span.cm-tag {
     color: #8959a8;
 }
 
-.cm-def {
+.cm-s-3024-day span.cm-def {
     color: #4271ae;
 }
 
-.cm-string {
+.cm-s-3024-day span.cm-string {
     color: #718c00 !important;
 }
 
-.CodeMirror-linebackground,
+.cm-s-3024-day span.cm-operator {
+    color: #3e999f;
+}
+
+.cm-s-3024-day .CodeMirror-linebackground,
 .CodeMirror-activeline-background {
-    background-color: #efefef !important;
+    background-color: #efefef;
 }
 
-.cm-operator {
-    color: #3e999f !important;
-}
-
-.CodeMirror-selected {
+.cm-s-3024-day .CodeMirror-selected {
     background-color: #d6d6d6 !important;
 }
 
-.CodeMirror-gutters {
-    background: #fcfcfc;
-    border-right: none;
+.cm-s-3024-day .CodeMirror-gutters {
+    background: #fcfcfc !important;
+    border-right: none !important;
 }
 
-.CodeMirror-linenumber {
-    color: #909399;
-    font-size: 15px;
+.cm-s-3024-day .CodeMirror-linenumber {
+    color: #909399 !important;
+    font-size: 15px !important;
 }
 
-.CodeMirror-matchingbracket {
+.cm-s-3024-day .CodeMirror-matchingbracket {
     color: #4d4d4c !important;
-    outline: 1px solid #d6d6d6;
-    -moz-outline-radius: 3px;
+    outline: 1px solid #d6d6d6 !important;
+    -moz-outline-radius: 3px !important;
 }
 
-.CodeMirror-nonmatchingbracket {
+.cm-s-3024-day .CodeMirror-nonmatchingbracket {
     color: #c82829 !important;
-    outline: 1px solid #c82829;
-    -moz-outline-radius: 3px;
+    outline: 1px solid #c82829 !important;
+    -moz-outline-radius: 3px !important;
 }
 
-.CodeMirror-foldmarker {
-    text-shadow: none !important;
-    color: #8e908c !important;
-    font-family: "Fira Sans" !important;
-    outline: 1px solid #d6d6d6;
-    -moz-outline-radius: 3px;
+.cm-s-3024-day .CodeMirror span[role="presentation"] {
+    font-size: 14px !important;
 }
 
-.CodeMirror span[role="presentation"] {
-    font-size: 14px;
-}
-
-.CodeMirror-hints {
-    max-height: 200px !important;
-    box-shadow: none !important;
-    border-color: #dcdfe6 !important;
-    background-color: #fefefe !important;
-    font-family: "Fira Code" !important;
-    padding: 5px !important;
-}
-
-.CodeMirror-hint {
-    line-height: 20px;
-    color: #444444 !important;
-}
-
-li.CodeMirror-hint-active {
-    background-color: #efefef !important;
-    color: #444444 !important;
-    font-weight: 500;
-}
-
-.CodeMirror-dialog {
+.cm-s-3024-day .CodeMirror-dialog {
     background-color: #fefefe !important;
 }
 
-.cm-searching {
-    background-color: #d6d6d6;
+.cm-s-3024-day .cm-searching {
+    background-color: #d6d6d6 !important;
 }
 
-.CodeMirror-search-label {
-    line-height: 24px;
-    font-weight: 500;
+.cm-s-3024-day .CodeMirror-search-label {
+    line-height: 24px !important;
+    font-weight: 500 !important;
 }
 
-.CodeMirror-search-field {
-    line-height: 20px;
+.cm-s-3024-day .CodeMirror-search-field {
+    line-height: 20px !important;
     border: 1px solid #dcdfe6 !important;
-    width: 50em !important;
+    width: 30em !important;
 }
 
-.CodeMirror-search-hint {
-    line-height: 25px;
-    float: right;
+.cm-s-3024-day .CodeMirror-search-hint {
+    line-height: 25px !important;
+    float: right !important;
 }
 
-.cm-matchhighlight {
-    outline: 1px solid #d6d6d6;
-    -moz-outline-radius: 3px;
-}
-
-.CodeMirror-selection-highlight-scrollbar {
-    margin-right: 2.5px;
-    width: 5px !important;
-    background-color: #8e908c;
-    opacity: 0.6;
-}
-
-.CodeMirror-simplescroll-horizontal div,
-.CodeMirror-simplescroll-vertical div {
-    background: #b3b3b3 !important;
-    border: none !important;
-    border-radius: 0 !important;
-}
-
-.CodeMirror-simplescroll-vertical {
-    width: 10px !important;
-}
-
-.CodeMirror-simplescroll-horizontal {
-    height: 10px !important;
+.cm-s-3024-day .cm-matchhighlight {
+    outline: 1px solid #d6d6d6 !important;
+    -moz-outline-radius: 3px !important;
 }

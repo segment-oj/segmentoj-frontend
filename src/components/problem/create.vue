@@ -58,15 +58,27 @@ export default {
     pid(val) {
       if (val === '') {
         this.errorPID = true;
+      } else if (val.length >= 8) {
+        this.errorPID = true;
       } else {
-        this.$axios
-          .get(apiurl('/problem/' + String(val)))
-          .then(() => {
+        let flag = false;
+        for (let i = 0; i < val.length; i += 1) {
+          let now = val.charAt(i);
+          if (isNaN(parseInt(now))) {
             this.errorPID = true;
-          })
-          .catch(() => {
-            this.errorPID = false;
-          });
+            flag = true;
+          }
+        }
+        if (flag == false) {
+          this.$axios
+            .get(apiurl('/problem/' + String(val)))
+            .then(() => {
+              this.errorPID = true;
+            })
+            .catch(() => {
+              this.errorPID = false;
+            });
+        }
       }
     },
     title(val) {
