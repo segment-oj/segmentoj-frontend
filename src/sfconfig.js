@@ -178,5 +178,74 @@ export default {
     value: '4',
     theme: 'zenburn'
   }],
+  stateTable: [{
+    value: '0',
+    label: 'Waiting',
+    color: '#909399'
+  }, {
+    value: '1',
+    label: 'Compiling',
+    color: '#f7ba2a'
+  }, {
+    value: '2',
+    label: 'Judging',
+    color: '#409eff'
+  }, {
+    value: '3',
+    label: 'Waiting',
+    color: '#909399'
+  }, {
+    value: '10',
+    label: 'Accepted',
+    color: '#67C23A'
+  }, {
+    value: '11',
+    label: 'Partly Correct',
+    color: '#F7BA2A'
+  }, {
+    value: '12',
+    label: 'Time Limit Exceed',
+    color: '#F7BA2A'
+  }, {
+    value: '13',
+    label: 'Memory Limit Exceeded',
+    color: '#324057'
+  }, {
+    value: '14',
+    label: 'Runtime Error',
+    color: '#324057'
+  }, {
+    value: '15',
+    label: 'Wrong Answer',
+    color: '#F56C6C'
+  }, {
+    value: '16',
+    label: 'Unknown Error',
+    color: '#324057'
+  }, {
+    value: '17',
+    label: 'Compile Error',
+    color: '#F7BA2A'
+  }, {
+    value: '18',
+    label: 'Output Limit Exceeded',
+    color: '#F56C6C'
+  }, {
+    value: '20',
+    label: 'System Error',
+    color: '#FF4949'
+  }, {
+    value: '21',
+    label: 'Judger Configure Error',
+    color: '#FF4949'
+  }, {
+    value: '22',
+    label: 'Judger Resources Limit Exceeded',
+    color: '#FF4949'
+  }, {
+    value: '23',
+    label: 'Unsupported Language',
+    color: '#FF4949'
+  }],
   captchaKeyMax: 2000000000
 };
