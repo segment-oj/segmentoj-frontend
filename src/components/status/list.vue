@@ -27,7 +27,7 @@ export default {
     return {
       alive: true,
       ajax_url: apiurl('/status/list'),
-      limit: 50,
+      limit: 20,
       columns: [{
         name: 'id',
         label: 'Run ID',
