@@ -7,7 +7,7 @@
         :limit="limit"
         :total="data_count"
         :process="process"
-        :default_sort="{prop: 'id', order: 'ascending'}"
+        :default_sort="{prop: 'id', order: 'descending'}"
         pagination_class="status-list-pagination"
       />
     </el-card>
@@ -27,7 +27,7 @@ export default {
     return {
       alive: true,
       ajax_url: apiurl('/status/list'),
-      limit: 20,
+      limit: 30,
       columns: [{
         name: 'id',
         label: 'Run ID',
