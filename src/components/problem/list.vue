@@ -159,6 +159,7 @@ export default {
       } else {
         color += 'color-regular-text';
       }
+      x.pid = (<div class={color}>{x.pid}</div>);
       if (!x.enabled) {
         x.title = (
           <div>

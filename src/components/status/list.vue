@@ -95,7 +95,9 @@ export default {
       let color = '';
       if (x.score === 100) {
         color += 'color-success';
-      } else if (x.score < 100 && x.score >= 0) {
+      } else if (x.score < 100 && x.score > 0) {
+        color += 'color-warning';
+      } else if(x.score == 0) {
         color += 'color-danger';
       } else {
         color += 'color-regular-text';
