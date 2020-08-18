@@ -22,6 +22,10 @@
           <i class="el-icon-s-order" /> 
           <div class="lable"> Problem List</div>
         </el-menu-item>
+        <el-menu-item index="/status/list" class="webkit-box">
+          <i class="el-icon-s-marketing" /> 
+          <div class="lable"> Status List</div>
+        </el-menu-item>
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-s-help" />
