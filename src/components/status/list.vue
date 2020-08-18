@@ -103,10 +103,10 @@ export default {
       x.problem = (<ProblemTitleLink pid={x.problem}></ProblemTitleLink>);
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
       x.lang = sfconfig.langTable[x.lang].label;
-      let t = sfconfig.stateTable.filter(id => {
+      let stateTable = sfconfig.stateTable.filter(id => {
         return id.value === String(x.state);
       })[0];
-      x.state = (<div style={'color: ' + t.color + ';'}>{t.label}</div>);
+      x.state = (<div style={'color: ' + stateTable.color + ';'}>{stateTable.label}</div>);
       x.time = x.time + ' ms';
       x.memory = x.memory + ' KB';
       x.owner = (<UserNameLink userid={x.owner}></UserNameLink>);

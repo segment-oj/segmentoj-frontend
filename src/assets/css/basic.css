@@ -194,11 +194,11 @@ h3::before {
 .problem-list-pagination {
     border: 1px solid #ebeef5;
     background: #ffffff;
-    margin-left: -20px;
+    margin-left: -21px;
     padding: 10px;
     height: 36px;
     max-width: 100vw;
-    width: 827px;
+    width: 828px;
     text-align: center;
     bottom: 0;
     position: fixed;
@@ -207,13 +207,14 @@ h3::before {
 .status-list-pagination {
     border: 1px solid #ebeef5;
     background: #ffffff;
+    margin-left: -21px;
     padding: 10px;
     height: 36px;
+    max-width: 100vw;
+    width: 1118px;
     text-align: center;
     bottom: 0;
     position: fixed;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .el-dialog,
