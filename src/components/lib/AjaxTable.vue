@@ -71,7 +71,6 @@ export default {
         })
         .then(res => {
           if (limit === this.limit) {
-            console.log('send');
             this.own_total = res.data.count;
             this.tableData = res.data.res.map(this.process);
             this.loading = false;
