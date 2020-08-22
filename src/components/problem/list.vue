@@ -169,6 +169,7 @@ export default {
       } else {
         x.title = (<router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title }</router-link>);
       }
+      x.pid = (<div class={color}>{x.pid}</div>);
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
       
       x.tag = (<listTag tags={ x.tags }></listTag>);

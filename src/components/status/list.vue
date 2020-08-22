@@ -7,7 +7,7 @@
         :limit="limit"
         :total="data_count"
         :process="process"
-        :default_sort="{prop: 'id', order: 'ascending'}"
+        :default_sort="{prop: 'id', order: 'descending'}"
         pagination_class="status-list-pagination"
       />
     </el-card>
@@ -27,7 +27,7 @@ export default {
     return {
       alive: true,
       ajax_url: apiurl('/status/list'),
-      limit: 50,
+      limit: 30,
       columns: [{
         name: 'id',
         label: 'Run ID',
@@ -95,7 +95,9 @@ export default {
       let color = '';
       if (x.score === 100) {
         color += 'color-success';
-      } else if (x.score < 100 && x.score >= 0) {
+      } else if (x.score < 100 && x.score > 0) {
+        color += 'color-warning';
+      } else if(x.score == 0) {
         color += 'color-danger';
       } else {
         color += 'color-regular-text';
@@ -103,10 +105,10 @@ export default {
       x.problem = (<ProblemTitleLink pid={x.problem}></ProblemTitleLink>);
       x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
       x.lang = sfconfig.langTable[x.lang].label;
-      let t = sfconfig.stateTable.filter(id => {
+      let stateTable = sfconfig.stateTable.filter(id => {
         return id.value === String(x.state);
       })[0];
-      x.state = (<div style={'color: ' + t.color + ';'}>{t.label}</div>);
+      x.state = (<div style={'color: ' + stateTable.color + ';'}>{stateTable.label}</div>);
       x.time = x.time + ' ms';
       x.memory = x.memory + ' KB';
       x.owner = (<UserNameLink userid={x.owner}></UserNameLink>);

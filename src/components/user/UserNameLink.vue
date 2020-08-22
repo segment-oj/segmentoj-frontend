@@ -33,7 +33,6 @@ export default {
     }
   },
   mounted() {
-    console.log(typeof(this.userid));
     this.username = this.userid;
     this.loadusername(this.userid);
   }
