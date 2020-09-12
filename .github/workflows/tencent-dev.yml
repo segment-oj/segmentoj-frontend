@@ -27,9 +27,10 @@ jobs:
         working-directory: .
         run: |
           npm run build
+          sudo apt install tree
+          tree
       
       - uses: TencentCloud/cos-action@v1
-        working-directory: .
         with:
           secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
           secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
