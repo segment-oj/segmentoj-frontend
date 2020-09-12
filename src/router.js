@@ -35,6 +35,9 @@ let router = new Router({
     path: '/app/editor',
     component: () => import('./components/app/editor.vue')
   }, {
+    path: '/app/selecttags',
+    component: () => import('./components/lib/selectTag.vue')
+  }, {
     path: '*',
     component: () => import('./components/404.vue')
   }]

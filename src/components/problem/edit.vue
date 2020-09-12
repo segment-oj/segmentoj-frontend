@@ -47,6 +47,10 @@
           <div slot="header" class="clearfix"><i class="el-icon-document" /> Content</div>
           <MarkdownEditor v-model="mdContent" />
         </el-card>
+        <el-card class="item">
+          <div slot="header" class="clearfix"><i class="el-icon-s-flag" /> Tags</div>
+          <SelectTag ref="tagSelector" :pid="this.$route.params.id" />
+        </el-card>
       </el-col>
     </el-row>
   </div>
@@ -106,6 +110,7 @@
 import apiurl from './../../apiurl';
 import MarkdownEditor from './../lib/MarkdownEditor.vue';
 import ConfirmDelete from './../lib/confirmDelete.vue';
+import SelectTag from './../lib/selectTag.vue';
 
 import sha256 from 'js-sha256';
 
@@ -165,11 +170,13 @@ export default {
         memory_limit: this.memery * 1000,
         time_limit: this.time,
         allow_html: this.html,
-        enabled: !this.disable
+        enabled: !this.disable,
+        tags: this.$refs.tagSelector.getTags()
       };
       if(sha256(this.mdContent) !== this.mdContent_sha256) {
         request_data['description'] = this.mdContent;
       }
+
       this.mdContent_sha256 = sha256(this.mdContent);
       this.$axios
         .patch(apiurl('/problem/' + this.$route.params.id), request_data)
@@ -185,6 +192,7 @@ export default {
             this.$SegmentMessage.error(this, 'Unkown error');
           }
         });
+      
     },
     delete() {
       this.$axios
@@ -208,7 +216,8 @@ export default {
   },
   components: {
     MarkdownEditor,
-    ConfirmDelete
+    ConfirmDelete,
+    SelectTag
   }
 };
 </script>
