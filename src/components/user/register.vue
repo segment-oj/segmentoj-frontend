@@ -182,7 +182,7 @@ export default {
       });
     },
     reset() {
-      this.$refs['register'].resetFields();
+      this.$refs['registerForm'].resetFields();
     }
   },
   components: {
