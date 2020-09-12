@@ -27,7 +27,6 @@ jobs:
         working-directory: .
         run: |
           npm run build
-          ls dist/
       
       - uses: TencentCloud/cos-action@v1
         with:
