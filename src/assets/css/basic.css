@@ -179,6 +179,10 @@ h3::before {
     z-index: 100000 !important;
 }
 
+.layer-level-zindex {
+    z-index: 1000000 !important;
+}
+
 .no-margin {
     margin: 0;
 }
