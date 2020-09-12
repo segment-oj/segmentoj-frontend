@@ -1,6 +1,6 @@
 export default {
   api: {
-    server: 'http://backend.soj.szdytom.tk/api'
+    server: 'http://localhost:8000/api'
   },
   markdown: {
     gfm: true,
