@@ -39,7 +39,7 @@
           Email
         </div>
         <el-form-item prop="email">
-          <el-input type="email" v-model="ldata.email"></el-input>
+          <el-input v-model="ldata.email"></el-input>
         </el-form-item>
         <div class="icon-lable form-required">
           <i class="el-icon-check" />
