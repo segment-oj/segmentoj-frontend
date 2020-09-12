@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 1
-          ref: ${{ github.head_ref }}
+          ref: master
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -24,15 +24,17 @@ jobs:
         run: npm install
 
       - name: Run build
+        working-directory: .
         run: |
           npm run build
       
       - uses: TencentCloud/cos-action@v1
+        working-directory: .
         with:
           secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
           secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
           cos_bucket: ${{ secrets.COS_BUCKET }}
           cos_region: ${{ secrets.COS_REGION }}
-          local_path: build
+          local_path: ./build
           remote_path: /
           clean: true
