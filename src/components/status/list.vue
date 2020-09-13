@@ -108,7 +108,7 @@ export default {
       let stateTable = sfconfig.stateTable.filter(id => {
         return id.value === String(x.state);
       })[0];
-      x.state = (<div style={'color: ' + stateTable.color + ';'}>{stateTable.label}</div>);
+      x.state = (<div style={'color: ' + stateTable.color + ';'} class="text-bold"><i class={stateTable.icon} /> {stateTable.label}</div>);
       x.time = x.time + ' ms';
       x.memory = x.memory + ' KB';
       x.owner = (<UserNameLink userid={x.owner}></UserNameLink>);

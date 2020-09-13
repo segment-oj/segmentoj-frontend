@@ -241,7 +241,6 @@ export default {
             this.$SegmentMessage.error(this, 'Unkown error');
           }
         });
-      
     },
     delete() {
       this.$axios
