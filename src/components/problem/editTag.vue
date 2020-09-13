@@ -2,7 +2,7 @@
   <el-dialog
     title="Create New Problem"
     :visible.sync="$store.state.tagedit.displayTagEdit"
-    width="700px"
+    width="625px"
     class="max-screen"
   >
     <SelectTag ref="tagSelector" :pid="this.$route.params.id" />
