@@ -4,6 +4,7 @@
       title="Login"
       :visible.sync="$store.state.user.showlogin"
       :destroy-on-close="true"
+      :close-on-click-modal="false"
       width="500px"
       class="max-screen"
       >
@@ -27,6 +28,7 @@
             type="primary"
             v-on:click="onSubmit();"
             :loading="buttonLoading"
+            :disabled="!(legal_1 && legal_2)"
           >
             Login
           </el-button>
@@ -46,15 +48,19 @@ export default {
   data() {
     let validateUsername = (rule, value, callback) => {
       if (value === '') {
+        this.legal_1 = false;
         callback(new Error('Input your username'));
       } else {
+        this.legal_1 = true;
         callback();
       }
     };
     let validatePasswd = (rule, value, callback) => {
       if (value === '') {
+        this.legal_2 = false;
         callback(new Error('Input your password'));
       } else {
+        this.legal_2 = true;
         callback();
       }
     };
@@ -71,7 +77,9 @@ export default {
           { validator: validatePasswd, trigger: 'blur' }
         ]
       },
-      buttonLoading: false
+      buttonLoading: false,
+      legal_1: false,
+      legal_2: false
     };
   },
   methods: {
@@ -125,6 +133,7 @@ export default {
       });
     },
     reset() {
+      this.legal_1 = this.legal_2 = false;
       this.$refs['loginForm'].resetFields();
     }
   }
