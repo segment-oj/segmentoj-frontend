@@ -1,6 +1,6 @@
 export default {
   api: {
-    server: 'http://backend.soj.szdytom.tk/api'
+    server: 'http://localhost:8000/api'
   },
   markdown: {
     gfm: true,
@@ -180,70 +180,87 @@ export default {
   }],
   stateTable: [{
     value: '0',
+    icon: 'el-icon-loading',
     label: 'Waiting',
     color: '#909399'
   }, {
     value: '1',
+    icon: 'el-icon-loading',
     label: 'Compiling',
     color: '#f7ba2a'
   }, {
     value: '2',
+    icon: 'el-icon-loading',
     label: 'Judging',
     color: '#409eff'
   }, {
     value: '3',
+    icon: 'el-icon-loading',
     label: 'Waiting',
     color: '#909399'
   }, {
     value: '10',
+    icon: 'el-icon-check',
     label: 'Accepted',
     color: '#67C23A'
   }, {
     value: '11',
+    icon: 'el-icon-minus',
     label: 'Partly Correct',
     color: '#F7BA2A'
   }, {
     value: '12',
+    icon: 'el-icon-time',
     label: 'Time Limit Exceed',
     color: '#F7BA2A'
   }, {
     value: '13',
+    icon: 'el-icon-coin',
     label: 'Memory Limit Exceeded',
     color: '#324057'
   }, {
     value: '14',
+    icon: 'el-icon-warning-outline',
     label: 'Runtime Error',
     color: '#324057'
   }, {
     value: '15',
+    icon: 'el-icon-close',
     label: 'Wrong Answer',
     color: '#F56C6C'
   }, {
     value: '16',
+    icon: 'el-icon-circle-close',
     label: 'Unknown Error',
     color: '#324057'
   }, {
     value: '17',
+    icon: 'el-icon-close',
     label: 'Compile Error',
     color: '#F7BA2A'
   }, {
     value: '18',
+    icon: 'el-icon-close',
     label: 'Output Limit Exceeded',
     color: '#F56C6C'
   }, {
     value: '20',
+    icon: 'el-icon-circle-close',
     label: 'System Error',
     color: '#FF4949'
   }, {
     value: '21',
+    icon: 'el-icon-circle-close',
     label: 'Judger Configure Error',
     color: '#FF4949'
   }, {
     value: '22',
+    icon: 'el-icon-circle-close',
     label: 'Judger Resources Limit Exceeded',
     color: '#FF4949'
   }, {
     value: '23',
+    icon: 'el-icon-circle-close',
     label: 'Unsupported Language',
     color: '#FF4949'
   }],

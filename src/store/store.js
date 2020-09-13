@@ -7,6 +7,7 @@ import userstore from './user';
 import captchastore from './captcha';
 import tagsstore from './tags';
 import createProblem from './createProblem';
+import tageditstore from './tagedit.js';
 
 export default new Vuex.Store({
   modules: {
@@ -14,5 +15,6 @@ export default new Vuex.Store({
     captcha: captchastore,
     tags: tagsstore,
     createProblem: createProblem,
+    tagedit: tageditstore
   }
 });

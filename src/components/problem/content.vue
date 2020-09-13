@@ -86,6 +86,7 @@
                 :background_color="item.color"
                 :content="item.content"
               />
+              <span v-if="rendertags.length === 0">No tag</span>
             </div>
           </el-card>
         </div>
