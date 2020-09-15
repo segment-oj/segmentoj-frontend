@@ -118,18 +118,6 @@ export default {
     },
   },
   methods: {
-    get_list_length() {
-      this.$axios
-        .get(apiurl('/problem/list/count'))
-        .then(response => {
-          let data = response.data;
-          this.data_count = data.res;
-        })
-        .catch(err => {
-          this.$SegmentMessage.error(this, '[Problem List] Get List Length Failed');
-          console.log(err);
-        });
-    },
     get_column() {
       if (this.$store.state.user.userid === null) {
         return;
@@ -183,7 +171,6 @@ export default {
     CreateProblem
   },
   mounted() {
-    this.get_list_length();
     this.get_column();
   }
 };
