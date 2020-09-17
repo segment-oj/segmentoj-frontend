@@ -133,7 +133,8 @@ export default {
       });
     },
     reset() {
-      this.legal_1 = this.legal_2 = false;
+      this.legal_1 = false;
+      this.legal_2 = false;
       this.$refs['loginForm'].resetFields();
     }
   }
