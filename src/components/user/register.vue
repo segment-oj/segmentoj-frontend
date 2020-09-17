@@ -213,7 +213,10 @@ export default {
       });
     },
     reset() {
-      this.legal_1 = this.legal_2 = this.legal_3 = this.legal_4 = false;
+      this.legal_1 = false;
+      this.legal_2 = false;
+      this.legal_3 = false;
+      this.legal_4 = false;
       this.$refs['registerForm'].resetFields();
     }
   },
