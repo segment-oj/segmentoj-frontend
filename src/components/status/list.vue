@@ -79,18 +79,6 @@ export default {
     };
   },
   methods: {
-    get_list_length() {
-      this.$axios
-        .get(apiurl('/status/list/count'))
-        .then(response => {
-          let data = response.data;
-          this.data_count = data.res;
-        })
-        .catch(err => {
-          this.$SegmentMessage.error(this, '[Status List] Get List Length Failed');
-          console.log(err);
-        });
-    },
     process(x) {
       let color = '';
       if (x.score === 100) {
@@ -118,9 +106,6 @@ export default {
   components: {
     AjaxTable
   },
-  mounted() {
-    this.get_list_length();
-  }
 };
 </script>
 
