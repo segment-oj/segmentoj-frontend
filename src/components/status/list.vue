@@ -95,8 +95,12 @@ export default {
       x.lang = sfconfig.langTable[x.lang].label;
       let stateTable = sfconfig.stateTable.filter(id => {
         return id.value === String(x.state);
-      })[0];
-      x.state = (<div style={'color: ' + stateTable.color + ';'} class="text-bold"><i class={stateTable.icon} /> {stateTable.label}</div>);
+      });
+      if(stateTable.length) {
+        x.state = (<div style={'color: ' + stateTable[0].color + ';'} class="text-bold"><i class={stateTable[0].icon} /> {stateTable[0].label}</div>);
+      } else {
+        x.state = (<div style='color: #FF4949;' class="text-bold"><i class='el-icon-circle-close' /> System Error</div>);
+      }
       x.time = x.time + ' ms';
       x.memory = x.memory + ' KB';
       x.owner = (<UserNameLink userid={x.owner}></UserNameLink>);
