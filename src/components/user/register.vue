@@ -51,7 +51,6 @@
             type="primary"
             v-on:click="onSubmit();"
             :loading="buttonLoading"
-            :disabled="! (legal_1 && legal_2 && legal_3 && legal_4)"
           >
             Register
           </el-button>
@@ -70,68 +69,37 @@ import captcha from './../lib/captcha.vue';
 export default {
   name: 'UserRegister',
   data() {
+    let validatePasswd = (rule, value, callback) => {
+      if (value === '' || value === this.ldata.password) {
+        callback();
+      } else {
+        callback(new Error('Password mismatch'));
+      }
+    };
+    let validateEmail = (rule, value, callback) => {
+      let regular = new RegExp('^(\\w-*\\.*)+@(\\w-?)+(\\.\\w{2,})+$');
+      if (regular.test(value) || value === '') {
+        callback();
+      } else {
+        callback(new Error('Email format error'));
+      }
+    };
     let validateUsername = (rule, value, callback) => {
       if(value === '') {
-        this.legal_1 = false;
-        callback(new Error('Input your username'));
-      }
-      if(value.length > 150) {
-        this.legal_1 = false;
-        callback(new Error('No more than 150 characters'));
+        callback();
       }
       this.$axios
         .get(apiurl('account/username/accessibility/' + value))
         .then(() => {
-          this.legal_1 = true;
           callback();
         })
         .catch(err => {
           if (err.request.status === 409) {
-            this.legal_1 = false;
             callback(new Error('The user name is already in use'));
           } else {
-            this.legal_1 = false;
             callback(new Error('Unkown Error'));
           }
         });
-    };
-    let validatePasswd = (rule, value, callback) => {
-      if(value === '') {
-        this.legal_2 = false;
-        callback(new Error('Input your username'));
-      } else if(value.length < 6) {
-        this.legal_2 = false;
-        callback(new Error('No less than 6 characters'));
-      } else {
-        this.legal_2 = true;
-        callback();
-      }
-    };
-    let validatePasswdRp = (rule, value, callback) => {
-      if(value === '') {
-        this.legal_3 = false;
-        callback(new Error('Repeat your password'));
-      } else if(value !== this.ldata.password) {
-        this.legal_3 = false;
-        callback(new Error('Password mismatch'));
-      } else {
-        this.legal_3 = true;
-        callback();
-      }
-    };
-    let validateEmail = (rule, value, callback) => {
-      if(value === '') {
-        this.legal_4 = false;
-        callback(new Error('Input your email'));
-      }
-      let regular = new RegExp('^(\\w-*\\.*)+@(\\w-?)+(\\.\\w{2,})+$');
-      if (regular.test(value)) {
-        this.legal_4 = true;
-        callback();
-      } else {
-        this.legal_4 = false;
-        callback(new Error('Email format error'));
-      }
     };
     return {
       ldata: {
@@ -142,23 +110,24 @@ export default {
       },
       rules: {
         username: [
+          { required: true, message: 'Input your username', trigger: 'blur' },
+          { max: 150, message: 'No more than 150 characters', trigger: 'blur' },
           { validator: validateUsername, trigger: 'blur'}
         ],
         password: [
-          { validator: validatePasswd, trigger: 'blur'}
+          { required: true, message: 'Input your password', trigger: 'blur' },
+          { min: 6, message: 'No less than 6 characters', trigger: 'blur' }
         ],
         passwdrepeat: [
-          { validator: validatePasswdRp, trigger: 'blur' },
+          { required: true, message: 'Repeat your password', trigger: 'blur' },
+          { validator: validatePasswd, trigger: 'blur' },
         ],
         email: [
+          { required: true, message: 'Input your email', trigger: 'blur' },
           { validator: validateEmail, trigger: 'blur'}
         ]
       },
-      buttonLoading: false,
-      legal_1: false,
-      legal_2: false,
-      legal_3: false,
-      legal_4: false
+      buttonLoading: false
     };
   },
   methods: {
@@ -213,10 +182,6 @@ export default {
       });
     },
     reset() {
-      this.legal_1 = false;
-      this.legal_2 = false;
-      this.legal_3 = false;
-      this.legal_4 = false;
       this.$refs['registerForm'].resetFields();
     }
   },
