@@ -1,8 +1,9 @@
 name: Upload Tencent Static Website
 
-on: 
+on:
   push:
-    branch: [master]
+    branches:    
+      - master
 
 jobs:
   soj-ac-cn:
