@@ -6,14 +6,6 @@
           <img src="./../../assets/icon/SOJ-thick-white-background.png" />
         </el-avatar>
       </el-card>
-      <!-- Mobile screen -->
-      <el-card class="item float" v-if="!smallScreen">
-        <el-button @click="$router.go(-1);" icon="el-icon-back" circle />
-      </el-card>
-      <!-- Normal screen -->
-      <el-card class="item" v-else>
-        <el-button @click="$router.go(-1);">Back</el-button>
-      </el-card>
     </div>
 
     <div id="info">
