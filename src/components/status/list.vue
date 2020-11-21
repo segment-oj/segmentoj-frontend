@@ -80,7 +80,6 @@ export default {
   },
   methods: {
     process(x) {
-      console.log(x);
       let color = '';
       if (x.score === 100) {
         color += 'color-success';
