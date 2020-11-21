@@ -1,0 +1,90 @@
+name: Lint Check CI
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  lint-ubuntu-20:
+    runs-on: ubuntu-20.04
+
+    strategy:
+      max-parallel: 6
+      matrix:
+        node-version: [10.1, 10.19, 12.1, 13.2, 14.5, 14.6, 14.15, 15.2]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: npm install
+        working-directory: .
+        run: npm install
+
+      - name: Run Lint
+        run: |
+          npm run lint -- --no-fix
+          npm run lint:css
+
+  lint-ubuntu-18:
+    runs-on: ubuntu-18.04
+
+    strategy:
+      max-parallel: 6
+      matrix:
+        node-version: [10.1, 10.19, 12.1, 13.2, 14.5, 14.6, 14.15, 15.2]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: npm install
+        working-directory: .
+        run: npm install
+
+      - name: Run Lint
+        run: |
+          npm run lint -- --no-fix
+          npm run lint:css
+
+  lint-windows:
+    runs-on: windows-2019
+
+    strategy:
+      max-parallel: 6
+      matrix:
+        node-version: [10.1, 10.19, 12.1, 13.2, 14.5, 14.6, 14.15, 15.2]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: npm install
+        working-directory: .
+        run: npm install
+
+      - name: Run Lint
+        run: |
+          npm run lint -- --no-fix
+          npm run lint:css
