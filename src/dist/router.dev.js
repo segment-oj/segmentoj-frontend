@@ -29,13 +29,6 @@ var router = new _vueRouter["default"]({
       });
     }
   }, {
-    path: '/account/password',
-    component: function component() {
-      return Promise.resolve().then(function () {
-        return _interopRequireWildcard(require('./components/user/changePassword.vue'));
-      });
-    }
-  }, {
     path: '/account/:id',
     component: function component() {
       return Promise.resolve().then(function () {
