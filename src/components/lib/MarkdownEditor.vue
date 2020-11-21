@@ -1,20 +1,22 @@
 <template>
   <div class="markdown-editor">
     <el-tabs v-model="activeName">
-      <el-tab-pane label="Edit" name="first" />
-      <el-tab-pane label="Preview" name="second" />
+      <el-tab-pane label="Edit" name="first">
+        <div :class="editorVisibleClassName">
+          <textarea
+            :value="value"
+            @input="handleInput($event.target.value)"
+            class="markdown-editor-value-placeholder"
+            :id="uid + '-markdown-editor'"
+            />
+        </div>
+      </el-tab-pane>
+      <el-tab-pane label="Preview" name="second">
+        <div id="markdown-container-outline" v-if="showPreview">
+          <MarkdownContainer :content="content" />
+        </div>
+      </el-tab-pane>
     </el-tabs>
-    <div :class="editorVisibleClassName">
-      <textarea
-        :value="value"
-        @input="handleInput($event.target.value)"
-        class="markdown-editor-value-placeholder"
-        :id="uid + '-markdown-editor'"
-        />
-    </div>
-    <div id="markdown-container-outline" v-if="showPreview">
-      <MarkdownContainer :content="content" />
-    </div>
   </div>
 </template>
 
