@@ -63,7 +63,7 @@ export default {
           if(err.request.status === 403) {
             callback(new Error('Old Password Wrong'));
           } else {
-            callback(new Error('Unkown Error'));
+            callback(new Error('Unknown Error'));
           }
         });
     };

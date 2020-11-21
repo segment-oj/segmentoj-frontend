@@ -97,7 +97,7 @@ export default {
           if (err.request.status === 409) {
             callback(new Error('The user name is already in use'));
           } else {
-            callback(new Error('Unkown Error'));
+            callback(new Error('Unknown Error'));
           }
         });
     };

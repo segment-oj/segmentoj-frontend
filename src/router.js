@@ -32,6 +32,9 @@ let router = new Router({
     path: '/status/list',
     component: () => import('./components/status/list.vue')
   }, {
+    path: '/status/:id',
+    component: () => import('./components/status/content.vue')
+  }, {
     path: '/app/editor',
     component: () => import('./components/app/editor.vue')
   }, {
