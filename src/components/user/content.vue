@@ -127,7 +127,7 @@ export default {
 
     #info {
         margin-top: 20px;
-        margin-left: 0px;
+        margin-left: 0;
         width: 800px;
     }
 }
