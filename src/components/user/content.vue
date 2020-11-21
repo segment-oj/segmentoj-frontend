@@ -18,8 +18,8 @@
       </el-card>
     </div>
 
-    <userinfo></userinfo>
-  </div>
+    <userinfo id="info"></userinfo>
+  </div>  
 </template>
 
 <script>

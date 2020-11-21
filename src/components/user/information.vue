@@ -1,5 +1,5 @@
 <template>
-  <div id="info" v-loading="userLoading">
+  <div v-loading="userLoading">
     <el-row :gutter="20">
       <el-col :span="18">
         <el-card shadow="never">
@@ -226,11 +226,6 @@ export default {
 
 .item {
     margin-top: 20px;
-}
-
-#info {
-    margin-left: 30px;
-    width: 800px;
 }
 
 @media only screen and (max-width: 800px) {
