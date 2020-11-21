@@ -9,15 +9,15 @@
     </div>
 
     <div id="info">
-      <el-tabs v-model="activetab" :tab-position="'right'">
+      <el-tabs v-model="active_tab" :tab-position="'right'">
         <el-tab-pane label="Information" name="first">
-          <userinfo></userinfo>
+          <userInfo></userInfo>
         </el-tab-pane>
-        <el-tab-pane v-if="canedit" label="Edit" name="second">
-          <useredit></useredit>
+        <el-tab-pane v-if="can_edit" label="Edit" name="second">
+          <userEdit></userEdit>
         </el-tab-pane>
-        <el-tab-pane v-if="ismine" label="Security" name="third">
-          <usersucure></usersucure>
+        <el-tab-pane v-if="is_mine" label="Security" name="third">
+          <userSecure></userSecure>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -26,17 +26,17 @@
 
 <script>
 import apiurl from './../../apiurl';
-import userinfo from './information.vue';
-import useredit from './edit.vue';
-import usersucure from './secure.vue';
+import userInfo from './information.vue';
+import userEdit from './edit.vue';
+import userSecure from './secure.vue';
 
 export default {
   name: 'UserHomepage',
   data() {
     return {
-      activetab: 'first',
-      ismine: false,
-      canedit: false,
+      active_tab: 'first',
+      is_mine: false,
+      can_edit: false,
       avatarWidth: 800 < screen.width ? 300 : screen.width - 40,
       smallScreen: 700 < screen.width,
     };
@@ -50,10 +50,10 @@ export default {
           this.userid = data.id;
           this.isStaff = data.is_staff;
           if (this.userid == String(this.$store.state.user.userid)) {
-            this.ismine = true;
+            this.is_mine = true;
           }
-          if (this.$store.state.user.isStaff || this.ismine) {
-            this.canedit = true;
+          if (this.$store.state.user.isStaff || this.is_mine) {
+            this.can_edit = true;
           }
         })
         .catch(err => {
@@ -70,9 +70,9 @@ export default {
     this.showHomepage();
   },
   components: {
-    userinfo,
-    useredit,
-    usersucure
+    userInfo,
+    userEdit,
+    userSecure
   }
 };
 </script>
