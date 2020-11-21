@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     strategy:
-      max-parallel: 6
       matrix:
         node-version: [10.1, 10.19, 12.1, 13.2, 14.5, 14.6, 14.15, 15.2]
 
@@ -37,7 +36,6 @@ jobs:
     runs-on: ubuntu-18.04
 
     strategy:
-      max-parallel: 6
       matrix:
         node-version: [10.1, 10.19, 12.1, 13.2, 14.5, 14.6, 14.15, 15.2]
 
@@ -65,7 +63,6 @@ jobs:
     runs-on: windows-2019
 
     strategy:
-      max-parallel: 6
       matrix:
         node-version: [10.1, 10.19, 12.1, 13.2, 14.5, 14.6, 14.15, 15.2]
 
