@@ -18,7 +18,7 @@
         </div>
         <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
       </div>
-      <div id="pannel" v-if="!isWider">
+      <div id="panel" v-if="!isWider">
         <div id="tools">
           <el-card v-if="showSmallToolBar || !smallScreen">
             <div><i class="el-icon-s-tools" /> Tool Bar</div>
@@ -61,8 +61,8 @@
             <div><i class="el-icon-menu" /> Limitation </div>
             <el-divider class="divider">Time</el-divider>
             <div class="tool-content">{{time}} MS</div>
-            <el-divider class="divider">Memery</el-divider>
-            <div class="tool-content">{{memery}} MB</div>
+            <el-divider class="divider">Memory</el-divider>
+            <div class="tool-content">{{memory}} MB</div>
           </el-card>
           <el-card shadow="never" class="margin-top">
             <div class="margin-bottom">
@@ -114,7 +114,7 @@ export default {
       enable: true,
       hidden: false,
       time: '-',
-      memery: '-',
+      memory: '-',
       timeAdd: 'Unknown',
       tags: [],
       rendertags: [],
@@ -146,7 +146,7 @@ export default {
           this.title = data.title;
           this.pid = data.pid;
           this.allowHTML = data.allow_html;
-          this.memery = data.memory_limit / 1000;
+          this.memory = data.memory_limit / 1000;
           this.time = data.time_limit;
           this.hidden = !data.enabled;
           this.timeAdd = timeFormat(data.date_added);
@@ -165,7 +165,7 @@ export default {
           } else if(err.request.status === 403) {
             this.$SegmentMessage.error(this, 'Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unkown error');
+            this.$SegmentMessage.error(this, 'Unknown error');
           }
         });
     },
@@ -209,7 +209,7 @@ export default {
 }
 
 @media only screen and (max-width: 700px) {
-    #pannel {
+    #panel {
         position: fixed;
         bottom: 90px;
         right: 30px;
@@ -217,12 +217,12 @@ export default {
         transition: 0.5s;
     }
 
-    #pannel:active {
+    #panel:active {
         z-index: 1000;
         opacity: 1;
     }
 
-    #pannel:hover {
+    #panel:hover {
         z-index: 1000;
         opacity: 1;
     }
@@ -253,7 +253,7 @@ export default {
     border: 1px solid #ebeef5;
 }
 
-#pannel {
+#panel {
     background-color: #ffffff !important;
     margin-left: 30px;
 }

@@ -135,7 +135,7 @@ export default {
           } else if (err.request.status === 403) {
             this.$SegmentMessage.error(this, 'Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unkown error');
+            this.$SegmentMessage.error(this, 'Unknown error');
           }
         });
       this.$axios
@@ -148,7 +148,7 @@ export default {
           if(err.request.status === 404) {
             this.$SegmentMessage.error(this, 'User does not exist');
           } else {
-            this.$SegmentMessage.error(this, 'Unkown error');
+            this.$SegmentMessage.error(this, 'Unknown error');
           }
           this.userLoading = false;
         });
@@ -186,7 +186,7 @@ export default {
               if(err.request.status === 404) {
                 this.$SegmentMessage.error(this, 'User does not exist');
               } else {
-                this.$SegmentMessage.error(this, 'Unkown error');
+                this.$SegmentMessage.error(this, 'Unknown error');
               }
               this.userLoading = false;
             });
@@ -198,7 +198,7 @@ export default {
           } else if (err.request.status === 403) {
             this.$SegmentMessage.error(this, 'Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unkown error');
+            this.$SegmentMessage.error(this, 'Unknown error');
           }
         });
     }

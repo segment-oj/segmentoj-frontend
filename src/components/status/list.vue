@@ -97,7 +97,7 @@ export default {
         return id.value === String(x.state);
       });
       if(stateTable.length) {
-        x.state = (<div style={'color: ' + stateTable[0].color + ';'} class="text-bold"><i class={stateTable[0].icon} /> {stateTable[0].label}</div>);
+        x.state = (<router-link to={'/status/' + String(x.id)} style={'color: ' + stateTable[0].color + ';'} class="text-bold"><i class={stateTable[0].icon} /> {stateTable[0].label}</router-link>);
       } else {
         x.state = (<div style='color: #FF4949;' class="text-bold"><i class='el-icon-circle-close' /> System Error</div>);
       }

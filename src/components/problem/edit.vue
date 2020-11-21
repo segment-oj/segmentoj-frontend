@@ -21,10 +21,10 @@
                 MS
               </el-col>
             </el-row>
-            <el-divider>Memery</el-divider>
+            <el-divider>Memory</el-divider>
             <el-row :gutter="10">
               <el-col :span="20">
-                <el-input v-model="memery" placeholder="Set memery limitation"></el-input>
+                <el-input v-model="memory" placeholder="Set memory limitation"></el-input>
               </el-col>
               <el-col :span="4" class="center-text">
                 MB
@@ -99,10 +99,10 @@
             MS
           </el-col>
         </el-row>
-        <el-divider>Memery</el-divider>
+        <el-divider>Memory</el-divider>
         <el-row :gutter="10">
           <el-col :span="20">
-            <el-input v-model="memery" placeholder="Set memery limitation"></el-input>
+            <el-input v-model="memory" placeholder="Set memory limitation"></el-input>
           </el-col>
           <el-col :span="4" class="center-text">
             MB
@@ -156,7 +156,7 @@ export default {
       mdContent_sha256: null,
       contentLoading: true,
       time: 'Unknown',
-      memery: 'Unknown',
+      memory: 'Unknown',
       disable: false,
       html: false,
       smallScreen: screen.width < 800,
@@ -187,7 +187,7 @@ export default {
         .then(res => {
           let data = res.data.res;
           this.title = data.title;
-          this.memery = data.memory_limit / 1000;
+          this.memory = data.memory_limit / 1000;
           this.time = data.time_limit;
           this.disable = !data.enabled;
           this.html = data.allow_html;
@@ -207,7 +207,7 @@ export default {
           } else if (err.request.status === 403) {
             this.$SegmentMessage.error(this, 'Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unkown error');
+            this.$SegmentMessage.error(this, 'Unknown error');
           }
         });
     },
@@ -217,7 +217,7 @@ export default {
     submit() {
       let request_data = {
         title: this.title,
-        memory_limit: this.memery * 1000,
+        memory_limit: this.memory * 1000,
         time_limit: this.time,
         allow_html: this.html,
         enabled: !this.disable
@@ -238,7 +238,7 @@ export default {
           } else if (err.request.status === 403) {
             this.$SegmentMessage.error(this, 'Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unkown error');
+            this.$SegmentMessage.error(this, 'Unknown error');
           }
         });
     },
@@ -254,7 +254,7 @@ export default {
           } else if (err.request.status === 403) {
             this.$SegmentMessage.error(this, 'Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unkown error');
+            this.$SegmentMessage.error(this, 'Unknown error');
           }
         });
     }

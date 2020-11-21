@@ -12,4 +12,16 @@ module.exports = {
       chunks: ['chunk-vendors', 'chunk-common', 'index']
     }
   },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000/api/',
+        changOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+
+    }
+  }
 };
