@@ -8,29 +8,43 @@
       </el-card>
       <!-- Mobile screen -->
       <el-card class="item float" v-if="!smallScreen">
-        <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');" icon="el-icon-edit" circle />
         <el-button @click="$router.go(-1);" icon="el-icon-back" circle />
       </el-card>
       <!-- Normal screen -->
       <el-card class="item" v-else>
-        <el-button v-if="ismine" type="primary" @click="$router.push('/account/' + $route.params.id + '/edit');">Edit</el-button>
         <el-button @click="$router.go(-1);">Back</el-button>
       </el-card>
     </div>
 
-    <userinfo id="info"></userinfo>
+    <div id="info">
+      <el-tabs v-model="activetab" :tab-position="'right'">
+        <el-tab-pane label="Information" name="first">
+          <userinfo></userinfo>
+        </el-tab-pane>
+        <el-tab-pane v-if="canedit" label="Edit" name="second">
+          <useredit></useredit>
+        </el-tab-pane>
+        <el-tab-pane v-if="ismine" label="Security" name="third">
+          <usersucure></usersucure>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
   </div>  
 </template>
 
 <script>
 import apiurl from './../../apiurl';
 import userinfo from './information.vue';
+import useredit from './edit.vue';
+import usersucure from './secure.vue';
 
 export default {
   name: 'UserHomepage',
   data() {
     return {
+      activetab: 'first',
       ismine: false,
+      canedit: false,
       avatarWidth: 800 < screen.width ? 300 : screen.width - 40,
       smallScreen: 700 < screen.width,
     };
@@ -41,10 +55,13 @@ export default {
         .get(apiurl('/account/' + this.$route.params.id))
         .then(res => {
           let data = res.data.res;
-          this.userid = data.userid;
+          this.userid = data.id;
           this.isStaff = data.is_staff;
-          if (this.$store.state.user.isStaff || this.userid == String(this.$store.state.user.userid)) {
+          if (this.userid == String(this.$store.state.user.userid)) {
             this.ismine = true;
+          }
+          if (this.$store.state.user.isStaff || this.ismine) {
+            this.canedit = true;
           }
         })
         .catch(err => {
@@ -61,7 +78,9 @@ export default {
     this.showHomepage();
   },
   components: {
-    userinfo
+    userinfo,
+    useredit,
+    usersucure
   }
 };
 </script>

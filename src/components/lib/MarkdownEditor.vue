@@ -4,7 +4,7 @@
       <el-tab-pane label="Edit" name="first" />
       <el-tab-pane label="Preview" name="second" />
     </el-tabs>
-    <div :class="editorVisbleClassName">
+    <div :class="editorVisibleClassName">
       <textarea
         :value="value"
         @input="handleInput($event.target.value)"
@@ -89,9 +89,9 @@ export default {
   computed: {
     editorVisbleClassName() {
       if (this.activeName == 'first') {
-        return 'dispaly-visble';
+        return 'display-visible';
       }
-      return 'dispaly-invisble';
+      return 'display-invisible';
     }
   },
   props: {
@@ -114,11 +114,11 @@ export default {
 </script>
 
 <style scoped>
-.dispaly-visble {
+.display-visible {
     display: block;
 }
 
-.dispaly-invisble {
+.display-invisible {
     display: none;
 }
 
