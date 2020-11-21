@@ -27,7 +27,7 @@
           <i class="el-icon-info" /> Information
           <el-divider>Problem</el-divider>
           #{{ ptitle }}
-          <el-divider>Limitation</el-divider>
+          <el-divider></el-divider>
           {{ time }} MS
           <el-divider direction="vertical"></el-divider>
           {{ memory }} MB
@@ -126,7 +126,6 @@ export default {
           this.time = data.time;
           this.code = data.code;
           this.lang_num = String(data.lang);
-
           this.$axios
             .get(apiurl('/problem/' + String(this.pid)))
             .then((title) => {
