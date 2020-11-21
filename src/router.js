@@ -8,9 +8,6 @@ let router = new Router({
     path: '/',
     component: () => import('./components/home/page.vue')
   }, {
-    path: '/account/password',
-    component: () => import('./components/user/changePassword.vue')
-  }, {
     path: '/account/:id',
     component: () => import('./components/user/content.vue')
   }, {

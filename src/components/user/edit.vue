@@ -1,84 +1,53 @@
 <template>
-  <div class="content">
-    <div id="tool-bar">
-      <el-card shadow="never">
-        <el-avatar shape="square" :size="avatarWidth">
-          <img src="./../../assets/icon/SOJ-thick-white-background.png" />
-        </el-avatar>
-      </el-card>
-      <!-- Mobile screen -->
-      <el-card class="item float" v-if="smallScreen">
-        <el-button
-          v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot"
-          type="primary"
-          @click="submit()"
-          icon="el-icon-check"
-          circle
-        />
-        <el-button
-          @click="$router.go(-1);"
-          icon="el-icon-back"
-          circle
-        />
-      </el-card>
-      <!-- Normal screen -->
-      <el-card class="item" v-else>
-        <el-button
-          v-if="isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot"
-          type="primary"
-          @click="submit()"
-          :loading="buttonLoading"
-        >
-          Submit
-        </el-button>
-        <el-button @click="$router.go(-1);">Back</el-button>
-      </el-card>
-    </div>
-    <div v-loading="!(isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot)" class="edit-content">
-      <el-row :gutter="20">
-        <el-col :span="16">
-          <el-card>
-            <div slot="header" class="clearfix">
-              <i class="el-icon-user" />
-              User Name
-            </div>
-            <el-input v-model="username"></el-input>
-          </el-card>
-        </el-col>
-        <el-col :span="8">
-          <el-card>
-            <div slot="header" class="clearfix">
-              <i class="el-icon-s-operation" />
-              <div class="label">Default Language</div>
-              <div class="small-label">Lang</div>
-            </div>
-            <el-select v-model="lang" placeholder="Select language">
-              <el-option
-                v-for="item in langTable"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
-              </el-option>
-            </el-select>
-          </el-card>
-        </el-col>
-      </el-row>
-      <el-card class="item">
-        <div slot="header" class="clearfix">
-          <i class="el-icon-chat-line-square" />
-          Permissions
-        </div>
-        <el-checkbox v-model="isStaff" :disabled="!isStaffMe && !isRootMe">Staff</el-checkbox>
-        <el-checkbox v-model="isRoot" :disabled="!isStaffMe && !isRootMe">Root</el-checkbox>
-        <el-checkbox v-model="isActive" :disabled="(!isStaffMe && !isRootMe) || isMine">Active</el-checkbox>
-      </el-card>
-      <el-card class="item">
-        <div slot="header" class="clearfix">
-          <i class="el-icon-chat-line-square" />
-          Introductions
-        </div>
-        <MarkdownEditor v-model="introduction" />
-      </el-card>
+  <div>
+    <el-button class="submit-button" @click="submit()">Submit</el-button>
+    <div class="item content">
+      <div v-loading="!(isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot)" class="edit-content">
+        <el-row :gutter="20">
+          <el-col :span="16">
+            <el-card>
+              <div slot="header" class="clearfix">
+                <i class="el-icon-user" />
+                User Name
+              </div>
+              <el-input v-model="username"></el-input>
+            </el-card>
+          </el-col>
+          <el-col :span="8">
+            <el-card>
+              <div slot="header" class="clearfix">
+                <i class="el-icon-s-operation" />
+                <div class="label">Default Language</div>
+                <div class="small-label">Lang</div>
+              </div>
+              <el-select v-model="lang" placeholder="Select language">
+                <el-option
+                  v-for="item in langTable"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value">
+                </el-option>
+              </el-select>
+            </el-card>
+          </el-col>
+        </el-row>
+        <el-card class="item">
+          <div slot="header" class="clearfix">
+            <i class="el-icon-chat-line-square" />
+            Permissions
+          </div>
+          <el-checkbox v-model="isStaff" :disabled="!isStaffMe && !isRootMe">Staff</el-checkbox>
+          <el-checkbox v-model="isRoot" :disabled="!isStaffMe && !isRootMe">Root</el-checkbox>
+          <el-checkbox v-model="isActive" :disabled="(!isStaffMe && !isRootMe) || isMine">Active</el-checkbox>
+        </el-card>
+        <el-card class="item">
+          <div slot="header" class="clearfix">
+            <i class="el-icon-chat-line-square" />
+            Introductions
+          </div>
+          <MarkdownEditor v-model="introduction" />
+        </el-card>
+      </div>
     </div>
   </div>
 </template>
@@ -213,6 +182,10 @@ export default {
 </script>
 
 <style scoped>
+.submit-button {
+    width: 100%;
+}
+
 #tool-bar {
     margin-right: 30px;
 }
