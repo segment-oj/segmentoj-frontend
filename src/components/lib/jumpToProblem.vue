@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-card>
-      <div slot="header" class="clearfic">
+      <div slot="header" class="clearfix">
         <i class="el-icon-s-promotion" />
         Jump to
       </div>

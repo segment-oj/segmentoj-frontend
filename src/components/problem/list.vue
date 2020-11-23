@@ -10,7 +10,7 @@
             :total="data_count"
             :process="process"
             :default_sort="{prop: 'pid', order: 'ascending'}"
-            :costumData="{title:title}"
+            :customData="{title:title}"
             pagination_class="problem-list-pagination"
           />
         </el-card>

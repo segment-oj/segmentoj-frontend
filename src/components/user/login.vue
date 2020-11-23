@@ -9,14 +9,14 @@
       class="max-screen"
       >
       <el-form :model="ldata" ref="loginForm" :rules="rules">
-        <div class="icon-lable">
+        <div class="icon-label">
           <i class="el-icon-user" />
           Username
         </div>
         <el-form-item prop="username">
           <el-input v-model="ldata.username"></el-input>
         </el-form-item>
-        <div class="icon-lable">
+        <div class="icon-label">
           <i class="el-icon-lock" />
           Password
         </div>
@@ -133,7 +133,7 @@ export default {
 </script>
 
 <style scoped>
-.icon-lable {
+.icon-label {
     margin-bottom: 5px;
 }
 </style>

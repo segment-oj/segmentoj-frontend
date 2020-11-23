@@ -13,35 +13,35 @@
         :rules="rules"
         :status-icon="true"
       >
-        <div class="icon-lable form-required">
+        <div class="icon-label form-required">
           <i class="el-icon-user" />
           Username
         </div>
         <el-form-item prop="username">
           <el-input v-model="ldata.username"></el-input>
         </el-form-item>
-        <div class="icon-lable form-required">
+        <div class="icon-label form-required">
           <i class="el-icon-lock" />
           Password
         </div>
         <el-form-item prop="password">
           <el-input type="password" v-model="ldata.password"></el-input>
         </el-form-item>
-        <div class="icon-lable form-required">
+        <div class="icon-label form-required">
           <i class="el-icon-lock" />
           Repeat password
         </div>
         <el-form-item prop="passwdrepeat">
           <el-input type="password" v-model="ldata.passwdrepeat"></el-input>
         </el-form-item>
-        <div class="icon-lable form-required">
+        <div class="icon-label form-required">
           <i class="el-icon-message" />
           Email
         </div>
         <el-form-item prop="email">
           <el-input v-model="ldata.email"></el-input>
         </el-form-item>
-        <div class="icon-lable form-required">
+        <div class="icon-label form-required">
           <i class="el-icon-check" />
           Captcha
         </div>
@@ -147,7 +147,7 @@ export default {
         .then(() => {
           this.$store.state.user.showregister = false;
           this.$store.state.user.showlogin = true;
-          // Successed
+          // Succeeded
           this.$SegmentMessage.success(this, 'Your acount has been registered successfully');
           this.buttonLoading = false;
         })

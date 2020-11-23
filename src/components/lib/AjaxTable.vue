@@ -44,7 +44,7 @@ export default {
     limit() {
       this.onPageChange(this.pageId);
     },
-    costumData(new_val, old_val) {
+    customData(new_val, old_val) {
       let json_new_val = JSON.stringify(new_val);
       let json_old_val = JSON.stringify(old_val);
       if (json_new_val != json_old_val) {
@@ -66,7 +66,7 @@ export default {
           params: {
             offset: this.offset,
             limit: this.limit,
-            ...this.costumData
+            ...this.customData
           }
         })
         .then(res => {
@@ -98,7 +98,7 @@ export default {
       type: Number,
       default: 20
     },
-    costumData: {
+    customData: {
       type: Object
     },
     total: {

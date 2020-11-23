@@ -159,7 +159,7 @@ export default {
           lang: this.lang_num,
         })
         .then(() => {
-          this.$SegmentMessage.success(this, 'Your code has been submited');
+          this.$SegmentMessage.success(this, 'Your code has been submitted');
           this.buttonLoading = false;
         })
         .catch((err) => {
