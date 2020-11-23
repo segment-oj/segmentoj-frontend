@@ -2,9 +2,7 @@
   <div id="user-content">
     <div id="tool">
       <el-card shadow="never">
-        <el-avatar shape="square" :size="this.avatarWidth">
-          <img src="./../../assets/icon/SOJ-thick-white-background.png" />
-        </el-avatar>
+        <UserAvatar shape="square" :size="this.avatarWidth" />
       </el-card>
     </div>
 
@@ -29,6 +27,7 @@ import apiurl from './../../apiurl';
 import userInfo from './information.vue';
 import userEdit from './edit.vue';
 import userSecure from './secure.vue';
+import UserAvatar from './avatar.vue';
 
 export default {
   name: 'UserHomepage',
@@ -72,7 +71,8 @@ export default {
   components: {
     userInfo,
     userEdit,
-    userSecure
+    userSecure,
+    UserAvatar
   }
 };
 </script>

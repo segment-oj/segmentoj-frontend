@@ -16,20 +16,20 @@
         </el-menu-item>
         <el-menu-item index="/" class="webkit-box">
           <i class="el-icon-s-home" />
-          <div class="lable"> Home</div>
+          <div class="label"> Home</div>
         </el-menu-item>
         <el-menu-item index="/problem/list" class="webkit-box">
           <i class="el-icon-s-order" /> 
-          <div class="lable"> Problem List</div>
+          <div class="label"> Problem List</div>
         </el-menu-item>
         <el-menu-item index="/status/list" class="webkit-box">
           <i class="el-icon-s-marketing" /> 
-          <div class="lable"> Status List</div>
+          <div class="label"> Status List</div>
         </el-menu-item>
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-s-help" />
-            <span class="lable"> Apps</span>
+            <span class="label"> Apps</span>
           </template>
           <el-menu-item index="/app/editor">
             Code Editor
@@ -37,9 +37,7 @@
         </el-submenu>
         <el-submenu index="2" id="user">
           <template slot="title">
-              <el-avatar shape="square">
-                <img src="./../../assets/icon/SOJ-thick-white-background.png" />
-              </el-avatar>
+            <UserAvatar />
           </template>
           <div v-if="this.$store.state.user.authenticated">
             <el-menu-item :index="'/account/' + $store.state.user.userid">
@@ -60,6 +58,7 @@
 
 <script>
 import UserLogout from './../user/logout.vue';
+import UserAvatar from './../user/avatar.vue';
 
 export default {
   name: 'NavBar',
@@ -69,14 +68,15 @@ export default {
     };
   },
   components: {
-    UserLogout
+    UserLogout,
+    UserAvatar
   }
 };
 </script>
 
 <style scoped>
 @media only screen and (max-width: 500px) {
-    .lable {
+    .label {
         display: none;
     }
 }
