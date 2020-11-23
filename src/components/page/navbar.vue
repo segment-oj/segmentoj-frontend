@@ -37,9 +37,7 @@
         </el-submenu>
         <el-submenu index="2" id="user">
           <template slot="title">
-              <el-avatar shape="square">
-                <img src="./../../assets/icon/SOJ-thick-white-background.png" />
-              </el-avatar>
+            <UserAvatar />
           </template>
           <div v-if="this.$store.state.user.authenticated">
             <el-menu-item :index="'/account/' + $store.state.user.userid">
@@ -60,6 +58,7 @@
 
 <script>
 import UserLogout from './../user/logout.vue';
+import UserAvatar from './../user/avatar.vue';
 
 export default {
   name: 'NavBar',
@@ -69,7 +68,8 @@ export default {
     };
   },
   components: {
-    UserLogout
+    UserLogout,
+    UserAvatar
   }
 };
 </script>
