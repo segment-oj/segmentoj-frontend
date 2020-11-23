@@ -16,20 +16,20 @@
         </el-menu-item>
         <el-menu-item index="/" class="webkit-box">
           <i class="el-icon-s-home" />
-          <div class="lable"> Home</div>
+          <div class="label"> Home</div>
         </el-menu-item>
         <el-menu-item index="/problem/list" class="webkit-box">
           <i class="el-icon-s-order" /> 
-          <div class="lable"> Problem List</div>
+          <div class="label"> Problem List</div>
         </el-menu-item>
         <el-menu-item index="/status/list" class="webkit-box">
           <i class="el-icon-s-marketing" /> 
-          <div class="lable"> Status List</div>
+          <div class="label"> Status List</div>
         </el-menu-item>
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-s-help" />
-            <span class="lable"> Apps</span>
+            <span class="label"> Apps</span>
           </template>
           <el-menu-item index="/app/editor">
             Code Editor
@@ -76,7 +76,7 @@ export default {
 
 <style scoped>
 @media only screen and (max-width: 500px) {
-    .lable {
+    .label {
         display: none;
     }
 }
