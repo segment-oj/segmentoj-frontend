@@ -20,7 +20,7 @@
 
 <script>
 import apiurl from './../../apiurl';
-import SelectTag from './../lib/selectTag.vue';
+import SelectTag from './../lib/SelectTag.vue';
 
 export default {
   name: 'editTag',

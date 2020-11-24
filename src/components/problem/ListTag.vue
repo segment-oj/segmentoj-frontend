@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import ProblemTag from './../lib/problemTag.vue';
+import ProblemTag from './../lib/ProblemTag.vue';
 import apiurl from './../../apiurl';
 import AWaitLock from './../../methods/lock';
 

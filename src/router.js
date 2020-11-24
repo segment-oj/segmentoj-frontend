@@ -9,10 +9,10 @@ let router = new Router({
     component: () => import('./components/home/page.vue')
   }, {
     path: '/account/:id',
-    component: () => import('./components/user/content.vue')
+    component: () => import('./components/account/content.vue')
   }, {
     path: '/account/:id/edit',
-    component: () => import('./components/user/edit.vue')
+    component: () => import('./components/account/edit.vue')
   }, {
     path: '/problem/list',
     component: () => import('./components/problem/list.vue')

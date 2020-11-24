@@ -35,7 +35,7 @@ import './assets/css/fontstyle.css';
 import './assets/css/basic.css';
 import('./loader/load');
 
-import './StringPrototype';
+import './methods/string';
 
 Vue.config.productionTip = false;
 

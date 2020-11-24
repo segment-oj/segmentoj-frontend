@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import UserLogout from './../user/logout.vue';
-import UserAvatar from './../user/avatar.vue';
+import UserLogout from './../account/logout.vue';
+import UserAvatar from './../account/avatar.vue';
 
 export default {
   name: 'NavBar',

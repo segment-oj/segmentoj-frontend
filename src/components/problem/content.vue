@@ -100,7 +100,7 @@
 import timeFormat from './../../methods/time';
 import apiurl from './../../apiurl';
 import MarkdownContainer from './../lib/MarkdownContainer.vue';
-import ProblemTag from './../lib/problemTag.vue';
+import ProblemTag from './../lib/ProblemTag.vue';
 
 export default {
   name: 'ProblemView',

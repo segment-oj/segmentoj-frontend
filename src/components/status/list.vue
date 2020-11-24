@@ -19,7 +19,7 @@ import sfconfig from './../../sfconfig';
 import apiurl from './../../apiurl';
 import AjaxTable from './../lib/AjaxTable.vue';
 import ProblemTitleLink from './../problem/ProblemTitleLink.vue';
-import UserNameLink from './../user/UserNameLink.vue';
+import UserNameLink from './../account/UserNameLink.vue';
 
 export default {
   name: 'StatusList',

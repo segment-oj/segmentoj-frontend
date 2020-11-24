@@ -141,9 +141,9 @@
 <script>
 import apiurl from './../../apiurl';
 import MarkdownEditor from './../lib/MarkdownEditor.vue';
-import ConfirmDelete from './../lib/confirmDelete.vue';
-import editTag from './editTag.vue';
-import ProblemTag from './../lib/problemTag.vue';
+import ConfirmDelete from './../lib/ConfirmDelete.vue';
+import editTag from './EditTag.vue';
+import ProblemTag from './../lib/ProblemTag.vue';
 
 import sha256 from 'js-sha256';
 

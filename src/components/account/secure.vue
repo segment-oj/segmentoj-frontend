@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import password from './changePassword';
+import password from './ChangePassword';
 
 export default {
   name: 'UserEdit',

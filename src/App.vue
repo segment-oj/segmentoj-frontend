@@ -15,8 +15,8 @@
 <script>
 import NavBar from './components/page/navbar.vue';
 import Footer from './components/page/footer.vue';
-import UserLogin from './components/user/login.vue';
-import UserRegister from './components/user/register.vue';
+import UserLogin from './components/account/login.vue';
+import UserRegister from './components/account/register.vue';
 
 export default {
   name: 'App',
