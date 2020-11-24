@@ -1,19 +1,29 @@
+import { Message } from 'element-ui';
+
 export default {
   name: 'message',
-  success: (element, content) => {
-    element.$message({
+  success(content) {
+    Message({
       showClose: true,
       message: content,
       type: 'success',
       customClass: 'layer-level-zindex'
     });
   },
-  error: (element, content) => {
-    element.$message({
+  warning(content) {
+    Message({
+      showClose: true,
+      message: content,
+      type: 'warning',
+      customClass: 'layer-level-zindex'
+    });
+  },
+  error(content) {
+    Message({
       showClose: true,
       message: content,
       type: 'error',
       customClass: 'layer-level-zindex'
     });
-  }
+  },
 };

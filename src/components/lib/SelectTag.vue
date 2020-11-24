@@ -30,7 +30,7 @@ export default {
           }
         })
         .catch(() => {
-          this.$SegmentMessage.error(this, 'Get tags failed');
+          this.$info.error('Get tags failed');
         });
       return arr;
     },
@@ -45,7 +45,7 @@ export default {
           }
         })
         .catch(() => {
-          this.$SegmentMessage.error(this, 'Get tags failed');
+          this.$info.error('Get tags failed');
         });
       return arr;
     },

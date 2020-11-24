@@ -57,9 +57,9 @@ export default {
         })
         .catch(err => {
           if(err.request.status === 404) {
-            this.$SegmentMessage.error(this, 'User does not exist');
+            this.$info.error('User does not exist');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
           this.userLoading = false;
         });

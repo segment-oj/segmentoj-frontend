@@ -77,7 +77,7 @@ export default {
           }
         })
         .catch(err => {
-          this.$SegmentMessage.error(this, '[Ajax Table] Request Failed');
+          this.$info.error('[Ajax Table] Request Failed');
           console.log(err);
         });
     }

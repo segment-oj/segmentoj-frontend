@@ -148,25 +148,25 @@ export default {
           this.$store.state.user.showregister = false;
           this.$store.state.user.showlogin = true;
           // Successed
-          this.$SegmentMessage.success(this, 'Your acount has been registered successfully');
+          this.$info.success('Your acount has been registered successfully');
           this.buttonLoading = false;
         })
         .catch(err => {
           if (err.request.status === 400) {
             // HTTP 400 Bad Request
-            this.$SegmentMessage.error(this, JSON.parse(err.request.response).detail);
+            this.$info.error(JSON.parse(err.request.response).detail);
           } else if (err.request.status === 406){
             // HTTP 406 Not Acceptable
-            this.$SegmentMessage.error(this, JSON.parse(err.request.response).detail);
+            this.$info.error(JSON.parse(err.request.response).detail);
           } else if (err.request.status === 409) {
             // HTTP 409 Conflict
-            this.$SegmentMessage.error(this, 'Username has been taken');
+            this.$info.error('Username has been taken');
           } else if (err.request.status === 429) {
             // HTTP 429 Too Many Requests
-            this.$SegmentMessage.error(this, 'Requesting too frequently');
+            this.$info.error('Requesting too frequently');
           } else {
             // Unknown error
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
           this.refresh_captcha();
           this.buttonLoading = false;
