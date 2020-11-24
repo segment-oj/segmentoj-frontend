@@ -3,7 +3,7 @@
     <div id="nav-content">
       <el-menu
         id="menu"
-        :default-active="activeIndex"
+        :default-active="$route.path"
         :router="true"
         class="el-menu-demo"
         mode="horizontal"
@@ -64,13 +64,12 @@ export default {
   name: 'NavBar',
   data() {
     return {
-      activeIndex: '/'
     };
   },
   components: {
     UserLogout,
     UserAvatar
-  }
+  },
 };
 </script>
 
