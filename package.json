@@ -21,7 +21,10 @@
     "vue": "^2.6.11",
     "vue-router": "^3.3.4",
     "vue-unique-id": "^3.1.0",
-    "vuex": "^3.5.1"
+    "vuex": "^3.5.1",
+    "vue-katex": "^0.4.0",
+    "katex": "^0.11.1",
+    "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
@@ -30,12 +33,9 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "katex": "^0.11.1",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
-    "stylelint-scss": "^3.18.0",
-    "vue-katex": "^0.4.0",
-    "vue-template-compiler": "^2.6.11"
+    "stylelint-scss": "^3.18.0"
   },
   "eslintConfig": {
     "root": true,
