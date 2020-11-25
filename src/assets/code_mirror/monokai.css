@@ -14,6 +14,10 @@
     color: #f92772 !important;
 }
 
+.cm-s-monokai span.cm-meta {
+    color: #a6e22e;
+}
+
 .cm-s-monokai .cm-matchhighlight {
     background-color: #49483e;
 }
