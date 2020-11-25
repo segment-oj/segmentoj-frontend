@@ -77,7 +77,7 @@
         <el-card shadow="never" class="item">
           <div slot="header" class="clearfix">
             <i class="el-icon-upload2" />
-            <span class="label"> Submited</span>
+            <span class="label"> Submitted</span>
             <div class="small-label"> SU</div>
           </div>
           <div class="clearfix">

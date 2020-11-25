@@ -89,7 +89,7 @@ export default {
     },
   }, 
   computed: {
-    editorVisbleClassName() {
+    editorVisibleClassName() {
       if (this.activeName == 'first') {
         return 'display-visible';
       }

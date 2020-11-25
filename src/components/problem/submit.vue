@@ -128,7 +128,7 @@ export default {
           lang: this.lang_num
         })
         .then(() => {
-          this.$info.success('Your code has been submited');
+          this.$info.success('Your code has been submitted');
           this.buttonLoading = false;
         })
         .catch(err => {
