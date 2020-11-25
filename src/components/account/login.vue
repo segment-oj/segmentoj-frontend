@@ -94,13 +94,14 @@ export default {
                 is_staff: detail.data.res.is_staff,
                 is_superuser: detail.data.res.is_superuser
               });
+              this.$store.commit('userNavColorChange', {
+                nav_color: detail.data.res.nav_color
+              });
+              console.log(detail.data.res);
             });
           this.$store.commit('userLogin', {
             username: this.ldata.username,
             userid: res.data.res.id
-          });
-          this.$store.commit('userNavColorChange', {
-            nav_color: this.ldata.nav_color
           });
           this.$info.success('Logged in');
           this.$store.state.user.showlogin = false;

@@ -16,11 +16,9 @@ const userstore = {
       state.authenticated = true;
       state.userid = data.userid;
       state.username = data.username;
-      state.navColor = data.nav_color;
       localStorage.setItem('user-authenticated', true);
       localStorage.setItem('user-username', data.username);
       localStorage.setItem('user-userid', data.userid);
-      localStorage.setItem('user-navcolor', data.nav_color);
     },
     userStaffChange(state, data) {
       state.isStaff = data.isStaff;
@@ -39,6 +37,11 @@ const userstore = {
 
       localStorage.setItem('user-userlang', data.lang); 
     },
+    userNavColorChange(state, data) {
+      state.navColor = data.nav_color;
+
+      localStorage.setItem('user-navcolor', data.nav_color);
+    },
     userLogout(state) {
       state.authenticated = false;
       state.userid = null;
@@ -52,12 +55,8 @@ const userstore = {
       localStorage.removeItem('user-authenticated');
       localStorage.removeItem('user-userid');
       localStorage.removeItem('user-username');
+      localStorage.removeItem('user-navcolor');
     },
-    userNavColorChange(state, data) {
-      state.navColor = data.nav_color;
-
-      localStorage.setItem('user-navcolor', data.nav_color);
-    }
   }
 };
 

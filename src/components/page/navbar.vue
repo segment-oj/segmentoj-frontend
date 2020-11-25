@@ -70,6 +70,11 @@ export default {
     UserLogout,
     UserAvatar
   },
+  mounted() {
+    if (this.nav_color == null || this.nav_color == undefined) {
+      this.nav_color = '#545c64';
+    }
+  }
 };
 </script>
 

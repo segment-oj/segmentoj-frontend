@@ -45,7 +45,6 @@
             <i class="el-icon-camera" />
             Appearance
           </div>
-          Nav color
           <el-color-picker
             v-model="nav_color"
             :predefine="predefineColors"
