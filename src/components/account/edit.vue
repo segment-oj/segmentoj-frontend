@@ -43,7 +43,7 @@
         <el-card class="item">
           <div slot="header" class="clearfix">
             <i class="el-icon-camera" />
-            Appearance
+            Navbar Color
           </div>
           <el-color-picker
             v-model="nav_color"
