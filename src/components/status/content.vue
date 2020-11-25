@@ -18,9 +18,7 @@
           </el-select>
         </el-card>
         <el-card class="item">
-          <el-button type="primary" @click="submit()" :loading="buttonLoading"
-            >Resubmit</el-button
-          >
+          <el-button v-if="this.can_edit" type="primary" @click="submit()" :loading="buttonLoading">Resubmit</el-button>
           <el-button @click="back()">Back</el-button>
         </el-card>
         <el-card class="item">
@@ -113,6 +111,8 @@ export default {
       buttonLoading: false,
       smallScreen: screen.width < 700,
       langTable: sfconfig.langTable,
+      is_mine: false,
+      can_edit: false
     };
   },
   methods: {
@@ -126,6 +126,14 @@ export default {
           this.time = data.time;
           this.code = data.code;
           this.lang_num = String(data.lang);
+
+          if (data.owner == String(this.$store.state.user.userid)) {
+            this.is_mine = true;
+          }
+          if (this.$store.state.user.isStaff || this.is_mine) {
+            this.can_edit = true;
+          }
+
           this.$axios
             .get(apiurl('/problem/' + String(this.pid)))
             .then((title) => {
