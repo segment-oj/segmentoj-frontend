@@ -7,7 +7,7 @@
         :router="true"
         mode="horizontal"
         :background-color="this.nav_color"
-        text-color="#fff"
+        text-color="#ffffff"
         active-text-color="rgb(233, 233, 235)"
       >
         <el-menu-item index="" @click="$router.push('/')">
