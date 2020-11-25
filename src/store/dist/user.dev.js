@@ -1,4 +1,10 @@
-const userstore = {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var userstore = {
   state: {
     authenticated: localStorage.getItem('user-authenticated') === 'true' ? true : false || false,
     username: localStorage.getItem('user-username') || null,
@@ -9,10 +15,10 @@ const userstore = {
     navColor: localStorage.getItem('user-navcolor') || null,
     showlogin: false,
     showregister: false,
-    showlogout: false,
+    showlogout: false
   },
   mutations: {
-    userLogin(state, data) {
+    userLogin: function userLogin(state, data) {
       state.authenticated = true;
       state.userid = data.userid;
       state.username = data.username;
@@ -22,24 +28,23 @@ const userstore = {
       localStorage.setItem('user-userid', data.userid);
       localStorage.setItem('user-navcolor', data.nav_color);
     },
-    userStaffChange(state, data) {
+    userStaffChange: function userStaffChange(state, data) {
       state.isStaff = data.isStaff;
       state.isRoot = data.isRoot;
       localStorage.setItem('user-is-root', data.isRoot);
       localStorage.setItem('user-is-staff', data.isStaff);
     },
-    userStaff(state, data) {
+    userStaff: function userStaff(state, data) {
       state.isStaff = data.is_staff;
       state.isRoot = data.is_superuser;
       localStorage.setItem('user-is-root', data.is_superuser);
       localStorage.setItem('user-is-staff', data.is_staff);
     },
-    userLang(state, data) {
+    userLang: function userLang(state, data) {
       state.userlang = data.lang;
-
-      localStorage.setItem('user-userlang', data.lang); 
+      localStorage.setItem('user-userlang', data.lang);
     },
-    userLogout(state) {
+    userLogout: function userLogout(state) {
       state.authenticated = false;
       state.userid = null;
       state.username = null;
@@ -48,17 +53,16 @@ const userstore = {
       state.isRoot = false;
       localStorage.removeItem('user-is-root');
       localStorage.removeItem('user-is-staff');
-      localStorage.removeItem('user-userlang'); 
+      localStorage.removeItem('user-userlang');
       localStorage.removeItem('user-authenticated');
       localStorage.removeItem('user-userid');
       localStorage.removeItem('user-username');
     },
-    userNavColorChange(state, data) {
+    userNavColorChange: function userNavColorChange(state, data) {
       state.navColor = data.nav_color;
-
       localStorage.setItem('user-navcolor', data.nav_color);
     }
   }
 };
-
-export default userstore;
+var _default = userstore;
+exports["default"] = _default;

@@ -1,13 +1,12 @@
 <template>
-  <div id="nav" class="high-zindex">
+  <div id="nav" class="high-zindex" :style="'background-color: ' + this.nav_color">
     <div id="nav-content">
       <el-menu
         id="menu"
         :default-active="$route.path"
         :router="true"
-        class="el-menu-demo"
         mode="horizontal"
-        background-color="#545c64"
+        :background-color="this.nav_color"
         text-color="#fff"
         active-text-color="rgb(233, 233, 235)"
       >
@@ -64,6 +63,7 @@ export default {
   name: 'NavBar',
   data() {
     return {
+      nav_color: this.$store.state.user.navColor
     };
   },
   components: {
@@ -80,8 +80,11 @@ export default {
     }
 }
 
+i {
+    color: #fff !important;
+}
+
 #nav {
-    background-color: #545c64;
     width: 100vw;
     position: fixed;
     top: 0;
