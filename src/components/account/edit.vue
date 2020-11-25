@@ -76,12 +76,15 @@ export default {
       nav_color: this.$store.state.user.navColor,
       predefineColors: [
         '#545c64',
-        '#409EFF',
+        '#58B7FF',
+        '#20A0FF',
         '#67C23A',
         '#E6A23C',
         '#F56C6C',
         '#909399',
-        '#000000'
+        '#1F2D3D',
+        '#324057',
+        '#475669',
       ],
       username: 'Unknown',
       email: 'Unknown',
