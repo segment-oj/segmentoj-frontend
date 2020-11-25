@@ -6,7 +6,7 @@
     class="max-screen"
   >
     <el-form>
-      <div class="icon-lable">
+      <div class="icon-label">
         <i class="el-icon-s-operation" />
         PID
       </div>
@@ -17,7 +17,7 @@
           <i v-else slot="suffix" class="icon-success el-input__icon el-icon-circle-check"></i>
         </el-input>
       </el-form-item>
-      <div class="icon-lable">
+      <div class="icon-label">
         <i class="el-icon-edit-outline" />
         Title
       </div>

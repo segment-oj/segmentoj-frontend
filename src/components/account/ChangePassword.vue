@@ -1,14 +1,14 @@
 <template>
   <div>
     <el-form :model="ldata" ref="ChangePasswordForm" :rules="rules">
-      <div class="icon-lable">
+      <div class="icon-label">
         <i class="el-icon-lock" />
         New Password
       </div>
       <el-form-item prop="newpassword">
         <el-input type="password" v-model="ldata.newpassword"></el-input>
       </el-form-item>
-      <div class="icon-lable">
+      <div class="icon-label">
         <i class="el-icon-lock" />
         Repeat New Password
       </div>
@@ -16,7 +16,7 @@
         <el-input type="password" v-model="ldata.newpasswdrepeat"></el-input>
       </el-form-item>
       <div v-if="old_password_required">
-        <div class="icon-lable">
+        <div class="icon-label">
           <i class="el-icon-lock" />
           Old Password
         </div>
@@ -131,7 +131,7 @@ export default {
 </script>
 
 <style scoped>
-.icon-lable {
+.icon-label {
     margin-bottom: 5px;
 }
 </style>
