@@ -141,9 +141,9 @@
 <script>
 import apiurl from './../../apiurl';
 import MarkdownEditor from './../lib/MarkdownEditor.vue';
-import ConfirmDelete from './../lib/confirmDelete.vue';
-import editTag from './editTag.vue';
-import ProblemTag from './../lib/problemTag.vue';
+import ConfirmDelete from './../lib/ConfirmDelete.vue';
+import editTag from './EditTag.vue';
+import ProblemTag from './../lib/ProblemTag.vue';
 
 import sha256 from 'js-sha256';
 
@@ -203,11 +203,11 @@ export default {
         })
         .catch(err => {
           if (err.request.status === 404) {
-            this.$SegmentMessage.error(this, 'Problem not found');
+            this.$info.error('Problem not found');
           } else if (err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Permission denied');
+            this.$info.error('Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
         });
     },
@@ -230,15 +230,15 @@ export default {
       this.$axios
         .patch(apiurl('/problem/' + this.$route.params.id), request_data)
         .then(() => {
-          this.$SegmentMessage.success(this, 'Your changes have been submitted');
+          this.$info.success('Your changes have been submitted');
         })
         .catch(err => {
           if (err.request.status === 404) {
-            this.$SegmentMessage.error(this, 'Problem not found');
+            this.$info.error('Problem not found');
           } else if (err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Permission denied');
+            this.$info.error('Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
         });
     },
@@ -246,15 +246,15 @@ export default {
       this.$axios
         .delete(apiurl('/problem/' + this.$route.params.id))
         .then(() => {
-          this.$SegmentMessage.success(this, 'Deleted problem #' + this.$route.params.id);
+          this.$info.success('Deleted problem #' + this.$route.params.id);
         })
         .catch(err => {
           if (err.request.status === 404) {
-            this.$SegmentMessage.error(this, 'Problem not found');
+            this.$info.error('Problem not found');
           } else if (err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Permission denied');
+            this.$info.error('Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
         });
     }

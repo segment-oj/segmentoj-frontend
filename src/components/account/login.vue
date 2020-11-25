@@ -99,19 +99,19 @@ export default {
             username: this.ldata.username,
             userid: res.data.res.id
           });
-          this.$SegmentMessage.success(this, 'Logged in');
+          this.$info.success('Logged in');
           this.$store.state.user.showlogin = false;
           this.buttonLoading = false;
         })
         .catch(err => {
           if (err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Username or password incorrect');
+            this.$info.error('Username or password incorrect');
           } else if (err.request.status === 429) {
             // HTTP 429 Too Many Requests
-            this.$SegmentMessage.error(this, 'Requesting too frequently');
+            this.$info.error('Requesting too frequently');
           } else {
             // Unknown error
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
           this.buttonLoading = false;
         });

@@ -139,11 +139,11 @@ export default {
         })
         .catch((err) => {
           if (err.request.status === 404) {
-            this.$SegmentMessage.error(this, 'Problem not found');
+            this.$info.error('Problem not found');
           } else if (err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Permission denied');
+            this.$info.error('Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
         });
     },
@@ -159,16 +159,16 @@ export default {
           lang: this.lang_num,
         })
         .then(() => {
-          this.$SegmentMessage.success(this, 'Your code has been submited');
+          this.$info.success('Your code has been submited');
           this.buttonLoading = false;
         })
         .catch((err) => {
           if (err.request.status === 401) {
-            this.$SegmentMessage.error(this, 'Please login first');
+            this.$info.error('Please login first');
           } else if (err.request.status === 400) {
-            this.$SegmentMessage.error(this, 'Input your code');
+            this.$info.error('Input your code');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
           this.buttonLoading = false;
         });

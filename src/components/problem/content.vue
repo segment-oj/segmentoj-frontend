@@ -100,7 +100,7 @@
 import timeFormat from './../../methods/time';
 import apiurl from './../../apiurl';
 import MarkdownContainer from './../lib/MarkdownContainer.vue';
-import ProblemTag from './../lib/problemTag.vue';
+import ProblemTag from './../lib/ProblemTag.vue';
 
 export default {
   name: 'ProblemView',
@@ -161,11 +161,11 @@ export default {
         })
         .catch(err => {
           if(err.request.status === 404) {
-            this.$SegmentMessage.error(this, 'Problem not found');
+            this.$info.error('Problem not found');
           } else if(err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Permission denied');
+            this.$info.error('Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
         });
     },

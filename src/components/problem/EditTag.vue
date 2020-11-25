@@ -20,7 +20,7 @@
 
 <script>
 import apiurl from './../../apiurl';
-import SelectTag from './../lib/selectTag.vue';
+import SelectTag from './../lib/SelectTag.vue';
 
 export default {
   name: 'editTag',
@@ -41,11 +41,11 @@ export default {
         })
         .catch(err => {
           if (err.request.status === 404) {
-            this.$SegmentMessage.error(this, 'Problem not found');
+            this.$info.error('Problem not found');
           } else if (err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Permission denied');
+            this.$info.error('Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
         });
     }

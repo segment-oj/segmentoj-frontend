@@ -101,11 +101,11 @@ export default {
         })
         .catch(err => {
           if (err.request.status === 400) {
-            this.$SegmentMessage.error(this, 'PID or title is empty');
+            this.$info.error('PID or title is empty');
           } else if(err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Permission denied');
+            this.$info.error('Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
         });
     }

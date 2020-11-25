@@ -99,15 +99,15 @@ export default {
         })
         .then(() => {
           this.buttonLoading = false;
-          this.$SegmentMessage.success(this, 'Changed successfully');
+          this.$info.success('Changed successfully');
         })
         .catch(err => {
           if (err.request.status === 401) {
-            this.$SegmentMessage.error(this, 'Please login first');
+            this.$info.error('Please login first');
             this.$store.state.user.showlogin = true;
           }
           if (err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Please enter your old password');
+            this.$info.error('Please enter your old password');
             this.old_password_required = true;
           }
           this.buttonLoading = false;

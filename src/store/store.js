@@ -6,8 +6,8 @@ Vue.use(Vuex);
 import userstore from './user';
 import captchastore from './captcha';
 import tagsstore from './tags';
-import createProblem from './createProblem';
-import tageditstore from './tagedit.js';
+import createProblem from './CreateProblem';
+import tageditstore from './TagEdit';
 
 export default new Vuex.Store({
   modules: {

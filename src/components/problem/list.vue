@@ -64,8 +64,8 @@
 <script>
 import apiurl from './../../apiurl';
 import AjaxTable from './../lib/AjaxTable.vue';
-import JumpToProblem from './../lib/jumpToProblem.vue';
-import listTag from './listTag.vue';
+import JumpToProblem from './../lib/JumpToProblem.vue';
+import listTag from './ListTag.vue';
 import CreateProblem from './create.vue';
 
 export default {

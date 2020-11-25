@@ -2,8 +2,8 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 
-import message from './message';
-Vue.prototype.$SegmentMessage = message;
+import infoMessage from './methods/message';
+Vue.prototype.$info = infoMessage;
 
 import axios from 'axios';
 axios.defaults.withCredentials = true;
@@ -35,7 +35,7 @@ import './assets/css/fontstyle.css';
 import './assets/css/basic.css';
 import('./loader/load');
 
-import './StringPrototype';
+import './methods/string';
 
 Vue.config.productionTip = false;
 

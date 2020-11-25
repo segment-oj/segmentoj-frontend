@@ -3,7 +3,7 @@
     <div id="nav-content">
       <el-menu
         id="menu"
-        :default-active="activeIndex"
+        :default-active="$route.path"
         :router="true"
         class="el-menu-demo"
         mode="horizontal"
@@ -57,20 +57,19 @@
 </template>
 
 <script>
-import UserLogout from './../user/logout.vue';
-import UserAvatar from './../user/avatar.vue';
+import UserLogout from './../account/logout.vue';
+import UserAvatar from './../account/avatar.vue';
 
 export default {
   name: 'NavBar',
   data() {
     return {
-      activeIndex: '/'
     };
   },
   components: {
     UserLogout,
     UserAvatar
-  }
+  },
 };
 </script>
 

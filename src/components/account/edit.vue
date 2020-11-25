@@ -100,11 +100,11 @@ export default {
         })
         .catch(err => {
           if (err.request.status === 404) {
-            this.$SegmentMessage.error(this, 'User not found');
+            this.$info.error('User not found');
           } else if (err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Permission denied');
+            this.$info.error('Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
         });
       this.$axios
@@ -115,9 +115,9 @@ export default {
         })
         .catch(err => {
           if(err.request.status === 404) {
-            this.$SegmentMessage.error(this, 'User does not exist');
+            this.$info.error('User does not exist');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
           this.userLoading = false;
         });
@@ -134,7 +134,7 @@ export default {
         })
         .then(() => {
           this.buttonLoading = false;
-          this.$SegmentMessage.success(this, 'Your changes have been submitted');
+          this.$info.success('Your changes have been submitted');
           if (this.isMine) {
             this.$store.commit('userStaffChange', {
               isStaff: this.isStaff,
@@ -153,9 +153,9 @@ export default {
             })
             .catch(err => {
               if(err.request.status === 404) {
-                this.$SegmentMessage.error(this, 'User does not exist');
+                this.$info.error('User does not exist');
               } else {
-                this.$SegmentMessage.error(this, 'Unknown error');
+                this.$info.error('Unknown error');
               }
               this.userLoading = false;
             });
@@ -163,11 +163,11 @@ export default {
         .catch(err => {
           this.buttonLoading = false;
           if (err.request.status === 404) {
-            this.$SegmentMessage.error(this, 'User not found');
+            this.$info.error('User not found');
           } else if (err.request.status === 403) {
-            this.$SegmentMessage.error(this, 'Permission denied');
+            this.$info.error('Permission denied');
           } else {
-            this.$SegmentMessage.error(this, 'Unknown error');
+            this.$info.error('Unknown error');
           }
         });
     }

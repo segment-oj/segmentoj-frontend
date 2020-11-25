@@ -16,7 +16,7 @@ cp -r dist /tmp/
 cd /tmp/dist
 
 # 404 跳转
-echo "<script>fetch('index.html').then(d=>document.write(d.text()))</script>" > 404.html
+echo "<script>fetch('index.html').then(r=>r.text()).then(d=>document.write(d))</script>" > 404.html
 
 # 部署到自定义域域名
 # echo 'www.example.com' > CNAME
