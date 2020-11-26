@@ -22,7 +22,7 @@
         Title
       </div>
       <el-form-item>
-        <el-input v-model="title" placeholder="Title">
+        <el-input maxlength="150" show-word-limit v-model="title" placeholder="Title">
           <i v-if="errorTitle" slot="suffix" class="icon-error el-input__icon el-icon-circle-close"></i>
           <i v-else slot="suffix" class="icon-success el-input__icon el-icon-circle-check"></i>
         </el-input>
