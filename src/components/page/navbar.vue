@@ -86,7 +86,7 @@ export default {
 }
 
 i {
-    color: #fff !important;
+    color: #ffffff !important;
 }
 
 #nav {
