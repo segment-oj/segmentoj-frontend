@@ -6,9 +6,10 @@ const userstore = {
     userlang: localStorage.getItem('user-userlang') || null,
     isStaff: localStorage.getItem('user-is-staff') === 'true' ? true : false || false,
     isRoot: localStorage.getItem('user-is-root') === 'true' ? true : false || false,
+    navColor: localStorage.getItem('user-navcolor') || null,
     showlogin: false,
     showregister: false,
-    showlogout: false
+    showlogout: false,
   },
   mutations: {
     userLogin(state, data) {
@@ -36,6 +37,11 @@ const userstore = {
 
       localStorage.setItem('user-userlang', data.lang); 
     },
+    userNavColorChange(state, data) {
+      state.navColor = data.nav_color;
+
+      localStorage.setItem('user-navcolor', data.nav_color);
+    },
     userLogout(state) {
       state.authenticated = false;
       state.userid = null;
@@ -49,7 +55,8 @@ const userstore = {
       localStorage.removeItem('user-authenticated');
       localStorage.removeItem('user-userid');
       localStorage.removeItem('user-username');
-    }
+      localStorage.removeItem('user-navcolor');
+    },
   }
 };
 

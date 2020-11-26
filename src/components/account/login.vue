@@ -94,6 +94,9 @@ export default {
                 is_staff: detail.data.res.is_staff,
                 is_superuser: detail.data.res.is_superuser
               });
+              this.$store.commit('userNavColorChange', {
+                nav_color: detail.data.res.nav_color
+              });
             });
           this.$store.commit('userLogin', {
             username: this.ldata.username,

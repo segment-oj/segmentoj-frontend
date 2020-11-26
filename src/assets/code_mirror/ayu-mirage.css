@@ -11,6 +11,10 @@
     color: #bae67e !important;
 }
 
+.cm-s-ayu-mirage span.cm-meta {
+    color: #ffa759 !important;
+}
+
 .cm-s-ayu-mirage .cm-matchhighlight {
     background-color: #323a4c !important;
 }

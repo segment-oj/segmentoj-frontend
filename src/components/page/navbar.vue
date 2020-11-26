@@ -1,14 +1,13 @@
 <template>
-  <div id="nav" class="high-zindex">
+  <div id="nav" class="high-zindex" :style="'background-color: ' + this.nav_color">
     <div id="nav-content">
       <el-menu
         id="menu"
         :default-active="$route.path"
         :router="true"
-        class="el-menu-demo"
         mode="horizontal"
-        background-color="#545c64"
-        text-color="#fff"
+        :background-color="this.nav_color"
+        text-color="#ffffff"
         active-text-color="rgb(233, 233, 235)"
       >
         <el-menu-item index="" @click="$router.push('/')">
@@ -64,12 +63,18 @@ export default {
   name: 'NavBar',
   data() {
     return {
+      nav_color: this.$store.state.user.navColor
     };
   },
   components: {
     UserLogout,
     UserAvatar
   },
+  mounted() {
+    if (this.nav_color == null || this.nav_color == undefined) {
+      this.nav_color = '#545c64';
+    }
+  }
 };
 </script>
 
@@ -80,8 +85,11 @@ export default {
     }
 }
 
+i {
+    color: #ffffff !important;
+}
+
 #nav {
-    background-color: #545c64;
     width: 100vw;
     position: fixed;
     top: 0;

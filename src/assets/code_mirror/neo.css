@@ -13,3 +13,7 @@
 .cm-s-neo .cm-matchhighlight {
     background-color: #dddddd !important;
 }
+
+.cm-s-neo span.cm-meta {
+    color: #047d65;
+}

@@ -42,6 +42,18 @@
         </el-card>
         <el-card class="item">
           <div slot="header" class="clearfix">
+            <i class="el-icon-camera" />
+            Navbar Color
+          </div>
+          <el-color-picker
+            v-model="nav_color"
+            :predefine="predefineColors"
+            color-format="hex"
+          >
+          </el-color-picker>
+        </el-card>
+        <el-card class="item">
+          <div slot="header" class="clearfix">
             <i class="el-icon-chat-line-square" />
             Introductions
           </div>
@@ -61,6 +73,19 @@ export default {
   name: 'UserEdit',
   data() {
     return {
+      nav_color: this.$store.state.user.navColor,
+      predefineColors: [
+        '#545c64',
+        '#58B7FF',
+        '#20A0FF',
+        '#67C23A',
+        '#E6A23C',
+        '#F56C6C',
+        '#909399',
+        '#1F2D3D',
+        '#324057',
+        '#475669',
+      ],
       username: 'Unknown',
       email: 'Unknown',
       introduction: 'loading...',
@@ -130,9 +155,13 @@ export default {
           is_staff: this.isStaff,
           is_superuser: this.isRoot,
           is_active: this.isActive,
-          lang: this.lang
+          nav_color: this.nav_color,
+          lang: this.lang,
         })
         .then(() => {
+          this.$store.commit('userNavColorChange', {
+            nav_color: this.nav_color
+          });
           this.buttonLoading = false;
           this.$info.success('Your changes have been submitted');
           if (this.isMine) {
