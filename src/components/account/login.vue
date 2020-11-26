@@ -97,7 +97,6 @@ export default {
               this.$store.commit('userNavColorChange', {
                 nav_color: detail.data.res.nav_color
               });
-              console.log(detail.data.res);
             });
           this.$store.commit('userLogin', {
             username: this.ldata.username,
