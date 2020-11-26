@@ -17,10 +17,10 @@
             </el-option>
           </el-select>
         </el-card>
-        <el-card class="item">
+        <el-button-group class="item">
           <el-button v-if="this.can_edit" type="primary" @click="submit()" :loading="buttonLoading">Resubmit</el-button>
           <el-button @click="back()">Back</el-button>
-        </el-card>
+        </el-button-group>
         <el-card class="item">
           <i class="el-icon-info" /> Information
           <el-divider>Problem</el-divider>

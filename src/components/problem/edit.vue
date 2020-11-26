@@ -47,7 +47,7 @@
             />
             <span v-if="rendertags.length === 0">No tag</span>
           </el-card>
-          <el-card class="item">
+          <el-button-group class="item">
             <el-button type="primary" @click="submit">Submit</el-button>
             <el-button @click="back();">Back</el-button>
             <ConfirmDelete
@@ -57,7 +57,7 @@
               name="problem"
               :confirmInput="'#' + this.$route.params.id + '/' + this.title"
             />
-          </el-card>
+          </el-button-group>
         </el-col>
         <el-col :span="17">
           <el-card v-loading="contentLoading">
