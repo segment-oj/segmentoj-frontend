@@ -264,5 +264,17 @@ export default {
     label: 'Unsupported Language',
     color: '#FF4949'
   }],
-  captchaKeyMax: 2000000000
+  captchaKeyMax: 2000000000,
+  navColorPreset: [
+    '#545c64',
+    '#58B7FF',
+    '#20A0FF',
+    '#67C23A',
+    '#E6A23C',
+    '#F56C6C',
+    '#909399',
+    '#1F2D3D',
+    '#324057',
+    '#475669',
+  ],
 };

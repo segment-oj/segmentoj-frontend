@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button class="submit-button" @click="submit()">Submit</el-button>
+    <el-button type="info" class="submit-button" @click="submit()" plain>Submit</el-button>
     <div class="item content">
       <div v-loading="!(isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot)" class="edit-content">
         <el-row :gutter="20">
@@ -74,18 +74,7 @@ export default {
   data() {
     return {
       nav_color: this.$store.state.user.navColor,
-      predefineColors: [
-        '#545c64',
-        '#58B7FF',
-        '#20A0FF',
-        '#67C23A',
-        '#E6A23C',
-        '#F56C6C',
-        '#909399',
-        '#1F2D3D',
-        '#324057',
-        '#475669',
-      ],
+      predefineColors: sfconfig.navColorPreset,
       username: 'Unknown',
       email: 'Unknown',
       introduction: 'loading...',
