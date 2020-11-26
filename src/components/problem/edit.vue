@@ -14,21 +14,15 @@
             <i class="el-icon-menu" /> Limitation
             <el-divider>Time</el-divider>
             <el-row :gutter="10">
-              <el-col :span="20">
-                <el-input v-model="time" placeholder="Set time limitation"></el-input>
-              </el-col>
-              <el-col :span="4" class="center-text">
-                MS
-              </el-col>
+              <el-input v-model="time" placeholder="Set time limitation">
+                <span slot="suffix" class="el-input__icon">MS</span>
+              </el-input>
             </el-row>
             <el-divider>Memory</el-divider>
             <el-row :gutter="10">
-              <el-col :span="20">
-                <el-input v-model="memory" placeholder="Set memory limitation"></el-input>
-              </el-col>
-              <el-col :span="4" class="center-text">
-                MB
-              </el-col>
+              <el-input v-model="memory" placeholder="Set memory limitation">
+                <span slot="suffix" class="el-input__icon">MB</span>
+              </el-input>
             </el-row>
           </el-card>
           <el-card class="item">
