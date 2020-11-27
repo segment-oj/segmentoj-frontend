@@ -32,6 +32,12 @@ export default {
         });
     }
   },
+  watch: {
+    pid() {
+      this.title = '#' + this.pid;
+      this.loadproblem(this.pid);
+    }
+  },
   mounted() {
     this.title = '#' + this.pid;
     this.loadproblem(this.pid);

@@ -87,8 +87,7 @@ export default {
         name: 'pid',
         label: 'Problem ID',
         width: '120',
-        align: 'center',
-        sortable: true
+        align: 'center'
       }, {
         name: 'title',
         label: 'Title',

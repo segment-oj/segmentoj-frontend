@@ -32,6 +32,12 @@ export default {
         });
     }
   },
+  watch: {
+    userid() {
+      this.username = this.userid;
+      this.loadusername(this.userid);
+    }
+  },
   mounted() {
     this.username = this.userid;
     this.loadusername(this.userid);
