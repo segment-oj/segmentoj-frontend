@@ -77,8 +77,7 @@ export default {
           }
         })
         .catch(err => {
-          this.$info.error('[Ajax Table] Request Failed');
-          console.log(err);
+          this.$info.error(this.process_err(err));
         });
     }
   },
@@ -116,6 +115,13 @@ export default {
     pagination_class: {
       type: String,
       default: 'pagination'
+    },
+    process_err: {
+      type: Function,
+      default: (err) => {
+        console.log(err);
+        return '[Ajax Table] Request Failed';
+      }
     }
   },
 };
