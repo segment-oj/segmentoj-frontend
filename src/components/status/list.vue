@@ -145,9 +145,6 @@ export default {
   },
   components: {
     AjaxTable
-  },
-  mounted() {
-    console.log(this.$route.query.pid);
   }
 };
 </script>
