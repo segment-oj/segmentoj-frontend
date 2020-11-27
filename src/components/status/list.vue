@@ -51,7 +51,7 @@ export default {
       alive: true,
       ajax_url: apiurl('/status/list'),
       limit: 30,
-      searchProblem: '',
+      searchProblem: this.$route.query.pid === undefined ? '' : this.$route.query.pid,
       columns: [{
         name: 'id',
         label: 'Run ID',
@@ -146,6 +146,9 @@ export default {
   components: {
     AjaxTable
   },
+  mounted() {
+    console.log(this.$route.query.pid);
+  }
 };
 </script>
 

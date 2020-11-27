@@ -28,7 +28,7 @@
               </el-menu-item>
               <el-submenu index="1">
                 <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
-                <el-menu-item index="1-0">Submissions</el-menu-item>
+                <el-menu-item index="1-0" @click="jump_to_status">Submissions</el-menu-item>
                 <el-menu-item index="1-1">Statistics</el-menu-item>
               </el-submenu>
               <el-submenu index="2">
@@ -168,6 +168,14 @@ export default {
             this.$info.error('Unknown error');
           }
         });
+    },
+    jump_to_status() {
+      this.$router.push({
+        path: '/status/list',
+        query: {
+          pid: this.$route.params.id
+        }
+      });
     },
     full_screen() {
       this.isWider = !this.isWider;
