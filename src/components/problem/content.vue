@@ -22,7 +22,7 @@
         <div id="tools">
           <el-card v-if="showSmallToolBar || !smallScreen">
             <div><i class="el-icon-s-tools" /> Tool Bar</div>
-            <el-menu default-active="0">
+            <el-menu default-active="0" class="item">
               <el-menu-item index="0" @click="$router.push('/problem/' + $route.params.id +'/submit');">
                 <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
               </el-menu-item>
@@ -44,7 +44,7 @@
                 <span slot="title" class="text-bold"><i class="el-icon-edit" /> Edit</span>
               </el-menu-item>
             </el-menu>
-            <el-button @click="$router.push('/problem/list');" class="margin-top-small">Back</el-button>
+            <el-button @click="$router.push('/problem/list');" class="margin-top-small back-button">Back</el-button>
           </el-card>
         </div>
         <div id="info">
@@ -192,6 +192,10 @@ export default {
 </script>
 
 <style scoped>
+.item {
+    margin-top: 10px;
+}
+
 #hidden-problem {
     margin: 30px 0;
     margin-right: 10px;
@@ -294,5 +298,9 @@ export default {
 
 .margin-top-small {
     margin-top: 10px;
+}
+
+.back-button {
+    width: 100%;
 }
 </style>
