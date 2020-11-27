@@ -10,7 +10,6 @@
             :total="data_count"
             :process="process"
             :process_err="process_err"
-            :default_sort="{prop: 'id', order: 'descending'}"
             :customData="{problem:problem}"
             pagination_class="status-list-pagination"
           />
@@ -55,50 +54,42 @@ export default {
       columns: [{
         name: 'id',
         label: 'Run ID',
-        width: '90',
-        align: 'center',
-        sortable: true
+        width: '80',
+        align: 'center'
       }, {
         name: 'problem',
         label: 'Problem',
-        align: 'center',
-        sortable: false
+        align: 'center'
       }, {
         name: 'state',
         label: 'Status',
         align: 'center',
-        width: '120',
-        sortable: false
+        width: '120'
       }, {
         name: 'score',
         label: 'Score',
-        width: '90',
-        align: 'center',
-        sortable: true
+        width: '60',
+        align: 'center'
       }, {
         name: 'time',
         label: 'Time',
         width: '90',
-        align: 'center',
-        sortable: false
+        align: 'center'
       }, {
         name: 'memory',
         label: 'Memory',
         width: '90',
-        align: 'center',
-        sortable: false
+        align: 'center'
       }, {
         name: 'lang',
         label: 'Language',
         width: '90',
-        align: 'center',
-        sortable: false
+        align: 'center'
       }, {
         name: 'owner',
         label: 'Author',
         width: '120',
-        align: 'center',
-        sortable: false
+        align: 'center'
       }],
       data_count: 10
     };
