@@ -1,16 +1,39 @@
 <template>
   <div>
-    <el-card class="item" v-if="alive">
-      <AjaxTable
-        :ajax_url="ajax_url"
-        :columns="columns"
-        :limit="limit"
-        :total="data_count"
-        :process="process"
-        :default_sort="{prop: 'id', order: 'descending'}"
-        pagination_class="status-list-pagination"
-      />
-    </el-card>
+    <el-row gutter="20" style="margin-bottom: 30px;">
+      <el-col span="18">
+        <el-card v-if="alive">
+          <AjaxTable
+            :ajax_url="ajax_url"
+            :columns="columns"
+            :limit="limit"
+            :total="data_count"
+            :process="process"
+            :process_err="process_err"
+            :default_sort="{prop: 'id', order: 'descending'}"
+            :customData="{problem:problem}"
+            pagination_class="status-list-pagination"
+          />
+        </el-card>
+      </el-col>
+      
+      <el-col span="6">
+        <el-card>
+          <div slot="header" class="clearfix">
+            <i class="el-icon-search" />
+            Search
+          </div>
+          <el-input
+            placeholder="PID"
+            v-model="searchProblem"
+            class="input-with-select"
+            clearable
+          >
+            <template slot="prepend">#.</template>
+          </el-input>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -28,10 +51,11 @@ export default {
       alive: true,
       ajax_url: apiurl('/status/list'),
       limit: 30,
+      searchProblem: '',
       columns: [{
         name: 'id',
         label: 'Run ID',
-        width: '120',
+        width: '90',
         align: 'center',
         sortable: true
       }, {
@@ -43,29 +67,30 @@ export default {
         name: 'state',
         label: 'Status',
         align: 'center',
+        width: '120',
         sortable: false
       }, {
         name: 'score',
         label: 'Score',
-        width: '120',
+        width: '90',
         align: 'center',
         sortable: true
       }, {
         name: 'time',
         label: 'Time',
-        width: '120',
+        width: '90',
         align: 'center',
         sortable: false
       }, {
         name: 'memory',
         label: 'Memory',
-        width: '120',
+        width: '90',
         align: 'center',
         sortable: false
       }, {
         name: 'lang',
         label: 'Language',
-        width: '120',
+        width: '90',
         align: 'center',
         sortable: false
       }, {
@@ -77,6 +102,11 @@ export default {
       }],
       data_count: 10
     };
+  },
+  computed: {
+    problem() {
+      return this.searchProblem.trim();
+    },
   },
   methods: {
     process(x) {
@@ -106,6 +136,12 @@ export default {
       x.owner = (<UserNameLink userid={x.owner}></UserNameLink>);
       return x;
     },
+    process_err(err) {
+      if (err.request.status === 404) {
+        return 'Problem not found';
+      }
+      return '[Ajax Table] Request Failed';
+    }
   },
   components: {
     AjaxTable

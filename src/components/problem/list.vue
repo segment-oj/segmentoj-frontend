@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-row :gutter="20" style="margin-bottom: 30px;">
-      <el-col :span="18">
+    <el-row gutter="20" style="margin-bottom: 30px;">
+      <el-col span="18">
         <el-card v-if="alive">
           <AjaxTable
             :ajax_url="ajax_url"
