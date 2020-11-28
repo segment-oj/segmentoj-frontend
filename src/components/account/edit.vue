@@ -188,6 +188,8 @@ export default {
             this.$info.error('Unknown error');
           }
         });
+
+      this.$router.go(0);
     }
   },
   mounted() {
