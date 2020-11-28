@@ -42,9 +42,9 @@
             :min="10"
             style="margin-top: 10px;"
           />
-          <el-divider />
+          <el-divider class="divider" />
           <el-checkbox v-model="showTags"> Show Tags</el-checkbox>
-          <el-divider />
+          <el-divider class="divider" />
           <el-button
             style="width: 100%;"
             @click="$store.state.createProblem.displayCreateProblem = true;"
@@ -178,5 +178,9 @@ export default {
 <style scoped>
 .item {
     margin-top: 20px;
+}
+
+.divider {
+    margin: 20px 0;
 }
 </style>

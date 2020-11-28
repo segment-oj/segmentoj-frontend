@@ -25,7 +25,7 @@
     <el-button-group class="item">
       <el-button
         type="primary"
-        v-on:click="Submit();"
+        v-on:click="Submit"
       >
         Submit
       </el-button>
@@ -57,9 +57,6 @@ export default {
 
       this.$axios
         .patch(apiurl('/problem/' + this.$route.params.id), request_data)
-        .then(() => {
-          this.$store.state.tagedit.displayTagEdit = false;
-        })
         .catch(err => {
           if (err.request.status === 404) {
             this.$info.error('Problem not found');
@@ -69,6 +66,9 @@ export default {
             this.$info.error('Unknown error');
           }
         });
+
+      this.$store.state.tagedit.displayTagEdit = false;
+      this.$router.go(0);
     },
     new_tag() {
       this.$axios
@@ -86,6 +86,8 @@ export default {
           }
           this.$info.error('Unknown error');
         });
+
+      this.$router.go(0);
     }
   },
   components: {
