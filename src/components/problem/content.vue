@@ -28,13 +28,13 @@
               </el-menu-item>
               <el-submenu index="1">
                 <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
-                <el-menu-item index="1-0" @click="jump_to_status">Submissions</el-menu-item>
-                <el-menu-item index="1-1">Statistics</el-menu-item>
+                <el-menu-item index="1-0" @click="jump_to_status"><i class="el-icon-upload2" />Submissions</el-menu-item>
+                <el-menu-item index="1-1"><i class="el-icon-data-line" />Statistics</el-menu-item>
               </el-submenu>
               <el-submenu index="2">
                 <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
-                <el-menu-item index="2-0">Discussions</el-menu-item>
-                <el-menu-item index="2-1">Solutions</el-menu-item>
+                <el-menu-item index="2-0"><i class="el-icon-chat-line-square" />Discussions</el-menu-item>
+                <el-menu-item index="2-1"><i class="el-icon-key" />Solutions</el-menu-item>
               </el-submenu>
               <el-menu-item
                 index="3"
