@@ -33,7 +33,7 @@ let router = new Router({
     component: () => import('./components/status/content.vue')
   }, {
     path: '/app/editor',
-    component: () => import('./components/app/editor.vue')
+    component: () => import('./components/app/CodeEditor.vue')
   }, {
     path: '*',
     component: () => import('./components/404.vue')

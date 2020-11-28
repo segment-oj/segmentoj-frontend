@@ -28,14 +28,16 @@
         </el-input>
       </el-form-item>
       <el-form-item>
-        <el-button
-          type="primary"
-          v-on:click="Submit();"
-          :disabled="errorPID || errorTitle"
-        >
-          Edit Detail
-        </el-button>
-        <el-button v-on:click="$store.state.createProblem.displayCreateProblem = false">Cancel</el-button>
+        <el-button-group>
+          <el-button
+            type="primary"
+            @click="Submit();"
+            :disabled="errorPID || errorTitle"
+          >
+            Edit Detail
+          </el-button>
+          <el-button @click="$store.state.createProblem.displayCreateProblem = false">Cancel</el-button>
+        </el-button-group>
       </el-form-item>
     </el-form>
   </el-dialog>
