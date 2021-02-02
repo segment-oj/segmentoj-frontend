@@ -1,6 +1,6 @@
 export default {
   api: {
-    server: '/api'
+    server: 'http://172.32.5.177:8000/api'
   },
   markdown: {
     gfm: true,
