@@ -18,6 +18,8 @@ const userstore = {
       state.authenticated = true;
       state.userid = data.userid;
       state.username = data.username;
+      state.accessToken = data.accessToken;
+      state.refreshToken = data.refreshToken;
       localStorage.setItem('user-authenticated', true);
       localStorage.setItem('user-username', data.username);
       localStorage.setItem('user-userid', data.userid);
@@ -53,6 +55,8 @@ const userstore = {
       state.userlang = null;
       state.isStaff = false;
       state.isRoot = false;
+      state.accessToken = null;
+      state.refreshToken = null;
       localStorage.removeItem('user-is-root');
       localStorage.removeItem('user-is-staff');
       localStorage.removeItem('user-userlang'); 
