@@ -79,13 +79,14 @@ export default {
     submit() {
       this.buttonLoading = true;
       this.$axios
-        .post(apiurl('/account/session'), {
+        .post(apiurl('/account/token'), {
           username: this.ldata.username,
           password: this.ldata.password
         })
         .then(res => {
+          let userid = JSON.parse(atob(res.data.access.split('.')[1])).user_id;
           this.$axios
-            .get(apiurl('/account/' + res.data.res.id))
+            .get(apiurl('/account/' + userid))
             .then(detail => {
               this.$store.commit('userLang', {
                 lang: detail.data.res.lang
@@ -100,22 +101,17 @@ export default {
             });
           this.$store.commit('userLogin', {
             username: this.ldata.username,
-            userid: res.data.res.id
+            userid: userid,
+            accessToken: res.data.access,
+            refreshToken: res.data.refresh
           });
+          this.$axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.access}`;
           this.$info.success('Logged in');
           this.$store.state.user.showlogin = false;
           this.buttonLoading = false;
         })
-        .catch(err => {
-          if (err.request.status === 403) {
-            this.$info.error('Username or password incorrect');
-          } else if (err.request.status === 429) {
-            // HTTP 429 Too Many Requests
-            this.$info.error('Requesting too frequently');
-          } else {
-            // Unknown error
-            this.$info.error('Unknown error');
-          }
+        .catch(() => {
+          this.$info.error('Username or password incorrect.');
           this.buttonLoading = false;
         });
     },

@@ -1,5 +1,7 @@
 const userstore = {
   state: {
+    accessToken: localStorage.getItem('user-access-token') || null,
+    refreshToken:  localStorage.getItem('user-refresh-token') || null,
     authenticated: localStorage.getItem('user-authenticated') === 'true' ? true : false || false,
     username: localStorage.getItem('user-username') || null,
     userid: localStorage.getItem('user-userid') || null,
@@ -19,6 +21,8 @@ const userstore = {
       localStorage.setItem('user-authenticated', true);
       localStorage.setItem('user-username', data.username);
       localStorage.setItem('user-userid', data.userid);
+      localStorage.setItem('user-access-token', data.accessToken);
+      localStorage.setItem('user-refresh-token', data.refreshToken);
     },
     userStaffChange(state, data) {
       state.isStaff = data.isStaff;
@@ -56,6 +60,8 @@ const userstore = {
       localStorage.removeItem('user-userid');
       localStorage.removeItem('user-username');
       localStorage.removeItem('user-navcolor');
+      localStorage.removeItem('user-access-token');
+      localStorage.removeItem('user-refresh-token');
     },
   }
 };
