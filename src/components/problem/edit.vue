@@ -241,6 +241,7 @@ export default {
         .delete(apiurl('/problem/' + this.$route.params.id))
         .then(() => {
           this.$info.success('Deleted problem #' + this.$route.params.id);
+          this.$router.push('/problem/list');
         })
         .catch(err => {
           if (err.request.status === 404) {
