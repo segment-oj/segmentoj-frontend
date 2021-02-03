@@ -26,12 +26,12 @@ export default {
   },
   methods: {
     refresh_captcha() {
-      this.img_url = apiurl('/captcha/' + this.$store.state.captcha.captchaKey + '?sfid=' + String(Math.random()));
+      this.img_url = apiurl(`/captcha/${this.$store.state.captcha.captchaKey}?sfid=${Math.random()}`);
     }
   },
   mounted() {
     this.$store.commit('newCaptcha');
-    this.img_url = apiurl('/captcha/' + this.$store.state.captcha.captchaKey + '?sfid=' + String(Math.random()));
+    this.img_url = apiurl(`/captcha/${this.$store.state.captcha.captchaKey}?sfid=${Math.random()}`);
     this.loaded = true;
   }
 };

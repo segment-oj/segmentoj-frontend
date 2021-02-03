@@ -89,7 +89,7 @@ export default {
         callback();
       }
       this.$axios
-        .get(apiurl('account/username/accessibility/' + value))
+        .get(apiurl(`/account/username/accessibility/${value}`))
         .then(() => {
           callback();
         })

@@ -37,7 +37,7 @@ export default {
     getSelected() {
       let arr = new Array();
       this.$axios
-        .get(apiurl('problem/' + this.pid))
+        .get(apiurl(`/problem/'${this.pid}`))
         .then(res => {
           let data = res.data.res.tags;
           for (let i = 0; i < data.length; i += 1) {

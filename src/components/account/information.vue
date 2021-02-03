@@ -145,7 +145,7 @@ export default {
   methods: {
     showHomepage() {
       this.$axios
-        .get(apiurl('/account/' + this.$route.params.id))
+        .get(apiurl(`/account/${this.$route.params.id}`))
         .then(res => {
           let data = res.data.res;
           this.username = data.username;
@@ -169,11 +169,11 @@ export default {
             this.rate = (this.solved * 100.0) / this.submit;
             this.rate = this.rate.toFixed(2);
           }
-          if (this.$store.state.user.isStaff || this.userid == String(this.$store.state.user.userid)) {
+          if (this.$store.state.user.isStaff || this.userid == this.$store.state.user.userid.toString) {
             this.ismine = true;
           }
           this.$axios
-            .get(apiurl('/account/' + this.$route.params.id + '/introduction'))
+            .get(apiurl(`/account/${this.$route.params.id}/introduction`))
             .then(detail => {
               this.introduction = detail.data.res.introduction;
             })

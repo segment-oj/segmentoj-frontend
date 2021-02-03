@@ -49,7 +49,7 @@
               buttonType="danger"
               :buttonFunction="this.delete"
               name="problem"
-              :confirmInput="'#' + this.$route.params.id + '/' + this.title"
+              :confirmInput="`#${this.$route.params.id}/${this.title}`"
             />
           </el-button-group>
         </el-col>
@@ -73,7 +73,7 @@
           buttonCircle="true"
           :buttonFunction="this.delete"
           name="problem"
-          :confirmInput="'#' + this.$route.params.id + '/' + this.title"
+          :confirmInput="`#${this.$route.params.id}/${this.title}`"
         />
       </el-card>
       <el-card>
@@ -165,7 +165,7 @@ export default {
     render_tags() {
       for(let i = 0; i < this.tags.length; i += 1) {
         this.$axios
-          .get(apiurl('/problem/tag/' + this.tags[i]))
+          .get(apiurl(`/problem/tag/${this.tags[i]}`))
           .then(res => {
             let data = res.data;
             this.rendertags.push({
@@ -177,7 +177,7 @@ export default {
     },
     loadproblem() {
       this.$axios
-        .get(apiurl('/problem/' + String(this.$route.params.id)))
+        .get(apiurl(`/problem/${this.$route.params.id}`))
         .then(res => {
           let data = res.data.res;
           this.title = data.title;
@@ -190,7 +190,7 @@ export default {
           this.tags = data.tags;
           this.render_tags();
           this.$axios
-            .get(apiurl('/problem/' + String(this.$route.params.id) + '/description'))
+            .get(apiurl(`/problem/${this.$route.params.id}/description`))
             .then(detail => {
               this.mdContent = detail.data.res.description;
             });
@@ -206,7 +206,7 @@ export default {
         });
     },
     back() {
-      this.$router.push('/problem/' + this.$route.params.id);
+      this.$router.push(`/problem/${this.$route.params.id}`);
     },
     submit() {
       let request_data = {
@@ -222,7 +222,7 @@ export default {
 
       this.mdContent_sha256 = sha256(this.mdContent);
       this.$axios
-        .patch(apiurl('/problem/' + this.$route.params.id), request_data)
+        .patch(apiurl(`/problem/${this.$route.params.id}`), request_data)
         .then(() => {
           this.$info.success('Your changes have been submitted');
         })
@@ -238,9 +238,9 @@ export default {
     },
     delete() {
       this.$axios
-        .delete(apiurl('/problem/' + this.$route.params.id))
+        .delete(apiurl(`/problem/${this.$route.params.id}`))
         .then(() => {
-          this.$info.success('Deleted problem #' + this.$route.params.id);
+          this.$info.success(`Deleted problem #${this.$route.params.id}`);
           this.$router.push('/problem/list');
         })
         .catch(err => {

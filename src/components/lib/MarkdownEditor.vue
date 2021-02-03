@@ -7,7 +7,7 @@
             :value="value"
             @input="handleInput($event.target.value)"
             class="markdown-editor-value-placeholder"
-            :id="uid + '-markdown-editor'"
+            :id="`${uid}-markdown-editor`"
             />
         </div>
       </el-tab-pane>
@@ -51,7 +51,7 @@ export default {
   },
   mounted() {
     this.mde = new SimpleMDE({
-      element: document.getElementById(this.uid + '-markdown-editor'),
+      element: document.getElementById(`${this.uid}-markdown-editor`),
       autoDownloadFontAwesome: false,
       spellChecker: this.spellChecker,
       toolbar: false,

@@ -43,12 +43,12 @@ export default {
   methods: {
     showHomepage() {
       this.$axios
-        .get(apiurl('/account/' + this.$route.params.id))
+        .get(apiurl(`/account/${this.$route.params.id}`))
         .then(res => {
           let data = res.data.res;
           this.userid = data.id;
           this.isStaff = data.is_staff;
-          if (this.userid == String(this.$store.state.user.userid)) {
+          if (this.userid == this.$store.state.user.userid.toString()) {
             this.is_mine = true;
           }
           if (this.$store.state.user.isStaff || this.is_mine) {

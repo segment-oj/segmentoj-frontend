@@ -86,7 +86,7 @@ export default {
         .then(res => {
           let userid = JSON.parse(atob(res.data.access.split('.')[1])).user_id;
           this.$axios
-            .get(apiurl('/account/' + userid))
+            .get(apiurl(`/account/${userid}`))
             .then(detail => {
               this.$store.commit('userLang', {
                 lang: detail.data.res.lang

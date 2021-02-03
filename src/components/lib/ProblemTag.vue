@@ -1,6 +1,6 @@
 <template>
   <span class="tag" :style="style">
-    <i v-if="icon" :class="'el-icon-' + icon_detail"></i>{{content}}
+    <i v-if="icon" :class="`el-icon-${icon_detail}`"></i>{{content}}
   </span>
 </template>
 
@@ -44,12 +44,12 @@ export default {
     };
   },
   mounted() {
-    this.style = 'color: ' + this.color + '; background-color: ' + this.background_color + ';';
+    this.style = `color: ${this.color}; background-color: ${this.background_color};`;
     if(this.border) {
-      this.style += 'border-color: '+ this.border_color + ';';
+      this.style += `border-color: ${this.border_color};`;
     }
-    this.style += 'height: ' + this.height + 'px;';
-    this.style += 'line-height: ' + String(this.height - 2) + 'px;';
+    this.style += `height: ${this.height}px;`;
+    this.style += `line-height: ${this.height - 2}px;`;
   }
 };
 </script>

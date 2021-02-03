@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="( '/account/' + String(this.userid))" class="color-regular-text text-normal">{{this.username}} </router-link>
+    <router-link :to="( `/account/${this.userid}`)" class="color-regular-text text-normal">{{this.username}} </router-link>
   </div>
 </template>
 
@@ -17,13 +17,13 @@ export default {
   },
   data() {
     return {
-      username: new String()
+      username: '',
     };
   },
   methods: {
     loadusername(id) {
       this.$axios
-        .get(apiurl('/account/' + String(id)))
+        .get(apiurl(`/account/${id}`))
         .then(res => {
           this.username = res.data.res.username;
         })

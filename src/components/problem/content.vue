@@ -23,7 +23,7 @@
           <el-card v-if="showSmallToolBar || !smallScreen">
             <div><i class="el-icon-s-tools" /> Tool Bar</div>
             <el-menu default-active="0" class="item">
-              <el-menu-item index="0" @click="$router.push('/problem/' + $route.params.id +'/submit');">
+              <el-menu-item index="0" @click="$router.push(`/problem/${$route.params.id}/submit`);">
                 <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
               </el-menu-item>
               <el-submenu index="1">
@@ -39,7 +39,7 @@
               <el-menu-item
                 index="3"
                 v-if="this.$store.state.user.isStaff || this.$store.state.user.isRoot" 
-                @click="$router.push('/problem/' + $route.params.id +'/edit');"
+                @click="$router.push(`/problem/${$route.params.id}/edit`);"
               >
                 <span slot="title" class="text-bold"><i class="el-icon-edit" /> Edit</span>
               </el-menu-item>
@@ -128,7 +128,7 @@ export default {
     render_tags() {
       for(let i = 0; i < this.tags.length; i += 1) {
         this.$axios
-          .get(apiurl('/problem/tag/' + this.tags[i]))
+          .get(apiurl(`/problem/tag/${this.tags[i]}`))
           .then(res => {
             let data = res.data;
             this.rendertags.push({
@@ -140,7 +140,7 @@ export default {
     },
     loadproblem() {
       this.$axios
-        .get(apiurl('/problem/' + String(this.$route.params.id)))
+        .get(apiurl(`/problem/${this.$route.params.id}`))
         .then(res => {
           let data = res.data.res;
           this.title = data.title;
@@ -154,7 +154,7 @@ export default {
           this.render_tags();
           this.problemLoading = false;
           this.$axios
-            .get(apiurl('/problem/' + String(this.$route.params.id) + '/description'))
+            .get(apiurl(`/problem/${this.$route.params.id}/description`))
             .then(detail => {
               this.description = detail.data.res.description;
             });
