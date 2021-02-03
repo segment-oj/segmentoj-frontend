@@ -61,6 +61,7 @@
         </el-card>
       </div>
     </div>
+    <el-button type="info" class="submit-button submit-button-bottom" @click="submit()" plain>Submit</el-button>
   </div>
 </template>
 
@@ -220,6 +221,7 @@ export default {
 
 .item {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .small-label {
