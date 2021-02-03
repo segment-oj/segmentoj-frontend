@@ -54,7 +54,7 @@ export default {
               this.rendertags[i] = t.tagsData[this.tags[i]];
             } else {
               this.$axios
-                .get(apiurl('/problem/tag/' + this.tags[i]))
+                .get(apiurl(`/problem/tag/${this.tags[i]}`))
                 .then((detail) => {
                   let data = detail.data.res;
                   t.tagsData[this.tags[i]] = {

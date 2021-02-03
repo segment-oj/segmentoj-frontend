@@ -13,7 +13,7 @@
       </div>
       <p>Once you delete this {{this.name}}, <strong class="color-warning">THERE IS NO GOING BACK</strong>.</p>
       <p>Please type <strong>{{this.confirmInput}}</strong> to confirm.</p>
-      <el-input :placeholder="'Type ' + this.confirmInput" v-model="confirmAnswer"></el-input>
+      <el-input :placeholder="`Type ${this.confirmInput}`" v-model="confirmAnswer"></el-input>
       <div style="text-align: right; margin: 10px;">
         <el-button
           size="mini"

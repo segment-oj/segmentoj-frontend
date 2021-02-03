@@ -98,7 +98,7 @@ export default {
   methods: {
     loadInfo() {
       this.$axios
-        .get(apiurl('/problem/' + String(this.$route.params.id)))
+        .get(apiurl(`/problem/${this.$route.params.id}`))
         .then(res => {
           let data = res.data.res;
           this.title = data.title;
@@ -117,7 +117,7 @@ export default {
         });
     },
     back() {
-      this.$router.push('/problem/' + this.$route.params.id);
+      this.$router.push(`/problem/${this.$route.params.id}`);
     },
     submit() {
       this.buttonLoading = true;
@@ -145,7 +145,7 @@ export default {
   },
   mounted() {
     this.loadInfo();
-    this.lang_num = String(this.$store.state.user.userlang);
+    this.lang_num = this.$store.state.user.userlang.toString();
   }
 };
 </script>

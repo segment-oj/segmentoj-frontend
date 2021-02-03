@@ -118,16 +118,16 @@ export default {
   methods: {
     loadInfo() {
       this.$axios
-        .get(apiurl('/status/' + String(this.$route.params.id)))
+        .get(apiurl(`/status/${this.$route.params.id}`))
         .then((res) => {
           let data = res.data.res;
           this.pid = data.problem;
           this.memory = data.memory / 1000;
           this.time = data.time;
           this.code = data.code;
-          this.lang_num = String(data.lang);
+          this.lang_num = data.lang.toString();
 
-          if (data.owner == String(this.$store.state.user.userid)) {
+          if (data.owner == this.$store.state.user.userid.toString()) {
             this.is_mine = true;
           }
           if (this.$store.state.user.isStaff || this.is_mine) {
@@ -135,12 +135,12 @@ export default {
           }
 
           this.$axios
-            .get(apiurl('/problem/' + String(this.pid)))
+            .get(apiurl(`/problem/${this.pid}`))
             .then((title) => {
               this.ptitle = title.data.res.title;
             });
           this.$axios
-            .get(apiurl('/account/' + String(data.owner)))
+            .get(apiurl(`/account/${data.owner}`))
             .then((name) => {
               this.owner = name.data.res.username;
             });

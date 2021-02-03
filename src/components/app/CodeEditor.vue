@@ -59,7 +59,7 @@ export default {
   watch: {
     theme(val) {
       this.$axios
-        .patch(apiurl('/account/' + this.$store.state.user.userid), {
+        .patch(apiurl(`/account/${this.$store.state.user.userid}`), {
           editor_theme: val
         });
     }
@@ -70,9 +70,9 @@ export default {
     },
     loadUserTheme() {
       this.$axios
-        .get(apiurl('/account/' + this.$store.state.user.userid))
+        .get(apiurl(`/account/${this.$store.state.user.userid}`))
         .then(res => {
-          this.theme = String(res.data.res.editor_theme);
+          this.theme = res.data.res.editor_theme.toString();
         });
     }
   },

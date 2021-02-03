@@ -56,7 +56,7 @@ export default {
       };
 
       this.$axios
-        .patch(apiurl('/problem/' + this.$route.params.id), request_data)
+        .patch(apiurl(`/problem/${this.$route.params.id}`), request_data)
         .catch(err => {
           if (err.request.status === 404) {
             this.$info.error('Problem not found');

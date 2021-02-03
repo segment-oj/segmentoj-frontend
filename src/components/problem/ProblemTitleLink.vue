@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="( '/problem/' + String(this.pid))" class="color-regular-text text-normal">{{this.title}} </router-link>
+    <router-link :to="( `/problem/${this.pid}`)" class="color-regular-text text-normal">{{this.title}} </router-link>
   </div>
 </template>
 
@@ -17,29 +17,29 @@ export default {
   },
   data() {
     return {
-      title: new String()
+      title: '',
     };
   },
   methods: {
     loadproblem(id) {
       this.$axios
-        .get(apiurl('/problem/' + String(id)))
+        .get(apiurl(`/problem/${id}`))
         .then(res => {
-          this.title = '#' + String(id) + '. ' + res.data.res.title;
+          this.title = `#${id}. ${res.data.res.title}`;
         })
         .catch(() => {
-          this.title = '#' + String(id);
+          this.title = `#${id}`;
         });
     }
   },
   watch: {
     pid() {
-      this.title = '#' + this.pid;
+      this.title = `#${this.pid}`;
       this.loadproblem(this.pid);
     }
   },
   mounted() {
-    this.title = '#' + this.pid;
+    this.title = `#${this.pid}`;
     this.loadproblem(this.pid);
   }
 };

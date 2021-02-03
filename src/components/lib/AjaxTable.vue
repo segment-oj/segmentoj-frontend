@@ -16,7 +16,7 @@
         :sortable="item.sortable"
       />
     </el-table>
-    <div :class="pagination_class + ' top-zindex'">
+    <div :class="`${pagination_class} top-zindex`">
       <el-pagination
         :page-size="this.limit"
         background

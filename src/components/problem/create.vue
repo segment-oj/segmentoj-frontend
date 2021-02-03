@@ -73,7 +73,7 @@ export default {
         }
         if (flag == false) {
           this.$axios
-            .get(apiurl('/problem/' + String(val)))
+            .get(apiurl(`/problem/${val}`))
             .then(() => {
               this.errorPID = true;
             })
@@ -99,7 +99,7 @@ export default {
         })
         .then(() => {
           this.$store.state.createProblem.displayCreateProblem = false;
-          this.$router.push('/problem/' + this.pid + '/edit');
+          this.$router.push(`/problem/${this.pid}/edit`);
         })
         .catch(err => {
           if (err.request.status === 400) {

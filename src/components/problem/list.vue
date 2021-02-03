@@ -122,7 +122,7 @@ export default {
         return;
       }
       this.$axios
-        .get(apiurl('/account/' + this.$store.state.user.userid))
+        .get(apiurl(`/account/${this.$store.state.user.userid}`))
         .then(res => {
           let data = res.data.res;
           this.limit = data.list_column;
@@ -133,7 +133,7 @@ export default {
         return;
       }
       this.$axios
-        .patch(apiurl('/account/' + this.$store.state.user.userid), {
+        .patch(apiurl(`/account/${this.$store.state.user.userid}`), {
           list_column: x
         });
     },
@@ -149,15 +149,15 @@ export default {
       if (!x.enabled) {
         x.title = (
           <div>
-            <router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title } </router-link>
+            <router-link to={`/problem/${x.pid}`} class={`${color} text-normal`}>{ x.title } </router-link>
             <el-tag effect="dark" type="warning" size="small">Hidden</el-tag>
           </div>
         );
       } else {
-        x.title = (<router-link to={'/problem/' + String(x.pid)} class={color + ' text-normal'}>{ x.title }</router-link>);
+        x.title = (<router-link to={`/problem/${x.pid}`} class={`${color} text-normal`}>{ x.title }</router-link>);
       }
       x.pid = (<div class={color}>{x.pid}</div>);
-      x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
+      x.score = (<div class={`${color} text-extra-bold`}>{x.score >= 0 ? x.score : '-'}</div>);
       
       x.tag = (<listTag tags={ x.tags }></listTag>);
       

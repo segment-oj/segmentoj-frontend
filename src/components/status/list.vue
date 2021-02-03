@@ -112,18 +112,18 @@ export default {
         color += 'color-regular-text';
       }
       x.problem = (<ProblemTitleLink pid={x.problem}></ProblemTitleLink>);
-      x.score = (<div class={color + ' text-extra-bold'}>{x.score >= 0 ? x.score : '-'}</div>);
+      x.score = (<div class={`${color} text-extra-bold`}>{x.score >= 0 ? x.score : '-'}</div>);
       x.lang = sfconfig.langTable[x.lang].label;
       let stateTable = sfconfig.stateTable.filter(id => {
-        return id.value === String(x.state);
+        return id.value === x.state.toString();
       });
       if(stateTable.length) {
-        x.state = (<router-link to={'/status/' + String(x.id)} style={'color: ' + stateTable[0].color + ';'} class="text-bold"><i class={stateTable[0].icon} /> {stateTable[0].label}</router-link>);
+        x.state = (<router-link to={`/status/${x.id}`} style={`color: ${stateTable[0].color};`} class="text-bold"><i class={stateTable[0].icon} /> {stateTable[0].label}</router-link>);
       } else {
         x.state = (<div style='color: #FF4949;' class="text-bold"><i class='el-icon-circle-close' /> System Error</div>);
       }
-      x.time = x.time + ' ms';
-      x.memory = x.memory + ' KB';
+      x.time = `${x.time} ms`;
+      x.memory = `${x.memory} KB`;
       x.owner = (<UserNameLink userid={x.owner}></UserNameLink>);
       return x;
     },

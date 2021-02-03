@@ -1,5 +1,5 @@
 <template>
-  <div id="nav" class="high-zindex" :style="'background-color: ' + this.nav_color">
+  <div id="nav" class="high-zindex" :style="`background-color: ${this.nav_color}`">
     <div id="nav-content">
       <el-menu
         id="menu"
@@ -39,7 +39,7 @@
             <UserAvatar />
           </template>
           <div v-if="this.$store.state.user.authenticated">
-            <el-menu-item :index="'/account/' + $store.state.user.userid">
+            <el-menu-item :index="`/account/${$store.state.user.userid}`">
               {{this.$store.state.user.username}}
             </el-menu-item>
             <UserLogout v-if="$store.state.user.showlogout" />

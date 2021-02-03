@@ -95,7 +95,7 @@ export default {
   methods: {
     showEdit() {
       this.$axios
-        .get(apiurl('/account/' + this.$route.params.id))
+        .get(apiurl(`/account/${this.$route.params.id}`))
         .then(res => {
           let data = res.data.res;
           this.isRootMe = this.$store.state.user.isRoot;
@@ -109,7 +109,7 @@ export default {
             this.isStaff = data.is_staff;
             this.isRoot = data.is_superuser;
             this.isActive = data.is_active;
-            this.lang = String(data.lang);
+            this.lang = data.lang.toString();
           }
         })
         .catch(err => {
@@ -122,7 +122,7 @@ export default {
           }
         });
       this.$axios
-        .get(apiurl('/account/' + this.$route.params.id + '/introduction'))
+        .get(apiurl(`/account/${this.$route.params.id}/introduction`))
         .then(res => {
           let data = res.data.res;
           this.introduction = data.introduction;
@@ -139,7 +139,7 @@ export default {
     submit() {
       this.buttonLoading = true;
       this.$axios
-        .patch(apiurl('/account/' + this.$route.params.id), {
+        .patch(apiurl(`/account/${this.$route.params.id}`), {
           username: this.username,
           is_staff: this.isStaff,
           is_superuser: this.isRoot,
@@ -163,7 +163,7 @@ export default {
             });
           }
           this.$axios
-            .patch(apiurl('/account/' + this.$route.params.id + '/introduction'), {
+            .patch(apiurl(`/account/${this.$route.params.id}/introduction`), {
               introduction: this.introduction,
             })
             .then(() => {
