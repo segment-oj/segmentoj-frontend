@@ -5,6 +5,8 @@
       v-model="new_todo_item_name"
       @blur="complete_add"
       class="todo-item-edit-input todo-add-item high-zindex"
+      maxlength="20"
+      show-word-limit
     ></el-input>
     <el-button
       v-else
@@ -31,6 +33,8 @@
               v-if="show_edit == i"
               @blur="edit_item(i)"
               v-model="new_todo_item_name"
+              maxlength="20"
+              show-word-limit
             ></el-input>
             <span v-else class="inline-item-left todo-item-content" @click="show_edit_item(i)">
               {{ item.name }}
