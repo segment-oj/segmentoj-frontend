@@ -110,7 +110,7 @@ export default {
     label: 'C++',
     options: [{
       label: 'Standard',
-      list:['89', '11', '14', '17', '20',],
+      list: ['98', '11', '14', '17', '20',],
       default: 3,
     }, {
       label: 'Compiler',
