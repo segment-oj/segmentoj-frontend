@@ -159,6 +159,11 @@ h3::before {
     border: none;
 }
 
+.katex {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
 .bottom-zindex {
     z-index: 10 !important;
 }
