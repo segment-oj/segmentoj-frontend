@@ -14,6 +14,7 @@ export default {
 
 <style>
 #carousel {
+    height: 300px;
     border-radius: 4px;
 }
 
