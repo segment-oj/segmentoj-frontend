@@ -5,7 +5,7 @@
       v-model="new_todo_item_name"
       @blur="complete_add"
       class="todo-item-edit-input todo-add-item high-zindex"
-      maxlength="20"
+      maxlength="32"
       show-word-limit
     ></el-input>
     <el-button
@@ -33,7 +33,7 @@
               v-if="show_edit == i"
               @blur="edit_item(i)"
               v-model="new_todo_item_name"
-              maxlength="20"
+              maxlength="32"
               show-word-limit
             ></el-input>
             <span v-else class="inline-item-left todo-item-content" @click="show_edit_item(i)">
@@ -106,25 +106,22 @@ export default {
 
 .inline-item-left {
     float: left;
-    margin-right: 20px !important;
-}
-
-.inline-item-right {
-    float: right;
-    margin-left: 20px !important;
+    margin-right: 10px !important;
 }
 
 .todo-item-edit-input {
-    max-width: 200px;
+    max-width: 220px;
 }
 
 .todo-item-achieve-radio {
-    margin-left: 10px;
+    margin-left: 5px;
     margin-top: 11.4px;
     margin-right: 0;
 }
 
 .todo-item-content {
+    font-size: 13px;
+    font-family: "Fira Code";
     margin-top: calc((40px - 1em - 6px) / 2);
 }
 

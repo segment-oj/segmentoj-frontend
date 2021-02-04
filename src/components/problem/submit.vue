@@ -125,7 +125,7 @@ export default {
         .post(apiurl('/status'), {
           problem: Number(this.$route.params.id),
           code: this.code,
-          lang: this.lang_num
+          lang: parseInt(this.lang_num),
         })
         .then(() => {
           this.$info.success('Your code has been submitted');
