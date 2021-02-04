@@ -109,7 +109,6 @@ export default {
             this.isRoot = data.is_superuser;
             this.isActive = data.is_active;
             this.lang = data.lang;
-            console.log(this.lang);
           }
         })
         .catch(err => {
@@ -225,7 +224,6 @@ export default {
   },
   mounted() {
     this.makeLangOptions();
-    console.log(this.options);
     this.showEdit();
   },
   components: {
