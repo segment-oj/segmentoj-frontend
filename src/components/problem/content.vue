@@ -1,7 +1,7 @@
 <template>
   <div id="problem-view">
     <div id="content">
-      <div id="problem-content" v-loading="problemLoading">
+      <el-col :span="18" id="problem-content" v-loading="problemLoading">
         <div v-if="!smallScreen">
           <div v-if="!isWider" id="full-screen-button" @click="full_screen()">
             Expand
@@ -17,8 +17,8 @@
           <h1 id="title" class="header">#{{pid}}. {{ title }}</h1>
         </div>
         <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
-      </div>
-      <div id="panel" v-if="!isWider">
+      </el-col>
+      <el-col :span="6" id="panel" v-if="!isWider">
         <div id="tools">
           <el-card v-if="showSmallToolBar || !smallScreen">
             <div><i class="el-icon-s-tools" /> Tool Bar</div>
@@ -90,7 +90,7 @@
             </div>
           </el-card>
         </div>
-      </div>
+      </el-col>
       <el-button v-if="smallScreen" class="float-bottom-right" icon="el-icon-more" @click="showSmallToolBar = !showSmallToolBar" type="info" circle />
     </div>
   </div>
@@ -260,18 +260,13 @@ export default {
 
 #problem-content {
     z-index: 10;
-    width: 100%;
     padding: 20px;
     border: 1px solid #ebeef5;
 }
 
 #panel {
     background-color: #ffffff !important;
-    margin-left: 30px;
-}
-
-#tools {
-    width: 250px;
+    margin-left: 20px;
 }
 
 #full-screen-button,
