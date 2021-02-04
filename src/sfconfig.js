@@ -87,6 +87,83 @@ export default {
     label: 'Java',
     codeMirror: '2'
   }],
+  majorLangTable: [{
+    stringCode: 'c',
+    numberCode: 1,
+    label: 'C',
+    options: [{
+      label: 'Standard',
+      list: ['89', '99', '11',],
+      default: 0,
+    }, {
+      label: 'Compiler',
+      list: ['clang', 'gcc',],
+      default: 0,
+    }, {
+      label: 'Optimize',
+      list: ['O0', 'O1', 'O2', 'O3', 'Ofast',],
+      default: 2,
+    },],
+  }, {
+    stringCode: 'cxx',
+    numberCode: 2,
+    label: 'C++',
+    options: [{
+      label: 'Standard',
+      list:['89', '11', '14', '17', '20',],
+      default: 3,
+    }, {
+      label: 'Compiler',
+      list: ['clang', 'gcc',],
+      default: 0,
+    }, {
+      label: 'Optimize',
+      list: ['O0', 'O1', 'O2', 'O3', 'Ofast',],
+      default: 2,
+    },],
+  }, {
+    stringCode: 'py',
+    numberCode: 3,
+    label: 'Python',
+    options: [{
+      label: 'Version',
+      list: ['27', '36', '37', '38', '39',],
+      default: 1,
+    }, {
+      label: 'Interpreter',
+      list: ['python', 'pypy',],
+      default: 0,
+    },],
+  }, {
+    stringCode: 'rs',
+    numberCode: 4,
+    label: 'Rust',
+    options: [],
+  }, {
+    stringCode: 'js',
+    numberCode: 5,
+    label: 'Node.JS',
+    options: [],
+  }, {
+    stringCode: 'go',
+    numberCode: 6,
+    label: 'Go',
+    options: [],
+  }, {
+    stringCode: 'java',
+    numberCode: 7,
+    label: 'Java',
+    options: [{
+      label: 'Frontend',
+      list: ['java', 'scala', 'kotlin',],
+      default: 0,
+    },],
+  }, {
+    stringCode: 'rb',
+    numberCode: 8,
+    label: 'Ruby',
+    options: [],
+  }],
   codeMirrorModeTable: [{
     value: '0',
     label: 'C++',

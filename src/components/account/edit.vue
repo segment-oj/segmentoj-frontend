@@ -4,7 +4,7 @@
     <div class="item content">
       <div v-loading="!(isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot)" class="edit-content">
         <el-row :gutter="20">
-          <el-col :span="16">
+          <el-col :span="14">
             <el-card>
               <div slot="header" class="clearfix">
                 <i class="el-icon-user" />
@@ -13,21 +13,18 @@
               <el-input v-model="username"></el-input>
             </el-card>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="10">
             <el-card>
               <div slot="header" class="clearfix">
                 <i class="el-icon-s-operation" />
                 <div class="label">Default Language</div>
                 <div class="small-label">Lang</div>
               </div>
-              <el-select v-model="lang" placeholder="Select language">
-                <el-option
-                  v-for="item in langTable"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-                </el-option>
-              </el-select>
+              <el-cascader 
+                v-model="lang"
+                placeholder="Select language"
+                :options="options">
+              </el-cascader>
             </el-card>
           </el-col>
         </el-row>
@@ -90,7 +87,8 @@ export default {
       lang: '-',
       avatarWidth: 800 < screen.width ? 400 : screen.width - 40,
       smallScreen: screen.width < 700,
-      langTable: sfconfig.langTable
+      majorLangTable: sfconfig.majorLangTable,
+      options: []
     };
   },
   methods: {
@@ -110,7 +108,8 @@ export default {
             this.isStaff = data.is_staff;
             this.isRoot = data.is_superuser;
             this.isActive = data.is_active;
-            this.lang = data.lang.toString();
+            this.lang = data.lang;
+            console.log(this.lang);
           }
         })
         .catch(err => {
@@ -191,9 +190,42 @@ export default {
         });
 
       this.$router.go(0);
+    },
+    makeLangOptions() {
+      let route = [];
+      const formOptions = (lang_id, options_id) => {
+        let res = {};
+        const lang = this.majorLangTable[lang_id];
+        res.label = route[route.length - 1];
+        if (lang.options.length != options_id) {
+          res.children = [];
+        } else {
+          res.value = `${lang.stringCode};`;
+          for (let j in route) {
+            res.value = res.value + route[j];
+            if (j != route.length - 1) {
+              res.value = res.value + ',';
+            }
+          }
+          return res;
+        }
+        for (let i in lang.options[options_id].list) {
+          route.push(lang.options[options_id].list[i]);
+          res.children.push(formOptions(lang_id, options_id + 1));
+          route.pop();
+        }
+        return res;
+      };
+      for (let i in this.majorLangTable) {
+        let lang_table = formOptions(i, 0);
+        lang_table.label = this.majorLangTable[i].label;
+        this.options.push(lang_table);
+      }
     }
   },
   mounted() {
+    this.makeLangOptions();
+    console.log(this.options);
     this.showEdit();
   },
   components: {

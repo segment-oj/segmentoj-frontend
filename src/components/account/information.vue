@@ -57,7 +57,7 @@
             <i class="el-icon-s-operation" />
             <span class="label"> Lang</span>
           </div>
-          {{langTable[lang].label}}
+          {{majorLangTable[lang].label}}
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -138,7 +138,7 @@ export default {
       isRoot: false,
       isStaff: false,
       isActive: true,
-      langTable: sfconfig.langTable,
+      majorLangTable: sfconfig.majorLangTable,
       lang: 0
     };
   },
@@ -162,7 +162,11 @@ export default {
           this.isRoot = data.is_superuser;
           this.isStaff = data.is_staff;
           this.isActive = data.is_active;
-          this.lang = data.lang;
+          for (let i in this.majorLangTable) {
+            if (data.lang.split(';')[0] == this.majorLangTable[i].stringCode) {
+              this.lang = i;
+            }
+          }
           if (this.submit === 0) {
             this.rate = 100;
           } else {
