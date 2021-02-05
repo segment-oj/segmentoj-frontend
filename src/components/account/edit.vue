@@ -103,6 +103,7 @@ export default {
       majorLangTable: sfconfig.majorLangTable,
       options: [],
       avatar_url: this.$store.state.user.avatarURL,
+      frontend_config: {},
     };
   },
   methods: {
@@ -124,6 +125,11 @@ export default {
             this.isActive = data.is_active;
             this.lang = data.lang;
           }
+          this.frontend_config = JSON.parse(data.frontend_config);
+          if (this.frontend_config == null) {
+            this.frontend_config = { nav_color: '#545C64' };
+          }
+          this.nav_color = this.frontend_config.nav_color;
           this.avatar_url = data.avatar_url;
         })
         .catch(err => {
@@ -151,6 +157,7 @@ export default {
         });
     },
     submit() {
+      this.frontend_config.nav_color = this.nav_color;
       this.buttonLoading = true;
       this.$axios
         .patch(apiurl(`/account/${this.$route.params.id}`), {
@@ -158,7 +165,7 @@ export default {
           is_staff: this.isStaff,
           is_superuser: this.isRoot,
           is_active: this.isActive,
-          nav_color: this.nav_color,
+          frontend_config: JSON.stringify(this.frontend_config),
           lang: this.lang[this.lang.length - 1],
           avatar_url: this.avatar_url,
         })

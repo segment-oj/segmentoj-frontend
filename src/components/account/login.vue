@@ -88,6 +88,7 @@ export default {
           this.$axios
             .get(apiurl(`/account/${userid}`))
             .then(detail => {
+              const frontend_config = JSON.parse(detail.data.res.frontend_config);
               this.$store.commit('userLang', {
                 lang: detail.data.res.lang
               });
@@ -96,7 +97,7 @@ export default {
                 is_superuser: detail.data.res.is_superuser
               });
               this.$store.commit('userNavColorChange', {
-                nav_color: detail.data.res.nav_color
+                nav_color: frontend_config.nav_color
               });
               this.$store.commit('userAvatarURLChange', {
                 avatar_url: detail.data.res.avatar_url
