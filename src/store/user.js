@@ -1,5 +1,6 @@
 const userstore = {
   state: {
+    user_config: localStorage.getItem('user-config') || null,
     accessToken: localStorage.getItem('user-access-token') || null,
     refreshToken:  localStorage.getItem('user-refresh-token') || null,
     authenticated: localStorage.getItem('user-authenticated') === 'true' ? true : false || false,
@@ -54,6 +55,10 @@ const userstore = {
 
       localStorage.setItem('user-navcolor', data.nav_color);
     },
+    userConfigChange(state, data) {
+      state.user_config = data.user_config;
+      localStorage.setItem('user-config', data.user_config);
+    },
     userLogout(state) {
       state.authenticated = false;
       state.userid = null;
@@ -64,6 +69,7 @@ const userstore = {
       state.accessToken = null;
       state.refreshToken = null;
       state.avatarURL = 'null';
+      state.userConfig = null;
       localStorage.removeItem('user-is-root');
       localStorage.removeItem('user-is-staff');
       localStorage.removeItem('user-userlang'); 
@@ -74,6 +80,7 @@ const userstore = {
       localStorage.removeItem('user-access-token');
       localStorage.removeItem('user-refresh-token');
       localStorage.removeItem('user-avatar-url');
+      localStorage.removeItem('user-config');
     },
   }
 };

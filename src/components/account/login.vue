@@ -72,7 +72,8 @@ export default {
           { validator: validatePasswd, trigger: 'blur' }
         ]
       },
-      buttonLoading: false
+      buttonLoading: false,
+      user_config: {},
     };
   },
   methods: {
@@ -88,7 +89,24 @@ export default {
           this.$axios
             .get(apiurl(`/account/${userid}`))
             .then(detail => {
-              const frontend_config = JSON.parse(detail.data.res.frontend_config);
+              let frontend_config = JSON.parse(detail.data.res.frontend_config);
+              if (frontend_config == null) {
+                frontend_config = {segmentoj_frontend_config: {}};
+              }
+              let segmentoj_frontend_config = frontend_config.segmentoj_frontend_config;
+              if (segmentoj_frontend_config.nav_color == undefined) {
+                segmentoj_frontend_config.nav_color = '#545C64';
+              }
+              if (segmentoj_frontend_config.col_limit == undefined) {
+                segmentoj_frontend_config.col_limit = 50;
+              }
+              if (segmentoj_frontend_config.code_mirror_theme == undefined) {
+                segmentoj_frontend_config.code_mirror_theme = '0';
+              }
+              frontend_config.segmentoj_frontend_config = segmentoj_frontend_config;
+              this.$store.commit('userConfigChange', {
+                user_config: JSON.stringify(segmentoj_frontend_config)
+              });
               this.$store.commit('userLang', {
                 lang: detail.data.res.lang
               });
@@ -97,7 +115,7 @@ export default {
                 is_superuser: detail.data.res.is_superuser
               });
               this.$store.commit('userNavColorChange', {
-                nav_color: frontend_config.nav_color
+                nav_color: segmentoj_frontend_config.nav_color
               });
               this.$store.commit('userAvatarURLChange', {
                 avatar_url: detail.data.res.avatar_url
@@ -107,7 +125,7 @@ export default {
             username: this.ldata.username,
             userid: userid,
             accessToken: res.data.access,
-            refreshToken: res.data.refresh
+            refreshToken: res.data.refresh,
           });
           this.$axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.access}`;
           this.$info.success('Logged in');

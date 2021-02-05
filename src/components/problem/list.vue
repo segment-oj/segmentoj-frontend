@@ -98,7 +98,8 @@ export default {
         align: 'right',
         sortable: false
       }],
-      data_count: 10
+      data_count: 10,
+      user_config: JSON.parse(this.$store.state.user.user_config),
     };
   },
   watch: {
@@ -121,20 +122,21 @@ export default {
       if (this.$store.state.user.userid === null) {
         return;
       }
-      this.$axios
-        .get(apiurl(`/account/${this.$store.state.user.userid}`))
-        .then(res => {
-          let data = res.data.res;
-          this.limit = data.list_column;
-        });
+      this.limit = this.user_config.col_limit;
     },
     set_column(x) {
       if (this.$store.state.user.userid === null) {
         return;
       }
+      this.limit = x;
+      this.user_config.col_limit = this.limit;
+      this.$store.commit('userConfigChange', {
+        user_config: JSON.stringify(this.user_config)
+      });
+      const frontend_config = {segmentoj_frontend_config: this.user_config};
       this.$axios
         .patch(apiurl(`/account/${this.$store.state.user.userid}`), {
-          list_column: x
+          frontend_config: JSON.stringify(frontend_config)
         });
     },
     process(x) {
