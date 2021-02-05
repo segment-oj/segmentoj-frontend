@@ -15,7 +15,7 @@
       <el-divider class="divider">Color</el-divider>
       <el-color-picker
         v-model="new_tag_color"
-        :predefine="predefineColors"
+        :predefine="predefine_colors"
         color-format="hex"
       >
       </el-color-picker>
@@ -46,7 +46,7 @@ export default {
       new_tag_visible: false,
       new_tag_name: '',
       new_tag_color: '#409eff',
-      predefineColors: sfconfig.tagColorPreset,
+      predefine_colors: sfconfig.tagColorPreset,
     };
   },
   methods: {
