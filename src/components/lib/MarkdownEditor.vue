@@ -74,7 +74,6 @@ export default {
     display: none;
 }
 
-
 .markdown-container-outline {
     padding: 10px;
     margin-bottom: 20px;
