@@ -35,13 +35,13 @@
           />
         </el-option-group>
       </el-select>
-      <codeMirror :mode="mode" :theme="theme" />
+      <CodeMirror :mode="mode" :theme="theme" />
     </el-card>
   </div>
 </template>
 
 <script>
-import codeMirror from './../lib/editor.vue';
+import CodeMirror from './../lib/editor.vue';
 import apiurl from './../../apiurl';
 import sfconfig from './../../sfconfig';
 
@@ -81,7 +81,7 @@ export default {
     this.loadUserTheme();
   },
   components: {
-    codeMirror
+    CodeMirror
   }
 };
 </script>
