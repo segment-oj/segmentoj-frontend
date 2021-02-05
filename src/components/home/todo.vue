@@ -21,12 +21,11 @@
         <div class="todo-item-holder">
           <div class="todo-item" v-for="(item, i) in todo_list" :key="i">
             <div class="inline-item-left">
-              <el-radio
-                :label="i"
-                class="todo-item-achieve-radio"
-                @change="achieve_item(i)"
-                v-model="todo_item_achieve_radio"
-              ></el-radio>
+              <el-checkbox
+                class="todo-item-achieve-checkbox"
+                v-model="item.achieved"
+                @change="achieve_item(i, item.achieved)"
+              ></el-checkbox>
             </div>
             <el-input
               class="inline-item-left todo-item-edit-input"
@@ -39,7 +38,13 @@
             <span v-else class="inline-item-left todo-item-content" @click="show_edit_item(i)">
               {{ item.name }}
             </span>
+
+            <i
+              class="el-icon-delete inline-item-right todo-item-delete"
+              @click="delete_item(i)"
+            ></i>
           </div>
+          <div class="place-holder"></div>
         </div>
       </el-tab-pane>
     </el-tabs>
@@ -55,7 +60,6 @@ export default {
       todo_list: new Array(),
       show_new_todo_item_input: false,
       new_todo_item_name: '',
-      todo_item_achieve_radio: Infinity,
     };
   },
   mounted() {
@@ -70,12 +74,18 @@ export default {
       this.show_new_todo_item_input = false;
       this.$store.commit('addItem', {
         name: this.new_todo_item_name,
+        achieved: false,
       });
     },
-    achieve_item(index) {
+    achieve_item(index, tar) {
+      this.$store.commit('achieveItem', {
+        index: index,
+        tar: tar,
+      });
+    },
+    delete_item(index) {
       setTimeout(() => {
-        this.todo_item_achieve_radio = Infinity;
-        this.$store.commit('achieveItem', index);
+        this.$store.commit('deleteItem', index);
       }, 200);
     },
     show_edit_item(index) {
@@ -83,7 +93,7 @@ export default {
       this.new_todo_item_name = this.todo_list[index].name;
     },
     edit_item(index) {
-      this.$store.commit('editItem', {
+      this.$store.commit('renameItem', {
         index: index,
         name: this.new_todo_item_name,
       });
@@ -109,14 +119,24 @@ export default {
     margin-right: 10px !important;
 }
 
+.inline-item-right {
+    float: right;
+}
+
 .todo-item-edit-input {
     max-width: 220px;
 }
 
-.todo-item-achieve-radio {
+.todo-item-achieve-checkbox {
     margin-left: 5px;
     margin-top: 11.4px;
     margin-right: 0;
+}
+
+.todo-item-delete {
+    margin-right: 5px;
+    margin-top: 11.4px;
+    color: #F56C6C;
 }
 
 .todo-item-content {
@@ -129,6 +149,7 @@ export default {
     position: absolute;
     bottom: 10px;
     right: 10px;
+    opacity: .8;
 }
 
 .todo-item-holder {
@@ -138,5 +159,9 @@ export default {
 
 .el-radio__label {
     display: none;
+}
+
+.place-holder {
+    margin-bottom: 40px;
 }
 </style>
