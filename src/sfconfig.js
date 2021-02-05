@@ -83,6 +83,7 @@ export default {
     stringCode: 'c',
     numberCode: 1,
     label: 'C',
+    codeMirror: '1',
     options: [{
       label: 'Standard',
       list: ['89', '99', '11',],
@@ -100,6 +101,7 @@ export default {
     stringCode: 'cxx',
     numberCode: 2,
     label: 'C++',
+    codeMirror: '0',
     options: [{
       label: 'Standard',
       list: ['98', '11', '14', '17', '20',],
@@ -117,6 +119,7 @@ export default {
     stringCode: 'py',
     numberCode: 3,
     label: 'Python',
+    codeMirror: '6',
     options: [{
       label: 'Version',
       list: ['27', '36', '37', '38', '39',],
@@ -130,21 +133,25 @@ export default {
     stringCode: 'rs',
     numberCode: 4,
     label: 'Rust',
+    codeMirror: '4',
     options: [],
   }, {
     stringCode: 'js',
     numberCode: 5,
     label: 'Node.JS',
+    codeMirror: '12',
     options: [],
   }, {
     stringCode: 'go',
     numberCode: 6,
     label: 'Go',
+    codeMirror: '10',
     options: [],
   }, {
     stringCode: 'java',
     numberCode: 7,
     label: 'Java',
+    codeMirror: '2',
     options: [{
       label: 'Frontend',
       list: ['java', 'scala', 'kotlin',],
@@ -154,6 +161,7 @@ export default {
     stringCode: 'rb',
     numberCode: 8,
     label: 'Ruby',
+    codeMirror: '8',
     options: [],
   }],
   codeMirrorModeTable: [{
@@ -204,6 +212,10 @@ export default {
     value: '11',
     label: 'Pascal',
     mode: 'text/x-pascal'
+  }, {
+    value: '12',
+    label: 'Javascript',
+    mode: 'text/javascript'
   }],
   CodeMirrorThemeTableOptions: [{
     label: 'Light',

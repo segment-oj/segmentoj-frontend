@@ -53,27 +53,35 @@ export default {
       theme: '-',
       langTable: sfconfig.codeMirrorModeTable,
       themeTable: sfconfig.CodeMirrorThemeTableOptions,
-      CodeMirrorThemeTable: sfconfig.CodeMirrorThemeTable
+      CodeMirrorThemeTable: sfconfig.CodeMirrorThemeTable,
+      majorLangTable: sfconfig.majorLangTable,
+      user_config: JSON.parse(this.$store.state.user.user_config),
     };
   },
   watch: {
     theme(val) {
+      this.theme = val;
+      this.user_config.code_mirror_theme = this.theme;
+      this.$store.commit('userConfigChange', {
+        user_config: JSON.stringify(this.user_config)
+      });
+      const frontend_config = {segmentoj_frontend_config: this.user_config};
       this.$axios
         .patch(apiurl(`/account/${this.$store.state.user.userid}`), {
-          editor_theme: val
+          frontend_config: JSON.stringify(frontend_config)
         });
     }
   },
   methods: {
     loadUserLangMode() {
-      this.mode = this.langTable[sfconfig.langTable[this.$store.state.user.userlang].codeMirror].label;
+      for (let i in this.majorLangTable) {
+        if (this.majorLangTable[i].stringCode == this.$store.state.user.userlang.split(';')[0]) {
+          this.mode = this.majorLangTable[i].codeMirror;
+        }
+      }
     },
     loadUserTheme() {
-      this.$axios
-        .get(apiurl(`/account/${this.$store.state.user.userid}`))
-        .then(res => {
-          this.theme = res.data.res.editor_theme.toString();
-        });
+      this.theme = this.user_config.code_mirror_theme;
     }
   },
   mounted() {

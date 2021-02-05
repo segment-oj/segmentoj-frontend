@@ -21,6 +21,7 @@
                 <div class="small-label">Lang</div>
               </div>
               <el-cascader 
+                ref="langSelect"
                 v-model="lang"
                 placeholder="Select language"
                 :options="options">
@@ -103,11 +104,12 @@ export default {
       majorLangTable: sfconfig.majorLangTable,
       options: [],
       avatar_url: this.$store.state.user.avatarURL,
-      frontend_config: {},
+      user_config: JSON.parse(this.$store.state.user.user_config),
     };
   },
   methods: {
     showEdit() {
+      this.nav_color = this.user_config.nav_color;
       this.$axios
         .get(apiurl(`/account/${this.$route.params.id}`))
         .then(res => {
@@ -125,11 +127,6 @@ export default {
             this.isActive = data.is_active;
             this.lang = data.lang;
           }
-          this.frontend_config = JSON.parse(data.frontend_config);
-          if (this.frontend_config == null) {
-            this.frontend_config = { nav_color: '#545C64' };
-          }
-          this.nav_color = this.frontend_config.nav_color;
           this.avatar_url = data.avatar_url;
         })
         .catch(err => {
@@ -157,7 +154,11 @@ export default {
         });
     },
     submit() {
-      this.frontend_config.nav_color = this.nav_color;
+      this.user_config.nav_color = this.nav_color;
+      this.$store.commit('userConfigChange', {
+        user_config: JSON.stringify(this.user_config)
+      });
+      const frontend_config = {segmentoj_frontend_config: this.user_config};
       this.buttonLoading = true;
       this.$axios
         .patch(apiurl(`/account/${this.$route.params.id}`), {
@@ -165,8 +166,8 @@ export default {
           is_staff: this.isStaff,
           is_superuser: this.isRoot,
           is_active: this.isActive,
-          frontend_config: JSON.stringify(this.frontend_config),
-          lang: this.lang[this.lang.length - 1],
+          frontend_config: JSON.stringify(frontend_config),
+          lang: this.$refs['langSelect'].getCheckedNodes(true)[0].value,
           avatar_url: this.avatar_url,
         })
         .then(() => {
