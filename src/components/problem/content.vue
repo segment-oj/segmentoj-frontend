@@ -319,6 +319,6 @@ export default {
 }
 
 .time-content {
-  float: right;
+    float: right;
 }
 </style>
