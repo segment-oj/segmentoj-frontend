@@ -18,7 +18,5 @@ export default {
       default: 'square'
     }
   },
-  computed: {
-  }
 };
 </script>
