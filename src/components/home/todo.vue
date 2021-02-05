@@ -136,7 +136,7 @@ export default {
 .todo-item-delete {
     margin-right: 5px;
     margin-top: 11.4px;
-    color: #F56C6C;
+    color: #f56c6c;
 }
 
 .todo-item-content {
@@ -149,7 +149,7 @@ export default {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    opacity: .8;
+    opacity: 0.8;
 }
 
 .todo-item-holder {
