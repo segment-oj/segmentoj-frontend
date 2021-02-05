@@ -102,6 +102,7 @@ export default {
         indentUnit: 4,
         smartIndent: true,
         indentWithTabs: false,
+        lineWrapping: true,
         lineNumbers: true,
         matchBrackets: true,
         autoCloseBrackets: true,
