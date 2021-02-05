@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-row gutter="20" style="margin-bottom: 30px;">
-      <el-col span="18">
+    <el-row :gutter="20" style="margin-bottom: 30px;">
+      <el-col :span="18">
         <el-card v-if="alive">
           <AjaxTable
             :ajax_url="ajax_url"
@@ -10,13 +10,12 @@
             :total="data_count"
             :process="process"
             :process_err="process_err"
-            :customData="{problem:problem}"
+            :customData="{ problem: problem, owner: owner, lang: lang }"
             pagination_class="status-list-pagination"
           />
         </el-card>
       </el-col>
-      
-      <el-col span="6">
+      <el-col :span="6">
         <el-card>
           <div slot="header" class="clearfix">
             <i class="el-icon-search" />
@@ -24,11 +23,33 @@
           </div>
           <el-input
             placeholder="PID"
-            v-model="searchProblem"
+            v-model="search_problem"
             class="input-with-select"
             clearable
           >
-            <template slot="prepend">#.</template>
+            <template slot="prepend"># .</template>
+          </el-input>
+
+          <el-input
+            placeholder="Owner ID"
+            v-model="search_owner"
+            class="input-with-select item"
+            clearable
+          >
+            <template slot="prepend">
+              <i class="el-icon-user"></i>
+            </template>
+          </el-input>
+
+          <el-input
+            placeholder="Language"
+            v-model="search_lang"
+            class="input-with-select item"
+            clearable
+          >
+            <template slot="prepend">
+              <i class="el-icon-s-operation"></i>
+            </template>
           </el-input>
         </el-card>
       </el-col>
@@ -50,11 +71,13 @@ export default {
       alive: true,
       ajax_url: apiurl('/status/list'),
       limit: 30,
-      searchProblem: this.$route.query.pid === undefined ? '' : this.$route.query.pid,
+      search_problem: this.$route.query.pid === undefined ? '' : this.$route.query.pid,
+      search_owner: this.$route.query.owner === undefined ? '' : this.$route.query.owner,
+      search_lang: this.$route.query.lang === undefined ? '' : this.$route.query.lang,
       columns: [{
         name: 'id',
-        label: 'Run ID',
-        width: '80',
+        label: 'ID',
+        width: '70',
         align: 'center'
       }, {
         name: 'problem',
@@ -64,7 +87,7 @@ export default {
         name: 'state',
         label: 'Status',
         align: 'center',
-        width: '120'
+        width: '170'
       }, {
         name: 'score',
         label: 'Score',
@@ -73,22 +96,22 @@ export default {
       }, {
         name: 'time',
         label: 'Time',
-        width: '90',
+        width: '80',
         align: 'center'
       }, {
         name: 'memory',
         label: 'Memory',
-        width: '90',
+        width: '80',
         align: 'center'
       }, {
         name: 'lang',
-        label: 'Language',
-        width: '90',
+        label: 'Lang',
+        width: '60',
         align: 'center'
       }, {
         name: 'owner',
-        label: 'Author',
-        width: '120',
+        label: 'Owner',
+        width: '100',
         align: 'center'
       }],
       data_count: 10
@@ -96,8 +119,21 @@ export default {
   },
   computed: {
     problem() {
-      return this.searchProblem.trim();
+      return this.search_problem.trim();
     },
+    owner() {
+      return this.search_owner.trim();
+    },
+    lang() {
+      let res = '';
+      for (let i of sfconfig.majorLangTable) {
+        if (i.label.toLowerCase() == this.search_lang.toLowerCase()) {
+          res = i.numberCode;
+          break;
+        }
+      }
+      return res;
+    }
   },
   methods: {
     process(x) {
@@ -123,7 +159,7 @@ export default {
         x.state = (<div style='color: #FF4949;' class="text-bold"><i class='el-icon-circle-close' /> System Error</div>);
       }
       x.time = `${x.time} ms`;
-      x.memory = `${x.memory} KB`;
+      x.memory = `${Math.round(x.memory / 1024)} MB`;
       x.owner = (<UserNameLink userid={x.owner}></UserNameLink>);
       return x;
     },
