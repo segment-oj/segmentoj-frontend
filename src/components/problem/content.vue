@@ -121,7 +121,7 @@ export default {
       problemLoading: true,
       showTag: false,
       smallScreen: screen.width < 700,
-      showSmallToolBar: false
+      showSmallToolBar: false,
     };
   },
   methods: {

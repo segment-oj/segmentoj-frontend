@@ -98,6 +98,9 @@ export default {
               this.$store.commit('userNavColorChange', {
                 nav_color: detail.data.res.nav_color
               });
+              this.$store.commit('userAvatarURLChange', {
+                avatar_url: detail.data.res.avatar_url
+              });
             });
           this.$store.commit('userLogin', {
             username: this.ldata.username,

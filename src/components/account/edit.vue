@@ -37,18 +37,31 @@
           <el-checkbox v-model="isRoot" :disabled="!isStaffMe && !isRootMe">Root</el-checkbox>
           <el-checkbox v-model="isActive" :disabled="(!isStaffMe && !isRootMe) || isMine">Active</el-checkbox>
         </el-card>
-        <el-card class="item">
-          <div slot="header" class="clearfix">
-            <i class="el-icon-camera" />
-            Navbar Color
-          </div>
-          <el-color-picker
-            v-model="nav_color"
-            :predefine="predefineColors"
-            color-format="hex"
-          >
-          </el-color-picker>
-        </el-card>
+        <el-row class="item" :gutter="20">
+          <el-col :span="8">
+            <el-card>
+              <div slot="header" class="clearfix">
+                <i class="el-icon-camera" />
+                Navbar Color
+              </div>
+              <el-color-picker
+                v-model="nav_color"
+                :predefine="predefineColors"
+                color-format="hex"
+              >
+              </el-color-picker>
+            </el-card>
+          </el-col>
+          <el-col :span="16">
+            <el-card>
+              <div slot="header" class="clearfix">
+                <i class="el-icon-picture-outline" />
+                Avatar URL
+              </div>
+              <el-input v-model="avatar_url"></el-input>
+            </el-card>
+          </el-col>
+        </el-row>
         <el-card class="item">
           <div slot="header" class="clearfix">
             <i class="el-icon-chat-line-square" />
@@ -88,7 +101,8 @@ export default {
       avatarWidth: 800 < screen.width ? 400 : screen.width - 40,
       smallScreen: screen.width < 700,
       majorLangTable: sfconfig.majorLangTable,
-      options: []
+      options: [],
+      avatar_url: this.$store.state.user.avatarURL,
     };
   },
   methods: {
@@ -110,6 +124,7 @@ export default {
             this.isActive = data.is_active;
             this.lang = data.lang;
           }
+          this.avatar_url = data.avatar_url;
         })
         .catch(err => {
           if (err.request.status === 404) {
@@ -145,11 +160,17 @@ export default {
           is_active: this.isActive,
           nav_color: this.nav_color,
           lang: this.lang,
+          avatar_url: this.avatar_url,
         })
         .then(() => {
-          this.$store.commit('userNavColorChange', {
-            nav_color: this.nav_color
-          });
+          if (this.isMine) {
+            this.$store.commit('userNavColorChange', {
+              nav_color: this.nav_color
+            });
+            this.$store.commit('userAvatarURLChange', {
+              avatar_url: this.avatar_url
+            });
+          }
           this.buttonLoading = false;
           this.$info.success('Your changes have been submitted');
           if (this.isMine) {
