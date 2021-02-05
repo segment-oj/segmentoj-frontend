@@ -124,7 +124,7 @@
           <i class="el-icon-document" />
           Content
         </div>
-        <MarkdownEditor v-model="mdContent" />
+        <MarkdownEditor :value="mdContent" />
       </el-card>
     </div>
 
