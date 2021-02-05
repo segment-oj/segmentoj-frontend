@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="info" class="submit-button" @click="submit()" plain>Submit</el-button>
+    <el-button class="submit-button" @click="submit()">Submit</el-button>
     <div class="item content">
       <div v-loading="!(isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot)" class="edit-content">
         <el-row :gutter="20">
@@ -71,7 +71,7 @@
         </el-card>
       </div>
     </div>
-    <el-button type="info" class="submit-button submit-button-bottom" @click="submit()" plain>Submit</el-button>
+    <el-button class="submit-button submit-button-bottom" @click="submit()">Submit</el-button>
   </div>
 </template>
 
