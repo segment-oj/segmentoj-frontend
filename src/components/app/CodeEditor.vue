@@ -11,7 +11,7 @@
         style="margin-bottom: 10px;"
       >
         <el-option
-          v-for="item in langTable"
+          v-for="item in lang_table"
           :key="item.value"
           :label="item.label"
           :value="item.value"
@@ -23,7 +23,7 @@
         style="margin-bottom: 10px; margin-left: 20px;"
       >
         <el-option-group
-          v-for="group in themeTable"
+          v-for="group in theme_table"
           :key="group.label"
           :label="group.label"
         >
@@ -51,8 +51,8 @@ export default {
     return {
       mode: '-',
       theme: '-',
-      langTable: sfconfig.codeMirrorModeTable,
-      themeTable: sfconfig.CodeMirrorThemeTableOptions,
+      lang_table: sfconfig.codeMirrorModeTable,
+      theme_table: sfconfig.CodeMirrorThemeTableOptions,
       CodeMirrorThemeTable: sfconfig.CodeMirrorThemeTable,
       majorLangTable: sfconfig.majorLangTable,
       user_config: JSON.parse(this.$store.state.user.user_config),
