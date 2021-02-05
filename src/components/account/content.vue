@@ -2,7 +2,7 @@
   <div id="user-content">
     <div id="tool">
       <el-card shadow="never">
-        <UserAvatar shape="square" :size="this.avatarWidth" />
+        <UserAvatar :imgsrc="avatar_url" shape="square" :size="this.avatarWidth" />
       </el-card>
     </div>
 
@@ -38,6 +38,7 @@ export default {
       can_edit: false,
       avatarWidth: 800 < screen.width ? 300 : screen.width - 40,
       smallScreen: 700 < screen.width,
+      avatar_url: '',
     };
   },
   methods: {
@@ -48,6 +49,7 @@ export default {
           let data = res.data.res;
           this.userid = data.id;
           this.isStaff = data.is_staff;
+          this.avatar_url = data.avatar_url;
           if (this.userid == this.$store.state.user.userid.toString()) {
             this.is_mine = true;
           }

@@ -36,7 +36,7 @@
         </el-submenu>
         <el-submenu index="2" id="user">
           <template slot="title">
-            <UserAvatar />
+            <UserAvatar :imgsrc="$store.state.user.avatarURL" />
           </template>
           <div v-if="this.$store.state.user.authenticated">
             <el-menu-item :index="`/account/${$store.state.user.userid}`">

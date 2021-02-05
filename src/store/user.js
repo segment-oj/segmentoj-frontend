@@ -9,6 +9,7 @@ const userstore = {
     isStaff: localStorage.getItem('user-is-staff') === 'true' ? true : false || false,
     isRoot: localStorage.getItem('user-is-root') === 'true' ? true : false || false,
     navColor: localStorage.getItem('user-navcolor') || null,
+    avatarURL: localStorage.getItem('user-avatar-url') || 'null',
     showlogin: false,
     showregister: false,
     showlogout: false,
@@ -20,11 +21,13 @@ const userstore = {
       state.username = data.username;
       state.accessToken = data.accessToken;
       state.refreshToken = data.refreshToken;
+      state.avatarURL = data.avatarURL;
       localStorage.setItem('user-authenticated', true);
       localStorage.setItem('user-username', data.username);
       localStorage.setItem('user-userid', data.userid);
       localStorage.setItem('user-access-token', data.accessToken);
       localStorage.setItem('user-refresh-token', data.refreshToken);
+      localStorage.setItem('user-avatar-url', data.avatarURL);
     },
     userStaffChange(state, data) {
       state.isStaff = data.isStaff;
@@ -40,8 +43,11 @@ const userstore = {
     },
     userLang(state, data) {
       state.userlang = data.lang;
-
       localStorage.setItem('user-userlang', data.lang); 
+    },
+    userAvatarURLChange(state, data) {
+      state.avatarURL = data.avatar_url;
+      localStorage.setItem('user-avatar-url', data.avatar_url);
     },
     userNavColorChange(state, data) {
       state.navColor = data.nav_color;
@@ -57,6 +63,7 @@ const userstore = {
       state.isRoot = false;
       state.accessToken = null;
       state.refreshToken = null;
+      state.avatarURL = 'null';
       localStorage.removeItem('user-is-root');
       localStorage.removeItem('user-is-staff');
       localStorage.removeItem('user-userlang'); 
@@ -66,6 +73,7 @@ const userstore = {
       localStorage.removeItem('user-navcolor');
       localStorage.removeItem('user-access-token');
       localStorage.removeItem('user-refresh-token');
+      localStorage.removeItem('user-avatar-url');
     },
   }
 };

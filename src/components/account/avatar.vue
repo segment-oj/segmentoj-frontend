@@ -1,6 +1,6 @@
 <template>
   <el-avatar :shape="this.shape" :size="this.size">
-    <img v-if="this.imgsrc" :src="this.imgsrc" alt="picture" />
+    <img v-if="this.imgsrc && this.imgsrc != 'null'" :src="this.imgsrc" alt="picture" />
     <img v-else src="./../../assets/icon/SOJ-thick-white-background.png">
   </el-avatar>
 </template>
@@ -17,6 +17,8 @@ export default {
       type: String,
       default: 'square'
     }
+  },
+  computed: {
   }
 };
 </script>
