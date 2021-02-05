@@ -2,14 +2,6 @@ export default {
   api: {
     server: 'http://172.32.5.177:8000/api'
   },
-  markdown: {
-    gfm: true,
-    tables: true,
-    breaks: false,
-    pedantic: false,
-    smartLists: true,
-    smartypants: false,
-  },
   langTable: [{
     value: '0',
     label: 'C++',
@@ -195,7 +187,7 @@ export default {
   }, {
     value: '7',
     label: 'Markdown',
-    mode: 'text/x-markdown'
+    mode: 'gfm'
   }, {
     value: '8',
     label: 'Ruby',

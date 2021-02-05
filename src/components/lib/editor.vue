@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="code-mirror-editor">
     <textarea ref="editor" v-model="source"></textarea>
   </div>
 </template>
@@ -23,7 +23,7 @@ import 'codemirror/mode/clike/clike';
 import 'codemirror/mode/rust/rust';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/python/python';
-import 'codemirror/mode/markdown/markdown';
+import 'codemirror/mode/gfm/gfm';
 import 'codemirror/mode/ruby/ruby';
 import 'codemirror/mode/go/go';
 import 'codemirror/mode/php/php';
@@ -52,40 +52,53 @@ import 'codemirror/addon/search/jump-to-line';
 import 'codemirror/addon/search/match-highlighter';
 import 'codemirror/keymap/sublime';
 
-let editor;
-
 export default {
-  name: 'codeMirror',
+  name: 'CodeMirror',
   data() {
     return {
+      editor: null,
       source: null,
-      langTable: sfconfig.codeMirrorModeTable,
-      CodeMirrorThemeTable: sfconfig.CodeMirrorThemeTable
+      update_from_inner: false,
     };
   },
   props: {
     mode: {
-      type: String,
-      default: 'text/x-c++src'
+      type: Number,
+      default: 7
     },
     theme: {
       type: String,
       default: '3024-day'
-    }
+    },
+    enable_hint: {
+      type: Boolean,
+      default: true
+    },
+    value: {
+      type: String,
+      default: () => '',
+    },
   },
   watch: {
     mode(val) {
-      editor.setOption('mode', this.langTable[val].mode);
+      this.editor.setOption('mode', sfconfig.codeMirrorModeTable[val].mode);
     },
     theme(val) {
-      editor.setOption('theme', this.CodeMirrorThemeTable[val].theme);
-    }
+      this.editor.setOption('theme', sfconfig.CodeMirrorThemeTable[val].theme);
+    },
+    value(new_value) {
+      if (this.update_from_inner) {
+        this.update_from_inner = false; 
+      } else {
+        this.value = new_value; 
+      }
+    },
   },
   methods: {
     loadEditor() {
-      editor = CodeMirror.fromTextArea(this.$refs.editor, {
+      this.editor = CodeMirror.fromTextArea(this.$refs.editor, {
         theme: '3024-day',
-        mode: 'text/x-c++src',
+        mode: 'text/gfm',
         indentUnit: 4,
         smartIndent: true,
         indentWithTabs: false,
@@ -110,15 +123,28 @@ export default {
           completeSingle: false
         }
       });
-      editor.on('keypress', function() {
-        editor.showHint();
+
+      if (this.enable_hint) {
+        this.editor.on('keypress', () => {
+          this.editor.showHint();
+        });
+      }
+
+      this.editor.setValue(this.value || '');
+      this.editor.on('changes', () => {
+        const source = this.editor.getValue();
+        this.handle_text_change(source);
       });
+    },
+    handle_text_change(source) {
+      this.update_from_inner = true;
+      this.$emit('input', source);
     },
   },
   mounted() {
     this.loadEditor();
-    editor.setOption('mode', this.langTable[this.mode].mode);
-    editor.setOption('theme', this.langTable[this.theme].mode);
+    this.editor.setOption('mode', sfconfig.codeMirrorModeTable[this.mode].mode);
+    this.editor.setOption('theme', sfconfig.codeMirrorModeTable[this.theme].mode);
   }
 };
 </script>
