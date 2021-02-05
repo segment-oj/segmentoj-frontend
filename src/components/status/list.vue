@@ -23,7 +23,7 @@
           </div>
           <el-input
             placeholder="PID"
-            v-model="search_problem"
+            v-model="new_search_problem"
             class="input-with-select"
             clearable
           >
@@ -32,7 +32,7 @@
 
           <el-input
             placeholder="Owner ID"
-            v-model="search_owner"
+            v-model="new_search_owner"
             class="input-with-select item"
             clearable
           >
@@ -43,7 +43,7 @@
 
           <el-input
             placeholder="Language"
-            v-model="search_lang"
+            v-model="new_search_lang"
             class="input-with-select item"
             clearable
           >
@@ -51,6 +51,10 @@
               <i class="el-icon-s-operation"></i>
             </template>
           </el-input>
+
+          <el-button class="search-button item" icon="el-icon-search" @click="search">
+            Search
+          </el-button>
         </el-card>
       </el-col>
     </el-row>
@@ -74,6 +78,9 @@ export default {
       search_problem: this.$route.query.pid === undefined ? '' : this.$route.query.pid,
       search_owner: this.$route.query.owner === undefined ? '' : this.$route.query.owner,
       search_lang: this.$route.query.lang === undefined ? '' : this.$route.query.lang,
+      new_search_problem: '',
+      new_search_owner: '',
+      new_search_lang: '',
       columns: [{
         name: 'id',
         label: 'ID',
@@ -136,6 +143,11 @@ export default {
     }
   },
   methods: {
+    search() {
+      this.search_problem = this.new_search_problem;
+      this.search_owner = this.new_search_owner;
+      this.search_lang = this.new_search_lang;
+    },
     process(x) {
       let color = '';
       if (x.score === 100) {
@@ -179,6 +191,10 @@ export default {
 <style scoped>
 .item {
     margin-top: 20px;
+}
+
+.search-button {
+    width: 100%;
 }
 </style>
 
