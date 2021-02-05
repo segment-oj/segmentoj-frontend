@@ -159,7 +159,7 @@ export default {
           is_superuser: this.isRoot,
           is_active: this.isActive,
           nav_color: this.nav_color,
-          lang: this.lang,
+          lang: this.lang[this.lang.length - 1],
           avatar_url: this.avatar_url,
         })
         .then(() => {
