@@ -1,9 +1,9 @@
 <template>
   <div id="problem-view">
     <div id="content">
-      <el-col :span="18" id="problem-content" v-loading="problemLoading">
+      <el-col :span="left_comp" id="problem-content" v-loading="problemLoading">
         <div v-if="!smallScreen">
-          <div v-if="!isWider" id="full-screen-button" @click="full_screen()">
+          <div v-if="left_comp == 18" id="full-screen-button" @click="full_screen()">
             Expand
             <i class="el-icon-arrow-right"></i>
           </div>
@@ -18,7 +18,7 @@
         </div>
         <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
       </el-col>
-      <el-col :span="6" id="panel" v-if="!isWider">
+      <el-col :span="right_comp" id="panel">
         <div id="tools">
           <el-card v-if="showSmallToolBar || !smallScreen">
             <div><i class="el-icon-s-tools" /> Tool Bar</div>
@@ -110,7 +110,8 @@ export default {
       title: 'Unknown',
       pid: this.$route.params.id,
       allowHTML: false,
-      isWider: false,
+      left_span: 18,
+      right_span: 6,
       enable: true,
       hidden: false,
       time: '-',
@@ -178,7 +179,21 @@ export default {
       });
     },
     full_screen() {
-      this.isWider = !this.isWider;
+      if (this.left_span == 24) {
+        this.left_span = 18;
+        this.right_span = 6;
+      } else {
+        this.left_span = 24;
+        this.right_span = 0;
+      }
+    }
+  },
+  computed: {
+    left_comp() {
+      return this.left_span;
+    },
+    right_comp() {
+      return this.right_span;
     }
   },
   mounted() {
