@@ -90,7 +90,13 @@ export default {
       if (this.update_from_inner) {
         this.update_from_inner = false; 
       } else {
-        this.value = new_value; 
+        this.value = new_value;
+
+        this.editor.setValue(this.value || '');
+        this.editor.on('changes', () => {
+          const source = this.editor.getValue();
+          this.handle_text_change(source);
+        });
       }
     },
   },
