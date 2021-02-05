@@ -54,8 +54,10 @@
             <div class="tool-content">{{title}}</div>
             <el-divider class="divider">PID</el-divider>
             <div class="tool-content">#{{pid}}</div>
-            <el-divider class="divider">Date Created</el-divider>
-            <div class="tool-content">{{timeAdd}}</div>
+            <el-divider class="divider">Time</el-divider>
+            <strong>Created: </strong><span class="tool-content time-content">{{timeAdd}}</span>
+            <br>
+            <strong>Last Edited: </strong><span class="tool-content time-content">{{last_edit}}</span>
           </el-card>
           <el-card shadow="never" class="margin-top">
             <div><i class="el-icon-menu" /> Limitation </div>
@@ -117,6 +119,7 @@ export default {
       time: '-',
       memory: '-',
       timeAdd: 'Unknown',
+      last_edit: 'Unknown',
       tags: [],
       rendertags: [],
       problemLoading: true,
@@ -151,6 +154,7 @@ export default {
           this.time = data.time_limit;
           this.hidden = !data.enabled;
           this.timeAdd = timeFormat(data.date_added);
+          this.last_edit = timeFormat(data.last_edit);
           this.tags = data.tags;
           this.render_tags();
           this.problemLoading = false;
@@ -312,5 +316,9 @@ export default {
 
 .back-button {
     width: 100%;
+}
+
+.time-content {
+  float: right;
 }
 </style>
