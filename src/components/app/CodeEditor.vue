@@ -35,7 +35,7 @@
           />
         </el-option-group>
       </el-select>
-      <CodeMirror :mode="mode" :theme="theme" />
+      <CodeMirror :mode="parseInt(mode)" :theme="theme" />
     </el-card>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <el-tabs v-model="active_name">
       <el-tab-pane label="Edit" name="editing">
         <div :class="editor_visible_class_name">
-          <CodeMirror v-model="content" :enable_hint="false" />
+          <CodeMirror v-model="content" :enable_hint="false" :mode="7" />
         </div>
       </el-tab-pane>
       <el-tab-pane label="Preview" name="previewing">
@@ -25,7 +25,7 @@ export default {
     return {
       content: this.value,
       active_name: 'editing',
-      is_update_from_inner: false
+      is_update_from_inner: false,
     };
   },
   props: {
