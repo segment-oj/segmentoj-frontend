@@ -64,7 +64,7 @@ export default {
   props: {
     mode: {
       type: Number,
-      default: 7
+      default: 0
     },
     theme: {
       type: String,
@@ -99,7 +99,7 @@ export default {
     loadEditor() {
       this.editor = CodeMirror.fromTextArea(this.$refs.editor, {
         theme: '3024-day',
-        mode: 'text/gfm',
+        mode: 'text/x-c++src',
         indentUnit: 4,
         smartIndent: true,
         indentWithTabs: false,

@@ -1,6 +1,6 @@
 export default {
   api: {
-    server: 'http://172.32.5.177:8000/api'
+    server: 'http://localhost:8000/api'
   },
   langTable: [{
     value: '0',

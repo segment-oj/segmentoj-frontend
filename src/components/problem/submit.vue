@@ -31,15 +31,7 @@
       <el-col :span="18">
         <el-card>
           <div slot="header" class="clearfix"><i class="el-icon-document" /> Code</div>
-          <el-input
-            class="code-input"
-            type="textarea"
-            :rows="20"
-            placeholder="Paste your code"
-            required
-            v-model="code"
-            spellcheck="false"
-          />
+          <CodeMirror v-model="code"> </CodeMirror>
         </el-card>
       </el-col>
     </el-row>
@@ -62,15 +54,7 @@
       </el-card>
       <el-card class="item">
         <div slot="header" class="clearfix"><i class="el-icon-document" /> Code</div>
-        <el-input
-          class="code-input"
-          type="textarea"
-          :rows="20"
-          placeholder="Paste your code"
-          required
-          v-model="code"
-          spellcheck="false"
-        />
+        <CodeMirror v-model="code"> </CodeMirror>
       </el-card>
     </div>
   </div>
@@ -79,6 +63,7 @@
 <script>
 import apiurl from './../../apiurl';
 import sfconfig from './../../sfconfig';
+import CodeMirror from './../lib/editor.vue';
 
 export default {
   name: 'ProblemSubmit',
@@ -146,6 +131,9 @@ export default {
   mounted() {
     this.loadInfo();
     this.lang_num = this.$store.state.user.userlang.toString();
+  },
+  components: {
+    CodeMirror
   }
 };
 </script>
