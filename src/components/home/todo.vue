@@ -100,11 +100,13 @@ export default {
       this.new_todo_item_name = this.todo_list[index].name;
     },
     edit_item(index) {
-      this.$store.commit('renameItem', {
-        index: index,
-        name: this.new_todo_item_name,
-      });
-      this.show_edit = Infinity;
+      if (this.new_todo_item_name.length > 0) {
+        this.$store.commit('renameItem', {
+          index: index,
+          name: this.new_todo_item_name,
+        });
+        this.show_edit = Infinity;
+      }
     }
   },
 };
