@@ -1,21 +1,22 @@
 <template>
   <el-card class="todo-card">
-    <el-input
-      v-if="show_new_todo_item_input"
-      v-model="new_todo_item_name"
-      @blur="complete_add"
-      class="todo-item-edit-input todo-add-item high-zindex"
-      maxlength="32"
-      show-word-limit
-    ></el-input>
-    <el-button
-      v-else
-      class="todo-add-item high-zindex"
-      icon="el-icon-plus"
-      @click="add_todo_item"
-      circle
-    >
-    </el-button>
+    <transition name="el-zoom-in-bottom">
+      <el-input
+        v-if="show_new_todo_item_input"
+        v-model="new_todo_item_name"
+        @blur="complete_add"
+        class="todo-item-edit-input todo-add-item high-zindex"
+        maxlength="32"
+        show-word-limit
+      ></el-input>
+      <el-button
+        v-else
+        class="todo-add-item high-zindex"
+        icon="el-icon-plus"
+        @click="add_todo_item"
+        circle
+      ></el-button>
+    </transition>
     <el-tabs>
       <el-tab-pane label="Todo List">
         <div class="todo-item-holder">
@@ -151,7 +152,6 @@ export default {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    opacity: 0.8;
 }
 
 .todo-item-holder {
