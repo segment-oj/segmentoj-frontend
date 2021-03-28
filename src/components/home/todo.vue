@@ -8,7 +8,9 @@
         class="todo-item-edit-input todo-add-item high-zindex"
         maxlength="32"
         show-word-limit
-      ></el-input>
+      >
+        <el-button slot="append" icon="el-icon-plus" @click="complete_add"></el-button>
+      </el-input>
       <el-button
         v-else
         class="todo-add-item high-zindex"
@@ -74,11 +76,13 @@ export default {
       this.new_todo_item_name = '';
     },
     complete_add() {
-      this.show_new_todo_item_input = false;
-      this.$store.commit('addItem', {
-        name: this.new_todo_item_name,
-        achieved: false,
-      });
+      if (this.new_todo_item_name.length > 0) {
+        this.show_new_todo_item_input = false;
+        this.$store.commit('addItem', {
+          name: this.new_todo_item_name,
+          achieved: false,
+        });
+      }
     },
     achieve_item(index, tar) {
       this.$store.commit('achieveItem', {
