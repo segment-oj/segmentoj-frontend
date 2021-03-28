@@ -39,9 +39,7 @@
                 maxlength="32"
                 show-word-limit
               ></el-input>
-              <span v-else class="inline-item-left todo-item-content" @click="show_edit_item(i)">
-                {{ item.name }}
-              </span>
+              <span v-else class="inline-item-left todo-item-content" @click="show_edit_item(i)" v-html="render(item.name)"></span>
 
               <i
                 class="el-icon-delete inline-item-right todo-item-delete"
@@ -57,6 +55,8 @@
 </template>
 
 <script>
+import { Remarkable } from 'remarkable';
+
 export default {
   name: 'Todo',
   data() {
@@ -65,9 +65,11 @@ export default {
       todo_list: new Array(),
       show_new_todo_item_input: false,
       new_todo_item_name: '',
+      remark: null
     };
   },
   mounted() {
+    this.remark = new Remarkable();
     this.todo_list = this.$store.state.todo.todo_list;
   },
   methods: {
@@ -107,12 +109,48 @@ export default {
         });
         this.show_edit = Infinity;
       }
+    },
+    render(md) {
+      return this.remark.render(md);
     }
   },
 };
 </script>
 
 <style>
+.todo-item-content h1 {
+    font-size: 22px;
+}
+
+.todo-item-content h1, h2, h3, h4, h5, ol, p, ul {
+    margin: 0;
+}
+
+.todo-item-content ul, ol {
+    padding-left: 40px;
+}
+
+.todo-item-content a {
+    color: #409eff;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.todo-item-content a:hover {
+    color: #66b1ff;
+    text-decoration: underline;
+}
+
+.todo-item-content h1::before {
+    color: #409eff;
+    content: "# ";
+}
+
+.todo-item-content code {
+    background-color: #f6f6f6;
+    padding: 5px;
+}
+
 .todo-card {
     height: 300px;
 }
