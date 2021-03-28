@@ -19,31 +19,33 @@
     <el-tabs>
       <el-tab-pane label="Todo List">
         <div class="todo-item-holder">
-          <div class="todo-item" v-for="(item, i) in todo_list" :key="i">
-            <div class="inline-item-left">
-              <el-checkbox
-                class="todo-item-achieve-checkbox"
-                v-model="item.achieved"
-                @change="achieve_item(i, item.achieved)"
-              ></el-checkbox>
-            </div>
-            <el-input
-              class="inline-item-left todo-item-edit-input"
-              v-if="show_edit == i"
-              @blur="edit_item(i)"
-              v-model="new_todo_item_name"
-              maxlength="32"
-              show-word-limit
-            ></el-input>
-            <span v-else class="inline-item-left todo-item-content" @click="show_edit_item(i)">
-              {{ item.name }}
-            </span>
+          <transition-group name="el-zoom-in-top">
+            <div class="todo-item" v-for="(item, i) in todo_list" :key="i">
+              <div class="inline-item-left">
+                <el-checkbox
+                  class="todo-item-achieve-checkbox"
+                  v-model="item.achieved"
+                  @change="achieve_item(i, item.achieved)"
+                ></el-checkbox>
+              </div>
+              <el-input
+                class="inline-item-left todo-item-edit-input"
+                v-if="show_edit == i"
+                @blur="edit_item(i)"
+                v-model="new_todo_item_name"
+                maxlength="32"
+                show-word-limit
+              ></el-input>
+              <span v-else class="inline-item-left todo-item-content" @click="show_edit_item(i)">
+                {{ item.name }}
+              </span>
 
-            <i
-              class="el-icon-delete inline-item-right todo-item-delete"
-              @click="delete_item(i)"
-            ></i>
-          </div>
+              <i
+                class="el-icon-delete inline-item-right todo-item-delete"
+                @click="delete_item(i)"
+              ></i>
+            </div>
+          </transition-group>
           <div class="place-holder"></div>
         </div>
       </el-tab-pane>
