@@ -122,11 +122,19 @@ export default {
     font-size: 22px;
 }
 
-.todo-item-content h1, h2, h3, h4, h5, ol, p, ul {
+.todo-item-content h1,
+h2,
+h3,
+h4,
+h5,
+ol,
+p,
+ul {
     margin: 0;
 }
 
-.todo-item-content ul, ol {
+.todo-item-content ul,
+ol {
     padding-left: 40px;
 }
 
