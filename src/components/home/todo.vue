@@ -56,6 +56,10 @@
 
 <script>
 import { Remarkable } from 'remarkable';
+import { linkify } from 'remarkable/linkify';
+
+import rkatex from 'remarkable-katex';
+import 'katex/dist/katex.min.css';
 
 export default {
   name: 'Todo',
@@ -70,6 +74,7 @@ export default {
   },
   mounted() {
     this.remark = new Remarkable();
+    this.remark.use(rkatex).use(linkify);
     this.todo_list = this.$store.state.todo.todo_list;
   },
   methods: {
