@@ -192,6 +192,12 @@ ol {
     margin-right: 5px;
     margin-top: 11.4px;
     color: #f56c6c;
+    opacity: 0.4;
+}
+
+.todo-item-delete:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
 .todo-item-content {
