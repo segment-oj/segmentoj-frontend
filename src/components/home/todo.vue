@@ -39,7 +39,7 @@
                 maxlength="32"
                 show-word-limit
               ></el-input>
-              <span v-else class="inline-item-left todo-item-content" @click="show_edit_item(i)" v-html="render(item.name)"></span>
+              <span v-else class="inline-item-left todo-item-content markdown-container" @click="show_edit_item(i)" v-html="render(item.name)"></span>
 
               <i
                 class="el-icon-delete inline-item-right todo-item-delete"
@@ -60,6 +60,7 @@ import { linkify } from 'remarkable/linkify';
 
 import rkatex from 'remarkable-katex';
 import 'katex/dist/katex.min.css';
+import DOMPurify from 'dompurify';
 
 export default {
   name: 'Todo',
@@ -116,7 +117,7 @@ export default {
       }
     },
     render(md) {
-      return this.remark.render(md);
+      return DOMPurify.sanitize(this.remark.render(md));
     }
   },
 };
@@ -134,29 +135,14 @@ h4,
 h5,
 ol,
 p,
-ul {
+ul,
+blockquote {
     margin: 0;
 }
 
 .todo-item-content ul,
 ol {
     padding-left: 40px;
-}
-
-.todo-item-content a {
-    color: #409eff;
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-.todo-item-content a:hover {
-    color: #66b1ff;
-    text-decoration: underline;
-}
-
-.todo-item-content h1::before {
-    color: #409eff;
-    content: "# ";
 }
 
 .todo-item-content code {
