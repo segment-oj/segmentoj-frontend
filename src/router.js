@@ -24,7 +24,7 @@ let router = new Router({
     component: () => import('./components/problem/edit.vue')
   }, {
     path: '/problem/:id/submit',
-    component: () => import('./components/problem/submit.vue')
+    component: () => import('./components/problem/submitPage.vue')
   }, {
     path: '/status/list',
     component: () => import('./components/status/list.vue')

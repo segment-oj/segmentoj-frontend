@@ -15,7 +15,8 @@
           </el-select>
         </el-card>
         <el-button-group class="item">
-          <el-button type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
+          <el-button v-if="resubmit" type="primary" @click="submit();" :loading="buttonLoading">Resubmit</el-button>
+          <el-button v-else type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
           <el-button @click="back();">Back</el-button>
         </el-button-group>
         <el-card class="item">
@@ -70,20 +71,33 @@ export default {
   data() {
     return {
       title: 'Unknown',
-      pid: this.$route.params.id,
       time: '-',
       memory: '-',
-      code: '',
+      code: this.base_code,
       lang_num: '-',
       buttonLoading: false,
       smallScreen: screen.width < 700,
       langTable: sfconfig.langTable
     };
   },
+  props: {
+    resubmit: {
+      type: Boolean,
+      default: false
+    }, base_code: {
+      type: String,
+      default: ''
+    }, pid: {
+      type: Number,
+      required: true
+    }, base_lang: {
+      type: Number
+    }
+  },
   methods: {
     loadInfo() {
       this.$axios
-        .get(apiurl(`/problem/${this.$route.params.id}`))
+        .get(apiurl(`/problem/${this.pid}`))
         .then(res => {
           let data = res.data.res;
           this.title = data.title;
@@ -102,13 +116,13 @@ export default {
         });
     },
     back() {
-      this.$router.push(`/problem/${this.$route.params.id}`);
+      this.$router.go(-1);
     },
     submit() {
       this.buttonLoading = true;
       this.$axios
         .post(apiurl('/status'), {
-          problem: Number(this.$route.params.id),
+          problem: Number(this.pid),
           code: this.code,
           lang: parseInt(this.lang_num),
         })
@@ -130,7 +144,7 @@ export default {
   },
   mounted() {
     this.loadInfo();
-    this.lang_num = this.$store.state.user.userlang.toString();
+    this.lang_num = this.base_lang || this.$store.state.user.userlang.toString();
   },
   components: {
     CodeMirror
