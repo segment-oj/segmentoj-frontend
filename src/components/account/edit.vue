@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-button class="submit-button" @click="submit()">Submit</el-button>
-    <div class="item content">
+    <div class="margin-top-20 content">
       <div v-loading="!(isMine || this.$store.state.user.isStaff || this.$store.state.user.isRoot)" class="edit-content">
         <el-row :gutter="20">
           <el-col :span="14">
@@ -29,7 +29,7 @@
             </el-card>
           </el-col>
         </el-row>
-        <el-card class="item">
+        <el-card class="margin-top-20">
           <div slot="header" class="clearfix">
             <i class="el-icon-chat-line-square" />
             Permissions
@@ -38,7 +38,7 @@
           <el-checkbox v-model="isRoot" :disabled="!isStaffMe && !isRootMe">Root</el-checkbox>
           <el-checkbox v-model="isActive" :disabled="(!isStaffMe && !isRootMe) || isMine">Active</el-checkbox>
         </el-card>
-        <el-row class="item" :gutter="20">
+        <el-row class="margin-top-20" :gutter="20">
           <el-col :span="8">
             <el-card>
               <div slot="header" class="clearfix">
@@ -63,7 +63,7 @@
             </el-card>
           </el-col>
         </el-row>
-        <el-card class="item">
+        <el-card class="margin-top-20">
           <div slot="header" class="clearfix">
             <i class="el-icon-chat-line-square" />
             Introductions
@@ -72,7 +72,7 @@
         </el-card>
       </div>
     </div>
-    <el-button class="submit-button submit-button-bottom" @click="submit()">Submit</el-button>
+    <el-button class="margin-top-20 submit-button submit-button-bottom" @click="submit()">Submit</el-button>
   </div>
 </template>
 
@@ -276,11 +276,6 @@ export default {
 
 .content {
     display: flex;
-}
-
-.item {
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .small-label {

@@ -14,12 +14,12 @@
             </el-option>
           </el-select>
         </el-card>
-        <el-button-group class="item">
+        <el-button-group class="margin-top-20">
           <el-button v-if="resubmit" type="primary" @click="submit();" :loading="buttonLoading">Resubmit</el-button>
           <el-button v-else type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
           <el-button @click="back();">Back</el-button>
         </el-button-group>
-        <el-card class="item">
+        <el-card class="margin-top-20">
           <i class="el-icon-info" /> Information
           <el-divider>Problem</el-divider>
           #{{pid}}. {{title}}
@@ -53,7 +53,7 @@
         <el-button type="primary" @click="submit();" icon="el-icon-check" circle />
         <el-button @click="back();" icon="el-icon-back" circle />
       </el-card>
-      <el-card class="item">
+      <el-card class="margin-top-20">
         <div slot="header" class="clearfix"><i class="el-icon-document" /> Code</div>
         <CodeMirror v-model="code"> </CodeMirror>
       </el-card>
@@ -153,10 +153,6 @@ export default {
 </script>
 
 <style scoped>
-.item {
-    margin-top: 20px;
-}
-
 @media only screen and (max-width: 700px) {
     .float {
         z-index: 1000;

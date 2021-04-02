@@ -7,10 +7,10 @@
           <el-card>
             <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
             <el-input v-model="title" placeholder="Input problem title here"></el-input>
-            <el-checkbox v-model="disable" label="Disabled" class="item"></el-checkbox>
-            <el-checkbox v-model="html" label="Allow HTML" class="item"></el-checkbox>
+            <el-checkbox v-model="disable" label="Disabled" class="margin-top-20"></el-checkbox>
+            <el-checkbox v-model="html" label="Allow HTML" class="margin-top-20"></el-checkbox>
           </el-card>
-          <el-card class="item">
+          <el-card class="margin-top-20">
             <i class="el-icon-menu" /> Limitation
             <el-divider>Time</el-divider>
             <el-row :gutter="10">
@@ -25,7 +25,7 @@
               </el-input>
             </el-row>
           </el-card>
-          <el-card class="item">
+          <el-card class="margin-top-20">
             <div slot="header" class="clearfix">
               <i class="el-icon-s-flag" />
               Tags
@@ -41,7 +41,7 @@
             />
             <span v-if="rendertags.length === 0">No tag</span>
           </el-card>
-          <el-button-group class="item">
+          <el-button-group class="margin-top-20">
             <el-button type="primary" @click="submit">Submit</el-button>
             <el-button @click="back();">Back</el-button>
             <ConfirmDelete
@@ -79,10 +79,10 @@
       <el-card>
         <div slot="header" class="clearfix"><i class="el-icon-edit-outline" /> Name</div>
         <el-input v-model="title" placeholder="Input problem title here"></el-input>
-        <el-checkbox v-model="disable" label="Disabled" class="item"></el-checkbox>
-        <el-checkbox v-model="html" label="Allow HTML" class="item"></el-checkbox>
+        <el-checkbox v-model="disable" label="Disabled" class="margin-top-20"></el-checkbox>
+        <el-checkbox v-model="html" label="Allow HTML" class="margin-top-20"></el-checkbox>
       </el-card>
-      <el-card class="item">
+      <el-card class="margin-top-20">
         <i class="el-icon-menu" /> Limitation
         <el-divider>Time</el-divider>
         <el-row :gutter="10">
@@ -103,7 +103,7 @@
           </el-col>
         </el-row>
       </el-card>
-      <el-card class="item">
+      <el-card class="margin-top-20">
         <div slot="header" class="clearfix">
           <i class="el-icon-s-flag" />
           Tags
@@ -119,7 +119,7 @@
         />
         <span v-if="rendertags.length === 0">No tag</span>
       </el-card>
-      <el-card v-loading="contentLoading" class="item">
+      <el-card v-loading="contentLoading" class="margin-top-20">
         <div slot="header" class="clearfix">
           <i class="el-icon-document" />
           Content
@@ -267,10 +267,6 @@ export default {
 </script>
 
 <style scoped>
-.item {
-    margin-top: 20px;
-}
-
 .center-text {
     margin-top: 0.7rem;
 }

@@ -19,36 +19,40 @@
         <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
       </el-col>
       <el-col :span="right_comp" id="panel">
-        <div id="tools">
-          <el-card v-if="showSmallToolBar || !smallScreen">
-            <div><i class="el-icon-s-tools" /> Tool Bar</div>
-            <el-menu default-active="0" class="item">
-              <el-menu-item index="0" @click="$router.push(`/problem/${$route.params.id}/submit`);">
-                <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
-              </el-menu-item>
-              <el-submenu index="1">
-                <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
-                <el-menu-item index="1-0" @click="jump_to_status"><i class="el-icon-upload2" />Submissions</el-menu-item>
-                <el-menu-item index="1-1"><i class="el-icon-data-line" />Statistics</el-menu-item>
-              </el-submenu>
-              <el-submenu index="2">
-                <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
-                <el-menu-item index="2-0"><i class="el-icon-chat-line-square" />Discussions</el-menu-item>
-                <el-menu-item index="2-1"><i class="el-icon-key" />Solutions</el-menu-item>
-              </el-submenu>
-              <el-menu-item
-                index="3"
-                v-if="this.$store.state.user.isStaff || this.$store.state.user.isRoot" 
-                @click="$router.push(`/problem/${$route.params.id}/edit`);"
-              >
-                <span slot="title" class="text-bold"><i class="el-icon-edit" /> Edit</span>
-              </el-menu-item>
-            </el-menu>
-            <el-button @click="$router.push('/problem/list');" class="margin-top-small back-button">Back</el-button>
-          </el-card>
-        </div>
+        <el-card v-if="showSmallToolBar || !smallScreen" id="tools">
+          <el-menu default-active="0" class="item tool-menu">
+            <el-menu-item index="0" @click="$router.push(`/problem/${$route.params.id}/submit`);">
+              <span slot="title" class="text-bold"><i class="el-icon-upload2" /> Submit</span>
+            </el-menu-item>
+            <el-submenu index="1">
+              <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
+              <el-menu-item index="1-0" @click="jump_to_status"><i class="el-icon-upload2" />Submissions</el-menu-item>
+              <el-menu-item index="1-1"><i class="el-icon-data-line" />Statistics</el-menu-item>
+            </el-submenu>
+            <el-submenu index="2">
+              <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
+              <el-menu-item index="2-0"><i class="el-icon-chat-line-square" />Discussions</el-menu-item>
+              <el-menu-item index="2-1"><i class="el-icon-key" />Solutions</el-menu-item>
+            </el-submenu>
+            <el-menu-item
+              index="3"
+              v-if="this.$store.state.user.isStaff || this.$store.state.user.isRoot" 
+              @click="$router.push(`/problem/${$route.params.id}/edit`);"
+            >
+              <span slot="title" class="text-bold"><i class="el-icon-edit" /> Edit</span>
+            </el-menu-item>
+          </el-menu>
+          <el-button @click="$router.push('/problem/list');" class="margin-top-10 back-button">Back</el-button>
+        </el-card>
         <div id="info">
           <el-card shadow="never">
+            <div><i class="el-icon-menu" /> Limitation </div>
+            <el-divider class="divider">Time</el-divider>
+            <div class="tool-content">{{time}} MS</div>
+            <el-divider class="divider">Memory</el-divider>
+            <div class="tool-content">{{memory}} MB</div>
+          </el-card>
+          <el-card shadow="never" class="margin-top-20">
             <div><i class="el-icon-info" /> Information </div>
             <el-divider class="divider">Name</el-divider>
             <div class="tool-content">{{title}}</div>
@@ -59,14 +63,7 @@
             <br>
             <strong>Last Edited: </strong><span class="tool-content time-content">{{last_edit}}</span>
           </el-card>
-          <el-card shadow="never" class="margin-top">
-            <div><i class="el-icon-menu" /> Limitation </div>
-            <el-divider class="divider">Time</el-divider>
-            <div class="tool-content">{{time}} MS</div>
-            <el-divider class="divider">Memory</el-divider>
-            <div class="tool-content">{{memory}} MB</div>
-          </el-card>
-          <el-card shadow="never" class="margin-top">
+          <el-card shadow="never" class="margin-top-20">
             <div class="margin-bottom">
               <i class="el-icon-s-flag" />
               Tags
@@ -211,10 +208,6 @@ export default {
 </script>
 
 <style scoped>
-.item {
-    margin-top: 10px;
-}
-
 #hidden-problem {
     margin: 30px 0;
     margin-right: 10px;
@@ -222,10 +215,6 @@ export default {
 
 .flex-header {
     display: flex;
-}
-
-.margin-top {
-    margin-top: 20px;
 }
 
 .margin-bottom {
@@ -298,6 +287,10 @@ export default {
     cursor: pointer;
 }
 
+.tool-menu {
+    margin-top: 0;
+}
+
 #info {
     margin-top: 20px;
 }
@@ -308,10 +301,6 @@ export default {
 
 .tool-content {
     color: #606266;
-}
-
-.margin-top-small {
-    margin-top: 10px;
 }
 
 .back-button {

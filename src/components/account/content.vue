@@ -80,12 +80,8 @@ export default {
 </script>
 
 <style scoped>
-.item {
-    margin-top: 20px;
-}
-
 #info {
-    margin-left: 30px;
+    margin-left: 20px;
     width: 800px;
 }
 

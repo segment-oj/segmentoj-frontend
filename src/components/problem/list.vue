@@ -30,8 +30,8 @@
           >
           </el-input>
         </el-card>
-        <JumpToProblem class="item" />
-        <el-card class="item">
+        <JumpToProblem class="margin-top-20" />
+        <el-card class="margin-top-20">
           <span>
             <i class="el-icon-s-grid" />
             Columns
@@ -65,7 +65,6 @@
 import apiurl from './../../apiurl';
 import AjaxTable from './../lib/AjaxTable.vue';
 import JumpToProblem from './../lib/JumpToProblem.vue';
-import listTag from './ListTag.vue';
 import CreateProblem from './create.vue';
 
 export default {
@@ -178,10 +177,6 @@ export default {
 </script>
 
 <style scoped>
-.item {
-    margin-top: 20px;
-}
-
 .divider {
     margin: 20px 0;
 }
