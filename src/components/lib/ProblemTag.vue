@@ -23,15 +23,15 @@ export default {
     },
     color: {
       type: String,
-      default: '#606266'
+      default: 'var(--color-regular-text)'
     },
     border_color: {
       type: String,
-      default: '#E4E7ED'
+      default: 'var(--color-light-border)'
     },
     background_color: {
       type: String,
-      default: 'rgb(244, 255, 255)'
+      default: 'var(--color-blue-0)'
     },
     height: {
       type: Number,

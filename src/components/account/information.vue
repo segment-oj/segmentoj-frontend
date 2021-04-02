@@ -201,13 +201,13 @@ export default {
     },
     ACRateColorMode(percentage) {
       if (percentage < 20) {
-        return '#F56C6C';
+        return 'var(--color-red)';
       } else if (percentage < 30) {
-        return '#E6A23C';
+        return 'var(--color-yellow)';
       } else if (percentage < 50) {
-        return '#67C23A';
+        return 'var(--color-green)';
       }
-      return '#409EFF';
+      return 'var(--color-blue)';
     }
   },
   mounted() {

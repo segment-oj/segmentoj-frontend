@@ -145,7 +145,6 @@ ol {
 }
 
 .todo-item-content code {
-    background-color: #f6f6f6;
     padding: 5px;
 }
 
@@ -155,8 +154,8 @@ ol {
 
 .todo-item {
     height: 40px;
-    border-top: 1px solid #ebeef5;
-    border-bottom: 1px solid #ebeef5;
+    border-top: 1px solid var(--color-lighter-border);
+    border-bottom: 1px solid var(--color-lighter-border);
 }
 
 .inline-item-left {
@@ -181,7 +180,7 @@ ol {
 .todo-item-delete {
     margin-right: 5px;
     margin-top: 11.4px;
-    color: #f56c6c;
+    color: var(--color-red);
     opacity: 0.4;
 }
 

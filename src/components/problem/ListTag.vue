@@ -4,7 +4,7 @@
       <ProblemTag
         v-for="item in this.rendertags"
         :key="item.content"
-        color="#fff"
+        color="var(--color-white)"
         :height="22"
         :border_color="item.color"
         :background_color="item.color"

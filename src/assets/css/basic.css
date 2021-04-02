@@ -1,35 +1,35 @@
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
-    background-color: #eeeeee;
+    background-color: rgb(233, 233, 235);
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #eeeeee;
+    background-color: rgb(233, 233, 235);
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #b3b3b3;
+    background-color: rgb(144, 147, 153);
     transition: all 0.5s;
 }
 
 *::selection {
-    background-color: #b9d7ff;
+    background-color: var(--color-blue-3);
     opacity: 0.2;
 }
 
 *::-moz-selection {
-    background-color: #b9d7ff;
+    background-color: var(--color-blue-3);
     opacity: 0.2;
 }
 
 *::-webkit-selection {
-    background-color: #b9d7ff;
+    background-color: var(--color-blue-3);
     opacity: 0.2;
 }
 
 body {
-    color: #606266;
+    color: var(--color-regular-text);
 }
 
 h1,
@@ -38,7 +38,7 @@ h3,
 h4,
 h5 {
     font-weight: 400;
-    color: #303133;
+    color: var(--color-primary-text);
 }
 
 a {
@@ -46,13 +46,13 @@ a {
 }
 
 .markdown-container a {
-    color: #409eff;
+    color: var(--color-blue);
     text-decoration: none;
     transition: 0.2s;
 }
 
 .markdown-container a:hover {
-    color: #66b1ff;
+    color: var(--color-blue-7);
     text-decoration: underline;
 }
 
@@ -73,13 +73,13 @@ a {
 }
 
 .markdown-container thead {
-    background-color: #f9f9f9;
+    background-color: var(--color-grey-1);
 }
 
 .markdown-container h1::before,
 h2::before,
 h3::before {
-    color: #409eff;
+    color: var(--color-blue);
     content: "# ";
 }
 
@@ -113,25 +113,25 @@ h3::before {
 }
 
 .markdown-container blockquote {
-    background-color: #f8f8f8;
-    border-left: 5px solid #a8a8a8;
+    background-color: var(--color-grey-1);
+    border-left: 5px solid var(--color-grey-3);
     padding-left: 15px;
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
-    color: #909399;
+    color: var(--color-secondary-text);
     margin-left: 0;
     margin-right: 0;
 }
 
 .markdown-container code {
-    background-color: #f9f9f9;
+    background-color: var(--color-grey-1);
     padding: 5px;
 }
 
 .markdown-container pre {
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: var(--color-grey-1);
 }
 
 .markdown-container pre > code {
@@ -145,16 +145,16 @@ h3::before {
 
 .markdown-container th {
     padding: 10px;
-    border-bottom: 2px solid #909399;
+    border-bottom: 2px solid var(--color-grey);
 }
 
 .markdown-container td {
-    border-top: 1.5px solid #ebeef5;
+    border-top: 1.5px solid var(--color-lighter-border);
     padding: 10px;
 }
 
 .markdown-container hr {
-    background-color: #e4e7ed;
+    background-color: var(--color-light-border);
     height: 2px;
     border: none;
 }
@@ -164,45 +164,9 @@ h3::before {
     overflow-y: hidden;
 }
 
-.bottom-zindex {
-    z-index: 10 !important;
-}
-
-.low-zindex {
-    z-index: 100 !important;
-}
-
-.mid-zindex {
-    z-index: 1000 !important;
-}
-
-.high-zindex {
-    z-index: 10000 !important;
-}
-
-.top-zindex {
-    z-index: 100000 !important;
-}
-
-.layer-level-zindex {
-    z-index: 1000000 !important;
-}
-
-.no-margin {
-    margin: 0;
-}
-
-.no-bottom-margin {
-    margin-bottom: 0;
-}
-
-.no-top-margin {
-    margin-top: 0;
-}
-
 .problem-list-pagination {
-    border: 1px solid #ebeef5;
-    background: #ffffff;
+    border: 1px solid var(--color-lighter-border);
+    background: var(--color-white);
     margin-left: -21px;
     padding: 10px;
     height: 36px;
@@ -214,8 +178,8 @@ h3::before {
 }
 
 .status-list-pagination {
-    border: 1px solid #ebeef5;
-    background: #ffffff;
+    border: 1px solid var(--color-lighter-border);
+    background: var(--color-white);
     margin-left: -21px;
     padding: 10px;
     height: 36px;
@@ -240,17 +204,9 @@ h3::before {
 }
 
 .icon-error {
-    color: #f56c6c !important;
+    color: var(--color-red) !important;
 }
 
 .icon-success {
-    color: #67c23a !important;
-}
-
-.margin-top-20 {
-    margin-top: 20px;
-}
-
-.margin-top-10 {
-    margin-top: 10px;
+    color: var(--color-green) !important;
 }

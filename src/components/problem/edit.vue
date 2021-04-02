@@ -34,7 +34,7 @@
             <ProblemTag
               v-for="item in rendertags"
               :key="item.content"
-              color="#fff"
+              color="var(--color-white)"
               :border_color="item.color"
               :background_color="item.color"
               :content="item.content"
@@ -112,7 +112,7 @@
         <ProblemTag
           v-for="item in rendertags"
           :key="item.content"
-          color="#fff"
+          color="var(--color-white)"
           :border_color="item.color"
           :background_color="item.color"
           :content="item.content"
@@ -299,6 +299,6 @@ export default {
 
 .edit-i-button:hover {
     cursor: pointer;
-    color: #909399;
+    color: var(--color-secondary-text);
 }
 </style>

@@ -19,10 +19,10 @@ export default {
 }
 
 .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
+    background-color: var(--color-base-border);
 }
 
 .el-carousel__item:nth-child(2n + 1) {
-    background-color: #d3dce6;
+    background-color: var(--color-extra-light-border);
 }
 </style>

@@ -45,7 +45,7 @@ export default {
     return {
       new_tag_visible: false,
       new_tag_name: '',
-      new_tag_color: '#409eff',
+      new_tag_color: '#409EFF',
       predefine_colors: sfconfig.tagColorPreset,
     };
   },

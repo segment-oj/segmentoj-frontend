@@ -24,6 +24,7 @@ Vue.use(ElementUI, { locale });
 import './assets/css/theme.css';
 import './assets/css/fontstyle.css';
 import './assets/css/basic.css';
+import './assets/css/var.css';
 import('./loader/load');
 
 import './methods/string';
