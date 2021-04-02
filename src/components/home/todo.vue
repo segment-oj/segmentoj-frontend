@@ -191,7 +191,7 @@ ol {
 
 .todo-item-content {
     font-size: 13px;
-    font-family: "Fira Code";
+    font-family: var(--font-monospace);
     margin-top: calc((40px - 1em - 6px) / 2);
 }
 

@@ -5,13 +5,13 @@
 }
 
 .CodeMirror-linenumber {
-    font-family: "Fira Code" !important;
+    font-family: var(--font-monospace) !important;
 }
 
 .CodeMirror-foldmarker {
     text-shadow: none !important;
     color: #8e908c !important;
-    font-family: "Fira Sans" !important;
+    font-family: var(--font-monospace) !important;
     outline: 1px solid #d6d6d6 !important;
     -moz-outline-radius: 3px !important;
 }
@@ -21,7 +21,7 @@
     box-shadow: none !important;
     border-color: #dcdfe6 !important;
     background-color: #fefefe !important;
-    font-family: "Fira Code" !important;
+    font-family: var(--font-monospace) !important;
     padding: 5px !important;
 }
 

@@ -1,8 +1,8 @@
 pre,
 code {
-    font-family: "Fira Code", "Cascadia Code", "Noto Sans SC", "Source Code Pro", Consolas, "微软雅黑", monospace !important;
+    font-family: var(--font-monospace) !important;
 }
 
 body {
-    font-family: "Fira Sans", "Noto Sans SC", "Source Han Sans", "思源黑体CN", "Helvetica Neue", Ubuntu, Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-family: var(--font-sans-serif) !important;
 }
