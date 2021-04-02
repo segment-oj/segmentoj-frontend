@@ -24,7 +24,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="12">
-        <el-card shadow="never" class="item">
+        <el-card shadow="never" class="margin-top-20">
           <div slot="header" class="clearfix">
             <i class="el-icon-message" /> Email
           </div>
@@ -32,7 +32,7 @@
         </el-card>
       </el-col>
       <el-col :span="6">
-        <el-card shadow="never" class="item">
+        <el-card shadow="never" class="margin-top-20">
           <div slot="header" class="clearfix">
             <i class="el-icon-date" />
             <span class="label"> Time Joined</span>
@@ -41,7 +41,7 @@
         </el-card>
       </el-col>
       <el-col :span="6">
-        <el-card shadow="never" class="item">
+        <el-card shadow="never" class="margin-top-20">
           <div slot="header" class="clearfix">
             <i class="el-icon-time" />
             <span class="label"> Last Login</span>
@@ -52,7 +52,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="4">
-        <el-card class="item">
+        <el-card class="margin-top-20">
           <div slot="header" class="clearfix">
             <i class="el-icon-s-operation" />
             <span class="label"> Lang</span>
@@ -61,7 +61,7 @@
         </el-card>
       </el-col>
       <el-col :span="6">
-        <el-card shadow="never" class="item">
+        <el-card shadow="never" class="margin-top-20">
           <div slot="header" class="clearfix">
             <i class="el-icon-check" />
             <span class="label"> Solved</span>
@@ -74,7 +74,7 @@
         </el-card>
       </el-col>
       <el-col :span="6">
-        <el-card shadow="never" class="item">
+        <el-card shadow="never" class="margin-top-20">
           <div slot="header" class="clearfix">
             <i class="el-icon-upload2" />
             <span class="label"> Submitted</span>
@@ -87,7 +87,7 @@
         </el-card>
       </el-col>
       <el-col :span="8">
-        <el-card shadow="never" class="item">
+        <el-card shadow="never" class="margin-top-20">
           <div slot="header" class="clearfix">
             <i class="el-icon-finished" />
             <span class="label"> AC</span>
@@ -97,14 +97,14 @@
         </el-card>
       </el-col>
     </el-row>
-    <el-card shadow="never" class="item">
+    <el-card shadow="never" class="margin-top-20">
       <div slot="header" class="clearfix">
         <i class="el-icon-chat-line-square" />
         Introductions
       </div>
       <MarkdownContainer v-if="introduction" :content="introduction"/>
     </el-card>
-    <el-card class="item">
+    <el-card class="margin-top-20">
       <div slot="header" class="clearfix"><i class="el-icon-user" /> Permissions</div>
       <el-checkbox v-model="isStaff" disabled>Staff</el-checkbox>
       <el-checkbox v-model="isRoot" disabled>Root</el-checkbox>
@@ -226,10 +226,6 @@ export default {
 
 .clearfix {
     display: block ruby;
-}
-
-.item {
-    margin-top: 20px;
 }
 
 @media only screen and (max-width: 800px) {

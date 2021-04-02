@@ -4,7 +4,7 @@
       <el-col :span="16"> <carousel /></el-col>
       <el-col :span="8" style="padding-left: 20px;"> <Todo /> </el-col>
     </el-row>
-    <JumpToProblem class="item" />
+    <JumpToProblem class="margin-top-20" />
   </div>
 </template>
 
@@ -22,9 +22,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.item {
-    margin-top: 20px;
-}
-</style>

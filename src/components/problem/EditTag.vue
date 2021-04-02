@@ -21,8 +21,8 @@
       </el-color-picker>
       <el-button type="primary" icon="el-icon-plus" @click="new_tag" style="width: 100%; margin-top: 10px;"></el-button>
     </el-popover>
-    <SelectTag class="item" ref="tagSelector" :pid="this.$route.params.id" />
-    <el-button-group class="item">
+    <SelectTag class="margin-top-20" ref="tagSelector" :pid="this.$route.params.id" />
+    <el-button-group class="margin-top-20">
       <el-button
         type="primary"
         v-on:click="Submit"
@@ -97,10 +97,6 @@ export default {
 </script>
 
 <style scoped>
-.item {
-    margin-top: 20px;
-}
-
 .divider {
     margin: 20px 0;
 }

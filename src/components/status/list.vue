@@ -33,7 +33,7 @@
           <el-input
             placeholder="Owner ID"
             v-model="new_search_owner"
-            class="input-with-select item"
+            class="input-with-select margin-top-20"
             clearable
           >
             <template slot="prepend">
@@ -44,7 +44,7 @@
           <el-input
             placeholder="Language"
             v-model="new_search_lang"
-            class="input-with-select item"
+            class="input-with-select margin-top-20"
             clearable
           >
             <template slot="prepend">
@@ -52,7 +52,7 @@
             </template>
           </el-input>
 
-          <el-button class="search-button item" icon="el-icon-search" @click="search">
+          <el-button class="search-button margin-top-20" icon="el-icon-search" @click="search">
             Search
           </el-button>
         </el-card>
@@ -189,10 +189,6 @@ export default {
 </script>
 
 <style scoped>
-.item {
-    margin-top: 20px;
-}
-
 .search-button {
     width: 100%;
 }
