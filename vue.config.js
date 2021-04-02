@@ -12,4 +12,21 @@ module.exports = {
       chunks: ['chunk-vendors', 'chunk-common', 'index',],
     },
   },
+
+  configureWebpack: {
+    externals: {
+      'axios': 'axios',
+      'vue': 'Vue',
+      'vue-router': 'VueRouter',
+      'vue-template-compiler': 'VueTemplateCompiler',
+      'dompurify': 'DOMPurify',
+      'vuex': 'Vuex',
+      'element-ui': 'ELEMENT',
+      'highlight.js': 'hljs',
+      'codemirror': 'CodeMirror',
+      'katex': 'katex',
+      'remarkable': 'remarkable',
+      'remarkable/linkify': 'remarkable.linkify',
+    },
+  },
 };
