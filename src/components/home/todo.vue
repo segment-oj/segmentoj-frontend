@@ -128,14 +128,14 @@ export default {
 }
 
 .todo-item-content h1,
-h2,
-h3,
-h4,
-h5,
-ol,
-p,
-ul,
-blockquote {
+.todo-item-content h2,
+.todo-item-content h3,
+.todo-item-content h4,
+.todo-item-content h5,
+.todo-item-content ol,
+.todo-item-content p,
+.todo-item-content ul,
+.todo-item-content blockquote {
     margin: 0;
 }
 
