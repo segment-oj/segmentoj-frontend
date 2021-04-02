@@ -1,6 +1,6 @@
 .CodeMirror .CodeMirror-code .cm-comment {
     background-color: #ffffff00 !important;
-    font-family: "Fira Code";
+    font-family: var(--font-monospace);
     color: #cc6666;
 }
 
