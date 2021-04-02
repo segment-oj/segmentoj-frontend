@@ -263,87 +263,87 @@ export default {
     value: '0',
     icon: 'el-icon-loading',
     label: 'Waiting',
-    color: '#909399'
+    color: 'var(--color-grey)'
   }, {
     value: '1',
     icon: 'el-icon-loading',
     label: 'Compiling',
-    color: '#f7ba2a'
+    color: 'var(--color-yellow-light)'
   }, {
     value: '2',
     icon: 'el-icon-loading',
     label: 'Judging',
-    color: '#409eff'
+    color: 'var(--color-blue)'
   }, {
     value: '3',
     icon: 'el-icon-loading',
     label: 'Waiting',
-    color: '#909399'
+    color: 'var(--color-grey)'
   }, {
     value: '10',
     icon: 'el-icon-check',
     label: 'Accepted',
-    color: '#67C23A'
+    color: 'var(--color-green)'
   }, {
     value: '11',
     icon: 'el-icon-minus',
     label: 'Partly Correct',
-    color: '#F7BA2A'
+    color: 'var(--color-yellow-light)'
   }, {
     value: '12',
     icon: 'el-icon-time',
     label: 'Time Limit Exceed',
-    color: '#F7BA2A'
+    color: 'var(--color-yellow-light)'
   }, {
     value: '13',
     icon: 'el-icon-coin',
     label: 'Memory Limit Exceeded',
-    color: '#324057'
+    color: 'var(--color-blue-grey-1)'
   }, {
     value: '14',
     icon: 'el-icon-warning-outline',
     label: 'Runtime Error',
-    color: '#324057'
+    color: 'var(--color-blue-grey-1)'
   }, {
     value: '15',
     icon: 'el-icon-close',
     label: 'Wrong Answer',
-    color: '#F56C6C'
+    color: 'var(--color-red)'
   }, {
     value: '16',
     icon: 'el-icon-circle-close',
     label: 'Unknown Error',
-    color: '#324057'
+    color: 'var(--color-blue-grey-2)'
   }, {
     value: '17',
     icon: 'el-icon-close',
     label: 'Compile Error',
-    color: '#F7BA2A'
+    color: 'var(--color-yellow-light)'
   }, {
     value: '18',
     icon: 'el-icon-close',
     label: 'Output Limit Exceeded',
-    color: '#F56C6C'
+    color: 'var(--color-red)'
   }, {
     value: '20',
     icon: 'el-icon-circle-close',
     label: 'System Error',
-    color: '#FF4949'
+    color: 'var(--color-red-bright)'
   }, {
     value: '21',
     icon: 'el-icon-circle-close',
     label: 'Judger Configure Error',
-    color: '#FF4949'
+    color: 'var(--color-red-bright)'
   }, {
     value: '22',
     icon: 'el-icon-circle-close',
     label: 'Judger Resources Limit Exceeded',
-    color: '#FF4949'
+    color: 'var(--color-red-bright)'
   }, {
     value: '23',
     icon: 'el-icon-circle-close',
     label: 'Unsupported Language',
-    color: '#FF4949'
+    color: 'var(--color-red-bright)'
   }],
   captchaKeyMax: 2000000000,
   navColorPreset: [

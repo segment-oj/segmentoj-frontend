@@ -7,8 +7,8 @@
         :router="true"
         mode="horizontal"
         :background-color="this.nav_color"
-        text-color="#ffffff"
-        active-text-color="rgb(233, 233, 235)"
+        text-color="var(--color-white)"
+        active-text-color="var(--color-grey-2)"
       >
         <el-menu-item index="" @click="$router.push('/')">
           <img src="./../../assets/icon/SOJ-thick-white.png" style="height: 40px;" />
@@ -72,7 +72,7 @@ export default {
   },
   mounted() {
     if (this.nav_color == null || this.nav_color == undefined) {
-      this.nav_color = '#545c64';
+      this.nav_color = 'var(--color-grey-4)';
     }
   }
 };
@@ -86,7 +86,7 @@ export default {
 }
 
 i {
-    color: #ffffff !important;
+    color: var(--color-white) !important;
 }
 
 #nav {

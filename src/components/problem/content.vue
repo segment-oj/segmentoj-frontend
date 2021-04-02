@@ -80,7 +80,7 @@
               <ProblemTag
                 v-for="item in rendertags"
                 :key="item.content"
-                color="#fff"
+                color="var(--color-white)"
                 :border_color="item.color"
                 :background_color="item.color"
                 :content="item.content"
@@ -263,17 +263,17 @@ export default {
 
 .header {
     font-size: 35px;
-    color: #303133;
+    color: var(--color-primary-text);
 }
 
 #problem-content {
     z-index: 10;
     padding: 20px;
-    border: 1px solid #ebeef5;
+    border: 1px solid var(--color-lighter-border);
 }
 
 #panel {
-    background-color: #ffffff !important;
+    background-color: var(--color-white) !important;
     margin-left: 20px;
 }
 
@@ -300,7 +300,7 @@ export default {
 }
 
 .tool-content {
-    color: #606266;
+    color: var(--color-regular-text);
 }
 
 .back-button {

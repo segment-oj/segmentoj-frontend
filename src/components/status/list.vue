@@ -168,7 +168,7 @@ export default {
       if(stateTable.length) {
         x.state = (<router-link to={`/status/${x.id}`} style={`color: ${stateTable[0].color};`} class="text-bold"><i class={stateTable[0].icon} /> {stateTable[0].label}</router-link>);
       } else {
-        x.state = (<div style='color: #FF4949;' class="text-bold"><i class='el-icon-circle-close' /> System Error</div>);
+        x.state = (<div style='color: var(--color-red-bright);' class="text-bold"><i class='el-icon-circle-close' /> System Error</div>);
       }
       x.time = `${x.time} ms`;
       x.memory = `${Math.round(x.memory / 1024)} MB`;

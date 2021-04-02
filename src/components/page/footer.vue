@@ -22,7 +22,7 @@ export default {
 .footer {
     width: 100%;
     text-align: center;
-    color: #909399;
+    color: var(--color-secondary-text);
 }
 
 .footer-content {
