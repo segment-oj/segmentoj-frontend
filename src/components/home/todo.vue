@@ -59,7 +59,6 @@ import { Remarkable } from 'remarkable';
 import { linkify } from 'remarkable/linkify';
 
 import rkatex from 'remarkable-katex';
-import 'katex/dist/katex.min.css';
 import DOMPurify from 'dompurify';
 
 export default {

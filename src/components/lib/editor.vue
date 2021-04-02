@@ -7,50 +7,17 @@
 <script>
 import sfconfig from './../../sfconfig';
 
-import * as CodeMirror from 'codemirror/lib/codemirror';
-import 'codemirror/lib/codemirror.css';
+import * as CodeMirror from 'codemirror';
 import './../../assets/code_mirror/CodeMirror.css';
 import './../../assets/code_mirror/neo.css';
 import './../../assets/code_mirror/tomorrow.css';
 import './../../assets/code_mirror/zenburn.css';
 import './../../assets/code_mirror/monokai.css';
 import './../../assets/code_mirror/ayu-mirage.css';
-import 'codemirror/theme/neo.css';
-import 'codemirror/theme/ayu-mirage.css';
-import 'codemirror/theme/monokai.css';
-import 'codemirror/theme/zenburn.css';
-import 'codemirror/mode/clike/clike';
-import 'codemirror/mode/rust/rust';
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/python/python';
-import 'codemirror/mode/gfm/gfm';
-import 'codemirror/mode/ruby/ruby';
-import 'codemirror/mode/go/go';
-import 'codemirror/mode/php/php';
-import 'codemirror/mode/pascal/pascal';
-import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/hint/show-hint.css';
-import 'codemirror/addon/hint/anyword-hint';
-import 'codemirror/addon/edit/matchbrackets';
-import 'codemirror/addon/edit/closebrackets';
-import 'codemirror/addon/fold/foldcode';
-import 'codemirror/addon/fold/foldgutter';
 import 'codemirror/addon/fold/foldgutter.css';
-import 'codemirror/addon/fold/brace-fold';
-import 'codemirror/addon/fold/comment-fold';
-import 'codemirror/addon/selection/active-line';
-import 'codemirror/addon/comment/continuecomment';
-import 'codemirror/addon/comment/comment.js';
-import 'codemirror/addon/dialog/dialog';
 import 'codemirror/addon/dialog/dialog.css';
-import 'codemirror/addon/scroll/simplescrollbars';
-import 'codemirror/addon/scroll/annotatescrollbar';
 import 'codemirror/addon/scroll/simplescrollbars.css';
-import 'codemirror/addon/search/searchcursor';
-import 'codemirror/addon/search/search';
-import 'codemirror/addon/search/jump-to-line';
-import 'codemirror/addon/search/match-highlighter';
-import 'codemirror/keymap/sublime';
 
 export default {
   name: 'CodeMirror',
