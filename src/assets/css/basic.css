@@ -195,6 +195,15 @@ h3::before {
     z-index: 200000 !important;
 }
 
+.el-drawer {
+    box-shadow: none;
+    overflow-y: scroll;
+}
+
+.el-drawer__body {
+    padding: 20px;
+}
+
 .v-modal {
     z-index: 100000 !important;
 }
