@@ -96,16 +96,18 @@
         class="layer-level-zindex drawer"
       >
         <div slot="title"><i class="el-icon-folder" /> File Downloads</div>
-        <el-button type="success" v-if="have_view_test_data_url_permission" plain>
-          <i class="el-icon-takeaway-box" />
-          <i class="el-icon-download" />
-          Download Test Data
-        </el-button>
-        <el-button type="primary" v-if="have_view_test_data_url_permission" @click="copy_text" plain>
-          <i class="el-icon-reading" />
-          <i class="el-icon-download" />
-          Copy Markdown Source
-        </el-button>
+        <el-button-group>
+          <el-button type="primary" v-if="have_view_test_data_url_permission" @click="jump_to_data">
+            <i class="el-icon-takeaway-box" />
+            <i class="el-icon-download" />
+            Download Test Data
+          </el-button>
+          <el-button type="primary" v-if="have_view_test_data_url_permission" @click="copy_text">
+            <i class="el-icon-reading" />
+            <i class="el-icon-download" />
+            Copy Markdown Source
+          </el-button>
+        </el-button-group>
         <div class="markdown-container">
           <pre>{{description}}</pre>
         </div>
@@ -226,6 +228,9 @@ export default {
       document.execCommand('Copy');
       document.body.removeChild(input);
       this.$info.success('Copy Success');
+    },
+    jump_to_data() {
+      window.open(this.test_data_url, '_blank');
     }
   },
   computed: {
