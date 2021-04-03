@@ -14,7 +14,7 @@
         </div>
         <div class="flex-header">
           <el-tag v-if="hidden" type="warning" id="hidden-problem" effect="dark">Hidden</el-tag>
-          <h1 id="title" class="header">#{{pid}}. {{ title }}</h1>
+          <h1 id="title" class="header"><code>#{{pid}}</code>. {{ title }}</h1>
         </div>
         <MarkdownContainer v-if="description" :content="description" :allowHTML="this.allowHTML"/>
       </el-col>
@@ -26,23 +26,25 @@
             </el-menu-item>
             <el-submenu index="1">
               <template slot="title"><div class="text-bold"><i class="el-icon-pie-chart" /> Statistics</div></template>
-              <el-menu-item index="1-0" @click="jump_to_status"><i class="el-icon-upload2" />Submissions</el-menu-item>
+              <el-menu-item index="1-0" @click="jump_to_status"><i class="el-icon-upload2" /> Submissions</el-menu-item>
               <el-menu-item index="1-1"><i class="el-icon-data-line" />Statistics</el-menu-item>
             </el-submenu>
             <el-submenu index="2">
               <template slot="title"><div class="text-bold"><i class="el-icon-chat-line-round" /> Discuss</div></template>
-              <el-menu-item index="2-0"><i class="el-icon-chat-line-square" />Discussions</el-menu-item>
-              <el-menu-item index="2-1"><i class="el-icon-key" />Solutions</el-menu-item>
+              <el-menu-item index="2-0"><i class="el-icon-chat-line-square" /> Discussions</el-menu-item>
+              <el-menu-item index="2-1"><i class="el-icon-key" /> Solutions</el-menu-item>
             </el-submenu>
+            <el-menu-item index="3" @click="show_drawer = true;">
+              <template slot="title"><div class="text-bold"><i class="el-icon-folder" /> Files</div></template>
+            </el-menu-item>
             <el-menu-item
-              index="3"
+              index="4"
               v-if="this.$store.state.user.isStaff || this.$store.state.user.isRoot" 
               @click="$router.push(`/problem/${$route.params.id}/edit`);"
             >
               <span slot="title" class="text-bold"><i class="el-icon-edit" /> Edit</span>
             </el-menu-item>
           </el-menu>
-          <el-button @click="$router.push('/problem/list');" class="margin-top-10 back-button">Back</el-button>
         </el-card>
         <div id="info">
           <el-card shadow="never">
@@ -55,9 +57,7 @@
           <el-card shadow="never" class="margin-top-20">
             <div><i class="el-icon-info" /> Information </div>
             <el-divider class="divider">Name</el-divider>
-            <div class="tool-content">{{title}}</div>
-            <el-divider class="divider">PID</el-divider>
-            <div class="tool-content">#{{pid}}</div>
+            <div class="tool-content"><code>#{{pid}}</code>. {{title}}</div>
             <el-divider class="divider">Time</el-divider>
             <strong>Created: </strong><span class="tool-content time-content">{{timeAdd}}</span>
             <br>
@@ -90,6 +90,26 @@
           </el-card>
         </div>
       </el-col>
+      <el-drawer
+        :visible.sync="show_drawer"
+        direction="rtl"
+        class="layer-level-zindex drawer"
+      >
+        <div slot="title"><i class="el-icon-folder" /> File Downloads</div>
+        <el-button type="success" v-if="have_view_test_data_url_permission" plain>
+          <i class="el-icon-takeaway-box" />
+          <i class="el-icon-download" />
+          Download Test Data
+        </el-button>
+        <el-button type="primary" v-if="have_view_test_data_url_permission" @click="copy_text" plain>
+          <i class="el-icon-reading" />
+          <i class="el-icon-download" />
+          Copy Markdown Source
+        </el-button>
+        <div class="markdown-container">
+          <pre>{{description}}</pre>
+        </div>
+      </el-drawer>
       <el-button v-if="smallScreen" class="float-bottom-right" icon="el-icon-more" @click="showSmallToolBar = !showSmallToolBar" type="info" circle />
     </div>
   </div>
@@ -123,6 +143,9 @@ export default {
       showTag: false,
       smallScreen: screen.width < 700,
       showSmallToolBar: false,
+      show_drawer: false,
+      test_data_url: '',
+      have_view_test_data_url_permission: false,
     };
   },
   methods: {
@@ -155,11 +178,6 @@ export default {
           this.tags = data.tags;
           this.render_tags();
           this.problemLoading = false;
-          this.$axios
-            .get(apiurl(`/problem/${this.$route.params.id}/description`))
-            .then(detail => {
-              this.description = detail.data.res.description;
-            });
         })
         .catch(err => {
           if(err.request.status === 404) {
@@ -169,6 +187,18 @@ export default {
           } else {
             this.$info.error('Unknown error');
           }
+        });
+      this.$axios
+        .get(apiurl(`/problem/${this.$route.params.id}/description`))
+        .then(res => {
+          this.description = res.data.res.description;
+        });
+      this.$axios
+        .get(apiurl(`/problem/${this.$route.params.id}/testdata`))
+        .then(res => {
+          this.test_data_url = res.data.res;
+          this.have_view_test_data_url_permission = true;
+          console.log(this.test_data_url);
         });
     },
     jump_to_status() {
@@ -187,6 +217,15 @@ export default {
         this.left_span = 24;
         this.right_span = 0;
       }
+    },
+    copy_text() {
+      let input = document.createElement('input');
+      input.value = this.description;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('Copy');
+      document.body.removeChild(input);
+      this.$info.success('Copy Success');
     }
   },
   computed: {
@@ -202,12 +241,16 @@ export default {
   },
   components: {
     MarkdownContainer,
-    ProblemTag
+    ProblemTag,
   }
 };
 </script>
 
 <style scoped>
+.drawer {
+    padding: 40px;
+}
+
 #hidden-problem {
     margin: 30px 0;
     margin-right: 10px;
