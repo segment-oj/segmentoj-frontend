@@ -230,7 +230,7 @@ export default {
       this.$info.success('Copy Success');
     },
     jump_to_data() {
-      window.open(this.test_data_url, '_blank');
+      window.open(this.test_data_url.startsWith('http') ? this.test_data_url : `http://${this.test_data_url}`, '_blank');
     }
   },
   computed: {
