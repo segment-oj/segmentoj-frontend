@@ -72,7 +72,7 @@ export default {
   },
   mounted() {
     if (this.nav_color == null || this.nav_color == undefined) {
-      this.nav_color = 'var(--color-grey-4)';
+      this.nav_color = '#545C64';
     }
   }
 };
