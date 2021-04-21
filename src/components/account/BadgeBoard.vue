@@ -3,16 +3,18 @@
     <div slot="header">
       <i class="el-icon-price-tag" />
       Badges
-      <i class="el-icon-edit" style="float: right;" @click="on_edit = !on_edit;"></i>
+      <i v-if="can_edit" class="el-icon-edit" style="float: right;" @click="on_edit = !on_edit;"></i>
     </div>
 
     <div>
       <span 
         v-for="(item, i) in url_list"
         :key="i"
-        style="margin-right: 5px"
+        style="margin-right: 5px;"
       >
-        <el-input v-if="on_edit" v-model="item.url" style="margin-top: 10px;"></el-input>
+        <el-input v-if="on_edit" v-model="item.url" style="margin-top: 10px;">
+          <el-button slot="append" icon="el-icon-close" @click="url_list.splice(i, 1);" circle></el-button>
+        </el-input>
         <img :src="item.url"/>
       </span>
       <br>
@@ -46,6 +48,12 @@ export default {
       on_edit: false,
       url_list: [],
     };
+  },
+  props: {
+    can_edit: {
+      type: Boolean,
+      default: false,
+    }
   },
   methods: {
     submit() {

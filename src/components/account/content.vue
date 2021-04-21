@@ -4,7 +4,7 @@
       <el-card shadow="never">
         <UserAvatar :imgsrc="avatar_url" shape="square" :size="320" />
       </el-card>
-      <BadgeBoard></BadgeBoard>
+      <BadgeBoard :can_edit="can_edit"></BadgeBoard>
     </el-col>
 
     <el-col :span="16" id="info">
