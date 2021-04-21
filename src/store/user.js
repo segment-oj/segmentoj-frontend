@@ -1,6 +1,6 @@
 const userstore = {
   state: {
-    user_config: localStorage.getItem('user-config') || null,
+    extra_data: localStorage.getItem('user-config') || null,
     accessToken: localStorage.getItem('user-access-token') || null,
     refreshToken:  localStorage.getItem('user-refresh-token') || null,
     authenticated: localStorage.getItem('user-authenticated') === 'true' ? true : false || false,
@@ -56,8 +56,8 @@ const userstore = {
       localStorage.setItem('user-navcolor', data.nav_color);
     },
     userConfigChange(state, data) {
-      state.user_config = data.user_config;
-      localStorage.setItem('user-config', data.user_config);
+      state.extra_data = data.extra_data;
+      localStorage.setItem('user-config', data.extra_data);
     },
     userLogout(state) {
       state.authenticated = false;

@@ -73,7 +73,7 @@ export default {
         ]
       },
       buttonLoading: false,
-      user_config: {},
+      extra_data: {},
     };
   },
   methods: {
@@ -89,23 +89,29 @@ export default {
           this.$axios
             .get(apiurl(`/account/${userid}`))
             .then(detail => {
-              let frontend_config = JSON.parse(detail.data.res.frontend_config);
-              if (frontend_config == null) {
-                frontend_config = {segmentoj_frontend_config: {}};
+              let extra_data = JSON.parse(detail.data.res.extra_data);
+              console.log(extra_data);
+
+              if (extra_data == null) {
+                extra_data = {segmentoj_extra_data: {}};
               }
-              let segmentoj_frontend_config = frontend_config.segmentoj_frontend_config;
-              if (segmentoj_frontend_config.nav_color == undefined) {
-                segmentoj_frontend_config.nav_color = '#545C64';
+
+              let segmentoj_extra_data = extra_data.segmentoj_extra_data;
+              if (segmentoj_extra_data.nav_color == undefined) {
+                segmentoj_extra_data.nav_color = '#545C64';
               }
-              if (segmentoj_frontend_config.col_limit == undefined) {
-                segmentoj_frontend_config.col_limit = 50;
+              if (segmentoj_extra_data.col_limit == undefined) {
+                segmentoj_extra_data.col_limit = 50;
               }
-              if (segmentoj_frontend_config.code_mirror_theme == undefined) {
-                segmentoj_frontend_config.code_mirror_theme = '0';
+              if (segmentoj_extra_data.code_mirror_theme == undefined) {
+                segmentoj_extra_data.code_mirror_theme = '0';
               }
-              frontend_config.segmentoj_frontend_config = segmentoj_frontend_config;
+              if (segmentoj_extra_data.badges == undefined) {
+                segmentoj_extra_data.badges = [];
+              }
+
               this.$store.commit('userConfigChange', {
-                user_config: JSON.stringify(segmentoj_frontend_config)
+                extra_data: JSON.stringify(segmentoj_extra_data)
               });
               this.$store.commit('userLang', {
                 lang: detail.data.res.lang
@@ -115,11 +121,12 @@ export default {
                 is_superuser: detail.data.res.is_superuser
               });
               this.$store.commit('userNavColorChange', {
-                nav_color: segmentoj_frontend_config.nav_color
+                nav_color: segmentoj_extra_data.nav_color
               });
               this.$store.commit('userAvatarURLChange', {
                 avatar_url: detail.data.res.avatar_url
               });
+              // this.$store.commit('setTodo', segmentoj_extra_data.todo_list);
             });
           this.$store.commit('userLogin', {
             username: this.ldata.username,
