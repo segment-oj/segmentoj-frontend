@@ -55,20 +55,20 @@ export default {
       theme_table: sfconfig.CodeMirrorThemeTableOptions,
       CodeMirrorThemeTable: sfconfig.CodeMirrorThemeTable,
       majorLangTable: sfconfig.majorLangTable,
-      user_config: JSON.parse(this.$store.state.user.user_config),
+      extra_data: JSON.parse(this.$store.state.user.extra_data),
     };
   },
   watch: {
     theme(val) {
       this.theme = val;
-      this.user_config.code_mirror_theme = this.theme;
+      this.extra_data.code_mirror_theme = this.theme;
       this.$store.commit('userConfigChange', {
-        user_config: JSON.stringify(this.user_config)
+        extra_data: JSON.stringify(this.extra_data)
       });
-      const frontend_config = {segmentoj_frontend_config: this.user_config};
+      const extra_data = {segmentoj_extra_data: this.extra_data};
       this.$axios
         .patch(apiurl(`/account/${this.$store.state.user.userid}`), {
-          frontend_config: JSON.stringify(frontend_config)
+          extra_data: JSON.stringify(extra_data)
         });
     }
   },
@@ -81,7 +81,7 @@ export default {
       }
     },
     loadUserTheme() {
-      this.theme = this.user_config.code_mirror_theme;
+      this.theme = this.extra_data.code_mirror_theme;
     }
   },
   mounted() {

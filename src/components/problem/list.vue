@@ -98,7 +98,7 @@ export default {
         sortable: false
       }],
       data_count: 10,
-      user_config: JSON.parse(this.$store.state.user.user_config),
+      extra_data: JSON.parse(this.$store.state.user.extra_data),
     };
   },
   watch: {
@@ -121,21 +121,21 @@ export default {
       if (this.$store.state.user.userid === null) {
         return;
       }
-      this.limit = this.user_config.col_limit;
+      this.limit = this.extra_data.col_limit;
     },
     set_column(x) {
       if (this.$store.state.user.userid === null) {
         return;
       }
       this.limit = x;
-      this.user_config.col_limit = this.limit;
+      this.extra_data.col_limit = this.limit;
       this.$store.commit('userConfigChange', {
-        user_config: JSON.stringify(this.user_config)
+        extra_data: JSON.stringify(this.extra_data)
       });
-      const frontend_config = {segmentoj_frontend_config: this.user_config};
+      const extra_data = {segmentoj_extra_data: this.extra_data};
       this.$axios
         .patch(apiurl(`/account/${this.$store.state.user.userid}`), {
-          frontend_config: JSON.stringify(frontend_config)
+          extra_data: JSON.stringify(extra_data)
         });
     },
     process(x) {

@@ -104,12 +104,12 @@ export default {
       majorLangTable: sfconfig.majorLangTable,
       options: [],
       avatar_url: this.$store.state.user.avatarURL,
-      user_config: JSON.parse(this.$store.state.user.user_config),
+      extra_data: JSON.parse(this.$store.state.user.extra_data),
     };
   },
   methods: {
     showEdit() {
-      this.nav_color = this.user_config.nav_color;
+      this.nav_color = this.extra_data.nav_color;
       this.$axios
         .get(apiurl(`/account/${this.$route.params.id}`))
         .then(res => {
@@ -154,11 +154,11 @@ export default {
         });
     },
     submit() {
-      this.user_config.nav_color = this.nav_color;
+      this.extra_data.nav_color = this.nav_color;
       this.$store.commit('userConfigChange', {
-        user_config: JSON.stringify(this.user_config)
+        extra_data: JSON.stringify(this.extra_data)
       });
-      const frontend_config = {segmentoj_frontend_config: this.user_config};
+      const extra_data = {segmentoj_extra_data: this.extra_data};
       this.buttonLoading = true;
       this.$axios
         .patch(apiurl(`/account/${this.$route.params.id}`), {
@@ -166,7 +166,7 @@ export default {
           is_staff: this.isStaff,
           is_superuser: this.isRoot,
           is_active: this.isActive,
-          frontend_config: JSON.stringify(frontend_config),
+          extra_data: JSON.stringify(extra_data),
           lang: this.$refs['langSelect'].getCheckedNodes(true)[0].value,
           avatar_url: this.avatar_url,
         })

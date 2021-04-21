@@ -1,12 +1,13 @@
 <template>
-  <div id="user-content">
-    <div id="tool">
+  <el-row :gutter="20">
+    <el-col :span="8" id="tool">
       <el-card shadow="never">
-        <UserAvatar :imgsrc="avatar_url" shape="square" :size="this.avatarWidth" />
+        <UserAvatar :imgsrc="avatar_url" shape="square" :size="320" />
       </el-card>
-    </div>
+      <BadgeBoard></BadgeBoard>
+    </el-col>
 
-    <div id="info">
+    <el-col :span="16" id="info">
       <el-tabs v-model="active_tab" :tab-position="'right'">
         <el-tab-pane label="Information" name="first">
           <userInfo></userInfo>
@@ -18,8 +19,8 @@
           <userSecure></userSecure>
         </el-tab-pane>
       </el-tabs>
-    </div>
-  </div>  
+    </el-col>
+  </el-row>
 </template>
 
 <script>
@@ -28,6 +29,7 @@ import userInfo from './information.vue';
 import userEdit from './edit.vue';
 import userSecure from './secure.vue';
 import UserAvatar from './avatar.vue';
+import BadgeBoard from './BadgeBoard.vue';
 
 export default {
   name: 'UserHomepage',
@@ -36,8 +38,6 @@ export default {
       active_tab: 'first',
       is_mine: false,
       can_edit: false,
-      avatarWidth: 800 < screen.width ? 300 : screen.width - 40,
-      smallScreen: 700 < screen.width,
       avatar_url: '',
     };
   },
@@ -74,27 +74,13 @@ export default {
     userInfo,
     userEdit,
     userSecure,
-    UserAvatar
+    UserAvatar,
+    BadgeBoard
   }
 };
 </script>
 
 <style scoped>
-#info {
-    margin-left: 20px;
-    width: 800px;
-}
-
-#user-content {
-    display: flex;
-}
-
-@media only screen and (max-width: 800px) {
-    #user-content {
-        display: inline;
-    }
-}
-
 @media only screen and (max-width: 700px) {
     .float {
         z-index: 1000;
