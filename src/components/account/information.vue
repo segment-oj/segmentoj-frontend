@@ -176,17 +176,11 @@ export default {
           if (this.$store.state.user.isStaff || this.userid == this.$store.state.user.userid.toString) {
             this.ismine = true;
           }
+
           this.$axios
             .get(apiurl(`/account/${this.$route.params.id}/introduction`))
             .then(detail => {
               this.introduction = detail.data.res.introduction;
-            })
-            .catch(err => {
-              if(err.request.status === 404) {
-                this.$info.error('User does not exist');
-              } else {
-                this.$info.error('Unknown error');
-              }
             });
           this.userLoading = false;
         })
