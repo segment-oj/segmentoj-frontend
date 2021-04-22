@@ -291,14 +291,4 @@ export default {
         opacity: 1;
     }
 }
-
-.edit-i-button {
-    transition: all 0.5s;
-    float: right;
-}
-
-.edit-i-button:hover {
-    cursor: pointer;
-    color: var(--color-secondary-text);
-}
 </style>
