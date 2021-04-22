@@ -21,10 +21,11 @@ import locale from 'element-ui/lib/locale/lang/en';
 import ElementUI from 'element-ui';
 Vue.use(ElementUI, { locale });
 
+import './assets/css/var.css';
 import './assets/css/theme.css';
 import './assets/css/fontstyle.css';
 import './assets/css/basic.css';
-import './assets/css/var.css';
+import './assets/css/md.css';
 import('./loader/load');
 
 import './methods/string';
