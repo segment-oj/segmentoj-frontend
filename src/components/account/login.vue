@@ -89,29 +89,6 @@ export default {
           this.$axios
             .get(apiurl(`/account/${userid}`))
             .then(detail => {
-              let extra_data = JSON.parse(detail.data.res.extra_data);
-
-              if (extra_data == null) {
-                extra_data = {segmentoj_extra_data: {}};
-              }
-
-              let segmentoj_extra_data = extra_data.segmentoj_extra_data;
-              if (segmentoj_extra_data.nav_color == undefined) {
-                segmentoj_extra_data.nav_color = '#545C64';
-              }
-              if (segmentoj_extra_data.col_limit == undefined) {
-                segmentoj_extra_data.col_limit = 50;
-              }
-              if (segmentoj_extra_data.code_mirror_theme == undefined) {
-                segmentoj_extra_data.code_mirror_theme = '0';
-              }
-              if (segmentoj_extra_data.badges == undefined) {
-                segmentoj_extra_data.badges = [];
-              }
-
-              this.$store.commit('userConfigChange', {
-                extra_data: JSON.stringify(segmentoj_extra_data)
-              });
               this.$store.commit('userLang', {
                 lang: detail.data.res.lang
               });
@@ -119,12 +96,48 @@ export default {
                 is_staff: detail.data.res.is_staff,
                 is_superuser: detail.data.res.is_superuser
               });
-              this.$store.commit('userNavColorChange', {
-                nav_color: segmentoj_extra_data.nav_color
-              });
               this.$store.commit('userAvatarURLChange', {
                 avatar_url: detail.data.res.avatar_url
               });
+
+              this.$axios
+                .get(apiurl(`/account/${userid}/extradata`))
+                .then(ex_data => {
+                  let extra_data = JSON.parse(ex_data.data.res.extra_data);
+
+                  if (extra_data == null) {
+                    extra_data = {segmentoj_extra_data: {}};
+                  }
+
+                  let segmentoj_extra_data = extra_data.segmentoj_extra_data;
+                  if (segmentoj_extra_data.nav_color == undefined) {
+                    segmentoj_extra_data.nav_color = '#545C64';
+                  }
+                  if (segmentoj_extra_data.col_limit == undefined) {
+                    segmentoj_extra_data.col_limit = 50;
+                  }
+                  if (segmentoj_extra_data.code_mirror_theme == undefined) {
+                    segmentoj_extra_data.code_mirror_theme = '0';
+                  }
+                  if (segmentoj_extra_data.badges == undefined) {
+                    segmentoj_extra_data.badges = [];
+                  }
+
+                  this.$store.commit('userConfigChange', {
+                    extra_data: JSON.stringify(segmentoj_extra_data)
+                  });
+                  this.$store.commit('userNavColorChange', {
+                    nav_color: segmentoj_extra_data.nav_color
+                  });
+                })
+                .catch(() => {
+                  this.$info.error('Cannot get User Extra Data.');
+                  this.buttonLoading = false;
+                });
+            })
+            .catch(() => {
+              this.$info.error('Cannot get User Details.');
+              this.buttonLoading = false;
             });
           this.$store.commit('userLogin', {
             username: this.ldata.username,
