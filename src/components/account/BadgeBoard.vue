@@ -3,7 +3,7 @@
     <div slot="header">
       <i class="el-icon-price-tag" />
       Badges
-      <i v-if="can_edit" class="el-icon-edit" style="float: right;" @click="on_edit = !on_edit;"></i>
+      <i v-if="can_edit" class="el-icon-edit edit-i-button" @click="on_edit = !on_edit;"></i>
     </div>
 
     <div>
