@@ -158,7 +158,7 @@ export default {
       this.$store.commit('userConfigChange', {
         extra_data: JSON.stringify(this.extra_data)
       });
-      const extra_data = {segmentoj_extra_data: this.extra_data};
+      const post_extra_data = {segmentoj_extra_data: this.extra_data};
       this.buttonLoading = true;
       this.$axios
         .patch(apiurl(`/account/${this.$route.params.id}`), {
@@ -166,7 +166,7 @@ export default {
           is_staff: this.isStaff,
           is_superuser: this.isRoot,
           is_active: this.isActive,
-          extra_data: JSON.stringify(extra_data),
+          extra_data: JSON.stringify(post_extra_data),
           lang: this.$refs['langSelect'].getCheckedNodes(true)[0].value,
           avatar_url: this.avatar_url,
         })
