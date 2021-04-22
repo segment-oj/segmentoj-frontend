@@ -159,14 +159,36 @@ export default {
         extra_data: JSON.stringify(this.extra_data)
       });
       const post_extra_data = {segmentoj_extra_data: this.extra_data};
+      this.$axios
+        .patch(apiurl(`/account/${this.$route.params.id}/extradata`), {
+          extra_data: JSON.stringify(post_extra_data),
+        })
+        .catch(err => {
+          this.buttonLoading = false;
+          if (err.request.status === 404) {
+            this.$info.error('User not found');
+          } else if (err.request.status === 403) {
+            this.$info.error('Permission denied');
+          } else {
+            this.$info.error('Unknown error');
+          }
+        });
+
       this.buttonLoading = true;
+      this.$axios
+        .patch(apiurl(`/account/${this.$route.params.id}/introduction`), {
+          introduction: this.introduction,
+        })
+        .then(() => {
+          this.buttonLoading = false;
+        });
+
       this.$axios
         .patch(apiurl(`/account/${this.$route.params.id}`), {
           username: this.username,
           is_staff: this.isStaff,
           is_superuser: this.isRoot,
           is_active: this.isActive,
-          extra_data: JSON.stringify(post_extra_data),
           lang: this.$refs['langSelect'].getCheckedNodes(true)[0].value,
           avatar_url: this.avatar_url,
         })
@@ -190,21 +212,6 @@ export default {
               lang: this.lang
             });
           }
-          this.$axios
-            .patch(apiurl(`/account/${this.$route.params.id}/introduction`), {
-              introduction: this.introduction,
-            })
-            .then(() => {
-              this.buttonLoading = false;
-            })
-            .catch(err => {
-              if(err.request.status === 404) {
-                this.$info.error('User does not exist');
-              } else {
-                this.$info.error('Unknown error');
-              }
-              this.userLoading = false;
-            });
         })
         .catch(err => {
           this.buttonLoading = false;
@@ -216,8 +223,6 @@ export default {
             this.$info.error('Unknown error');
           }
         });
-
-      this.$router.go(0);
     },
     makeLangOptions() {
       let route = [];

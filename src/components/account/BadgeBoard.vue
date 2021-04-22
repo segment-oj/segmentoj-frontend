@@ -42,7 +42,6 @@ export default {
   name: 'BadgeBoard',
   data() {
     return {
-      extra_data: JSON.parse(this.$store.state.user.extra_data),
       new_badge_visible: false,
       new_badge_url: '',
       on_edit: false,
@@ -57,12 +56,12 @@ export default {
   },
   methods: {
     submit() {
-      console.log(this.extra_data.badges);
-      this.extra_data.badges = this.url_list;
+      let extra_data = JSON.parse(this.$store.state.user.extra_data);
+      extra_data.badges = this.url_list;
 
-      const tmp_extra_data = {segmentoj_extra_data: this.extra_data};
+      const tmp_extra_data = {segmentoj_extra_data: extra_data};
       this.$axios
-        .patch(apiurl(`/account/${this.$store.state.user.userid}`), {
+        .patch(apiurl(`/account/${this.$store.state.user.userid}/extradata`), {
           extra_data: JSON.stringify(tmp_extra_data),
         });
       this.$store.commit('userConfigChange', {
@@ -81,7 +80,7 @@ export default {
     },
     get_info() {
       this.$axios
-        .get(apiurl(`/account/${this.$route.params.id}`))
+        .get(apiurl(`/account/${this.$route.params.id}/extradata`))
         .then(res => {
           let data = JSON.parse(res.data.res.extra_data);
           this.url_list = data.segmentoj_extra_data.badges;
