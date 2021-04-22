@@ -15,7 +15,7 @@
         <el-input v-if="on_edit" v-model="item.url" style="margin-top: 10px;">
           <el-button slot="append" icon="el-icon-close" @click="url_list.splice(i, 1);" circle></el-button>
         </el-input>
-        <img :src="item.url" style="max-width: 300px;"/>
+        <img :src="item.url" style="max-width: 100%;"/>
       </span>
       <br>
 
