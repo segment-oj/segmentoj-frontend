@@ -90,7 +90,6 @@ export default {
             .get(apiurl(`/account/${userid}`))
             .then(detail => {
               let extra_data = JSON.parse(detail.data.res.extra_data);
-              console.log(extra_data);
 
               if (extra_data == null) {
                 extra_data = {segmentoj_extra_data: {}};
@@ -126,7 +125,6 @@ export default {
               this.$store.commit('userAvatarURLChange', {
                 avatar_url: detail.data.res.avatar_url
               });
-              // this.$store.commit('setTodo', segmentoj_extra_data.todo_list);
             });
           this.$store.commit('userLogin', {
             username: this.ldata.username,

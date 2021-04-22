@@ -65,10 +65,10 @@ export default {
       this.$store.commit('userConfigChange', {
         extra_data: JSON.stringify(this.extra_data)
       });
-      const extra_data = {segmentoj_extra_data: this.extra_data};
+      const post_extra_data = {segmentoj_extra_data: this.extra_data};
       this.$axios
         .patch(apiurl(`/account/${this.$store.state.user.userid}`), {
-          extra_data: JSON.stringify(extra_data)
+          extra_data: JSON.stringify(post_extra_data)
         });
     }
   },
