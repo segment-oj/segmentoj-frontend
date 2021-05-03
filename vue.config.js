@@ -26,7 +26,6 @@ module.exports = {
       'codemirror': 'CodeMirror',
       'katex': 'katex',
       'remarkable': 'remarkable',
-      'remarkable/linkify': 'remarkable.linkify',
     },
   },
 };

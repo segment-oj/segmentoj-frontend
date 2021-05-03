@@ -23,7 +23,7 @@
       <el-tab-pane label="Todo List">
         <div class="todo-item-holder">
           <transition-group name="el-zoom-in-top">
-            <div class="todo-item" v-for="(item, i) in todo_list" :key="i">
+            <div class="todo-item" v-for="(item, i) in todo_list" :key="item.name">
               <div class="inline-item-left">
                 <el-checkbox
                   class="todo-item-achieve-checkbox"
@@ -55,10 +55,10 @@
 </template>
 
 <script>
-import { Remarkable } from 'remarkable';
-import { linkify } from 'remarkable/linkify';
+import { Remarkable, linkify } from 'remarkable';
 
 import rkatex from 'remarkable-katex';
+import 'katex/dist/katex.min.css';
 import DOMPurify from 'dompurify';
 
 export default {
@@ -74,7 +74,10 @@ export default {
   },
   mounted() {
     this.remark = new Remarkable();
+    console.log(1, this.remark, rkatex, linkify);
+    this.remark.inline.ruler.enable(['mark']);
     this.remark.use(rkatex).use(linkify);
+    console.log(2, this.remark);
     this.todo_list = this.$store.state.todo.todo_list;
   },
   methods: {

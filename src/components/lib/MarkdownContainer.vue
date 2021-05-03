@@ -1,12 +1,11 @@
 <template>
   <div class="markdown-container">
-    <div class='md-renderd-content' v-html="renderd_content"></div>
+    <div class='md-rendered-content' v-html="rendered_content"></div>
   </div>
 </template>
 
 <script>
-import { Remarkable } from 'remarkable';
-import { linkify } from 'remarkable/linkify';
+import { Remarkable, linkify } from 'remarkable';
 
 import rkatex from 'remarkable-katex';
 import 'katex/dist/katex.min.css';
@@ -55,7 +54,7 @@ export default {
     this.remark.use(rkatex).use(linkify);
   },
   computed: {
-    renderd_content() {
+    rendered_content() {
       let content = this.content;
       content = this.remark.render(this.content);
 
