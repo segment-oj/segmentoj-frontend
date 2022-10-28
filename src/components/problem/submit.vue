@@ -3,7 +3,7 @@
     <!-- Normal screen -->
     <el-row :gutter="20" v-if="!smallScreen">
       <el-col :span="6">
-        <el-card>
+        <el-card v-if="!readonly">
           <div slot="header" class="clearfix"><i class="el-icon-s-operation" /> Language</div>
           <el-select v-model="lang_num" placeholder="Select language">
             <el-option
@@ -14,20 +14,24 @@
             </el-option>
           </el-select>
         </el-card>
-        <el-button-group class="margin-top-20">
-          <el-button v-if="resubmit" type="primary" @click="submit();" :loading="buttonLoading">Resubmit</el-button>
-          <el-button v-else type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
-          <el-button @click="back();">Back</el-button>
-        </el-button-group>
-        <el-card class="margin-top-20">
+        <el-card :class="readonly ? '' : 'margin-top-20'">
           <i class="el-icon-info" /> Information
           <el-divider>Problem</el-divider>
           #{{pid}}. {{title}}
           <el-divider>Limitation</el-divider>
-          {{time}} MS
+          {{time}} ms
           <el-divider direction="vertical"></el-divider>
           {{memory}} MB
+          <span v-if="readonly">
+            <el-divider>Language</el-divider>
+            <span>{{langTable[lang_num].label}}</span>
+          </span>
         </el-card>
+        <el-button-group class="margin-top-20">
+          <el-button v-if="resubmit && !readonly" type="primary" @click="submit();" :loading="buttonLoading">Resubmit</el-button>
+          <el-button v-else-if="!readonly" type="primary" @click="submit();" :loading="buttonLoading">Submit</el-button>
+          <el-button @click="back();">Back</el-button>
+        </el-button-group>
       </el-col>
       <el-col :span="18">
         <el-card>
@@ -92,6 +96,9 @@ export default {
       required: true
     }, base_lang: {
       type: Number
+    }, readonly: {
+      type: Boolean,
+      default: false,
     }
   },
   methods: {

@@ -59,7 +59,6 @@ import { Remarkable, linkify } from 'remarkable';
 
 import rkatex from 'remarkable-katex';
 import 'katex/dist/katex.min.css';
-import DOMPurify from 'dompurify';
 
 export default {
   name: 'Todo',
@@ -119,7 +118,7 @@ export default {
       }
     },
     render(md) {
-      return DOMPurify.sanitize(this.remark.render(md));
+      return this.remark.render(md);
     }
   },
 };

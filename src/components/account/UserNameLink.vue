@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <span>
     <router-link :to="( `/account/${this.userid}`)" class="color-regular-text text-normal">{{this.username}} </router-link>
-  </div>
+  </span>
 </template>
 
 <script>

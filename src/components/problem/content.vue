@@ -50,7 +50,7 @@
           <el-card shadow="never">
             <div><i class="el-icon-menu" /> Limitation </div>
             <el-divider class="divider">Time</el-divider>
-            <div class="tool-content">{{time}} MS</div>
+            <div class="tool-content">{{time}} ms</div>
             <el-divider class="divider">Memory</el-divider>
             <div class="tool-content">{{memory}} MB</div>
           </el-card>

@@ -15,7 +15,7 @@
             <el-divider>Time</el-divider>
             <el-row :gutter="10">
               <el-input v-model="time" placeholder="Set time limitation">
-                <span slot="suffix" class="el-input__icon">MS</span>
+                <span slot="suffix" class="el-input__icon">ms</span>
               </el-input>
             </el-row>
             <el-divider>Memory</el-divider>
@@ -90,7 +90,7 @@
             <el-input v-model="time" placeholder="Set time limitation"></el-input>
           </el-col>
           <el-col :span="4" class="center-text">
-            MS
+            ms
           </el-col>
         </el-row>
         <el-divider>Memory</el-divider>
