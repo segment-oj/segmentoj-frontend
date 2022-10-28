@@ -3,8 +3,24 @@
     <div slot="header">
       <i class="el-icon-price-tag" />
       Badges
-      <i v-if="can_edit" class="el-icon-edit edit-i-button" @click="on_edit = !on_edit;"></i>
+      <span class="edit-i-button">
+        <i v-if="can_edit" class="el-icon-edit" @click="on_edit = !on_edit;"></i>
+        <i style="margin-left: 8px;" class="el-icon-full-screen" @click="pop_up = true"></i>
+      </span>
     </div>
+
+    <el-dialog title="Badges" :visible.sync="pop_up">
+      <span 
+        v-for="(item, i) in url_list"
+        :key="i"
+        style="margin-right: 5px;"
+      >
+        <el-input v-if="on_edit" v-model="item.url" style="margin-top: 10px;">
+          <el-button slot="append" icon="el-icon-close" @click="url_list.splice(i, 1);" circle></el-button>
+        </el-input>
+        <img :src="item.url" style="max-width: 100%;"/>
+      </span>
+    </el-dialog>
 
     <div>
       <span 
@@ -46,6 +62,7 @@ export default {
       new_badge_url: '',
       on_edit: false,
       url_list: [],
+      pop_up: false,
     };
   },
   props: {
@@ -61,7 +78,7 @@ export default {
 
       const tmp_extra_data = {segmentoj_extra_data: extra_data};
       this.$axios
-        .patch(apiurl(`/account/${this.$store.state.user.userid}/extradata`), {
+        .patch(apiurl(`/account/${this.$route.params.id}/extradata`), {
           extra_data: JSON.stringify(tmp_extra_data),
         });
       this.$store.commit('userConfigChange', {

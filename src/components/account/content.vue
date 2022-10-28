@@ -87,29 +87,29 @@ export default {
 
 <style scoped>
 @media only screen and (max-width: 700px) {
-  .float {
-    z-index: 1000;
-    opacity: 0.5;
-    position: fixed;
-    transition: 0.5s;
-    right: 30px;
-    top: 50px;
-  }
+    .float {
+        z-index: 1000;
+        opacity: 0.5;
+        position: fixed;
+        transition: 0.5s;
+        right: 30px;
+        top: 50px;
+    }
 
-  .float:active {
-    z-index: 1000;
-    opacity: 1;
-  }
+    .float:active {
+        z-index: 1000;
+        opacity: 1;
+    }
 
-  .float:hover {
-    z-index: 1000;
-    opacity: 1;
-  }
+    .float:hover {
+        z-index: 1000;
+        opacity: 1;
+    }
 
-  #info {
-    margin-top: 20px;
-    margin-left: 0;
-    width: 800px;
-  }
+    #info {
+        margin-top: 20px;
+        margin-left: 0;
+        width: 800px;
+    }
 }
 </style>

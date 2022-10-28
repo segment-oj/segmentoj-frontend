@@ -37,6 +37,7 @@
           <el-checkbox v-model="isStaff" :disabled="!isStaffMe && !isRootMe">Staff</el-checkbox>
           <el-checkbox v-model="isRoot" :disabled="!isStaffMe && !isRootMe">Root</el-checkbox>
           <el-checkbox v-model="isActive" :disabled="(!isStaffMe && !isRootMe) || isMine">Active</el-checkbox>
+          <el-checkbox v-model="isJudger" :disabled="!isStaffMe && !isRootMe">Judger</el-checkbox>
         </el-card>
         <el-row class="margin-top-20" :gutter="20">
           <el-col :span="8">
@@ -94,6 +95,7 @@ export default {
       isStaff: false,
       isRoot: false,
       isActive: true,
+      isJudger: false,
       isRootMe: false,
       isStaffMe: false,
       isActiveMe: true,
@@ -125,6 +127,7 @@ export default {
             this.isStaff = data.is_staff;
             this.isRoot = data.is_superuser;
             this.isActive = data.is_active;
+            this.isJudger = data.is_judger;
             this.lang = data.lang;
           }
           this.avatar_url = data.avatar_url;

@@ -160,21 +160,21 @@ export default {
   
 <style scoped>
 .small-label {
-  display: none;
+    display: none;
 }
 
 .clearfix {
-  display: block ruby;
+    display: block ruby;
 }
 
 @media only screen and (max-width: 800px) {
-  .label {
-    display: none;
-  }
+    .label {
+        display: none;
+    }
 
-  .small-label {
-    display: unset;
-  }
+    .small-label {
+        display: unset;
+    }
 }
 </style>
   
