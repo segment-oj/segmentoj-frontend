@@ -332,15 +332,20 @@ export default {
   }, {
     value: '21',
     icon: 'el-icon-circle-close',
-    label: 'Judger Configure Error',
+    label: 'File Error',
     color: 'var(--color-red-bright)'
   }, {
     value: '22',
     icon: 'el-icon-circle-close',
-    label: 'Judger Resources Limit Exceeded',
+    label: 'Judger Configure Error',
     color: 'var(--color-red-bright)'
   }, {
     value: '23',
+    icon: 'el-icon-circle-close',
+    label: 'Judger Resources Limit Exceeded',
+    color: 'var(--color-red-bright)'
+  }, {
+    value: '24',
     icon: 'el-icon-circle-close',
     label: 'Unsupported Language',
     color: 'var(--color-red-bright)'
