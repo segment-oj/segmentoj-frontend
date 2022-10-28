@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "chokidar": "^3.5.3",
     "codemirror": "^5.56.0",
     "core-js": "^3.6.5",
     "dompurify": "^2.0.12",
