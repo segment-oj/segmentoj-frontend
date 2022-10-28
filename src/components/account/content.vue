@@ -10,7 +10,8 @@
     <el-col :span="16" id="info">
       <el-tabs v-model="active_tab" :tab-position="'right'">
         <el-tab-pane label="Information" name="first">
-          <userInfo></userInfo>
+          <JudgerInfo v-if="is_judger"></JudgerInfo>
+          <userInfo v-else></userInfo>
         </el-tab-pane>
         <el-tab-pane v-if="can_edit" label="Edit" name="second">
           <userEdit></userEdit>
@@ -30,6 +31,7 @@ import userEdit from './edit.vue';
 import userSecure from './secure.vue';
 import UserAvatar from './avatar.vue';
 import BadgeBoard from './BadgeBoard.vue';
+import JudgerInfo from './judgerInfo.vue';
 
 export default {
   name: 'UserHomepage',
@@ -39,6 +41,7 @@ export default {
       is_mine: false,
       can_edit: false,
       avatar_url: '',
+      is_judger: false,
     };
   },
   methods: {
@@ -50,6 +53,7 @@ export default {
           this.userid = data.id;
           this.isStaff = data.is_staff;
           this.avatar_url = data.avatar_url;
+          this.is_judger = data.is_judger;
           if (this.userid == this.$store.state.user.userid.toString()) {
             this.is_mine = true;
           }
@@ -58,7 +62,7 @@ export default {
           }
         })
         .catch(err => {
-          if(err.request.status === 404) {
+          if (err.request.status === 404) {
             this.$info.error('User does not exist');
           } else {
             this.$info.error('Unknown error');
@@ -75,36 +79,37 @@ export default {
     userEdit,
     userSecure,
     UserAvatar,
-    BadgeBoard
+    BadgeBoard,
+    JudgerInfo
   }
 };
 </script>
 
 <style scoped>
 @media only screen and (max-width: 700px) {
-    .float {
-        z-index: 1000;
-        opacity: 0.5;
-        position: fixed;
-        transition: 0.5s;
-        right: 30px;
-        top: 50px;
-    }
+  .float {
+    z-index: 1000;
+    opacity: 0.5;
+    position: fixed;
+    transition: 0.5s;
+    right: 30px;
+    top: 50px;
+  }
 
-    .float:active {
-        z-index: 1000;
-        opacity: 1;
-    }
+  .float:active {
+    z-index: 1000;
+    opacity: 1;
+  }
 
-    .float:hover {
-        z-index: 1000;
-        opacity: 1;
-    }
+  .float:hover {
+    z-index: 1000;
+    opacity: 1;
+  }
 
-    #info {
-        margin-top: 20px;
-        margin-left: 0;
-        width: 800px;
-    }
+  #info {
+    margin-top: 20px;
+    margin-left: 0;
+    width: 800px;
+  }
 }
 </style>
