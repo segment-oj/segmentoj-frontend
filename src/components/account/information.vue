@@ -8,7 +8,7 @@
             <span class="label"> User</span>
             Name
           </div>
-          {{username}}
+          {{ username }}
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -18,7 +18,7 @@
             <span class="label"> User</span>
             ID
           </div>
-          {{userid}}
+          {{ userid }}
         </el-card>
       </el-col>
     </el-row>
@@ -28,7 +28,7 @@
           <div slot="header" class="clearfix">
             <i class="el-icon-message" /> Email
           </div>
-          {{email}}
+          {{ email }}
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -37,7 +37,7 @@
             <i class="el-icon-date" />
             <span class="label"> Time Joined</span>
           </div>
-          {{timeJoin}}
+          {{ timeJoin }}
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -46,7 +46,7 @@
             <i class="el-icon-time" />
             <span class="label"> Last Login</span>
           </div>
-          {{lastLogin}}
+          {{ lastLogin }}
         </el-card>
       </el-col>
     </el-row>
@@ -57,7 +57,7 @@
             <i class="el-icon-s-operation" />
             <span class="label"> Lang</span>
           </div>
-          {{majorLangTable[lang].label}}
+          {{ majorLangTable[lang].label }}
         </el-card>
       </el-col>
       <el-col :span="6">
@@ -68,7 +68,7 @@
             <div class="small-label"> AC</div>
           </div>
           <div class="clearfix">
-            {{solved}}
+            {{ solved }}
             <span class="label"> Problems</span>
           </div>
         </el-card>
@@ -81,7 +81,7 @@
             <div class="small-label"> SU</div>
           </div>
           <div class="clearfix">
-            {{submit}}
+            {{ submit }}
             <span class="label"> Times</span>
           </div>
         </el-card>
@@ -93,7 +93,8 @@
             <span class="label"> AC</span>
             Rate
           </div>
-          <el-progress :text-inside="true" :stroke-width="24" :percentage="rate" status="success" :color="ACRateColorMode"></el-progress>
+          <el-progress :text-inside="true" :stroke-width="24" :percentage="rate" status="success"
+            :color="ACRateColorMode"></el-progress>
         </el-card>
       </el-col>
     </el-row>
@@ -102,7 +103,7 @@
         <i class="el-icon-chat-line-square" />
         Introductions
       </div>
-      <MarkdownContainer v-if="introduction" :content="introduction"/>
+      <MarkdownContainer v-if="introduction" :content="introduction" />
     </el-card>
     <el-card class="margin-top-20">
       <div slot="header" class="clearfix"><i class="el-icon-user" /> Permissions</div>
@@ -141,7 +142,7 @@ export default {
       isActive: true,
       isJudger: false,
       majorLangTable: sfconfig.majorLangTable,
-      lang: 0
+      lang: 0,
     };
   },
   methods: {
@@ -188,7 +189,7 @@ export default {
           this.userLoading = false;
         })
         .catch(err => {
-          if(err.request.status === 404) {
+          if (err.request.status === 404) {
             this.$info.error('User does not exist');
           } else {
             this.$info.error('Unknown error');
@@ -205,33 +206,33 @@ export default {
         return 'var(--color-green)';
       }
       return 'var(--color-blue)';
-    }
+    },
   },
   mounted() {
     this.showHomepage();
   },
   components: {
-    MarkdownContainer
+    MarkdownContainer,
   }
 };
 </script>
 
 <style scoped>
 .small-label {
-    display: none;
+  display: none;
 }
 
 .clearfix {
-    display: block ruby;
+  display: block ruby;
 }
 
 @media only screen and (max-width: 800px) {
-    .label {
-        display: none;
-    }
+  .label {
+    display: none;
+  }
 
-    .small-label {
-        display: unset;
-    }
+  .small-label {
+    display: unset;
+  }
 }
 </style>

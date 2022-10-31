@@ -44,15 +44,17 @@
           />
           <el-divider class="divider" />
           <el-checkbox v-model="showTags"> Show Tags</el-checkbox>
-          <el-divider class="divider" />
-          <el-button
-            style="width: 100%;"
-            @click="$store.state.createProblem.displayCreateProblem = true;"
-            size="medium"
-          >
-            <i class="el-icon-circle-plus" />
-            Create New Problem
-          </el-button>
+          <div v-if="this.$store.state.user.isStaff || this.$store.state.user.isRoot">
+            <el-divider class="divider" />
+              <el-button
+              style="width: 100%;"
+              @click="$store.state.createProblem.displayCreateProblem = true;"
+              size="medium"
+              >
+              <i class="el-icon-circle-plus" />
+              Create New Problem
+            </el-button>
+          </div>
         </el-card>
       </el-col>
     </el-row>

@@ -13,10 +13,13 @@
           <JudgerInfo v-if="is_judger"></JudgerInfo>
           <userInfo v-else></userInfo>
         </el-tab-pane>
-        <el-tab-pane v-if="can_edit" label="Edit" name="second">
+        <el-tab-pane label="Statistics" name="second">
+          <userStatistic></userStatistic>
+        </el-tab-pane>
+        <el-tab-pane v-if="can_edit" label="Edit" name="third">
           <userEdit></userEdit>
         </el-tab-pane>
-        <el-tab-pane v-if="is_mine" label="Security" name="third">
+        <el-tab-pane v-if="is_mine" label="Security" name="forth">
           <userSecure></userSecure>
         </el-tab-pane>
       </el-tabs>
@@ -32,6 +35,7 @@ import userSecure from './secure.vue';
 import UserAvatar from './avatar.vue';
 import BadgeBoard from './BadgeBoard.vue';
 import JudgerInfo from './judgerInfo.vue';
+import userStatistic from './statistic.vue';
 
 export default {
   name: 'UserHomepage',
@@ -80,7 +84,8 @@ export default {
     userSecure,
     UserAvatar,
     BadgeBoard,
-    JudgerInfo
+    JudgerInfo,
+    userStatistic
   }
 };
 </script>

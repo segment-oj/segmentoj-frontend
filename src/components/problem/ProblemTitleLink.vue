@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <span>
     <router-link :to="( `/problem/${this.pid}`)" class="color-regular-text text-normal">{{this.title}} </router-link>
-  </div>
+  </span>
 </template>
 
 <script>

@@ -9,6 +9,7 @@
     "lint:css": "stylelint src/**/*.{html,vue,css,sass,scss}"
   },
   "dependencies": {
+    "apexcharts": "^3.36.0",
     "axios": "^0.21.2",
     "chokidar": "^3.5.3",
     "codemirror": "^5.56.0",
@@ -21,6 +22,7 @@
     "remarkable": "^2.0.1",
     "remarkable-katex": "^1.1.7",
     "vue": "^2.6.11",
+    "vue-apexcharts": "^1.6.2",
     "vue-router": "^3.3.4",
     "vue-template-compiler": "^2.6.11",
     "vuex": "^3.5.1"
