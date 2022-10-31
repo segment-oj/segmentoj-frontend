@@ -116,7 +116,6 @@ export default {
     if (this.theme === 100 && JSON.parse(this.$store.state.user.extra_data).code_mirror_theme !== undefined) {
       this.editor.setOption('theme', sfconfig.CodeMirrorThemeTable[JSON.parse(this.$store.state.user.extra_data).code_mirror_theme].theme);
     } else {
-      console.log('f');
       this.editor.setOption('theme', sfconfig.CodeMirrorThemeTable[this.theme].theme);
     }
   }

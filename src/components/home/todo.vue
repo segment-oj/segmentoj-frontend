@@ -73,10 +73,8 @@ export default {
   },
   mounted() {
     this.remark = new Remarkable();
-    console.log(1, this.remark, rkatex, linkify);
     this.remark.inline.ruler.enable(['mark']);
     this.remark.use(rkatex).use(linkify);
-    console.log(2, this.remark);
     this.todo_list = this.$store.state.todo.todo_list;
   },
   methods: {

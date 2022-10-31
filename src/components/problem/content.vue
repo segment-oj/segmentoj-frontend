@@ -200,7 +200,6 @@ export default {
         .then(res => {
           this.test_data_url = res.data.res;
           this.have_view_test_data_url_permission = true;
-          console.log(this.test_data_url);
         });
     },
     jump_to_status() {
