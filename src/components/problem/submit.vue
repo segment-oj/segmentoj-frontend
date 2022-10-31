@@ -36,7 +36,7 @@
       <el-col :span="18">
         <el-card>
           <div slot="header" class="clearfix"><i class="el-icon-document" /> Code</div>
-          <CodeMirror v-model="code"> </CodeMirror>
+          <CodeMirror v-model="code" :theme="100"></CodeMirror>
         </el-card>
       </el-col>
     </el-row>
@@ -59,7 +59,7 @@
       </el-card>
       <el-card class="margin-top-20">
         <div slot="header" class="clearfix"><i class="el-icon-document" /> Code</div>
-        <CodeMirror v-model="code"> </CodeMirror>
+        <CodeMirror v-model="code" :theme="100"> </CodeMirror>
       </el-card>
     </div>
   </div>

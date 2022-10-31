@@ -166,11 +166,15 @@ export default {
         return id.value === x.state.toString();
       });
       if(stateTable.length) {
-        x.state = (
-          <el-tooltip class="item" effect="dark" content={stateTable[0].label} placement="top">
-            <router-link to={`/status/${x.id}`} style={`color: ${stateTable[0].color}; white-space: nowrap;`} class="text-bold"><i class={stateTable[0].icon} /> {stateTable[0].label}</router-link>
-          </el-tooltip>
-        );
+        if (stateTable[0].label.length >= 17) {
+          x.state = (
+            <el-tooltip class="item" effect="dark" content={stateTable[0].label} placement="top" open-delay="300">
+              <router-link to={`/status/${x.id}`} style={`color: ${stateTable[0].color}; white-space: nowrap;`} class="text-bold"><i class={stateTable[0].icon} /> {stateTable[0].label}</router-link>
+            </el-tooltip>
+          );
+        } else {
+          x.state = (<router-link to={`/status/${x.id}`} style={`color: ${stateTable[0].color}; white-space: nowrap;`} class="text-bold"><i class={stateTable[0].icon} /> {stateTable[0].label}</router-link>);
+        }
       } else {
         x.state = (<div style='color: var(--color-red-bright);' class="text-bold"><i class='el-icon-circle-close' /> System Error</div>);
       }

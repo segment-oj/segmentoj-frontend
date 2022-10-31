@@ -22,6 +22,11 @@
           <el-divider>Date</el-divider>
           {{judge_time}}
         </el-card>
+
+        <el-button-group class="margin-top-20">
+          <el-button :disabled="!is_mine" type="primary" @click="submit();" :loading="buttonLoading">Resubmit</el-button>
+          <el-button @click="back();">Back</el-button>
+        </el-button-group>
       </el-col>
       <el-col :span="18">
         <el-card>
@@ -64,9 +69,12 @@
           
           <pre v-if="additional_info != ''" class="additional-info">Info: {{additional_info}}</pre>
         </el-card>
+        <el-card class="margin-top-20">
+          <div slot="header" class="clearfix"><i class="el-icon-document" /> Code</div>
+          <CodeMirror v-model="code" :theme="100"></CodeMirror>
+        </el-card>
       </el-col>
     </el-row>
-    <StatusEdit class="margin-top-20" v-if="loading_finished" :pid="pid" :code="code" :lang="lang_num" :is_mine="is_mine"></StatusEdit>
   </div>
 </template>
 
@@ -75,7 +83,7 @@ import UserNameLinkVue from '../account/UserNameLink.vue';
 import sfconfig from './../../sfconfig';
 import timeFormat from './../../methods/time';
 import apiurl from '../../apiurl';
-import StatusEdit from './editPage';
+import CodeMirror from './../lib/editor.vue';
 
 export default {
   data() {
@@ -94,6 +102,7 @@ export default {
       additional_info: '',
       memory: 0,
       time: 0,
+      buttonLoading: false,
     };
   },
   mounted() {
@@ -172,10 +181,36 @@ export default {
           }
         });
     },
+    back() {
+      this.$router.go(-1);
+    },
+    submit() {
+      this.buttonLoading = true;
+      this.$axios
+        .post(apiurl('/status'), {
+          problem: Number(this.pid),
+          code: this.code,
+          lang: parseInt(this.lang_num),
+        })
+        .then(() => {
+          this.$info.success('Your code has been submitted');
+          this.buttonLoading = false;
+        })
+        .catch(err => {
+          if(err.request.status === 401) {
+            this.$info.error('Please login first');
+          } else if (err.request.status === 400) {
+            this.$info.error('Input your code');
+          } else {
+            this.$info.error('Unknown error');
+          }
+          this.buttonLoading = false;
+        });
+    },
   },
   components: {
-    StatusEdit,
-    UserNameLinkVue
+    UserNameLinkVue,
+    CodeMirror
   },
 };
 </script>

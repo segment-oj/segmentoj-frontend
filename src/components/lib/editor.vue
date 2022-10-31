@@ -34,8 +34,8 @@ export default {
       default: 0
     },
     theme: {
-      type: String,
-      default: '3024-day'
+      type: Number,
+      default: 0
     },
     enable_hint: {
       type: Boolean,
@@ -113,7 +113,12 @@ export default {
   mounted() {
     this.loadEditor();
     this.editor.setOption('mode', sfconfig.codeMirrorModeTable[this.mode].mode);
-    this.editor.setOption('theme', sfconfig.codeMirrorModeTable[this.theme].mode);
+    if (this.theme === 100 && JSON.parse(this.$store.state.user.extra_data).code_mirror_theme !== undefined) {
+      this.editor.setOption('theme', sfconfig.CodeMirrorThemeTable[JSON.parse(this.$store.state.user.extra_data).code_mirror_theme].theme);
+    } else {
+      console.log('f');
+      this.editor.setOption('theme', sfconfig.CodeMirrorThemeTable[this.theme].theme);
+    }
   }
 };
 </script>
