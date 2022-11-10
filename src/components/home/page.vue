@@ -1,10 +1,17 @@
 <template>
   <div>
-    <el-row>
-      <el-col :span="16"> <carousel /></el-col>
-      <el-col :span="8" style="padding-left: 20px;"> <Todo /> </el-col>
+    <el-row :gutter="20">
+      <el-col :span="16"> <Carousel /></el-col>
+      <el-col :span="8"> <Todo /> </el-col>
     </el-row>
-    <JumpToProblem class="margin-top-20" />
+    <el-row :gutter="20" class="margin-top-20">
+      <el-col :span="8">
+        <JumpToProblem/>
+      </el-col>
+      <el-col :span="16">
+        <HomeStatistic />
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -12,6 +19,7 @@
 import Carousel from './carousel.vue';
 import Todo from './todo.vue';
 import JumpToProblem from './../lib/JumpToProblem.vue';
+import HomeStatistic from './statistic.vue';
 
 export default {
   name: 'Home',
@@ -19,6 +27,7 @@ export default {
     Carousel,
     JumpToProblem,
     Todo,
+    HomeStatistic,
   },
 };
 </script>
