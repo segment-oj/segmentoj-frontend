@@ -128,7 +128,7 @@ export default {
   data() {
     return {
       description: null,
-      title: 'Unknown',
+      title: '',
       pid: this.$route.params.id,
       allowHTML: false,
       left_span: 18,

@@ -79,15 +79,15 @@ export default {
         .then(() => {
           this.new_tag_visible = false;
           this.$info.success('Succeeded');
+          this.$router.go(0);
         })
         .catch((err) => {
           if (err.request.status === 400) {
             this.$info.error('Tag exists');
+          } else {
+            this.$info.error('Unknown error');
           }
-          this.$info.error('Unknown error');
         });
-
-      this.$router.go(0);
     }
   },
   components: {
