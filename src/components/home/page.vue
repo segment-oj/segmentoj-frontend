@@ -9,7 +9,7 @@
         <JumpToProblem/>
       </el-col>
       <el-col :span="16">
-        <HomeStatistic />
+        <HomeStatistic v-if="this.$store.state.user.authenticated" />
       </el-col>
     </el-row>
   </div>
